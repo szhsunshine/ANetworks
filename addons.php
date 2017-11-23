@@ -11,7 +11,92 @@ include('header.php');
 
 <div class="row">
 	<div class="content column small-12 medium-7 large-8">
-		<?php if($_GET['type'] == 'wotlk'): ?>
+	<?php if($_GET['type'] == 'legion'): ?>
+			<div class="search-box">
+				<form method="GET">
+					<input type="hidden" name="type" value="legion" />
+					<input type="text" name="name" autocomplete="OFF" placeholder="Search for addon.." />
+				</form>
+			</div>
+
+			<div class="content-box column small-12">
+				<div class="content-box-header column small-12">
+					<div class="title-text">
+						Legion
+					</div>
+				</div>
+
+				<div class="content-box-content column small-12">
+					<?php if(!isset($_GET['name'])): ?>
+						<?php GrabAddons(7); ?>
+					<?php else: ?>
+						<?php SearchAddon(7); ?>
+					<?php endif; ?>
+	<?php elseif($_GET['type'] == 'wod'): ?>
+			<div class="search-box">
+				<form method="GET">
+					<input type="hidden" name="type" value="wod" />
+					<input type="text" name="name" autocomplete="OFF" placeholder="Search for addon.." />
+				</form>
+			</div>
+
+			<div class="content-box column small-12">
+				<div class="content-box-header column small-12">
+					<div class="title-text">
+						Warlords of Draenor
+					</div>
+				</div>
+
+				<div class="content-box-content column small-12">
+					<?php if(!isset($_GET['name'])): ?>
+						<?php GrabAddons(6); ?>
+					<?php else: ?>
+						<?php SearchAddon(6); ?>
+					<?php endif; ?>
+					
+		<?php elseif($_GET['type'] == 'mop'): ?>
+			<div class="search-box">
+				<form method="GET">
+					<input type="hidden" name="type" value="mop" />
+					<input type="text" name="name" autocomplete="OFF" placeholder="Search for addon.." />
+				</form>
+			</div>
+
+			<div class="content-box column small-12">
+				<div class="content-box-header column small-12">
+					<div class="title-text">
+						Mist of Pandaria
+					</div>
+				</div>
+
+				<div class="content-box-content column small-12">
+					<?php if(!isset($_GET['name'])): ?>
+						<?php GrabAddons(5); ?>
+					<?php else: ?>
+						<?php SearchAddon(5); ?>
+					<?php endif; ?>
+		<?php elseif($_GET['type'] == 'cata'): ?>
+			<div class="search-box">
+				<form method="GET">
+					<input type="hidden" name="type" value="cata" />
+					<input type="text" name="name" autocomplete="OFF" placeholder="Search for addon.." />
+				</form>
+			</div>
+
+			<div class="content-box column small-12">
+				<div class="content-box-header column small-12">
+					<div class="title-text">
+						Cataclysm
+					</div>
+				</div>
+
+				<div class="content-box-content column small-12">
+					<?php if(!isset($_GET['name'])): ?>
+						<?php GrabAddons(4); ?>
+		<?php else: ?>
+						<?php SearchAddon(4); ?>
+		<?php endif; ?>
+		<?php elseif($_GET['type'] == 'wotlk'): ?>
 			<div class="search-box">
 				<form method="GET">
 					<input type="hidden" name="type" value="wotlk" />
@@ -87,7 +172,15 @@ include('header.php');
 
 			<div class="content-box-content column small-12">
 				<table class="addons-list">
-					<?php if($_GET['type'] == 'wotlk'): ?>
+					<?php if($_GET['type'] == 'legion'): ?>
+						<?php GrabMostDownloaded(7); ?>
+					<?php elseif($_GET['type'] == 'wod'): ?>
+						<?php GrabMostDownloaded(6); ?>
+					<?php elseif($_GET['type'] == 'mop'): ?>
+						<?php GrabMostDownloaded(5); ?>
+					<?php elseif($_GET['type'] == 'cata'): ?>
+						<?php GrabMostDownloaded(4); ?>
+					<?php elseif($_GET['type'] == 'wotlk'): ?>
 						<?php GrabMostDownloaded(3); ?>
 					<?php elseif($_GET['type'] == 'tbc'): ?>
 						<?php GrabMostDownloaded(2); ?>
