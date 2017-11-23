@@ -31,7 +31,11 @@ function GrabAddons($expansion)
 	$type = array(
 		1 => 'vanilla',
 		2 => 'tbc',
-		3 => 'wotlk'
+		3 => 'wotlk',
+		4 => 'cata',
+		5 => 'mop',
+		6 => 'wod',
+		7 => 'legion'
 	);
 
 	$total = $con->prepare('SELECT COUNT(*) FROM addons WHERE expansion = :expansion AND status = 2');
@@ -110,7 +114,11 @@ function SearchAddon($expansion)
 		$type = array(
 			1 => 'vanilla',
 			2 => 'tbc',
-			3 => 'wotlk'
+			3 => 'wotlk',
+			4 => 'cata',
+			5 => 'mop',
+			6 => 'wod',
+			7 => 'legion'
 		);
 
 		$page    = isset($_GET['page']) ? (int)$_GET['page'] : 1;
@@ -339,7 +347,11 @@ function UploadAddon()
 							$folder = array(
 								1 => 'addons/vanilla/',
 								2 => 'addons/tbc/',
-								3 => 'addons/wotlk/'
+								3 => 'addons/wotlk',
+								4 => 'addons/cata',
+								5 => 'addons/mop',
+								6 => 'addons/wod',
+								7 => 'addons/legion'
 							);
 							
 							$file_id = str_shuffle(substr('ABCDEF0123456789', 0, 10));
@@ -490,6 +502,22 @@ function GrabExpansion($id)
 
 		case 3:
 			return 'Wrath of the Lich King';
+		break;
+		
+		case 4:
+			return 'Cataclysm';
+		break;
+		
+		case 5:
+			return 'Mist of Pandaria';
+		break;
+		
+		case 6:
+			return 'Warlords of Draenor';
+		break;
+		
+		case 7:
+			return 'Legion';
 		break;
 	}
 }
@@ -911,6 +939,10 @@ function MyAddons()
 										<option value="1">Vanilla</option>
 										<option value="2">Burning Crusade</option>
 										<option value="3">Wrath of the Lich King</option>
+										<option value="4">Cataclysm</option>
+										<option value="5">Mist of Pandaria</option>
+										<option value="6">Warlords of Draenor</option>
+										<option value="7">Legion</option>
 									</select>
 								</div>
 
@@ -1237,6 +1269,10 @@ function CheckAccess($level)
 											<option value="1">Vanilla</option>
 											<option value="2">Burning Crusade</option>
 											<option value="3">Wrath of the Lich King</option>
+											<option value="4">Cataclysm</option>
+											<option value="5">Mist of Pandaria</option>
+											<option value="6">Warlords of Draenor</option>
+											<option value="7">Legion</option>
 										</select>
 									</div>
 
