@@ -2,9 +2,9 @@
 
 $config = array(
 	'HOST' => 'localhost',
-	'USER' => 'root',
+	'USER' => 'sayghteight',
 	'PASS' => '',
-	'DB'   => 'privatedb'
+	'DB'   => 'c9'
 );
 
 // General Settings

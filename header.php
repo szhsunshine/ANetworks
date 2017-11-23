@@ -55,13 +55,17 @@ if(isset($_GET['logout']))
 							<li><a href="addons.php?type=vanilla" <?php echo (isset($_GET['type']) && $_GET['type'] == "vanilla")?"class=\"current-sub-nav\"":""; ?>>Vanilla</a></li>
 							<li><a href="addons.php?type=tbc"     <?php echo (isset($_GET['type']) && $_GET['type'] == "tbc")?"class=\"current-sub-nav\"":""; ?>>Burning Crusade</a></li>
 							<li><a href="addons.php?type=wotlk"   <?php echo (isset($_GET['type']) && $_GET['type'] == "wotlk")?"class=\"current-sub-nav\"":""; ?>>Wrath of the Lich King</a></li>
+							<li><a href="addons.php?type=cata"   <?php echo (isset($_GET['type']) && $_GET['type'] == "cata")?"class=\"current-sub-nav\"":""; ?>>Cataclysm</a></li>
+							<li><a href="addons.php?type=mop"   <?php echo (isset($_GET['type']) && $_GET['type'] == "mop")?"class=\"current-sub-nav\"":""; ?>>Mist of Pandaria</a></li>
+							<li><a href="addons.php?type=wod"   <?php echo (isset($_GET['type']) && $_GET['type'] == "wod")?"class=\"current-sub-nav\"":""; ?>>Warlords of Draenor</a></li>
+							<li><a href="addons.php?type=legion"   <?php echo (isset($_GET['type']) && $_GET['type'] == "legion")?"class=\"current-sub-nav\"":""; ?>>Legion</a></li>
 						</ul>
 					</li>
-<!--
+			<!---
 					<li><a href="database.php" <?php echo (basename($_SERVER["PHP_SELF"]) == "database.php")?"class=\"current-nav\"":""; ?>>DATABASE</a></li>
-
+--->
 					<li><a href="tools.php"    <?php echo (basename($_SERVER["PHP_SELF"]) == "tools.php")?"class=\"current-nav\"":""; ?>>TOOLS</a></li>
--->	
+
 				</ul>
 			</div>
 
