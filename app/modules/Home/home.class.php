@@ -345,13 +345,13 @@ function UploadAddon()
 						if($file_size <= $max_size)
 						{
 							$folder = array(
-								1 => 'addons/vanilla/',
-								2 => 'addons/tbc/',
-								3 => 'addons/wotlk/',
-								4 => 'addons/cata/',
-								5 => 'addons/mop/',
-								6 => 'addons/wod/',
-								7 => 'addons/legion/'
+								1 => 'upload/wow/vanilla/',
+								2 => 'upload/wow/tbc/',
+								3 => 'upload/wow/wotlk/',
+								4 => 'upload/wow/cata/',
+								5 => 'upload/wow/mop/',
+								6 => 'upload/wow/wod/',
+								7 => 'upload/wow/legion/'
 							);
 							
 							$file_id = str_shuffle(substr('ABCDEF0123456789', 0, 10));
