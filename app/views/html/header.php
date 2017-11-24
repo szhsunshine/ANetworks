@@ -3,7 +3,6 @@
 session_start();
 
 include('inc/db.php');
-include('modules/home/home.class.php');
 
 if(isset($_GET['logout']))
 {
@@ -19,7 +18,7 @@ if(isset($_GET['logout']))
 ?>
 <html>
 <head>
-	<title>PrivateDB - Private Server HUB</title>
+	<title>ANetwork | Your favorites addons for anything game</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta name="description" content="World of Warcraft Private Server HUB for Addons, Databases and Developer tools for creating SQL Queries.">
 	<meta name="keywords" content="PrivateDB,Private Server,Addons,Database,wotlk,tbc,vanilla,cata,private addons, private server addons, server addons, wow, world of warcraft, server">
@@ -42,7 +41,7 @@ if(isset($_GET['logout']))
 		<div class="header column small-12">
 			<div class="header-logo column small-12 medium-2 large-2">
 				<a href="<?php echo SITE_URL; ?>">
-					Private<span class="yellow bold">DB</span>
+					A<span class="yellow bold">Network</span>
 				</a>
 			</div>
 
