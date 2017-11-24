@@ -3,7 +3,7 @@
 session_start();
 
 include('inc/db.php');
-include('inc/functions.php');
+include('modules/home/home.class.php');
 
 if(isset($_GET['logout']))
 {

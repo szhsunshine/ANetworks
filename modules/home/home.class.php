@@ -255,7 +255,7 @@ function GrabNews()
 						</div>
 
 						<div class="title-date">
-							' .  $row['post_date'] . '
+							' . $row['post_date'] . '
 						</div>
 					</div>
 
