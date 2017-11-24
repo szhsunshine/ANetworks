@@ -255,7 +255,7 @@ function GrabNews()
 						</div>
 
 						<div class="title-date">
-							' . date('j. F, Y', $row['post_date']) . '
+							' .  $row['post_date'] . '
 						</div>
 					</div>
 
@@ -347,11 +347,11 @@ function UploadAddon()
 							$folder = array(
 								1 => 'addons/vanilla/',
 								2 => 'addons/tbc/',
-								3 => 'addons/wotlk',
-								4 => 'addons/cata',
-								5 => 'addons/mop',
-								6 => 'addons/wod',
-								7 => 'addons/legion'
+								3 => 'addons/wotlk/',
+								4 => 'addons/cata/',
+								5 => 'addons/mop/',
+								6 => 'addons/wod/',
+								7 => 'addons/legion/'
 							);
 							
 							$file_id = str_shuffle(substr('ABCDEF0123456789', 0, 10));
@@ -611,17 +611,17 @@ function Register()
 			$repassword = $_POST['re-password'];
 
 			$lastip     = $_SERVER['REMOTE_ADDR'];
-			$captcha    = $_POST['g-recaptcha-response'];
+			// $captcha    = $_POST['g-recaptcha-response'];
 			$secret     = '6LcViC8UAAAAADfc0VgbaAcTVEtRpJw3tWrSOWAq';
 
 			if(strlen($username) <= 50)
 			{
 				if(filter_var($email, FILTER_VALIDATE_EMAIL))
 				{
-					$response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=" . $secret . "&response=" . $captcha . "&remoteip=" . $lastip);
-					$decode   = json_decode($response, true);
+					// $response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=" . $secret . "&response=" . $captcha . "&remoteip=" . $lastip);
+					// $decode   = json_decode($response, true);
 
-					if(intval($decode['success']) == 1)
+					if(intval($decode['success']) == 0)
 					{
 						if($password == $repassword)
 						{
@@ -765,7 +765,11 @@ function MyAddons()
 		$type = array(
 			1 => 'Vanilla',
 			2 => 'TBC',
-			3 => 'WOTLK'
+			3 => 'WOTLK',
+			4 => 'cata',
+			5 => 'mop',
+			6 => 'wod',
+			7 => 'legion'
 		);
 
 		$page    = isset($_GET['page']) ? (int)$_GET['page'] : 1;

@@ -8,7 +8,7 @@ $config = array(
 );
 
 // General Settings
-define('SITE_URL', 'http://localhost/privatedb/');
+define('SITE_URL', 'https://privatedb-sayghteight.c9users.io/');
 
 // News Settings
 define('NEWS_RESULTS', 5);

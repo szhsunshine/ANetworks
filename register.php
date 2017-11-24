@@ -26,10 +26,11 @@ isLoggedIn();
 
 					<label>Re-Password</label>
 					<input type="password" name="re-password" />
-
+<!--
 					<center>
 						<div class="g-recaptcha" data-sitekey="6LcViC8UAAAAADrFO63pGaX0dZ9ZVAVnVETZv0nh"></div>
 					</center>
+-->
 
 					<br>
 

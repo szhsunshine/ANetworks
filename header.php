@@ -64,7 +64,7 @@ if(isset($_GET['logout']))
 			<!---
 					<li><a href="database.php" <?php echo (basename($_SERVER["PHP_SELF"]) == "database.php")?"class=\"current-nav\"":""; ?>>DATABASE</a></li>
 --->
-					<li><a href="tools.php"    <?php echo (basename($_SERVER["PHP_SELF"]) == "tools.php")?"class=\"current-nav\"":""; ?>>TOOLS</a></li>
+					<li><a href="#"    <?php echo (basename($_SERVER["PHP_SELF"]) == "tools.php")?"class=\"current-nav\"":""; ?>>ARMORY (SOON)</a></li>
 
 				</ul>
 			</div>
