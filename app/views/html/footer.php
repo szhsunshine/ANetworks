@@ -16,10 +16,10 @@
   ga('create', 'UA-100691014-1', 'auto');
   ga('send', 'pageview');
 </script>
-<script type="text/javascript" src="js/vendor/jquery.js"></script>
-<script type="text/javascript" src="js/vendor/what-input.js"></script>
-<script type="text/javascript" src="js/vendor/foundation.js"></script>
-<script type="text/javascript" src="js/app.js"></script>
+<script type="text/javascript" src="app/theme/default/js/vendor/jquery.js"></script>
+<script type="text/javascript" src="app/theme/default/js/vendor/what-input.js"></script>
+<script type="text/javascript" src="app/theme/default/js/vendor/foundation.js"></script>
+<script type="text/javascript" src="app/theme/default/js/app.js"></script>
 <script type="text/javascript" src='https://www.google.com/recaptcha/api.js'></script>
 <script type="text/javascript">
 	function nameq()

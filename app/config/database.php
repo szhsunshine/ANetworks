@@ -1,8 +1,5 @@
 <?php
-
-date_default_timezone_set('Europe/Oslo');
-
-include('inc/settings.php');
+include('site.php');
 
 try
 {
