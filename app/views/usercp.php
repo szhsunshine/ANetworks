@@ -1,8 +1,7 @@
 <?php
 
 
-include('app/modules/home.class.php');
-include('app/modules/addons.class.php');
+include('app/modules/Home/home.class.php');
 
 isLoggedOut();
 

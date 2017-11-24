@@ -1,8 +1,6 @@
 <?php
 
-
-include('app/modules/Home/home.class.php');
-
+include_once 'app/modules/Home/home.class.php';
 
 ?>
 <div class="row">
@@ -10,17 +8,42 @@ include('app/modules/Home/home.class.php');
 		<div class="content-bar">
 			<ul class="usercp-bar">
 				<li><a href="usercp.php">My Addons</a></li>
-				<li><a href="change_password.php">Change Password</a></li>
-				<li><a href="upload.php" class="current-nav">Upload Addon</a></li>
+				<li><a href="change_password.php" class="current-nav">Change Password</a></li>
+				<li><a href="upload.php">Upload Addon</a></li>
 			</ul>
 		</div>
 	</div>
 
-	<div class="content column small-12 medium-7 large-8">
-		<?php CheckAccess(1); ?>
+	<div class="content column small-12 medium-7 large-8">	
+		<div class="content-box column small-12">
+			<div class="content-box-header column small-12">
+				<div class="title-text">
+					Change Password
+				</div>
+			</div>
+
+			<div class="content-box-content column small-12">
+				<div class="content-text">
+					<div class="password-change">
+						<form method="POST">
+							<label>Current Password</label>
+							<input type="password" name="oldpassword" />
+
+							<label>New Password</label>
+							<input type="password" name="newpassword" />
+
+							<label>Re-Password</label>
+							<input type="password" name="re-password" />
+
+							<input type="submit" name="change" class="small button" value="Confirm" />
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
 
 		<div class="response-full column small-12">
-			<?php UploadAddon(); ?>
+			<?php ChangePassword(); ?>
 		</div>
 	</div>
 

@@ -1,7 +1,7 @@
 <?php
 
 
-include('app/modules/home.class.php');
+include('app/modules/Home/home.class.php');
 ?>
 
 <div class="row">

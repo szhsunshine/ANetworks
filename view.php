@@ -1,6 +1,7 @@
 <?php
 
-include('header.php');
+include('app/views/html/header.php');
+include('app/modules/Home/home.class.php');
 
 ?>
 
@@ -78,6 +79,6 @@ include('header.php');
 
 <?php
 
-include('footer.php');
+include('app/views/html/footer.php');
 
 ?>

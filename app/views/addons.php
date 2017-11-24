@@ -1,12 +1,9 @@
 <?php
-
 if(!isset($_GET['type']))
 {
 	die('No page found!');
 }
 
-include('app/views/html/header.php');
-include('app/modules/Home/home.class.php');
 
 ?>
 

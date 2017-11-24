@@ -1,6 +1,6 @@
 <?php
 
-include_once 'app/modules/home.class.php';
+include_once 'app/modules/Home/home.class.php';
 
 ?>
 <div class="row">
