@@ -33,13 +33,13 @@
 
 					<li><a href="#">ADDONS</a>
 						<ul class="menu">
-							<li><a href="<?= base_url(); ?>/addons.php?type=vanilla" <?php echo (isset($_GET['type']) && $_GET['type'] == "vanilla")?"class=\"current-sub-nav\"":""; ?>>Vanilla</a></li>
-							<li><a href="<?= base_url(); ?>/addons.php?type=tbc"     <?php echo (isset($_GET['type']) && $_GET['type'] == "tbc")?"class=\"current-sub-nav\"":""; ?>>Burning Crusade</a></li>
-							<li><a href="<?= base_url(); ?>/addons.php?type=wotlk"   <?php echo (isset($_GET['type']) && $_GET['type'] == "wotlk")?"class=\"current-sub-nav\"":""; ?>>Wrath of the Lich King</a></li>
-							<li><a href="<?= base_url(); ?>/addons.php?type=cata"   <?php echo (isset($_GET['type']) && $_GET['type'] == "cata")?"class=\"current-sub-nav\"":""; ?>>Cataclysm</a></li>
-							<li><a href="<?= base_url(); ?>/addons.php?type=mop"   <?php echo (isset($_GET['type']) && $_GET['type'] == "mop")?"class=\"current-sub-nav\"":""; ?>>Mist of Pandaria</a></li>
-							<li><a href="<?= base_url(); ?>/addons.php?type=wod"   <?php echo (isset($_GET['type']) && $_GET['type'] == "wod")?"class=\"current-sub-nav\"":""; ?>>Warlords of Draenor</a></li>
-							<li><a href="<?= base_url(); ?>/addons.php?type=legion"   <?php echo (isset($_GET['type']) && $_GET['type'] == "legion")?"class=\"current-sub-nav\"":""; ?>>Legion</a></li>
+							<li><a href="<?= base_url(); ?>/addons.php?type=vanilla" <?php echo (isset($_GET['type']) && $_GET['type'] == "vanilla")?"class=\"current-sub-nav\"":""; ?>><?= $this->lang->line('exp_classic'); ?></a></li>
+							<li><a href="<?= base_url(); ?>/addons.php?type=tbc"     <?php echo (isset($_GET['type']) && $_GET['type'] == "tbc")?"class=\"current-sub-nav\"":""; ?>><?= $this->lang->line('exp_tbc'); ?></a></li>
+							<li><a href="<?= base_url(); ?>/addons.php?type=wotlk"   <?php echo (isset($_GET['type']) && $_GET['type'] == "wotlk")?"class=\"current-sub-nav\"":""; ?>><?= $this->lang->line('exp_wtlk'); ?></a></li>
+							<li><a href="<?= base_url(); ?>/addons.php?type=cata"   <?php echo (isset($_GET['type']) && $_GET['type'] == "cata")?"class=\"current-sub-nav\"":""; ?>><?= $this->lang->line('exp_cata'); ?></a></li>
+							<li><a href="<?= base_url(); ?>/addons.php?type=mop"   <?php echo (isset($_GET['type']) && $_GET['type'] == "mop")?"class=\"current-sub-nav\"":""; ?>><?= $this->lang->line('exp_mop'); ?></a></li>
+							<li><a href="<?= base_url(); ?>/addons.php?type=wod"   <?php echo (isset($_GET['type']) && $_GET['type'] == "wod")?"class=\"current-sub-nav\"":""; ?>><?= $this->lang->line('exp_wod'); ?></a></li>
+							<li><a href="<?= base_url(); ?>/addons.php?type=legion"   <?php echo (isset($_GET['type']) && $_GET['type'] == "legion")?"class=\"current-sub-nav\"":""; ?>><?= $this->lang->line('exp_legion'); ?></a></li>
 						</ul>
 					</li>
 			<!---
