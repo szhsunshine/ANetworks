@@ -29,7 +29,7 @@
 
 			<div class="header-menu column show-for-large small-12 large-7">
 				<ul class="main-menu dropdown menu" data-dropdown-menu>
-					<li><a href="<?= base_url(); ?>index.php">NEWS</a></li>
+					<li><a href="<?= base_url(); ?>index.php"><?= $this->lang->line('menu_news'); ?></a></li>
 					<li><a href="#"> ADDONS </a>
 						<ul class="menu">
 						<li><a href="<?= base_url();  ?>addons.php?type=vanilla" class="current-sub-nav"> <?= $this->lang->line('exp_classic'); ?></a></li>
@@ -42,33 +42,31 @@
 
 						</ul>
 					</li>
-
-			<!---
-					<li><a href="database.php" <?php echo (basename($_SERVER["PHP_SELF"]) == "database.php")?"class=\"current-nav\"":""; ?>>DATABASE</a></li>
---->
-					<li><a href="#">ARMORY (SOON)</a></li>
+					<li><a href="#"><?= $this->lang->line('menu_database'); ?></a></li>
+					<li><a href="#"><?= $this->lang->line('menu_support'); ?></a></li>
 
 				</ul>
 			</div>
-<!--
+
+
 			<div class="acc-menu column show-for-large small-12 large-3">
-				<?php if(!isset($_SESSION['username']) || !isset($_SESSION['password'])): ?>
+				<?php if(isset($this->session->userdata('username'))) ?>
 						<ul class="account-menu">
-							<li><a href="login.php" <?php echo (basename($_SERVER["PHP_SELF"]) == "login.php")?"class=\"current-nav\"":""; ?>>LOGIN</a></li>
-							<li><a href="register.php" <?php echo (basename($_SERVER["PHP_SELF"]) == "register.php")?"class=\"current-nav\"":""; ?>>REGISTER</a></li>
+							<li><a href="login.php" class="current-nav">LOGIN</a></li>
+							<li><a href="register.php" class="current-nav">REGISTER</a></li>
 						</ul>
-				<?php else: ?>
+
 					<ul class="account-menu2 dropdown menu" data-dropdown-menu>
-						<li><a href="usercp.php" <?php echo (basename($_SERVER["PHP_SELF"]) == "usercp.php" || basename($_SERVER["PHP_SELF"]) == "change_password.php" || basename($_SERVER["PHP_SELF"]) == "upload.php")?"class=\"current-nav\"":""; ?>><?php echo ucfirst($_SESSION['username']); ?></a>
+						<li><a href="usercp.php"><?= $this->lang->line('my_account'); ?></a>
 							<ul class="menu">
 								<li><a href="usercp.php" <?php echo (basename($_SERVER["PHP_SELF"]) == "usercp.php")?"class=\"current-sub-nav\"":""; ?>>UserCP</a></li>
 								<li><a href="?logout=true"><span class="red">Logout</span></a></li>
 							</ul>
 						</li>
 					</ul>
-				<?php endif; ?>
+
 			</div>
--->
+
 		</div>
 	</div>
 </div>
