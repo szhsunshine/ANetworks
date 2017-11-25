@@ -13,15 +13,18 @@
 					<label>Password</label>
 					<input type="password" name="password" />
 
-					<input type="submit" class="small button" name="login" value="Login" />
+					<input type="submit" class="small button" name="button_login" value="Login" />
 				</form>
 			</div>
 		</div>
 
 		<div class="response">
-      <?php if(isset($_POST['login'])) {
-$this->login_model->Login();
-} ?>
+      <?php if(isset($_POST['button_login']))
+        {
+          $username = $_POST['login_username'];
+          $password = $_POST['login_password'];
+          $this->login_model->Login($username, $password);
+        } ?>
 		</div>
 	</div>
 </div>

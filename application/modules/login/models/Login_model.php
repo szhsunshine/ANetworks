@@ -14,7 +14,7 @@ class Login_model extends CI_Model {
   }
 
 
-public function Login()
+public function Login($username, $password)
 {
 	if(isset($_POST['login']))
 	{
@@ -42,8 +42,6 @@ public function Login()
 
 				$_SESSION['username'] = $username;
 				$_SESSION['password'] = $password;
-
-				LogData('Login UserCP', 'Logged into UserCP');
 
 				echo '<div class="callout success">Success, logging in..</div>';
 				echo '<script>
