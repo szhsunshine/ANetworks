@@ -54,15 +54,15 @@
 				<ul class="account-menu2 dropdown menu" data-dropdown-menu>
 						<li><a href="usercp.php"><?= $this->lang->line('my_account'); ?></a>
 							<ul class="menu">
-								<li><a href="usercp.php" class="current-sub-nav"; ?>UserCP</a></li>
-								<li><a href="<?= base_url();  ?>user/logout"><span class="red">Logout</span></a></li>
+								<li><a href="<?= base_url();  ?>index.php/user/ucp" class="current-sub-nav"; ?><?= $this->lang->line('my_account'); ?></a></li>
+								<li><a href="<?= base_url();  ?>user/logout"><span class="red"><?= $this->lang->line('menu_logout'); ?></span></a></li>
 							</ul>
 						</li>
 					</ul>
 	<?php }else{ ?>
 			<ul class="account-menu">
-				<li><a href="<?= base_url();  ?>/user/login" class="current-nav">LOGIN</a></li>
-				<li><a href="register.php" class="current-nav">REGISTER</a></li>
+				<li><a href="<?= base_url();  ?>index.php/user/login" class="current-nav"><?= $this->lang->line('menu_login'); ?></a></li>
+				<li><a href="<?= base_url();  ?>index.phg/user/register" class="current-nav"><?= $this->lang->line('menu_register'); ?></a></li>
 			</ul>
 <?php } ?>
 

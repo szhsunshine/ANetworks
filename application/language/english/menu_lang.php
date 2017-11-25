@@ -6,6 +6,8 @@ $lang['menu_home']		= 'Home';
 $lang['menu_database'] = 'Database';
 $lang['menu_support']	= 'Support';
 $lang['menu_login']		= 'Log In';
+$lang['menu_register']		= 'Register';
+$lang['menu_logout']		= 'Logout';
 $lang['my_account']		= 'My Account';
 
 
