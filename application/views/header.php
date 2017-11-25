@@ -50,7 +50,6 @@
 
 
 			<div class="acc-menu column show-for-large small-12 large-3">
-				<?php if(isset($this->session->userdata('username'))) ?>
 						<ul class="account-menu">
 							<li><a href="login.php" class="current-nav">LOGIN</a></li>
 							<li><a href="register.php" class="current-nav">REGISTER</a></li>
@@ -59,7 +58,7 @@
 					<ul class="account-menu2 dropdown menu" data-dropdown-menu>
 						<li><a href="usercp.php"><?= $this->lang->line('my_account'); ?></a>
 							<ul class="menu">
-								<li><a href="usercp.php" <?php echo (basename($_SERVER["PHP_SELF"]) == "usercp.php")?"class=\"current-sub-nav\"":""; ?>>UserCP</a></li>
+								<li><a href="usercp.php" class="current-sub-nav"; ?>UserCP</a></li>
 								<li><a href="?logout=true"><span class="red">Logout</span></a></li>
 							</ul>
 						</li>
