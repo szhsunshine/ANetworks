@@ -24,21 +24,17 @@ public function Login($username, $password)
 			$username = $_POST['username'];
 			$password = sha1($_POST['password']);
 
-      $data = $this->db->query('SELECT * FROM users WHERE username = :username AND password = :pass');
-      $data->execute(array(
-        ':username' => $username,
-        ':pass' => $password
-      ));
+      $data = $this->db->query("SELECT * FROM users WHERE username = '$username' AND password = '$password'")->num_rows();
 
 
-
-			if($data->fetchColumn() == 1)
+			if($data == 1)
 			{
-        $data = $this->db->query('UPDATE users SET last_login = :last_login WEHRE username = :username');
-        $data->execute(array(
-  					':last_login' => time(),
-  					':username'   => $username
-        ));
+
+				$last_login = time();
+
+        $this->db->query("UPDATE users SET last_login = '$last_login' WHERE username = '$username'");
+
+
 
 				$_SESSION['username'] = $username;
 				$_SESSION['password'] = $password;
