@@ -10,3 +10,6 @@ class Home extends MX_Controller {
 		$this->load->view('home');
 		$this->load->view('footer');
 	}
+
+
+};
