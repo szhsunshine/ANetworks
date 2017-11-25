@@ -7,14 +7,14 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 	<!-- CSS Stylesheets -->
-	<link rel="stylesheet" type="text/css" href="app/theme/default/css/foundation.css" media="screen" />
-	<link rel="stylesheet" type="text/css" href="app/theme/default/css/font-awesome.css" media="screen" />
-	<link rel="stylesheet" type="text/css" href="app/theme/default/css/main.css" media="screen" />
-	<link rel="stylesheet" type="text/css" href="app/theme/default/css/header.css" media="screen" />
-	<link rel="stylesheet" type="text/css" href="app/theme/default/css/content.css" media="screen" />
-	<link rel="stylesheet" type="text/css" href="app/theme/default/css/footer.css" media="screen" />
-	<link rel="stylesheet" type="text/css" href="app/theme/default/css/fonts.css" media="screen" />
-	<link rel="stylesheet" type="text/css" href="app/theme/default/css/colors.css" media="screen" />
+	<link rel="stylesheet" type="text/css" href="<?= base_url(); ?>assets/css/foundation.css" media="screen" />
+	<link rel="stylesheet" type="text/css" href="<?= base_url(); ?>assets/css/font-awesome.css" media="screen" />
+	<link rel="stylesheet" type="text/css" href="<?= base_url(); ?>assets/css/main.css" media="screen" />
+	<link rel="stylesheet" type="text/css" href="<?= base_url(); ?>assets/css/header.css" media="screen" />
+	<link rel="stylesheet" type="text/css" href="<?= base_url(); ?>assets/css/content.css" media="screen" />
+	<link rel="stylesheet" type="text/css" href="<?= base_url(); ?>assets/css/footer.css" media="screen" />
+	<link rel="stylesheet" type="text/css" href="<?= base_url(); ?>assets/css/fonts.css" media="screen" />
+	<link rel="stylesheet" type="text/css" href="<?= base_url(); ?>assets/css/colors.css" media="screen" />
 </head>
 <body>
 
