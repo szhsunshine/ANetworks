@@ -21,6 +21,7 @@ class User extends MX_Controller {
 		if ($this->user_model->isLoggedIn())
 			redirect(base_url(),'refresh');
 
+			$this->load->view("header");
 		$this->load->view('register');
 		$this->load->view('footer');
 	}
@@ -39,6 +40,7 @@ class User extends MX_Controller {
 		if (!$this->user_model->isLoggedIn())
 			redirect(base_url(),'refresh');
 
+			$this->load->view("header");
 		$this->load->view('settings');
 		$this->load->view('footer');
 	}
