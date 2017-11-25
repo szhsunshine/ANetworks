@@ -29,11 +29,23 @@
 
 			<div class="header-menu column show-for-large small-12 large-7">
 				<ul class="main-menu dropdown menu" data-dropdown-menu>
-					<li><a href="<?= base_url(); ?>/index.php">NEWS</a></li>
+					<li><a href="<?= base_url(); ?>index.php">NEWS</a></li>
+					<li><a href="#"> ADDONS </a>
+						<ul class="menu">
+						<li><a href="<?= base_url();  ?>addons.php?type=vanilla" class="current-sub-nav"> <?= $this->lang->line('exp_classic'); ?></a></li>
+						<li><a href="<?= base_url();  ?>addons.php?type=tbc" class="current-sub-nav"> <?= $this->lang->line('exp_tbc'); ?></a></li>
+						<li><a href="<?= base_url();  ?>addons.php?type=wtlk" class="current-sub-nav"> <?= $this->lang->line('exp_wtlk'); ?></a></li>
+						<li><a href="<?= base_url();  ?>addons.php?type=cata" class="current-sub-nav"> <?= $this->lang->line('exp_cata'); ?></a></li>
+						<li><a href="<?= base_url();  ?>addons.php?type=mop" class="current-sub-nav"> <?= $this->lang->line('exp_mop'); ?></a></li>
+						<li><a href="<?= base_url();  ?>addons.php?type=wod" class="current-sub-nav"> <?= $this->lang->line('exp_wod'); ?></a></li>
+						<li><a href="<?= base_url();  ?>addons.php?type=legion" class="current-sub-nav"> <?= $this->lang->line('exp_legion'); ?></a></li>
 
+						</ul>
+					</li>
+<!---
 					<li><a href="#">ADDONS</a>
 						<ul class="menu">
-							<li><a href="<?= base_url(); ?>/addons.php?type=vanilla"> <?php echo (isset($_GET['type']) && $_GET['type'] == "vanilla")?"class=\"current-sub-nav\"":""; ?>><?= $this->lang->line('exp_classic'); ?></a></li>
+							<li><a href="<?= base_url(); ?>addons.php?type=vanilla"> <?php echo (isset($_GET['type']) && $_GET['type'] == "vanilla")?"class=\"current-sub-nav\"":""; ?>><?= $this->lang->line('exp_classic'); ?></a></li>
 							<li><a href="<?= base_url(); ?>/addons.php?type=tbc">     <?php echo (isset($_GET['type']) && $_GET['type'] == "tbc")?"class=\"current-sub-nav\"":""; ?>><?= $this->lang->line('exp_tbc'); ?></a></li>
 							<li><a href="<?= base_url(); ?>/addons.php?type=wotlk">   <?php echo (isset($_GET['type']) && $_GET['type'] == "wotlk")?"class=\"current-sub-nav\"":""; ?>><?= $this->lang->line('exp_wtlk'); ?></a></li>
 							<li><a href="<?= base_url(); ?>/addons.php?type=cata">   <?php echo (isset($_GET['type']) && $_GET['type'] == "cata")?"class=\"current-sub-nav\"":""; ?>><?= $this->lang->line('exp_cata'); ?></a></li>
@@ -42,6 +54,7 @@
 							<li><a href="<?= base_url(); ?>/addons.php?type=legion">   <?php echo (isset($_GET['type']) && $_GET['type'] == "legion")?"class=\"current-sub-nav\"":""; ?>><?= $this->lang->line('exp_legion'); ?></a></li>
 						</ul>
 					</li>
+-->
 			<!---
 					<li><a href="database.php" <?php echo (basename($_SERVER["PHP_SELF"]) == "database.php")?"class=\"current-nav\"":""; ?>>DATABASE</a></li>
 --->
