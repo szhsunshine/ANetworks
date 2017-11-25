@@ -1,7 +1,7 @@
 
 <div class="row">
 	<div class="content column small-12 medium-7 large-8">
-		<?php $this->Home_model->GrabNews();   ?>
+		<?php $this->home_model->GrabNews();   ?>
 	</div>
 
 	<div class="content column small-12 medium-5 large-4">

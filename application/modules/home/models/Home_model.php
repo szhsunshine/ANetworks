@@ -42,7 +42,8 @@ public function GrabNews()
 
 	$start = ($page > 1) ? ($page * $perPage) - $perPage : 0;
 
-	$total = $con->prepare('SELECT COUNT(*) FROM news');
+
+  $total = $this->db->query("SELECT COUNT (*) FROM news");
 	$total->execute();
 
 	$total = $total->fetchColumn();
