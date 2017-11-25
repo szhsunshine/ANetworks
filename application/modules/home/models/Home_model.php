@@ -37,7 +37,7 @@ public function LogData($page, $data)
 
 public function getNews()
 {
-return $this->db->query("SELECT * FROM news);
+return $this->db->query("SELECT * FROM news");
 }
 
 

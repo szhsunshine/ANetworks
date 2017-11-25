@@ -15,6 +15,7 @@
               <?= $list->news_content ?>
           </div>
       </div>
+    <?php } ?>
   </div>
 	<div class="content column small-12 medium-5 large-4">
 		<div class="content-box-sidebar column small-12">
