@@ -16,7 +16,7 @@ class Login_model extends CI_Model {
 
 public function Login($username, $password)
 {
-	if(isset($_POST['login']))
+	if(isset($_POST['button_login']))
 	{
 		if(!empty($_POST['username']) && !empty($_POST['password']))
 		{
@@ -24,7 +24,7 @@ public function Login($username, $password)
 			$username = $_POST['username'];
 			$password = sha1($_POST['password']);
 
-      $data = $this->db->query("SELECT * FROM users WHERE username = :username AND password = :pass);
+      $data = $this->db->query('SELECT * FROM users WHERE username = :username AND password = :pass');
       $data->execute(array(
         ':username' => $username,
         ':pass' => $password
@@ -59,38 +59,6 @@ public function Login($username, $password)
 		{
 			echo '<div class="callout alert">Please fill in all fields!</div>';
 		}
-	}
-}
-
-
-
-public function isLoggedOut()
-{
-	if(!isset($_SESSION['username']))
-	{
-		if(!isset($_SESSION['password']))
-		{
-			header('Location: login.php');
-			exit();
-		}
-
-		header('Location: login.php');
-		exit();
-	}
-}
-
-public function isLoggedIn()
-{
-	if(isset($_SESSION['username']))
-	{
-		if(isset($_SESSION['password']))
-		{
-			header('Location: usercp.php');
-			exit();
-		}
-
-		header('Location: usercp.php');
-		exit();
 	}
 }
 

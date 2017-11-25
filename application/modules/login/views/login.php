@@ -21,8 +21,8 @@
 		<div class="response">
       <?php if(isset($_POST['button_login']))
         {
-          $username = $_POST['login_username'];
-          $password = $_POST['login_password'];
+          $username = $_POST['username'];
+          $password = $_POST['password'];
           $this->login_model->Login($username, $password);
         } ?>
 		</div>
