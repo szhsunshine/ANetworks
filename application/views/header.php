@@ -29,7 +29,7 @@
 
 			<div class="header-menu column show-for-large small-12 large-7">
 				<ul class="main-menu dropdown menu" data-dropdown-menu>
-					<li><a href="<?= base_url(); ?>index.php"><?= $this->lang->line('menu_news'); ?></a></li>
+					<li><a href="<?= base_url(); ?>"><?= $this->lang->line('menu_news'); ?></a></li>
 					<li><a href="#"> ADDONS </a>
 						<ul class="menu">
 						<li><a href="<?= base_url();  ?>addons.php?type=vanilla" class="current-sub-nav"> <?= $this->lang->line('exp_classic'); ?></a></li>
@@ -52,17 +52,17 @@
 			<div class="acc-menu column show-for-large small-12 large-3">
 				<?php if($this->user_model->isLoggedIn()) { ?>
 				<ul class="account-menu2 dropdown menu" data-dropdown-menu>
-						<li><a href="usercp.php"><?= $this->lang->line('my_account'); ?></a>
+						<li><a href=""><?= $this->lang->line('my_account'); ?></a>
 							<ul class="menu">
-								<li><a href="<?= base_url();  ?>index.php/user/ucp" class="current-sub-nav"; ?><?= $this->lang->line('my_account'); ?></a></li>
+								<li><a href="<?= base_url();  ?>user/ucp" class="current-sub-nav"; ?><?= $this->lang->line('my_account'); ?></a></li>
 								<li><a href="<?= base_url();  ?>user/logout"><span class="red"><?= $this->lang->line('menu_logout'); ?></span></a></li>
 							</ul>
 						</li>
 					</ul>
 	<?php }else{ ?>
 			<ul class="account-menu">
-				<li><a href="<?= base_url();  ?>index.php/user/login" class="current-nav"><?= $this->lang->line('menu_login'); ?></a></li>
-				<li><a href="<?= base_url();  ?>index.phg/user/register" class="current-nav"><?= $this->lang->line('menu_register'); ?></a></li>
+				<li><a href="<?= base_url();  ?>user/login" class="current-nav"><?= $this->lang->line('menu_login'); ?></a></li>
+				<li><a href="<?= base_url();  ?>user/register" class="current-nav"><?= $this->lang->line('menu_register'); ?></a></li>
 			</ul>
 <?php } ?>
 
