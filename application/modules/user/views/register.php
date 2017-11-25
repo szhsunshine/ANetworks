@@ -39,9 +39,9 @@
         {
           $username = $_POST['username'];
           $password = $_POST['password'];
-          $repass= $_POST['re-password'];
-          $email = $_POST['re-password']
-          $this->register_model->Register($username, $password, $repass, $email);
+          $repassword= $_POST['re-password'];
+          $email = $_POST['email'];
+          $this->register_model->Register($username, $password, $repassword, $email);
         } ?>
 		</div>
 	</div>

@@ -50,19 +50,21 @@
 
 
 			<div class="acc-menu column show-for-large small-12 large-3">
-						<ul class="account-menu">
-							<li><a href="login.php" class="current-nav">LOGIN</a></li>
-							<li><a href="register.php" class="current-nav">REGISTER</a></li>
-						</ul>
-
-					<ul class="account-menu2 dropdown menu" data-dropdown-menu>
+				<?php if($this->user_model->isLoggedIn()) { ?>
+				<ul class="account-menu2 dropdown menu" data-dropdown-menu>
 						<li><a href="usercp.php"><?= $this->lang->line('my_account'); ?></a>
 							<ul class="menu">
 								<li><a href="usercp.php" class="current-sub-nav"; ?>UserCP</a></li>
-								<li><a href="?logout=true"><span class="red">Logout</span></a></li>
+								<li><a href="<?= base_url();  ?>user/logout"><span class="red">Logout</span></a></li>
 							</ul>
 						</li>
 					</ul>
+	<?php }else{ ?>
+			<ul class="account-menu">
+				<li><a href="<?= base_url();  ?>/user/login" class="current-nav">LOGIN</a></li>
+				<li><a href="register.php" class="current-nav">REGISTER</a></li>
+			</ul>
+<?php } ?>
 
 			</div>
 
