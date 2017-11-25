@@ -25,10 +25,10 @@ public function Login()
 			$password = sha1($_POST['password']);
 
       $data = $this->db->query("SELECT * FROM users WHERE username = :username AND password = :pass);
-      $data->execute($arra(
+      $data->execute(array(
         ':username' => $username,
         ':pass' => $password
-        );)
+      ));
 
 
 
@@ -65,6 +65,36 @@ public function Login()
 }
 
 
+
+public function isLoggedOut()
+{
+	if(!isset($_SESSION['username']))
+	{
+		if(!isset($_SESSION['password']))
+		{
+			header('Location: login.php');
+			exit();
+		}
+
+		header('Location: login.php');
+		exit();
+	}
+}
+
+public function isLoggedIn()
+{
+	if(isset($_SESSION['username']))
+	{
+		if(isset($_SESSION['password']))
+		{
+			header('Location: usercp.php');
+			exit();
+		}
+
+		header('Location: usercp.php');
+		exit();
+	}
+}
 
 
 
