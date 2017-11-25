@@ -5,12 +5,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 /*
 |--------------------------------------------------------------------------
-| Project name
+| Project name and other settings
 |--------------------------------------------------------------------------
 |
 */
 $config['name'] = 'ANetwork Project';
-
+$config['news_results'] = 5;
+$config['addon_results'] = 10;
+$config['addon_search_results'] = 10;
+$config['usercp_addon_results'] = 10;
 
 
 /*

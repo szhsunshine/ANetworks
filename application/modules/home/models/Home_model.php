@@ -38,7 +38,7 @@ public function LogData($page, $data)
 public function GrabNews()
 {
 	$page    = isset($_GET['page']) ? (int)$_GET['page'] : 1;
-	$perPage = NEWS_RESULTS;
+	$perPage = $this->config->->item('news_results');
 
 	$start = ($page > 1) ? ($page * $perPage) - $perPage : 0;
 
@@ -78,7 +78,8 @@ public function GrabNews()
 
 	echo '<div class="navigation column small-12"><ul class="nav-box">';
 
-		echo '<li><a href="?page=1"><<</a></li>';
+		echo '<li><a href="'.base_url().'?page=1"><<</a></li>';
+
 
 		$min = max($page - 2, 1);
 		$max = min($page + 2, $pages);
