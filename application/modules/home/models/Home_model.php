@@ -38,7 +38,7 @@ public function LogData($page, $data)
 public function GrabNews()
 {
 	$page    = isset($_GET['page']) ? (int)$_GET['page'] : 1;
-	$perPage = $this->config->->item('news_results');
+	$perPage = $this->config->item('news_results');
 
 	$start = ($page > 1) ? ($page * $perPage) - $perPage : 0;
 
