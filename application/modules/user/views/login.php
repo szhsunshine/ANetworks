@@ -23,7 +23,7 @@
         {
           $username = $_POST['username'];
           $password = $_POST['password'];
-          $this->login_model->Login($username, $password);
+          $this->user_model->Login($username, $password);
         } ?>
 		</div>
 	</div>
