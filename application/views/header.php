@@ -1,6 +1,6 @@
 <html>
 <head>
-	<title><?= $this->config->item('Name'); ?></title>
+	<title><?= $this->config->item('name'); ?></title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta name="description" content="World of Warcraft Private Server HUB for Addons, Databases and Developer tools for creating SQL Queries.">
 	<meta name="keywords" content="PrivateDB,Private Server,Addons,Database,wotlk,tbc,vanilla,cata,private addons, private server addons, server addons, wow, world of warcraft, server">
