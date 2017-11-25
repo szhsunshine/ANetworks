@@ -8,10 +8,6 @@ class Home_model extends CI_Model {
 		parent::__construct();
 	 }
 
-
-// Functions LOGS
-
-
 public function LogData($page, $data)
 {
 
@@ -30,10 +26,6 @@ public function LogData($page, $data)
 		':time'       => time()
 	));
 }
-
-
-
-// Function GrabNews
 
 public function getNews()
 {
