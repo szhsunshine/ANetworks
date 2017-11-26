@@ -31,27 +31,27 @@
 
 
 
-					<?php foreach($this->user_model->getAddons()->result() as $myadons) { ?>
+					<?php foreach($this->user_model->getAddons()->result() as $myaddons) { ?>
 												<?php
-												$type = array(
-												1 => 'vanilla',
-												2 => 'tbc',
-												3 => 'wotlk',
-												4 => 'cata',
-												5 => 'mop',
-												6 => 'wod',
-												7 => 'legion'
+												$expansion = array(
+												1 => 'Classic',
+												2 => 'The Burning Crusader',
+												3 => 'Wrath of the Lich King';
+												4 => 'Cataclysm',
+												5 => 'Mist of Pandaría',
+												6 => 'Warlords of Draenor',
+												7 => 'Legión'
 												);
 													?>
 										<tr>
-													<td> <?= $myadons->addon_name ?></td>
-													<td> <?= $myadons->addon_version ?></td>
-													<td> <?= $type[$myadons->expansion] ?></td>
-													<td> <?= $myadons->updated ?></td>
-													<td> <?= $myadons->downloads ?></td>
-													<td> <?= $myadons->status ?></td>
-													<td><a href="user/edit=<?= $myadons->id ?>" title="Edit"><i class="fa fa-pencil yellow" aria-hidden="true"></i></a></td>
-													<td><a href="user/delete=<?= $myadons->id ?>" title="Delete" onclick="return confirm(\'Are you sure?\')"><i class="fa fa-trash red" aria-hidden="true"></i></a></td>
+													<td> <?= $myaddons->addon_name ?></td>
+													<td> <?= $myaddons->addon_version ?></td>
+													<td> <?= $expansion[$myadons->expansion] ?></td>
+													<td> <?= $myaddons->updated ?></td>
+													<td> <?= $myaddons->downloads ?></td>
+													<td> <?= $myaddons->status ?></td>
+													<td><a href="user/edit=<?= $myaddons->id ?>" title="Edit"><i class="fa fa-pencil yellow" aria-hidden="true"></i></a></td>
+													<td><a href="user/delete=<?= $myaddons->id ?>" title="Delete" onclick="return confirm(\'Are you sure?\')"><i class="fa fa-trash red" aria-hidden="true"></i></a></td>
 
 										</tr>
 						<?php } ?>
