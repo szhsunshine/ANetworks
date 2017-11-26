@@ -54,6 +54,9 @@ public function Login($username, $password)
 				$_SESSION['username'] = $username;
 				$_SESSION['password'] = $password;
 
+
+				LogData('Login UserCP', 'Logged into UserCP');
+        
 				echo '<div class="callout success">Success, logging in..</div>';
 				echo '<script>
 							setTimeout(function () {
