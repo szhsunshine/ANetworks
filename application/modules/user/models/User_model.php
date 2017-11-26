@@ -56,7 +56,7 @@ public function Login($username, $password)
 				echo '<div class="callout success">Success, logging in..</div>';
 				echo '<script>
 							setTimeout(function () {
-							   window.location.href = "usercp.php";
+							   window.location.href = "user/settings";
 							}, 3000);
 						</script>';
 			}
@@ -116,7 +116,7 @@ public function Register()
 								echo '<div class="callout success">Success, Redirecting..</div>';
 								echo '<script>
 											setTimeout(function () {
-											   window.location.href = "login.php";
+											   window.location.href = "user/login";
 											}, 3000);
 										</script>';
 							}

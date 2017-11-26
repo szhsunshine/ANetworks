@@ -54,7 +54,7 @@
 				<ul class="account-menu2 dropdown menu" data-dropdown-menu>
 						<li><a href=""><?= $this->lang->line('my_account'); ?></a>
 							<ul class="menu">
-								<li><a href="<?= base_url();  ?>user/ucp" class="current-sub-nav"; ?><?= $this->lang->line('my_account'); ?></a></li>
+								<li><a href="<?= base_url();  ?>user/settings" class="current-sub-nav"; ?><?= $this->lang->line('my_account'); ?></a></li>
 								<li><a href="<?= base_url();  ?>user/logout"><span class="red"><?= $this->lang->line('menu_logout'); ?></span></a></li>
 							</ul>
 						</li>
