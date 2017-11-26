@@ -173,7 +173,7 @@ public function editAddon(){
 
       /* 'UPDATE addons SET addon_name = :name, addon_version = :version, addon_description = :description, category = :category, expansion = :expansion, updated = :time, status = 0 WHERE addon_uploader = :username AND id = :id AND status != 3');*/
 
-      $this->db->query("")
+      $this->db->query("");
 
 
     }
