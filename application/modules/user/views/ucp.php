@@ -51,7 +51,11 @@
 													<td> <?= $myaddons->downloads ?></td>
 													<td> <?= $myaddons->status ?></td>
 													<td><a href="user/edit=<?= $myaddons->id ?>" title="Edit"><i class="fa fa-pencil yellow" aria-hidden="true"></i></a></td>
+
+
 													<td><a href="user/delete=<?= $myaddons->id ?>" title="Delete" onclick="return confirm(\'Are you sure?\')"><i class="fa fa-trash red" aria-hidden="true"></i></a></td>
+
+
 
 										</tr>
 						<?php } ?>
@@ -71,24 +75,32 @@
 
 			<div class="content-box-content column small-12">
 				<table class="account-info">
+		<?php foreach($this->user_model->getAccinfo()->result() as $myacc) { ?>
+			<?php $rank = array(
+				0 => '<span style="color: #1abc9c;">Leecher</span>',
+				1 => '<span class="blue">Uploader</span>',
+				2 => '<span class="red">Moderator</span>',
+				3 => '<span class="green">Administrator</span>'
+			); ?>
 					<tr>
 						<td><?= $this->lang->line('username'); ?></td>
-						<td></td>
+						<td><?= $myacc->username ?></td>
 					</tr>
 
 					<tr>
 						<td><?= $this->lang->line('email'); ?></td>
-						<td></td>
+						<td><?= $myacc->email ?></td>
 					</tr>
 
 					<tr>
 						<td><?= $this->lang->line('rank'); ?></td>
-						<td></td>
+						<td><?= $rank[$myacc->rank] ?></td>
 					</tr>
+			<?php } ?>
 
 					<tr>
 						<td><?= $this->lang->line('addons'); ?></td>
-						<td></td>
+						<td> <?= $this->user_model->getAccAddons(); ?></td>
 					</tr>
 				</table>
 			</div>
@@ -107,22 +119,22 @@
 				<table class="account-info">
 					<tr>
 						<td><?= $this->lang->line('uploaded'); ?></td>
-						<td></td>
+						<td><?= $this->user_model->getAccAddons(); ?></td>
 					</tr>
 
 					<tr>
 						<td><?= $this->lang->line('Upload_accepted'); ?></td>
-						<td></td>
+						<td><?= $this->user_model->acceptedAddon(); ?></td>
 					</tr>
 
 					<tr>
 						<td><?= $this->lang->line('Upload_declined'); ?></td>
-						<td></td>
+						<td><?= $this->user_model->declinedAddon(); ?></td>
 					</tr>
 
 					<tr>
 						<td><?= $this->lang->line('Upload_Pending'); ?></td>
-						<td></td>
+						<td><?= $this->user_model->pendingAddon(); ?></td>
 					</tr>
 				</table>
 			</div>
