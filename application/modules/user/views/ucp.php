@@ -51,16 +51,19 @@
 													<td> <?= $myaddons->downloads ?></td>
 													<td> <?= $myaddons->status ?></td>
 													<td><a href="user/edit=<?= $myaddons->id ?>" title="Edit"><i class="fa fa-pencil yellow" aria-hidden="true"></i></a></td>
+													<td><a name="delete" title="Delete" onclick="return confirm(\'Are you sure?\')"><i class="fa fa-trash red" aria-hidden="true"></i></a></td>
 
 
-													<td><a href="user/delete=<?= $myaddons->id ?>" title="Delete" onclick="return confirm(\'Are you sure?\')"><i class="fa fa-trash red" aria-hidden="true"></i></a></td>
-
-
+				      <input type="hidden" name="id" value="<?= $myaddons->addon_id ?>" />
 
 										</tr>
 						<?php } ?>
 
-
+						<?php if(isset($_POST['delete']))
+			        {
+			          $idaddon = $_POST['id'];
+			          $this->user_model->Delete($idaddon);
+			        } ?>
 				</table>
 	</div>
 </div>
