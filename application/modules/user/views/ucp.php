@@ -4,7 +4,7 @@
 		<div class="content-bar">
 			<ul class="usercp-bar">
 				<li><a href="" class="current-nav"><?= $this->lang->line('my_addons'); ?></a></li>
-				<li><a href=""><?= $this->lang->line('change_addon'); ?></a></li>
+				<li><a href=""><?= $this->lang->line('change_pass'); ?></a></li>
 				<li><a href=""><?= $this->lang->line('upload_addon'); ?></a></li>
 			</ul>
 		</div>
@@ -59,7 +59,8 @@
 
 				</table>
 	</div>
-
+</div>
+</div>
 	<div class="content column small-12 medium-5 large-4">
 		<div class="content-box-sidebar column small-12">
 			<div class="content-box-header column small-12">
