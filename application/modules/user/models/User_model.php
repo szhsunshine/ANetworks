@@ -113,10 +113,6 @@ public function Register()
                 $data = $this->db->query("INSERT INTO users (username, email, password, access, registered, ip)
 									VALUES('$username', '$email', '$passecure', '$access', '$time', '$lastip')");
 
-
-          		   $page = 'New User register';
-          		   $data = 'Register new user';
-      			     $this->user_model->LogData($page, $data);
 								echo '<div class="callout success">Success, Redirecting..</div>';
 								echo '<script>
 											setTimeout(function () {
