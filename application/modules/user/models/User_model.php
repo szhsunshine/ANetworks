@@ -202,6 +202,11 @@ public function pendingAddon(){
         return $this->db->query("SELECT status FROM addons WHERE addon_uploader = '$username' AND status = 0")->num_rows();
 }
 
+public function deleteAddon($idaddon, $username){
+  $idaddon = $_POST['id'];
+  $username = $_SESSION['username'];
+  return $this->db->query("UPDATE addons SET status = 3 WHERE id = '$idaddon' AND addon_uploader = $username AND status != 2");
+}
 
 public function editAddon(){
 
