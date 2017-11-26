@@ -202,33 +202,55 @@ public function pendingAddon(){
         return $this->db->query("SELECT status FROM addons WHERE addon_uploader = '$username' AND status = 0")->num_rows();
 }
 
-public function deleteAddon($idaddon, $username){
-  $idaddon = $_POST['id'];
-  $username = $_SESSION['username'];
-  return $this->db->query("UPDATE addons SET status = 3 WHERE id = '$idaddon' AND addon_uploader = $username AND status != 2");
+public function delAddon(){
+        $username = $_SESSION['username'];
+        return $this->db->query("SELECT status FROM addons WHERE addon_uploader = '$username' AND status = 3")->num_rows();
 }
 
-public function editAddon(){
+public function deleteAddon($id, $username){
+
+	if(isset($_POST['delete']))
+	{
+		if(!empty($_POST['id']))
+		{
+
+			$id = $_POST['id'];
+    		$username = $_SESSION['username'];
+
+    		$data = $this->db->query("SELECT * FROM addons WHERE id = '$id' AND addon_uploader = '$username'")->num_rows();
+
+			if($data == 1)
+			{
+
+        $this->db->query("UPDATE addons SET status = 3 WHERE id = '$id' AND addon_uploader = '$username'");
+
+        $page = 'UCP | Addon deleted';
+        $data = 'Status set 3';
+        $this->user_model->LogData($page, $data);
+
+				echo '<div class="callout success">El addon se ha borrado correctamente.</div>';
+				echo '<script>
+							setTimeout(function () {
+							   window.location.href = "/user/settings";
+							}, 3000);
+						</script>';
+			} else {
+
+				echo '<div class="callout alert">Ha ocurrido un error al editar el addon, intentelo más tarde.</div>';
+			}
 
 
 
-
-  	if(isset($_GET['edit']))
-    {
-        $id = (int)$_GET['edit'];
-        return $this->db->query("SELECT * FROM addons WHERE addon_uploader = '$username' AND id = '$id'");
-    }
-
-    if(isset($_POST['edit']))
-    {
-
-      /* 'UPDATE addons SET addon_name = :name, addon_version = :version, addon_description = :description, category = :category, expansion = :expansion, updated = :time, status = 0 WHERE addon_uploader = :username AND id = :id AND status != 3');*/
-
-      $this->db->query("");
-
-
-    }
+	}else{
+				echo '<div class="callout alert">¡No se ha podido borrar!</div>';
+				echo '<script>
+							setTimeout(function () {
+							   window.location.href = "/user/settings";
+							}, 3000);
+						</script>';
+			}
 }
 
+}
 
 };

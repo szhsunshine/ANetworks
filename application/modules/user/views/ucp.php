@@ -50,20 +50,23 @@
 													<td> <?= $myaddons->updated ?></td>
 													<td> <?= $myaddons->downloads ?></td>
 													<td> <?= $myaddons->status ?></td>
-													<td><a href="user/edit=<?= $myaddons->id ?>" title="Edit"><i class="fa fa-pencil yellow" aria-hidden="true"></i></a></td>
-													<td><a name="delete" title="Delete" onclick="return confirm(\'Are you sure?\')"><i class="fa fa-trash red" aria-hidden="true"></i></a></td>
 
 
-				      <input type="hidden" name="id" value="<?= $myaddons->addon_id ?>" />
+			<td><a href="user/edit=<?= $myaddons->id ?>" title="Edit"><i class="fa fa-pencil yellow" aria-hidden="true"></i></a></td>
+              <form method="post" action="">
+				      <input type="hidden" name="id" value="<?= $myaddons->id ?>" />
+           <td> <button class="small button" type="submit" name="delete"><i class="fa fa-trash red" aria-hidden="true"></i></a></td>
+			</form>
 
-										</tr>
 						<?php } ?>
 
 						<?php if(isset($_POST['delete']))
 			        {
-			          $idaddon = $_POST['id'];
-			          $this->user_model->Delete($idaddon);
+        			$id = $_POST['id'];
+    				$username = $_SESSION['username'];
+			        $this->user_model->deleteAddon($id, $username);
 			        } ?>
+										</tr>
 				</table>
 	</div>
 </div>
@@ -138,6 +141,10 @@
 					<tr>
 						<td><?= $this->lang->line('Upload_Pending'); ?></td>
 						<td><?= $this->user_model->pendingAddon(); ?></td>
+					</tr>
+					<tr>
+						<td><?= $this->lang->line('Addons_delete'); ?></td>
+						<td><?= $this->user_model->delAddon(); ?></td>
 					</tr>
 				</table>
 			</div>
