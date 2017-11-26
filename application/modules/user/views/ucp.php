@@ -94,7 +94,7 @@
 
 					<tr>
 						<td><?= $this->lang->line('rank'); ?></td>
-						<td><?= $rank[$myacc->rank] ?></td>
+						<td><?= $rank[$myacc->access] ?></td>
 					</tr>
 			<?php } ?>
 
