@@ -41,7 +41,7 @@ class User extends MX_Controller {
 			redirect(base_url(),'refresh');
 
 			$this->load->view("header");
-		$this->load->view('settings');
+		$this->load->view('ucp');
 		$this->load->view('footer');
 	}
 

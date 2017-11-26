@@ -53,13 +53,12 @@ public function Login($username, $password)
 }
 
 
-function Register()
+public function Register()
 {
 	if(isset($_POST['register']))
 	{
 		if(!empty($_POST['username']) && !empty($_POST['email']) && !empty($_POST['password']) && !empty($_POST['re-password']))
 		{
-			global $con;
 
 			$username   = $_POST['username'];
 			$email      = $_POST['email'];
@@ -134,14 +133,14 @@ function Register()
 	}
 }
 
-function isLoggedOut()
+public function isLoggedOut()
 {
     $this->session->sess_destroy();
 		redirect(base_url(),'refresh');
 
 }
 
-function isLoggedIn()
+public function isLoggedIn()
 {
 	{
     	if ($this->session->userdata('username'))
@@ -152,6 +151,32 @@ function isLoggedIn()
 
 }
 
+public function getAddons(){
 
+  $username = $_SESSION['username'];
+  return $this->db->query("SELECT * FROM addons WHERE addon_uploader = '$username' AND status != 3");
+}
+
+public function editAddon(){
+
+
+
+
+  	if(isset($_GET['edit']))
+    {
+        $id = (int)$_GET['edit'];
+        return $this->db->query("SELECT * FROM addons WHERE addon_uploader = '$username' AND id = '$id'");
+    }
+
+    if(isset($_POST['edit']))
+    {
+
+      /* 'UPDATE addons SET addon_name = :name, addon_version = :version, addon_description = :description, category = :category, expansion = :expansion, updated = :time, status = 0 WHERE addon_uploader = :username AND id = :id AND status != 3');*/
+
+      $this->db->query("")
+
+
+    }
+}
 
 };
