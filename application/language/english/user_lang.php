@@ -12,3 +12,19 @@ $lang['Your_upload'] = 'My uploads';
 $lang['Upload_accepted'] = 'Accepted';
 $lang['Upload_declined'] = 'Declined';
 $lang['Upload_Pending'] = 'Pending';
+
+
+
+/* Table */
+
+$lang['tab_name'] = 'Name';
+$lang['tab_version'] = 'Version';
+$lang['tab_expansion'] = 'Expansion';
+$lang['tab_updated'] = 'Updated';
+$lang['tab_downloads'] = 'Downloads';
+$lang['tab_status'] = 'Status';
+
+/* Button */
+
+$lang['button_edit'] = 'Edit';
+$lang['button_del'] = 'Delete';

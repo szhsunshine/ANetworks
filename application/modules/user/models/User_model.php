@@ -157,6 +157,16 @@ public function getAddons(){
   return $this->db->query("SELECT * FROM addons WHERE addon_uploader = '$username' AND status != 3");
 }
 
+public getAccinfo($id){
+
+
+    $username = $_SESSION['username'];
+    return $this->db->query("SELECT * FROM addons WHERE addon_uploader = '$username' AND status != 3");
+
+
+
+}
+
 public function editAddon(){
 
 
@@ -178,5 +188,6 @@ public function editAddon(){
 
     }
 }
+
 
 };
