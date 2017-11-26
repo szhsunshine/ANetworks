@@ -13,6 +13,7 @@ $lang['uploaded'] = 'Uploaded total';
 $lang['Upload_accepted'] = 'Accepted';
 $lang['Upload_declined'] = 'Declined';
 $lang['Upload_Pending'] = 'Pending';
+$lang['Upload_delete'] = 'Deleted';
 
 
 
