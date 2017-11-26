@@ -9,6 +9,7 @@ $lang['email'] = 'Email';
 $lang['rank'] = 'Rank';
 $lang['addons'] = 'Addons';
 $lang['Your_upload'] = 'My uploads';
+$lang['uploaded'] = 'Uploaded total';
 $lang['Upload_accepted'] = 'Accepted';
 $lang['Upload_declined'] = 'Declined';
 $lang['Upload_Pending'] = 'Pending';
