@@ -36,7 +36,7 @@
 												$expansion = array(
 												1 => 'Classic',
 												2 => 'The Burning Crusader',
-												3 => 'Wrath of the Lich King';
+												3 => 'Wrath of the Lich King',
 												4 => 'Cataclysm',
 												5 => 'Mist of Pandaría',
 												6 => 'Warlords of Draenor',
@@ -46,7 +46,7 @@
 										<tr>
 													<td> <?= $myaddons->addon_name ?></td>
 													<td> <?= $myaddons->addon_version ?></td>
-													<td> <?= $expansion[$myadons->expansion] ?></td>
+													<td> <?= $expansion[$myaddons->expansion] ?></td>
 													<td> <?= $myaddons->updated ?></td>
 													<td> <?= $myaddons->downloads ?></td>
 													<td> <?= $myaddons->status ?></td>
