@@ -9,16 +9,18 @@ class User_model extends CI_Model {
   }
 
 
-public function LogData($page, $data)
-  {
 
-  	$username   = $_SESSION['username'];
-  	$user_agent = $_SERVER['HTTP_USER_AGENT'];
-  	$ip_address = $_SERVER['REMOTE_ADDR'];
-    $time = time();
-    $this->db->query("INSERT INTO logs (username, page, data, user_agent, ip, time) VALUES('$username', '$page', '$data', '$user_agent', '$ip', '$time')");
 
-  }
+  public function LogData($page, $data)
+    {
+
+    	$username   = $_SESSION['username'];
+    	$user_agent = $_SERVER['HTTP_USER_AGENT'];
+    	$ip_address = $_SERVER['REMOTE_ADDR'];
+      $time = time();
+      $this->db->query("INSERT INTO logs (username, page, data, user_agent, ip, time) VALUES('$username', '$page', '$data', '$user_agent', '$ip_address', '$time')");
+
+    }
 
 
 public function Login($username, $password)
@@ -47,7 +49,9 @@ public function Login($username, $password)
 				$_SESSION['password'] = $password;
 
 
-				LogData('Login UserCP', 'Logged into UserCP');
+        $page = 'Login UserCP';
+        $data = 'Logged into UserCP';
+        $this->user_model->LogData($page, $data);
 
 				echo '<div class="callout success">Success, logging in..</div>';
 				echo '<script>
