@@ -72,22 +72,22 @@
 				<table class="account-info">
 					<tr>
 						<td><?= $this->lang->line('username'); ?></td>
-						<td><?php echo GrabAccountInfo('USERNAME'); ?></td>
+						<td></td>
 					</tr>
 
 					<tr>
 						<td><?= $this->lang->line('email'); ?></td>
-						<td><?php echo GrabAccountInfo('EMAIL'); ?></td>
+						<td></td>
 					</tr>
 
 					<tr>
 						<td><?= $this->lang->line('rank'); ?></td>
-						<td><?php echo GrabAccountInfo('RANK'); ?></td>
+						<td></td>
 					</tr>
 
 					<tr>
 						<td><?= $this->lang->line('addons'); ?></td>
-						<td><?php echo GrabAccountInfo('ADDONS'); ?></td>
+						<td></td>
 					</tr>
 				</table>
 			</div>
@@ -106,22 +106,22 @@
 				<table class="account-info">
 					<tr>
 						<td><?= $this->lang->line('uploaded'); ?></td>
-						<td><?php echo GrabAccountInfo('TOTAL'); ?></td>
+						<td></td>
 					</tr>
 
 					<tr>
 						<td><?= $this->lang->line('Upload_accepted'); ?></td>
-						<td><?php echo GrabAccountInfo('ACTIVE'); ?></td>
+						<td></td>
 					</tr>
 
 					<tr>
 						<td><?= $this->lang->line('Upload_declined'); ?></td>
-						<td><?php echo GrabAccountInfo('DECLINED'); ?></td>
+						<td></td>
 					</tr>
 
 					<tr>
 						<td><?= $this->lang->line('Upload_Pending'); ?></td>
-						<td><?php echo GrabAccountInfo('PENDING'); ?></td>
+						<td></td>
 					</tr>
 				</table>
 			</div>
