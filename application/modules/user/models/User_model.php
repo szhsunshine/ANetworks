@@ -184,22 +184,22 @@ public function getAccinfo(){
 
 public function getAccAddons(){
       $username = $_SESSION['username'];
-      return $this->db->query("SELECT addon_uploader FROM addons WHERE username = '$username'")->num_rows();
+      return $this->db->query("SELECT addon_uploader FROM addons WHERE addon_uploader = '$username'")->num_rows();
 }
 
 public function acceptedAddon(){
         $username = $_SESSION['username'];
-        return $this->db->query("SELECT status FROM addons WHERE username = '$username' AND status = 2")->num_rows();
+        return $this->db->query("SELECT status FROM addons WHERE addon_uploader = '$username' AND status = 2")->num_rows();
 }
 
 public function declinedAddon(){
         $username = $_SESSION['username'];
-        return $this->db->query("SELECT status FROM addons WHERE username = '$username' AND status = 1")->num_rows();
+        return $this->db->query("SELECT status FROM addons WHERE addon_uploader = '$username' AND status = 1")->num_rows();
 }
 
 public function pendingAddon(){
         $username = $_SESSION['username'];
-        return $this->db->query("SELECT status FROM addons WHERE username = '$username' AND status = 0")->num_rows();
+        return $this->db->query("SELECT status FROM addons WHERE addon_uploader = '$username' AND status = 0")->num_rows();
 }
 
 
