@@ -143,7 +143,7 @@
 						<td><?= $this->user_model->pendingAddon(); ?></td>
 					</tr>
 					<tr>
-						<td><?= $this->lang->line('Addons_delete'); ?></td>
+						<td><?= $this->lang->line('Upload_delete'); ?></td>
 						<td><?= $this->user_model->delAddon(); ?></td>
 					</tr>
 				</table>
