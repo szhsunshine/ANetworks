@@ -244,8 +244,6 @@ public function deleteAddon($id, $username){
 
 public function changepass($username, $oldpassword, $password, $repassword){
 
-  if(isset($_POST['changepass']))
-  {
     if(!empty($_POST['oldpassword']) && !empty($_POST['newpassword']) && !empty($_POST['repass']))
     {
 
@@ -260,8 +258,6 @@ public function changepass($username, $oldpassword, $password, $repassword){
 
    if(data == 1)
    {
-
-
    if($password == $repassword)
      {
       $pasecure = sha1($password);
@@ -287,7 +283,6 @@ public function changepass($username, $oldpassword, $password, $repassword){
             }, 3000);
           </script>';
    }
-}
 } else {
     echo '<script>
           setTimeout(function () {
@@ -295,7 +290,9 @@ public function changepass($username, $oldpassword, $password, $repassword){
           }, 3000);
         </script>';
 }
+
 }
+
 
 
 };
