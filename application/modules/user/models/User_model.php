@@ -250,7 +250,7 @@ public function changepass($username, $oldpassword, $password, $repassword){
     {
 
         $username = $_SESSION['username'];
-        $oldpass = $_POST['oldpassword'];
+        $oldpassword = $_POST['oldpassword'];
         $password = $_POST['newpassword'];
          $repassword = $_POST['repass'];
         $oldpassecure = sha1($oldpassword);
