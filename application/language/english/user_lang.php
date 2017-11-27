@@ -30,3 +30,16 @@ $lang['tab_status'] = 'Status';
 
 $lang['button_edit'] = 'Edit';
 $lang['button_del'] = 'Delete';
+
+
+
+/* System messages */
+
+$lang['username_alreadyused'] = '';
+$lang['username_wrong'] = '';
+$lang['register_error'] = '';
+$lang['register_success'] = '';
+$lang['login_success'] = '';
+$lang['login_error'] = '';
+$lang['addon_deleted'] = 'The addon has been deleted correctly';
+$lang['delete_wrong'] = 'An error occurred while delete the addon, try later';

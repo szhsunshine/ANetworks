@@ -228,7 +228,7 @@ public function deleteAddon($id, $username){
         $data = 'Status set 3';
         $this->user_model->LogData($page, $data);
 
-				echo '<div class="callout success">El addon se ha borrado correctamente.</div>';
+				echo '<div class="callout success"><?= $this->lang->line('addon_deleted'); ?></div>';
 				echo '<script>
 							setTimeout(function () {
 							   window.location.href = "/user/settings";
@@ -236,7 +236,7 @@ public function deleteAddon($id, $username){
 						</script>';
 			} else {
 
-				echo '<div class="callout alert">Ha ocurrido un error al editar el addon, intentelo más tarde.</div>';
+				echo '<div class="callout alert"><?= $this->lang->line('delete_wrong'); ?>.</div>';
 			}
 
 
