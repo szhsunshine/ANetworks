@@ -252,8 +252,7 @@ public function changepass($username, $oldpassword, $password, $repassword){
         $username = $_SESSION['username'];
         $oldpass = $_POST['oldpassword'];
         $password = $_POST['newpassword'];
-        $repassword = $_POST['repass'];
-
+         $repassword = $_POST['repass'];
         $oldpassecure = sha1($oldpassword);
 
         $data = $this->db->query("SELECT * FROM users WHERE username = '$username' AND password = '$oldpassecure'")->num_rows();
@@ -261,9 +260,11 @@ public function changepass($username, $oldpassword, $password, $repassword){
 
    if(data == 1)
    {
+
+
    if($password == $repassword)
      {
-      $pasecure = sha1($newpassword);
+      $pasecure = sha1($password);
 
       $data = $this->db->query("UPDATE users SET password = '$passecure' WHERE username = '$username'");
 
