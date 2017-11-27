@@ -217,7 +217,7 @@ public function deleteAddon($id, $username){
         $data = 'Status set 3';
         $this->user_model->LogData($page, $data);
 
-        echo "<div class='callout success'>'.<?= $this->lang->line('addon_deleted'); ?>.'</div>";
+        echo "<div class='callout success'>The addon has been deleted correctly</div>";
 				echo '<script>
 							setTimeout(function () {
 							   window.location.href = "settings";
@@ -225,13 +225,13 @@ public function deleteAddon($id, $username){
 						</script>';
 			} else {
 
-        echo "<div class='callout success'>'.<?= $this->lang->line('delete_wrong'); ?>.'</div>";
+        echo "<div class='callout alert'>The addon has been deleted correctly</div>";
 			}
 
 
 
 	}else{
-				echo '<div class="callout alert">¡No se ha podido borrar!</div>';
+				echo '<div class="callout alert">An error occurred while delete the addon, try later</div>';
 				echo '<script>
 							setTimeout(function () {
 							   window.location.href = "settings";
@@ -269,21 +269,21 @@ public function changepass($username, $oldpassword, $password, $repassword){
       $data = $this->db->query("UPDATE users SET password = '$passecure' WHERE username = '$username'");
 
 
-      echo "<div class='callout success'>'.<?= $this->lang->line('pass_changed'); ?>.'</div>";
+      echo "<div class='callout success'>The password has been changed</div>";
       echo '<script>
             setTimeout(function () {
-               window.location.href = "user/settings";
+               window.location.href = "settings";
             }, 3000);
           </script>';
 
      } else {
-        echo "<div class='callout alert'>'.<?= $this->lang->line('pass_incorected'); ?>.'</div>";
+        echo "<div class='callout alert'>Passwords don`t match</div>";
      }
    } else {
-    echo "<div class='callout alert'>'.<?= $this->lang->line('oldpass_incorrect'); ?>.'</div>";
+    echo "<div class='callout alert'>The old pass is incorrected</div>";
       echo '<script>
             setTimeout(function () {
-               window.location.href = "/user/settings";
+               window.location.href = "settings";
             }, 3000);
           </script>';
    }
