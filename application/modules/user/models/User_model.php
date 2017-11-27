@@ -244,8 +244,7 @@ public function deleteAddon($id, $username){
 
 public function changepass($username, $oldpassword, $password, $repassword){
 
-    if(!empty($_POST['oldpassword']) && !empty($_POST['newpassword']) && !empty($_POST['repass']))
-    {
+
 
         $username = $_SESSION['username'];
         $oldpassword = $_POST['oldpassword'];
