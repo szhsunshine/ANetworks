@@ -256,7 +256,7 @@ public function changepass($username, $oldpassword, $password, $repassword){
 
         $oldpassecure = sha1($oldpassword);
 
-        $data = $this->db->query("SELECT * FROM users WHERE username = '$username' OR password = '$oldpassecure'")->num_rows();
+        $data = $this->db->query("SELECT * FROM users WHERE username = '$username' AND password = '$oldpassecure'")->num_rows();
 
 
    if(data == 1)
