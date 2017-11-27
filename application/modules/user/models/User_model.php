@@ -86,20 +86,14 @@ public function Register()
 			$repassword = $_POST['re-password'];
 
 			$lastip     = $_SERVER['REMOTE_ADDR'];
-			// $captcha    = $_POST['g-recaptcha-response'];
 			$secret     = '6LcViC8UAAAAADfc0VgbaAcTVEtRpJw3tWrSOWAq';
 
 			if(strlen($username) <= 50)
 			{
 				if(filter_var($email, FILTER_VALIDATE_EMAIL))
 				{
-					// $response = file_get_contents("https://www.google.com/recaptcha/api/siteverify?secret=" . $secret . "&response=" . $captcha . "&remoteip=" . $lastip);
-					// $decode   = json_decode($response, true);
-
-					if(intval($decode['success']) == 0)
+				if($password == $repassword)
 					{
-						if($password == $repassword)
-						{
 
               $data = $this->db->query("SELECT * FROM users WHERE username = '$username' OR email = '$email'")->num_rows();
 
@@ -129,11 +123,6 @@ public function Register()
 						{
 							echo '<div class="callout alert">Passwords dont match!</div>';
 						}
-					}
-					else
-					{
-						echo '<div class="callout alert">Captcha was wrong!</div>';
-					}
 				}
 				else
 				{
@@ -228,7 +217,7 @@ public function deleteAddon($id, $username){
         $data = 'Status set 3';
         $this->user_model->LogData($page, $data);
 
-				echo '<div class="callout success"><?= $this->lang->line('addon_deleted'); ?></div>';
+        echo "<div class='callout success'>'.<?= $this->lang->line('addon_deleted'); ?>.'</div>";
 				echo '<script>
 							setTimeout(function () {
 							   window.location.href = "/user/settings";
@@ -236,7 +225,7 @@ public function deleteAddon($id, $username){
 						</script>';
 			} else {
 
-				echo '<div class="callout alert"><?= $this->lang->line('delete_wrong'); ?>.</div>';
+        echo "<div class='callout success'>'.<?= $this->lang->line('delete_wrong'); ?>.'</div>";
 			}
 
 
@@ -252,5 +241,60 @@ public function deleteAddon($id, $username){
 }
 
 }
+
+public function changepass($username, $oldpassword, $password, $repassword){
+
+  if(isset($_POST['changepass']))
+  {
+    if(!empty($_POST['oldpassword']) && !empty($_POST['newpassword']) && !empty($_POST['repass']))
+    {
+
+        $username = $_SESSION['username'];
+        $oldpass = $_POST['oldpassword'];
+        $password = $_POST['newpassword'];
+        $repassword = $_POST['repass'];
+
+        $oldpassecure = sha1($oldpassword);
+
+        $data = $this->db->query("SELECT * FROM users WHERE username = '$username' OR password = '$oldpassecure'")->num_rows();
+
+
+   if(data == 1)
+   {
+   if($password == $repassword)
+     {
+      $pasecure = sha1($newpassword);
+
+      $data = $this->db->query("UPDATE users SET password = '$passecure' WHERE username = '$username'");
+
+
+      echo "<div class='callout success'>'.<?= $this->lang->line('pass_changed'); ?>.'</div>";
+      echo '<script>
+            setTimeout(function () {
+               window.location.href = "user/settings";
+            }, 3000);
+          </script>';
+
+     } else {
+        echo "<div class='callout alert'>'.<?= $this->lang->line('pass_incorected'); ?>.'</div>";
+     }
+   } else {
+    echo "<div class='callout alert'>'.<?= $this->lang->line('oldpass_incorrect'); ?>.'</div>";
+      echo '<script>
+            setTimeout(function () {
+               window.location.href = "/user/settings";
+            }, 3000);
+          </script>';
+   }
+}
+} else {
+    echo '<script>
+          setTimeout(function () {
+             window.location.href = "/user/changepass";
+          }, 3000);
+        </script>';
+}
+}
+
 
 };

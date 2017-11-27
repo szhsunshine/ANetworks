@@ -3,8 +3,8 @@
 	<div class="content-menu column small-12">
 		<div class="content-bar">
 			<ul class="usercp-bar">
-				<li><a href="" class="current-nav"><?= $this->lang->line('my_addons'); ?></a></li>
-				<li><a href=""><?= $this->lang->line('change_pass'); ?></a></li>
+				<li><a href="user/settings" class="current-nav"><?= $this->lang->line('my_addons'); ?></a></li>
+				<li><a href="user/changepass"><?= $this->lang->line('change_pass'); ?></a></li>
 				<li><a href=""><?= $this->lang->line('upload_addon'); ?></a></li>
 			</ul>
 		</div>
