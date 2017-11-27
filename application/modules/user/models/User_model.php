@@ -56,7 +56,7 @@ public function Login($username, $password)
 				echo '<div class="callout success">Success, logging in..</div>';
 				echo '<script>
 							setTimeout(function () {
-							   window.location.href = "user/settings";
+							   window.location.href = "settings";
 							}, 3000);
 						</script>';
 			}
@@ -110,7 +110,7 @@ public function Register()
 								echo '<div class="callout success">Success, Redirecting..</div>';
 								echo '<script>
 											setTimeout(function () {
-											   window.location.href = "user/login";
+											   window.location.href = "login";
 											}, 3000);
 										</script>';
 							}
@@ -220,7 +220,7 @@ public function deleteAddon($id, $username){
         echo "<div class='callout success'>'.<?= $this->lang->line('addon_deleted'); ?>.'</div>";
 				echo '<script>
 							setTimeout(function () {
-							   window.location.href = "/user/settings";
+							   window.location.href = "settings";
 							}, 3000);
 						</script>';
 			} else {
@@ -234,7 +234,7 @@ public function deleteAddon($id, $username){
 				echo '<div class="callout alert">¡No se ha podido borrar!</div>';
 				echo '<script>
 							setTimeout(function () {
-							   window.location.href = "/user/settings";
+							   window.location.href = "settings";
 							}, 3000);
 						</script>';
 			}
