@@ -208,8 +208,8 @@ public function deleteAddon($id, $username){
 
     		$data = $this->db->query("SELECT * FROM addons WHERE id = '$id' AND addon_uploader = '$username'")->num_rows();
 
-			if($data == 1)
-			{
+
+		if($data == 1){
 
         $this->db->query("UPDATE addons SET status = 3 WHERE id = '$id' AND addon_uploader = '$username'");
 
@@ -252,16 +252,16 @@ public function changepass($username, $oldpassword, $password, $repassword){
          $repassword = $_POST['repass'];
         $oldpassecure = sha1($oldpassword);
 
-        $data = $this->db->query("SELECT * FROM users WHERE username = '$username' AND password = '$oldpassecure'")->num_rows();
+        $change = $this->db->query("SELECT * FROM users WHERE username = '$username' AND password = '$oldpassecure'")->num_rows();
 
 
-   if(data == 1)
+   if($change == 1)
    {
    if($password == $repassword)
      {
       $pasecure = sha1($password);
 
-      $data = $this->db->query("UPDATE users SET password = '$pasecure' WHERE username = '$username'");
+      $this->db->query("UPDATE users SET password = '$pasecure' WHERE username = '$username'");
 
 
       echo "<div class='callout success'>The password has been changed</div>";
@@ -282,13 +282,6 @@ public function changepass($username, $oldpassword, $password, $repassword){
             }, 3000);
           </script>';
    }
-} else {
-    echo '<script>
-          setTimeout(function () {
-             window.location.href = "/user/changepass";
-          }, 3000);
-        </script>';
-}
 
 }
 
