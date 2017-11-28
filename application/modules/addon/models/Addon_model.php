@@ -37,4 +37,13 @@ class Addon_model extends CI_Model {
   public function mostDownloadedLegion(){
       return $this->db->query("SELECT * FROM addons WHERE expansion = 7 AND status =!2 ORDER BY downloads DESC LIMIT 10");
   }
-    
+
+
+  public function searchLegion($type, $name){
+
+      $type = $_GET['type'];
+      $name = $_GET['name'];
+
+      return $this->db->query("SELECT * FROM addons WHERE expansion = '$type' AND addon_name = '$name' ORDER BY downloads DESC LIMIT 10");
+
+  }

@@ -1,7 +1,11 @@
 
-<div class="row">
-	<div class="content column small-12 medium-7 large-8">
-<?
+
+<?php
+
+if(!isset($_GET['type']))
+{
+	die('No page found!');
+}
 
 $type = array(
 1 => 'vanilla',
@@ -12,10 +16,11 @@ $type = array(
 6 => 'wod',
 7 => 'legion'
 );
-
 ?>
 
+	<div class="row">
 	<?php if($_GET['type'] == 'legion'): ?>
+	<div class="content column small-12 medium-7 large-8">
 			<div class="search-box">
 				<form method="GET">
 					<input type="hidden" name="type" value="legion" />
@@ -34,6 +39,24 @@ $type = array(
 					<?php if(!isset($_GET['name'])): ?>
 
 					<?php else: ?>
+						<table class="addons-list">
+				<th>Name</th>
+				<th>Version</th>
+				<th>Updated</th>
+				<th>Downloads</th>
+				<th></th>
+
+				<?php foreach($this->addon_model->searchAddons($type, $name)->result() as $search) { ?>
+
+					<tr>
+				 <td><a href="view.php?id=<?= $search->id ?>"><?= $search->addon_name ?></a></td>
+				 <td><?= $search->addon_version ?></td>
+				 <td><?= $search->updated ?></td>
+				 <td><?= $search->downloads ?></td>
+				 <td><a href="download.php?id=<?= $search->id ?>" class="small button">DOWNLOAD</a></td>
+			 </tr>
+
+			 <?php } ?>
 
 					<?php endif; ?>
 	<?php elseif($_GET['type'] == 'wod'): ?>
@@ -178,7 +201,7 @@ $type = array(
 				<table class="addons-list">
 					<?php if($_GET['type'] == 'legion'): ?>
 
-            <?php foreach($this->home_model->mostDownloadedLegion()->result() as $legion) { ?>
+            <?php foreach($this->addon_model->mostDownloadedLegion()->result() as $legion) { ?>
             <tr>
 					     <td><a href="view.php?id=<?= $legion->id ?>"><?= $legion->addon_name ?></a></td>
 					     <td><?= $legion->downloads ?></td>
@@ -186,42 +209,42 @@ $type = array(
           <?php } ?>
 
 					<?php elseif($_GET['type'] == 'wod'): ?>
-            <?php foreach($this->home_model->mostDownloadedWod()->result() as $wod) { ?>
+            <?php foreach($this->addon_model->mostDownloadedWod()->result() as $wod) { ?>
             <tr>
 					     <td><a href="view.php?id=<?= $wod->id ?>"><?= $wod->addon_name ?></a></td>
 					     <td><?= $wod->downloads ?></td>
 				    </tr>
           <?php } ?>
 					<?php elseif($_GET['type'] == 'mop'): ?>
-            <?php foreach($this->home_model->mostDownloadedMop()->result() as $mop) { ?>
+            <?php foreach($this->addon_model->mostDownloadedMop()->result() as $mop) { ?>
             <tr>
 					     <td><a href="view.php?id=<?= $mop->id ?>"><?= $mop->addon_name ?></a></td>
 					     <td><?= $mop->downloads ?></td>
 				    </tr>
           <?php } ?>
 					<?php elseif($_GET['type'] == 'cata'): ?>
-            <?php foreach($this->home_model->mostDownloadedCata()->result() as $cata) { ?>
+            <?php foreach($this->addon_model->mostDownloadedCata()->result() as $cata) { ?>
             <tr>
 					     <td><a href="view.php?id=<?= $cata->id ?>"><?= $cata->addon_name ?></a></td>
 					     <td><?= $cata->downloads ?></td>
 				    </tr>
           <?php } ?>
 					<?php elseif($_GET['type'] == 'wotlk'): ?>
-            <?php foreach($this->home_model->mostDownloadedTlk()->result() as $tlk) { ?>
+            <?php foreach($this->addon_model->mostDownloadedTlk()->result() as $tlk) { ?>
             <tr>
 					     <td><a href="view.php?id=<?= $tlk->id ?>"><?= $tlk->addon_name ?></a></td>
 					     <td><?= $tlk->downloads ?></td>
 				    </tr>
           <?php } ?>
 					<?php elseif($_GET['type'] == 'tbc'): ?>
-            <?php foreach($this->home_model->mostDownloadedTbc()->result() as $tbc) { ?>
+            <?php foreach($this->addon_model->mostDownloadedTbc()->result() as $tbc) { ?>
             <tr>
 					     <td><a href="view.php?id=<?= $tbc->id ?>"><?= $tbc->addon_name ?></a></td>
 					     <td><?= $tbc->downloads ?></td>
 				    </tr>
           <?php } ?>
 					<?php else: ?>
-            <?php foreach($this->home_model->mostDownloadedClassic()->result() as $classic) { ?>
+            <?php foreach($this->addon_model->mostDownloadedClassic()->result() as $classic) { ?>
             <tr>
 					     <td><a href="view.php?id=<?= $classic->id ?>"><?= $classic->addon_name ?></a></td>
 					     <td><?= $classic->downloads ?></td>
