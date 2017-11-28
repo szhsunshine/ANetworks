@@ -261,7 +261,7 @@ public function changepass($username, $oldpassword, $password, $repassword){
      {
       $pasecure = sha1($password);
 
-      $data = $this->db->query("UPDATE users SET password = '$passecure' WHERE username = '$username'");
+      $data = $this->db->query("UPDATE users SET password = '$pasecure' WHERE username = '$username'");
 
 
       echo "<div class='callout success'>The password has been changed</div>";
