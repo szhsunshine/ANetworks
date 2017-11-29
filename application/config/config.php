@@ -40,6 +40,24 @@ $config['usercp_addon_results'] = 10;
 */
 $config['base_url'] = '';
 
+
+/*
+|--------------------------------------------------------------------------
+| Upload in your hosting??
+|--------------------------------------------------------------------------
+|
+| If your plan has a lot of limitation, or you do not want users to be able to
+| upload addons to your website, we ask you to set it to false.
+|
+| True -> Allows uploading and downloading files
+| False -> Prohibits any upload or download of files.
+|
+*/
+$config['upload_download'] = false;
+
+
+
+
 /*
 |--------------------------------------------------------------------------
 | Index File
