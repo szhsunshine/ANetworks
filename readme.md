@@ -24,6 +24,12 @@ This project consists of creating a HUB for addons and allowing people to create
 | Anetwork Auth Bnet | [Comming Soon] | v0.0.1.x | 0.1.1  | DB TC (AUTH REQUIRED/ BNET ONLY)
 | Anetwork Auth  | [Comming Soon] | v0.0.1.x | 0.1.1  | DB TC (AUTH REQUIRED)
 
+
+## Changelog
+
+
+
+
 ### Components
 
 | Name | Url | Version |
