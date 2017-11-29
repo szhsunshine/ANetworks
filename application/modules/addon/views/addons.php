@@ -34,21 +34,32 @@ $type = array(
 						Legion
 					</div>
 				</div>
+				<table class="addons-list">
+					<th>Name</th>
+					<th>Version</th>
+					<th>Updated</th>
+					<th>Downloads</th>
+					<th></th>
+
 
 				<div class="content-box-content column small-12">
 					<?php if(!isset($_GET['name'])): ?>
+						<?php foreach($this->addon_model->grabLegion()->result() as $grabLegion) { ?>
 
+											<tr>
+														<td> <?= $grabLegion->addon_name ?></td>
+														<td> <?= $grabLegion->addon_version ?></td>
+														<td> <?= $grabLegion->updated ?></td>
+														<td> <?= $grabLegion->downloads ?></td>
+									 				 <td><a href="download.php?id=<?= $grabLegion->id ?>" class="small button">DOWNLOAD</a></td>
+
+							<?php } ?>
 					<?php else: ?>
 						<?php
 						$type = $_GET['type'];
 						$name = $_GET['name'];
  						?>
-						<table class="addons-list">
-				<th>Name</th>
-				<th>Version</th>
-				<th>Updated</th>
-				<th>Downloads</th>
-				<th></th>
+
 
 				<?php foreach($this->addon_model->searchAddons($type,$name)->result() as $search) { ?>
 
@@ -77,20 +88,30 @@ $type = array(
 						Warlords of Draenor
 					</div>
 				</div>
+				<table class="addons-list">
+					<th>Name</th>
+					<th>Version</th>
+					<th>Updated</th>
+					<th>Downloads</th>
+					<th></th>
 
 				<div class="content-box-content column small-12">
 					<?php if(!isset($_GET['name'])): ?>
+						<?php foreach($this->addon_model->grabWod()->result() as $grabWod) { ?>
 
+											<tr>
+														<td> <?= $grabWod->addon_name ?></td>
+														<td> <?= $grabWod->addon_version ?></td>
+														<td> <?= $grabWod->updated ?></td>
+														<td> <?= $grabWod->downloads ?></td>
+									 				 <td><a href="download.php?id=<?= $grabWod->id ?>" class="small button">DOWNLOAD</a></td>
+
+							<?php } ?>
 					<?php else: ?>
 												<?php
 												$name = $_GET['name'];
 						 						?>
-												<table class="addons-list">
-										<th>Name</th>
-										<th>Version</th>
-										<th>Updated</th>
-										<th>Downloads</th>
-										<th></th>
+
 
 										<?php foreach($this->addon_model->searchAddons($type,$name)->result() as $search) { ?>
 
@@ -103,9 +124,10 @@ $type = array(
 									 </tr>
 
 									 <?php } ?>
-					</table>
 					<?php endif; ?>
 
+					</table>
+				</div>
 		<?php elseif(isset($_GET['type']) && $_GET['type'] ==  'mop'): ?>
 			<div class="search-box">
 				<form method="GET">
@@ -121,20 +143,30 @@ $type = array(
 					</div>
 				</div>
 
-				<div class="content-box-content column small-12">
-					<?php if(!isset($_GET['name'])): ?>
-
-					<?php else: ?>
-						<?php
-						$type = $_GET['type'];
-						$name = $_GET['name'];
-						?>
-						<table class="addons-list">
+				<table class="addons-list">
 					<th>Name</th>
 					<th>Version</th>
 					<th>Updated</th>
 					<th>Downloads</th>
 					<th></th>
+
+				<div class="content-box-content column small-12">
+					<?php if(!isset($_GET['name'])): ?>
+						<?php foreach($this->addon_model->grabMop()->result() as $grabMop) { ?>
+
+											<tr>
+														<td> <?= $grabMop->addon_name ?></td>
+														<td> <?= $grabMop->addon_version ?></td>
+														<td> <?= $grabMop->updated ?></td>
+														<td> <?= $grabMop->downloads ?></td>
+									 				 <td><a href="download.php?id=<?= $grabMop->id ?>" class="small button">DOWNLOAD</a></td>
+
+							<?php } ?>
+					<?php else: ?>
+						<?php
+						$type = $_GET['type'];
+						$name = $_GET['name'];
+						?>
 
 					<?php foreach($this->addon_model->searchAddons($type,$name)->result() as $search) { ?>
 
@@ -147,9 +179,10 @@ $type = array(
 					</tr>
 
 					<?php } ?>
-					</table>
 					<?php endif; ?>
 
+					</table>
+				</div>
 		<?php elseif(isset($_GET['type']) && $_GET['type'] ==  'cata'): ?>
 			<div class="search-box">
 				<form method="GET">
@@ -165,20 +198,30 @@ $type = array(
 					</div>
 				</div>
 
+				<table class="addons-list">
+					<th>Name</th>
+					<th>Version</th>
+					<th>Updated</th>
+					<th>Downloads</th>
+					<th></th>
+
 				<div class="content-box-content column small-12">
 					<?php if(!isset($_GET['name'])): ?>
+						<?php foreach($this->addon_model->grabCata()->result() as $grabCata) { ?>
 
+											<tr>
+														<td> <?= $grabCata->addon_name ?></td>
+														<td> <?= $grabCata->addon_version ?></td>
+														<td> <?= $grabCata->updated ?></td>
+														<td> <?= $grabCata->downloads ?></td>
+													 <td><a href="download.php?id=<?= $grabCata->id ?>" class="small button">DOWNLOAD</a></td>
+
+							<?php } ?>
 					<?php else: ?>
 					<?php
 						$type = $_GET['type'];
 					$name = $_GET['name'];
 					?>
-					<table class="addons-list">
-						<th>Name</th>
-						<th>Version</th>
-						<th>Updated</th>
-						<th>Downloads</th>
-						<th></th>
 
 		<?php foreach($this->addon_model->searchAddons($type,$name)->result() as $search) { ?>
 
@@ -190,9 +233,10 @@ $type = array(
 							<td><a href="download.php?id=<?= $search->id ?>" class="small button">DOWNLOAD</a></td>
 						</tr>
 		<?php } ?>
-					</table>
 					<?php endif; ?>
 
+								</table>
+							</div>
 		<?php elseif(isset($_GET['type']) && $_GET['type'] ==  'wotlk'): ?>
 			<div class="search-box">
 				<form method="GET">
@@ -208,20 +252,31 @@ $type = array(
 					</div>
 				</div>
 
-				<div class="content-box-content column small-12">
-					<?php if(!isset($_GET['name'])): ?>
 
+								<table class="addons-list">
+									<th>Name</th>
+									<th>Version</th>
+									<th>Updated</th>
+									<th>Downloads</th>
+									<th></th>
+
+								<div class="content-box-content column small-12">
+									<?php if(!isset($_GET['name'])): ?>
+										<?php foreach($this->addon_model->grabTlk()->result() as $grabTlk) { ?>
+
+															<tr>
+																		<td> <?= $grabTlk->addon_name ?></td>
+																		<td> <?= $grabTlk->addon_version ?></td>
+																		<td> <?= $grabTlk->updated ?></td>
+																		<td> <?= $grabTlk->downloads ?></td>
+																	 <td><a href="download.php?id=<?= $grabTlk->id ?>" class="small button">DOWNLOAD</a></td>
+
+											<?php } ?>
 					<?php else: ?>
 						<?php
 						$type = $_GET['type'];
 						$name = $_GET['name'];
 						?>
-						<table class="addons-list">
-					<th>Name</th>
-					<th>Version</th>
-					<th>Updated</th>
-					<th>Downloads</th>
-					<th></th>
 
 					<?php foreach($this->addon_model->searchAddons($type,$name)->result() as $search) { ?>
 
@@ -234,8 +289,9 @@ $type = array(
 					</tr>
 
 					<?php } ?>
-					</table>
 					<?php endif; ?>
+					</table>
+				</div>
 
 		<?php elseif(isset($_GET['type']) && $_GET['type'] ==  'tbc'): ?>
 			<div class="search-box">
@@ -252,20 +308,29 @@ $type = array(
 					</div>
 				</div>
 
+
+				<table class="addons-list">
+							<th>Name</th>
+							<th>Version</th>
+							<th>Updated</th>
+							<th>Downloads</th>
+							<th></th>
 				<div class="content-box-content column small-12">
 					<?php if(!isset($_GET['name'])): ?>
+						<?php foreach($this->addon_model->grabTbc()->result() as $grabTbc) { ?>
+				<tr>
+					<td> <?= $grabTbc->addon_name ?></td>
+					<td> <?= $grabTbc->addon_version ?></td>
+					<td> <?= $grabTbc->updated ?></td>
+					<td> <?= $grabTbc->downloads ?></td>
+					<td><a href="download.php?id=<?= $grabTbc->id ?>" class="small button">DOWNLOAD</a></td>
 
+							<?php } ?>
 					<?php else: ?>
 						<?php
 						$type = $_GET['type'];
 						$name = $_GET['name'];
 						?>
-						<table class="addons-list">
-					<th>Name</th>
-					<th>Version</th>
-					<th>Updated</th>
-					<th>Downloads</th>
-					<th></th>
 
 					<?php foreach($this->addon_model->searchAddons($type,$name)->result() as $search) { ?>
 
@@ -278,8 +343,9 @@ $type = array(
 					</tr>
 
 					<?php } ?>
-					</table>
 					<?php endif; ?>
+					</table>
+				</div>
 			<?php else: ?>
 			<div class="search-box">
 				<form method="GET">
@@ -295,21 +361,28 @@ $type = array(
 					</div>
 				</div>
 
+				<table class="addons-list">
+							<th>Name</th>
+							<th>Version</th>
+							<th>Updated</th>
+							<th>Downloads</th>
+							<th></th>
 				<div class="content-box-content column small-12">
 					<?php if(!isset($_GET['name'])): ?>
+						<?php foreach($this->addon_model->grabClassic()->result() as $grabClassic) { ?>
+				<tr>
+					<td> <?= $grabClassic->addon_name ?></td>
+					<td> <?= $grabClassic->addon_version ?></td>
+					<td> <?= $grabClassic->updated ?></td>
+					<td> <?= $grabClassic->downloads ?></td>
+					<td><a href="download.php?id=<?= $grabClassic->id ?>" class="small button">DOWNLOAD</a></td>
 
+							<?php } ?>
 					<?php else: ?>
 						<?php
 						$type = $_GET['type'];
 						$name = $_GET['name'];
 						?>
-						<table class="addons-list">
-					<th>Name</th>
-					<th>Version</th>
-					<th>Updated</th>
-					<th>Downloads</th>
-					<th></th>
-
 					<?php foreach($this->addon_model->searchAddons($type,$name)->result() as $search) { ?>
 
 					<tr>
@@ -321,8 +394,9 @@ $type = array(
 					</tr>
 
 					<?php } ?>
-					</table>
 					<?php endif; ?>
+					</table>
+				</div>
 		<?php endif; ?>
 
 	</div>
