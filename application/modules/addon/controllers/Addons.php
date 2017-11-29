@@ -1,6 +1,6 @@
 <?php
 
-class Addon extends MX_Controller {
+class Addons extends MX_Controller {
 
 
 	public function index()

@@ -19,7 +19,7 @@ $type = array(
 ?>
 
 	<div class="row">
-	<?php if($_GET['type'] == 'legion'): ?>
+	<?php if(isset($_GET['type']) && $_GET['type'] == "legion")?>
 	<div class="content column small-12 medium-7 large-8">
 			<div class="search-box">
 				<form method="GET">
@@ -39,6 +39,10 @@ $type = array(
 					<?php if(!isset($_GET['name'])): ?>
 
 					<?php else: ?>
+						<?php
+						$type = $_GET['type'];
+						$name = $_GET['name'];
+ 						?>
 						<table class="addons-list">
 				<th>Name</th>
 				<th>Version</th>
@@ -46,7 +50,7 @@ $type = array(
 				<th>Downloads</th>
 				<th></th>
 
-				<?php foreach($this->addon_model->searchAddons($type, $name)->result() as $search) { ?>
+				<?php foreach($this->addon_model->searchAddons($type,$name)->result() as $search) { ?>
 
 					<tr>
 				 <td><a href="view.php?id=<?= $search->id ?>"><?= $search->addon_name ?></a></td>
@@ -57,9 +61,8 @@ $type = array(
 			 </tr>
 
 			 <?php } ?>
-
 					<?php endif; ?>
-	<?php elseif($_GET['type'] == 'wod'): ?>
+	<?php elseif(isset($_GET['type']) && $_GET['type'] == 'wod'): ?>
 			<div class="search-box">
 				<form method="GET">
 					<input type="hidden" name="type" value="wod" />
@@ -78,10 +81,32 @@ $type = array(
 					<?php if(!isset($_GET['name'])): ?>
 
 					<?php else: ?>
+												<?php
+												$type = $_GET['type'];
+												$name = $_GET['name'];
+						 						?>
+												<table class="addons-list">
+										<th>Name</th>
+										<th>Version</th>
+										<th>Updated</th>
+										<th>Downloads</th>
+										<th></th>
+
+										<?php foreach($this->addon_model->searchAddons($type,$name)->result() as $search) { ?>
+
+											<tr>
+										 <td><a href="view.php?id=<?= $search->id ?>"><?= $search->addon_name ?></a></td>
+										 <td><?= $search->addon_version ?></td>
+										 <td><?= $search->updated ?></td>
+										 <td><?= $search->downloads ?></td>
+										 <td><a href="download.php?id=<?= $search->id ?>" class="small button">DOWNLOAD</a></td>
+									 </tr>
+
+									 <?php } ?>
 
 					<?php endif; ?>
 
-		<?php elseif($_GET['type'] == 'mop'): ?>
+		<?php elseif(isset($_GET['type']) && $_GET['type']  == 'mop'): ?>
 			<div class="search-box">
 				<form method="GET">
 					<input type="hidden" name="type" value="mop" />
@@ -100,9 +125,30 @@ $type = array(
 					<?php if(!isset($_GET['name'])): ?>
 
 					<?php else: ?>
+						<?php
+						$type = $_GET['type'];
+						$name = $_GET['name'];
+						?>
+						<table class="addons-list">
+					<th>Name</th>
+					<th>Version</th>
+					<th>Updated</th>
+					<th>Downloads</th>
+					<th></th>
 
+					<?php foreach($this->addon_model->searchAddons($type,$name)->result() as $search) { ?>
+
+					<tr>
+					<td><a href="view.php?id=<?= $search->id ?>"><?= $search->addon_name ?></a></td>
+					<td><?= $search->addon_version ?></td>
+					<td><?= $search->updated ?></td>
+					<td><?= $search->downloads ?></td>
+					<td><a href="download.php?id=<?= $search->id ?>" class="small button">DOWNLOAD</a></td>
+					</tr>
+
+					<?php } ?>
 					<?php endif; ?>
-		<?php elseif($_GET['type'] == 'cata'): ?>
+		<?php elseif(isset($_GET['type']) && $_GET['type'] == 'cata'): ?>
 			<div class="search-box">
 				<form method="GET">
 					<input type="hidden" name="type" value="cata" />
@@ -121,9 +167,30 @@ $type = array(
 					<?php if(!isset($_GET['name'])): ?>
 
 		<?php else: ?>
+			<?php
+			$type = $_GET['type'];
+			$name = $_GET['name'];
+			?>
+			<table class="addons-list">
+		<th>Name</th>
+		<th>Version</th>
+		<th>Updated</th>
+		<th>Downloads</th>
+		<th></th>
 
+		<?php foreach($this->addon_model->searchAddons($type,$name)->result() as $search) { ?>
+
+		<tr>
+		<td><a href="view.php?id=<?= $search->id ?>"><?= $search->addon_name ?></a></td>
+		<td><?= $search->addon_version ?></td>
+		<td><?= $search->updated ?></td>
+		<td><?= $search->downloads ?></td>
+		<td><a href="download.php?id=<?= $search->id ?>" class="small button">DOWNLOAD</a></td>
+		</tr>
+
+		<?php } ?>
 		<?php endif; ?>
-		<?php elseif($_GET['type'] == 'wotlk'): ?>
+		<?php elseif(isset($_GET['type']) && $_GET['type'] == 'wotlk'): ?>
 			<div class="search-box">
 				<form method="GET">
 					<input type="hidden" name="type" value="wotlk" />
@@ -142,9 +209,30 @@ $type = array(
 					<?php if(!isset($_GET['name'])): ?>
 
 					<?php else: ?>
+						<?php
+						$type = $_GET['type'];
+						$name = $_GET['name'];
+						?>
+						<table class="addons-list">
+					<th>Name</th>
+					<th>Version</th>
+					<th>Updated</th>
+					<th>Downloads</th>
+					<th></th>
 
+					<?php foreach($this->addon_model->searchAddons($type,$name)->result() as $search) { ?>
+
+					<tr>
+					<td><a href="view.php?id=<?= $search->id ?>"><?= $search->addon_name ?></a></td>
+					<td><?= $search->addon_version ?></td>
+					<td><?= $search->updated ?></td>
+					<td><?= $search->downloads ?></td>
+					<td><a href="download.php?id=<?= $search->id ?>" class="small button">DOWNLOAD</a></td>
+					</tr>
+
+					<?php } ?>
 					<?php endif; ?>
-		<?php elseif($_GET['type'] == 'tbc'): ?>
+		<?php elseif(isset($_GET['type']) && $_GET['type']  == 'tbc'): ?>
 			<div class="search-box">
 				<form method="GET">
 					<input type="hidden" name="type" value="tbc" />
@@ -163,7 +251,28 @@ $type = array(
 					<?php if(!isset($_GET['name'])): ?>
 
 					<?php else: ?>
+						<?php
+						$type = $_GET['type'];
+						$name = $_GET['name'];
+						?>
+						<table class="addons-list">
+					<th>Name</th>
+					<th>Version</th>
+					<th>Updated</th>
+					<th>Downloads</th>
+					<th></th>
 
+					<?php foreach($this->addon_model->searchAddons($type,$name)->result() as $search) { ?>
+
+					<tr>
+					<td><a href="view.php?id=<?= $search->id ?>"><?= $search->addon_name ?></a></td>
+					<td><?= $search->addon_version ?></td>
+					<td><?= $search->updated ?></td>
+					<td><?= $search->downloads ?></td>
+					<td><a href="download.php?id=<?= $search->id ?>" class="small button">DOWNLOAD</a></td>
+					</tr>
+
+					<?php } ?>
 					<?php endif; ?>
 		<?php else: ?>
 			<div class="search-box">
@@ -184,7 +293,28 @@ $type = array(
 					<?php if(!isset($_GET['name'])): ?>
 
 					<?php else: ?>
+						<?php
+						$type = 1;
+						$name = $_GET['name'];
+						?>
+						<table class="addons-list">
+					<th>Name</th>
+					<th>Version</th>
+					<th>Updated</th>
+					<th>Downloads</th>
+					<th></th>
 
+					<?php foreach($this->addon_model->searchAddons($type,$name)->result() as $search) { ?>
+
+					<tr>
+					<td><a href="view.php?id=<?= $search->id ?>"><?= $search->addon_name ?></a></td>
+					<td><?= $search->addon_version ?></td>
+					<td><?= $search->updated ?></td>
+					<td><?= $search->downloads ?></td>
+					<td><a href="download.php?id=<?= $search->id ?>" class="small button">DOWNLOAD</a></td>
+					</tr>
+
+					<?php } ?>
 					<?php endif; ?>
 		<?php endif; ?>
 	</div>
