@@ -19,7 +19,7 @@ $type = array(
 ?>
 
 	<div class="row">
-	<?php if(isset($_GET['type']) && $_GET['type'] == "legion")?>
+	<?php if(isset($_GET['type']) && $_GET['type'] ==  'legion'):?>
 	<div class="content column small-12 medium-7 large-8">
 			<div class="search-box">
 				<form method="GET">
@@ -61,8 +61,9 @@ $type = array(
 			 </tr>
 
 			 <?php } ?>
+					</table>
 					<?php endif; ?>
-	<?php elseif(isset($_GET['type']) && $_GET['type'] == 'wod'): ?>
+	<?php elseif(isset($_GET['type']) && $_GET['type'] ==  'wod'):?>
 			<div class="search-box">
 				<form method="GET">
 					<input type="hidden" name="type" value="wod" />
@@ -82,7 +83,6 @@ $type = array(
 
 					<?php else: ?>
 												<?php
-												$type = $_GET['type'];
 												$name = $_GET['name'];
 						 						?>
 												<table class="addons-list">
@@ -103,10 +103,10 @@ $type = array(
 									 </tr>
 
 									 <?php } ?>
-
+					</table>
 					<?php endif; ?>
 
-		<?php elseif(isset($_GET['type']) && $_GET['type']  == 'mop'): ?>
+		<?php elseif(isset($_GET['type']) && $_GET['type'] ==  'mop'): ?>
 			<div class="search-box">
 				<form method="GET">
 					<input type="hidden" name="type" value="mop" />
@@ -147,8 +147,10 @@ $type = array(
 					</tr>
 
 					<?php } ?>
+					</table>
 					<?php endif; ?>
-		<?php elseif(isset($_GET['type']) && $_GET['type'] == 'cata'): ?>
+
+		<?php elseif(isset($_GET['type']) && $_GET['type'] ==  'cata'): ?>
 			<div class="search-box">
 				<form method="GET">
 					<input type="hidden" name="type" value="cata" />
@@ -166,31 +168,32 @@ $type = array(
 				<div class="content-box-content column small-12">
 					<?php if(!isset($_GET['name'])): ?>
 
-		<?php else: ?>
-			<?php
-			$type = $_GET['type'];
-			$name = $_GET['name'];
-			?>
-			<table class="addons-list">
-		<th>Name</th>
-		<th>Version</th>
-		<th>Updated</th>
-		<th>Downloads</th>
-		<th></th>
+					<?php else: ?>
+					<?php
+						$type = $_GET['type'];
+					$name = $_GET['name'];
+					?>
+					<table class="addons-list">
+						<th>Name</th>
+						<th>Version</th>
+						<th>Updated</th>
+						<th>Downloads</th>
+						<th></th>
 
 		<?php foreach($this->addon_model->searchAddons($type,$name)->result() as $search) { ?>
 
-		<tr>
-		<td><a href="view.php?id=<?= $search->id ?>"><?= $search->addon_name ?></a></td>
-		<td><?= $search->addon_version ?></td>
-		<td><?= $search->updated ?></td>
-		<td><?= $search->downloads ?></td>
-		<td><a href="download.php?id=<?= $search->id ?>" class="small button">DOWNLOAD</a></td>
-		</tr>
-
+						<tr>
+							<td><a href="view.php?id=<?= $search->id ?>"><?= $search->addon_name ?></a></td>
+							<td><?= $search->addon_version ?></td>
+							<td><?= $search->updated ?></td>
+							<td><?= $search->downloads ?></td>
+							<td><a href="download.php?id=<?= $search->id ?>" class="small button">DOWNLOAD</a></td>
+						</tr>
 		<?php } ?>
-		<?php endif; ?>
-		<?php elseif(isset($_GET['type']) && $_GET['type'] == 'wotlk'): ?>
+					</table>
+					<?php endif; ?>
+
+		<?php elseif(isset($_GET['type']) && $_GET['type'] ==  'wotlk'): ?>
 			<div class="search-box">
 				<form method="GET">
 					<input type="hidden" name="type" value="wotlk" />
@@ -231,8 +234,10 @@ $type = array(
 					</tr>
 
 					<?php } ?>
+					</table>
 					<?php endif; ?>
-		<?php elseif(isset($_GET['type']) && $_GET['type']  == 'tbc'): ?>
+
+		<?php elseif(isset($_GET['type']) && $_GET['type'] ==  'tbc'): ?>
 			<div class="search-box">
 				<form method="GET">
 					<input type="hidden" name="type" value="tbc" />
@@ -273,8 +278,9 @@ $type = array(
 					</tr>
 
 					<?php } ?>
+					</table>
 					<?php endif; ?>
-		<?php else: ?>
+			<?php else: ?>
 			<div class="search-box">
 				<form method="GET">
 					<input type="hidden" name="type" value="vanilla" />
@@ -294,7 +300,7 @@ $type = array(
 
 					<?php else: ?>
 						<?php
-						$type = 1;
+						$type = $_GET['type'];
 						$name = $_GET['name'];
 						?>
 						<table class="addons-list">
@@ -315,8 +321,10 @@ $type = array(
 					</tr>
 
 					<?php } ?>
+					</table>
 					<?php endif; ?>
 		<?php endif; ?>
+
 	</div>
 
 	<div class="content column small-12 medium-5 large-4">

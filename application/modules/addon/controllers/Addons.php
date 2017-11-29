@@ -11,3 +11,6 @@ class Addons extends MX_Controller {
 		$this->load->view('addons');
 		$this->load->view('footer');
 	}
+
+
+}

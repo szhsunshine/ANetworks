@@ -47,3 +47,6 @@ class Addon_model extends CI_Model {
       return $this->db->query("SELECT * FROM addons WHERE expansion = '$type' AND addon_name = '$name' ORDER BY downloads DESC LIMIT 10");
 
   }
+
+
+}
