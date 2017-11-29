@@ -19,7 +19,7 @@ This project consists of creating a HUB for addons and allowing people to create
 
 
 | Name | Url | Version | Supported core versión | Supported DB |
-| ------ | ------ | ------ | ------ |
+| ------ | ------ | ------ | ------ | ------ |
 | Anetwork Database | [Comming Soon] | v0.0.1.x | 0.1.1 | DB TC (WORLD REQUIRED)
 | Anetwork Auth Bnet | [Comming Soon] | v0.0.1.x | 0.1.1  | DB TC (AUTH REQUIRED/ BNET ONLY)
 | Anetwork Auth  | [Comming Soon] | v0.0.1.x | 0.1.1  | DB TC (AUTH REQUIRED)
