@@ -1,7 +1,7 @@
 <div class="row">
 	<div class="footer">
 		<div class="copyright">
-			Copyright &copy; <?php echo date('Y'); ?> <a href="https://privatedb.net/">PrivateDB.net</a> - All rights reserved.
+			Copyright &copy; <?php echo date('Y'); ?> <a href="https://github.com/sayghteight/ANetworks">ANetwork Core</a> - All rights reserved.
 		</div>
 	</div>
 </div>
