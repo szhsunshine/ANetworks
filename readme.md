@@ -12,9 +12,17 @@ This project consists of creating a HUB for addons and allowing people to create
 
 
 
+
 ### Changelog and New Features
 
-You can find a list of all changes for each release in the
+## Modules (ANetwork Support)
+
+
+| Name | Url | Version | Supported core versión | Supported DB |
+| ------ | ------ | ------ | ------ |
+| Anetwork Database | [Comming Soon] | v0.0.1.x | 0.1.1 | DB TC (WORLD REQUIRED)
+| Anetwork Auth Bnet | [Comming Soon] | v0.0.1.x | 0.1.1  | DB TC (AUTH REQUIRED/ BNET ONLY)
+| Anetwork Auth  | [Comming Soon] | v0.0.1.x | 0.1.1  | DB TC (AUTH REQUIRED)
 
 ### Components
 
