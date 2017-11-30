@@ -5,9 +5,9 @@
 			<ul class="usercp-bar">
 				<li><a href="settings" class="current-nav"><?= $this->lang->line('my_addons'); ?></a></li>
 				<li><a href="changepass"><?= $this->lang->line('change_pass'); ?></a></li>
-				<?php if($this->config->item('upload_download') == true ){  ?>
+				<?php if($this->config->item('upload_download') == true )  {  ?>
 				<li><a href=""><?= $this->lang->line('upload_addon'); ?></a></li>
-			<? } ?>
+				<?php } ?>
 			</ul>
 		</div>
 	</div>
