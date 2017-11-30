@@ -36,7 +36,7 @@
 						<li><a href="<?= base_url();  ?>addons/addons?type=tbc" class="current-sub-nav"> <?= $this->lang->line('exp_tbc'); ?></a></li>
 						<li><a href="<?= base_url();  ?>addons/addons?type=wtlk" class="current-sub-nav"> <?= $this->lang->line('exp_wtlk'); ?></a></li>
 						<li><a href="<?= base_url();  ?>addons/addons?type=cata" class="current-sub-nav"> <?= $this->lang->line('exp_cata'); ?></a></li>
-						<li><a href="<?= base_url();  ?>addons/addons??type=mop" class="current-sub-nav"> <?= $this->lang->line('exp_mop'); ?></a></li>
+						<li><a href="<?= base_url();  ?>addons/addons?type=mop" class="current-sub-nav"> <?= $this->lang->line('exp_mop'); ?></a></li>
 						<li><a href="<?= base_url();  ?>addons/addons?type=wod" class="current-sub-nav"> <?= $this->lang->line('exp_wod'); ?></a></li>
 						<li><a href="<?= base_url();  ?>addons/addons?type=legion" class="current-sub-nav"> <?= $this->lang->line('exp_legion'); ?></a></li>
 

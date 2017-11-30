@@ -21,6 +21,20 @@
 <script type="text/javascript" src="<?= base_url(); ?>assets/js/vendor/foundation.js"></script>
 <script type="text/javascript" src="<?= base_url(); ?>assets/js/app.js"></script>
 <script type="text/javascript" src='https://www.google.com/recaptcha/api.js'></script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/discord-widget/latest/discord-widget.min.js"></script>
+<script type="text/javascript">
+discordWidget.init({
+  serverId: '372951220270268420', // Your id
+  title: 'ProjectCMS Discord',
+  join: true,
+  alphabetical: false,
+  theme: 'dark',
+  showAllUsers: true,
+  allUsersDefaultState: true,
+  showNick: false
+});
+discordWidget.render();
+</script>
 <script type="text/javascript">
 	function nameq()
 	{
@@ -31,5 +45,8 @@
 		});
 	}
 </script>
+
+
+
 </body>
 </html>
