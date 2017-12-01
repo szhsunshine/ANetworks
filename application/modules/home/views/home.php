@@ -1,4 +1,3 @@
-
 <div class="row">
   <div class="content-box column small-12 medium-8">
     <?php foreach($this->home_model->getNews()->result() as $list) { ?>

@@ -24,7 +24,7 @@
 <script type="text/javascript" src="//cdn.jsdelivr.net/discord-widget/latest/discord-widget.min.js"></script>
 <script type="text/javascript">
 discordWidget.init({
-  serverId: '372951220270268420', // Your id
+  serverId: '381298424827478027', // Your id
   title: 'ProjectCMS Discord',
   join: true,
   alphabetical: false,
