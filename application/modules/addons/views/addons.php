@@ -44,7 +44,7 @@ $type = array(
 
 				<div class="content-box-content column small-12">
 					<?php if(!isset($_GET['name'])): ?>
-						<?php foreach($this->addon_model->grabLegion()->result() as $grabLegion) { ?>
+						<?php foreach($this->addon_model->grabExpansion()->result() as $grabLegion) { ?>
 
 											<tr>
 														<td> <?= $grabLegion->addon_name ?></td>
@@ -100,7 +100,7 @@ $type = array(
 
 				<div class="content-box-content column small-12">
 					<?php if(!isset($_GET['name'])): ?>
-						<?php foreach($this->addon_model->grabWod()->result() as $grabWod) { ?>
+						<?php foreach($this->addon_model->grabExpansion()->result() as $grabWod) { ?>
 
 											<tr>
 														<td> <?= $grabWod->addon_name ?></td>
@@ -158,7 +158,7 @@ $type = array(
 
 				<div class="content-box-content column small-12">
 					<?php if(!isset($_GET['name'])): ?>
-						<?php foreach($this->addon_model->grabMop()->result() as $grabMop) { ?>
+						<?php foreach($this->addon_model->grabExpansion($type)->result() as $grabMop) { ?>
 
 											<tr>
 														<td> <?= $grabMop->addon_name ?></td>
@@ -216,7 +216,7 @@ $type = array(
 
 				<div class="content-box-content column small-12">
 					<?php if(!isset($_GET['name'])): ?>
-						<?php foreach($this->addon_model->grabCata()->result() as $grabCata) { ?>
+						<?php foreach($this->addon_model->grabExpansion($type)->result() as $grabCata) { ?>
 
 											<tr>
 														<td> <?= $grabCata->addon_name ?></td>
@@ -275,7 +275,7 @@ $type = array(
 
 				<div class="content-box-content column small-12">
 									<?php if(!isset($_GET['name'])): ?>
-										<?php foreach($this->addon_model->grabTlk()->result() as $grabTlk) { ?>
+										<?php foreach($this->addon_model->grabExpansion($type)->result() as $grabTlk) { ?>
 
 															<tr>
 																		<td> <?= $grabTlk->addon_name ?></td>
@@ -333,7 +333,7 @@ $type = array(
 							<th></th>
 				<div class="content-box-content column small-12">
 					<?php if(!isset($_GET['name'])): ?>
-						<?php foreach($this->addon_model->grabTbc()->result() as $grabTbc) { ?>
+						<?php foreach($this->addon_model->grabExpansion($type)->result() as $grabTbc) { ?>
 				<tr>
 					<td> <?= $grabTbc->addon_name ?></td>
 					<td> <?= $grabTbc->addon_version ?></td>
@@ -386,7 +386,7 @@ $type = array(
 							<th></th>
 				<div class="content-box-content column small-12">
 					<?php if(!isset($_GET['name'])): ?>
-						<?php foreach($this->addon_model->grabClassic()->result() as $grabClassic) { ?>
+						<?php foreach($this->addon_model->grabExpansion($type)->result() as $grabClassic) { ?>
 				<tr>
 					<td> <?= $grabClassic->addon_name ?></td>
 					<td> <?= $grabClassic->addon_version ?></td>
