@@ -49,7 +49,7 @@
 													<td> <?= $myaddons->addon_name ?></td>
 													<td> <?= $myaddons->addon_version ?></td>
 													<td> <?= $expansion[$myaddons->expansion] ?></td>
-													<td> <?= $myaddons->updated ?></td>
+													<td> <?= date('j F Y', $myaddons->updated) ?></td>
 													<td> <?= $myaddons->downloads ?></td>
 													<td> <?= $myaddons->status ?></td>
 
