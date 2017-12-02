@@ -11,7 +11,7 @@
 		7 => 'Legión'
 	);
 
-	$category = array{
+	$category = array(
      1 => 'Action Bars',
      2 => 'Chat & Communication',
      3 => 'Artwork',
@@ -21,7 +21,7 @@
      7 => 'Boss Encounters',
      8 => 'Buffs & Debuffs',
      9 => 'Class',
-     10 => '>Combat',
+     10 => 'Combat',
      11 => 'Guild',
      12 => 'Mail',
      13 => 'Map & Minimap',
@@ -33,7 +33,7 @@
      19 => 'Roleplay',
      20 => 'Tooltip',
      21 => 'Unitframes'
-	};
+	);
 ?>
 
 
