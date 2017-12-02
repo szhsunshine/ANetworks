@@ -56,13 +56,8 @@ $value = $_GET['type'];
 											</tr>
 							<?php } ?>
 					<?php else: ?>
-						<?php
-						$type = $_GET['type'];
-						$name = $_GET['name'];
- 						?>
 
-
-				<?php foreach($this->addon_model->searchAddons($type,$name)->result() as $search) { ?>
+					<?php foreach($this->addon_model->searchAddons($this->addon_model->getExpansion($value))->result() as $search) { ?>
 
 					<tr>
 				 <td><a href="view.php?id=<?= $search->id ?>"><?= $search->addon_name ?></a></td>
@@ -113,11 +108,8 @@ $value = $_GET['type'];
 
 							<?php } ?>
 							<?php else: ?>
-							<?php
-							$name = $_GET['name'];
-						 	?>
 
-										<?php foreach($this->addon_model->searchAddons($type,$name)->result() as $search) { ?>
+					<?php foreach($this->addon_model->searchAddons($this->addon_model->getExpansion($value))->result() as $search) { ?>
 
 									<tr>
 										 <td><a href="view.php?id=<?= $search->id ?>"><?= $search->addon_name ?></a></td>
@@ -171,12 +163,8 @@ $value = $_GET['type'];
 
 							<?php } ?>
 					<?php else: ?>
-						<?php
-						$type = $_GET['type'];
-						$name = $_GET['name'];
-						?>
 
-					<?php foreach($this->addon_model->searchAddons($type,$name)->result() as $search) { ?>
+					<?php foreach($this->addon_model->searchAddons($this->addon_model->getExpansion($value))->result() as $search) { ?>
 
 					<tr>
 					<td><a href="view.php?id=<?= $search->id ?>"><?= $search->addon_name ?></a></td>
@@ -229,12 +217,8 @@ $value = $_GET['type'];
 
 							<?php } ?>
 					<?php else: ?>
-					<?php
-						$type = $_GET['type'];
-					$name = $_GET['name'];
-					?>
 
-		<?php foreach($this->addon_model->searchAddons($type,$name)->result() as $search) { ?>
+					<?php foreach($this->addon_model->searchAddons($this->addon_model->getExpansion($value))->result() as $search) { ?>
 
 						<tr>
 							<td><a href="view.php?id=<?= $search->id ?>"><?= $search->addon_name ?></a></td>
@@ -288,12 +272,8 @@ $value = $_GET['type'];
 
 											<?php } ?>
 					<?php else: ?>
-						<?php
-						$type = $_GET['type'];
-						$name = $_GET['name'];
-						?>
 
-					<?php foreach($this->addon_model->searchAddons($type,$name)->result() as $search) { ?>
+					<?php foreach($this->addon_model->searchAddons($this->addon_model->getExpansion($value))->result() as $search) { ?>
 
 					<tr>
 					<td><a href="view.php?id=<?= $search->id ?>"><?= $search->addon_name ?></a></td>
@@ -344,12 +324,8 @@ $value = $_GET['type'];
 
 							<?php } ?>
 					<?php else: ?>
-						<?php
-						$type = $_GET['type'];
-						$name = $_GET['name'];
-						?>
 
-					<?php foreach($this->addon_model->searchAddons($type,$name)->result() as $search) { ?>
+					<?php foreach($this->addon_model->searchAddons($this->addon_model->getExpansion($value))->result() as $search) { ?>
 
 					<tr>
 					<td><a href="view.php?id=<?= $search->id ?>"><?= $search->addon_name ?></a></td>
@@ -397,12 +373,8 @@ $value = $_GET['type'];
 				</tr>
 							<?php } ?>
 					<?php else: ?>
-						<?php
-						$type = $_GET['type'];
-						$name = $_GET['name'];
-						?>
-					<?php foreach($this->addon_model->searchAddons($type,$name)->result() as $search) { ?>
 
+					<?php foreach($this->addon_model->searchAddons($this->addon_model->getExpansion($value))->result() as $search) { ?>
 					<tr>
 					<td><a href="view.php?id=<?= $search->id ?>"><?= $search->addon_name ?></a></td>
 					<td><?= $search->addon_version ?></td>

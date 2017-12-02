@@ -53,4 +53,11 @@ public function getFileId($id)
 }
 
 
+public function searchAddons($value)
+{
+  $name = $_GET['name'];
+  return $this->db->query("SELECT * FROM addons WHERE addon_name = '$name' and expansion = '$value' ORDER BY downloads DESC LIMIT 10");
+}
+
+
 }
