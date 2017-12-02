@@ -25,6 +25,15 @@ This project consists of creating a HUB for addons and allowing people to create
 | Anetwork Auth  | [Comming Soon] | v0.0.1.x | 0.1.1  | DB TC (AUTH REQUIRED)
 
 
+## Release cycles
+
+| Name | Version | Modules | Url |
+| ------ |  ------ | ------ | ------ |
+| Alpha  | v0.0.1.x | ANetwork CMS and ANetork DB | https://github.com/sayghteight/ANetworks/projects/1
+| Beta |  v0.0.1.3 | Big update ANetwork CMS and ANetwork database  |https://github.com/sayghteight/ANetworks/projects/2
+| Oficial | v0.0.2 | A new era ANetwork CMS  | Comming soon
+
+
 ## Changelog
 
 
