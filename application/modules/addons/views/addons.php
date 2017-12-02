@@ -248,7 +248,7 @@ $value = $_GET['type'];
 
 								</table>
 							</div>
-		<?php elseif(isset($_GET['type']) && $_GET['type'] ==  'wotlk'): ?>
+		<?php elseif(isset($_GET['type']) && $_GET['type'] ==  'wtlk'): ?>
 	<div class="content column small-12 medium-7 large-8">
 			<div class="search-box">
 				<form method="GET">
