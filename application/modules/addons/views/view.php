@@ -10,6 +10,30 @@
 		6 => 'Warlords of Draenor',
 		7 => 'Legión'
 	);
+
+	$category = array{
+     1 => 'Action Bars',
+     2 => 'Chat & Communication',
+     3 => 'Artwork',
+     4 => 'Auction & Economy',
+     5 => 'Audio & Video',
+     6 => 'Bags & Inventory',
+     7 => 'Boss Encounters',
+     8 => 'Buffs & Debuffs',
+     9 => 'Class',
+     10 => '>Combat',
+     11 => 'Guild',
+     12 => 'Mail',
+     13 => 'Map & Minimap',
+     14 => 'Minigames',
+     15 => 'Miscellaneous',
+     16 => 'Professions',
+     17 => 'PvP',
+     18 => 'Quests & Leveling',
+     19 => 'Roleplay',
+     20 => 'Tooltip',
+     21 => 'Unitframes'
+	};
 ?>
 
 
@@ -71,7 +95,7 @@
 
 					<tr>
 						<td>Category</td>
-						<td><?= $addon->category ?></td>
+						<td><?= $category[$addon->category] ?></td>
 					</tr>
 
 					<tr>
