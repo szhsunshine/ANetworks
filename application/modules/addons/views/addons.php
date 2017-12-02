@@ -431,7 +431,7 @@ $value = $_GET['type'];
 				<table class="addons-list">
 					<?php if($_GET['type'] == 'legion'): ?>
 
-            <?php foreach($this->addon_model->mostDownloadedLegion()->result() as $legion) { ?>
+            <?php foreach($this->addon_model->mostDownloaded($this->addon_model->getExpansion($value))->result() as $legion) { ?>
             <tr>
 					     <td><a href="view?id=<?= $legion->id ?>"><?= $legion->addon_name ?></a></td>
 					     <td><?= $legion->downloads ?></td>
@@ -439,43 +439,44 @@ $value = $_GET['type'];
           <?php } ?>
 
 					<?php elseif($_GET['type'] == 'wod'): ?>
-            <?php foreach($this->addon_model->mostDownloadedWod()->result() as $wod) { ?>
+            <?php foreach($this->addon_model->mostDownloaded($this->addon_model->getExpansion($value))->result() as $wod) { ?>
             <tr>
 					     <td><a href="view?id=<?= $wod->id ?>"><?= $wod->addon_name ?></a></td>
 					     <td><?= $wod->downloads ?></td>
 				    </tr>
           <?php } ?>
 					<?php elseif($_GET['type'] == 'mop'): ?>
-            <?php foreach($this->addon_model->mostDownloadedMop()->result() as $mop) { ?>
+            <?php foreach($this->addon_model->mostDownloaded($this->addon_model->getExpansion($value))->result() as $mop) { ?>
             <tr>
 					     <td><a href="view?id=<?= $mop->id ?>"><?= $mop->addon_name ?></a></td>
 					     <td><?= $mop->downloads ?></td>
 				    </tr>
           <?php } ?>
 					<?php elseif($_GET['type'] == 'cata'): ?>
-            <?php foreach($this->addon_model->mostDownloadedCata()->result() as $cata) { ?>
+            <?php foreach($this->addon_model->mostDownloaded($this->addon_model->getExpansion($value))->result() as $cata) { ?>
             <tr>
 					     <td><a href="view?id=<?= $cata->id ?>"><?= $cata->addon_name ?></a></td>
 					     <td><?= $cata->downloads ?></td>
 				    </tr>
           <?php } ?>
 					<?php elseif($_GET['type'] == 'wotlk'): ?>
-            <?php foreach($this->addon_model->mostDownloadedTlk()->result() as $tlk) { ?>
+            <?php foreach($this->addon_model->mostDownloaded($this->addon_model->getExpansion($value))->result() as $tlk) { ?>
             <tr>
 					     <td><a href="view?id=<?= $tlk->id ?>"><?= $tlk->addon_name ?></a></td>
 					     <td><?= $tlk->downloads ?></td>
 				    </tr>
           <?php } ?>
 					<?php elseif($_GET['type'] == 'tbc'): ?>
-            <?php foreach($this->addon_model->mostDownloadedTbc()->result() as $tbc) { ?>
+            <?php foreach($this->addon_model->mostDownloaded($this->addon_model->getExpansion($value))->result() as $tbc) { ?>
             <tr>
 					     <td><a href="view?id=<?= $tbc->id ?>"><?= $tbc->addon_name ?></a></td>
 					     <td><?= $tbc->downloads ?></td>
 				    </tr>
           <?php } ?>
 					<?php else: ?>
-            <?php foreach($this->addon_model->mostDownloadedClassic()->result() as $classic) { ?>
+            <?php foreach($this->addon_model->mostDownloaded($this->addon_model->getExpansion($value))->result() as $classic) { ?>
             <tr>
+
 					     <td><a href="view?id=<?= $classic->id ?>"><?= $classic->addon_name ?></a></td>
 					     <td><?= $classic->downloads ?></td>
 				    </tr>
