@@ -19,3 +19,4 @@ class Addons extends MX_Controller {
 			$this->load->view('view');
 			$this->load->view('footer');
 		}
+}
