@@ -67,6 +67,16 @@ class Addon_model extends CI_Model {
   }
 
 
+public function getInformation($id)
+{
+  return $this->db->query("SELECT * FROM addons WHERE id = '$id' ORDER BY downloads DESC LIMIT 10");
+
+}
+
+public function getFileId($id)
+{
+  return $this->db->query("SELECT * FROM files WHERE id = '$id'");
+}
 
 
 }

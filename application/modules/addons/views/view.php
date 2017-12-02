@@ -1,19 +1,35 @@
+<?php
+
+	$id = $_GET['id'];
+	$expansion = array(
+		1 => 'Classic',
+		2 => 'The Burning Crusader',
+		3 => 'Wrath of the Lich King',
+		4 => 'Cataclysm',
+		5 => 'Mist of Pandaría',
+		6 => 'Warlords of Draenor',
+		7 => 'Legión'
+	);
+?>
+
+
+<?php foreach($this->addon_model->getInformation($id)->result() as $addon) { ?>
 <div class="row">
 	<div class="content column small-12 medium-7 large-8">
 		<div class="content-box column small-12">
 			<div class="content-box-header column small-12">
 				<div class="title-text">
-					
+					<?= $addon->addon_name ?>
 				</div>
 
 				<div class="title-date">
-
+					<?= date('j F Y', $addon->uploaded) ?>
 				</div>
 			</div>
 
 			<div class="content-box-content column small-12">
 				<div class="content-text">
-
+					<?= $addon->addon_description ?>
 				</div>
 			</div>
 		</div>
@@ -29,34 +45,38 @@
 
 			<div class="content-box-content column small-12">
 				<table class="addons-info">
+						<?php foreach($this->addon_model->getFileId($id)->result() as $size) { ?>
 					<tr>
 						<td>Filename</td>
-						<td></td>
+						<td><?= $size->file_name ?></td>
 					</tr>
 
 					<tr>
 						<td>Size</td>
-						<td></td>
+						<td><?= $size->file_size ?></td>
+
 					</tr>
+
+						<?php } ?>
 
 					<tr>
 						<td>Uploader</td>
-						<td></td>
+						<td><?= $addon->addon_uploader ?></td>
 					</tr>
 
 					<tr>
 						<td>Downloads</td>
-						<td></td>
+						<td><?= $addon->downloads ?></td>
 					</tr>
 
 					<tr>
 						<td>Category</td>
-						<td></td>
+						<td><?= $addon->category ?></td>
 					</tr>
 
 					<tr>
 						<td>Expansion</td>
-						<td></td>
+						<td><?= $expansion[$addon->expansion] ?></td>
 					</tr>
 				</table>
 
@@ -69,3 +89,4 @@
 		</div>
 	</div>
 </div>
+<?php } ?>

@@ -52,7 +52,7 @@ $value = $_GET['type'];
 														<td> <?= $grabLegion->addon_version ?></td>
 														<td> <?= $grabLegion->updated ?></td>
 														<td> <?= $grabLegion->downloads ?></td>
-									 				 <td><a href="download.php?id=<?= $grabLegion->id ?>" class="small button">DOWNLOAD</a></td>
+									 				 <td><a href="view?id=<?= $grabLegion->id ?>" class="small button">DOWNLOAD</a></td>
 											</tr>
 							<?php } ?>
 					<?php else: ?>
@@ -69,7 +69,7 @@ $value = $_GET['type'];
 				 <td><?= $search->addon_version ?></td>
 				 <td><?= $search->updated ?></td>
 				 <td><?= $search->downloads ?></td>
-				 <td><a href="download.php?id=<?= $search->id ?>" class="small button">DOWNLOAD</a></td>
+				 <td><a href="view?id=id=<?= $search->id ?>" class="small button">DOWNLOAD</a></td>
 			 </tr>
 
 			 <?php } ?>
@@ -108,7 +108,7 @@ $value = $_GET['type'];
 														<td> <?= $grabWod->addon_version ?></td>
 														<td> <?= $grabWod->updated ?></td>
 														<td> <?= $grabWod->downloads ?></td>
-									 				 <td><a href="download.php?id=<?= $grabWod->id ?>" class="small button">DOWNLOAD</a></td>
+									 				 <td><a href="view?id==<?= $grabWod->id ?>" class="small button">DOWNLOAD</a></td>
 											</tr>
 
 							<?php } ?>
@@ -124,7 +124,7 @@ $value = $_GET['type'];
 										 <td><?= $search->addon_version ?></td>
 										 <td><?= $search->updated ?></td>
 										 <td><?= $search->downloads ?></td>
-										 <td><a href="download.php?id=<?= $search->id ?>" class="small button">DOWNLOAD</a></td>
+										 <td><a href="view?id==<?= $search->id ?>" class="small button">DOWNLOAD</a></td>
 									</tr>
 
 						<?php } ?>
@@ -166,7 +166,7 @@ $value = $_GET['type'];
 														<td> <?= $grabMop->addon_version ?></td>
 														<td> <?= $grabMop->updated ?></td>
 														<td> <?= $grabMop->downloads ?></td>
-									 				 <td><a href="download.php?id=<?= $grabMop->id ?>" class="small button">DOWNLOAD</a></td>
+									 				 <td><a href="view?id==<?= $grabMop->id ?>" class="small button">DOWNLOAD</a></td>
 											</tr>
 
 							<?php } ?>
@@ -183,7 +183,7 @@ $value = $_GET['type'];
 					<td><?= $search->addon_version ?></td>
 					<td><?= $search->updated ?></td>
 					<td><?= $search->downloads ?></td>
-					<td><a href="download.php?id=<?= $search->id ?>" class="small button">DOWNLOAD</a></td>
+					<td><a href="view?id==<?= $search->id ?>" class="small button">DOWNLOAD</a></td>
 					</tr>
 
 					<?php } ?>
@@ -224,7 +224,7 @@ $value = $_GET['type'];
 														<td> <?= $grabCata->addon_version ?></td>
 														<td> <?= $grabCata->updated ?></td>
 														<td> <?= $grabCata->downloads ?></td>
-													 <td><a href="download.php?id=<?= $grabCata->id ?>" class="small button">DOWNLOAD</a></td>
+													 <td><a href="view?id=<?= $grabCata->id ?>" class="small button">DOWNLOAD</a></td>
 											</tr>
 
 							<?php } ?>
@@ -241,7 +241,7 @@ $value = $_GET['type'];
 							<td><?= $search->addon_version ?></td>
 							<td><?= $search->updated ?></td>
 							<td><?= $search->downloads ?></td>
-							<td><a href="download.php?id=<?= $search->id ?>" class="small button">DOWNLOAD</a></td>
+							<td><a href="view?id=<?= $search->id ?>" class="small button">DOWNLOAD</a></td>
 						</tr>
 		<?php } ?>
 					<?php endif; ?>
@@ -283,7 +283,7 @@ $value = $_GET['type'];
 																		<td> <?= $grabTlk->addon_version ?></td>
 																		<td> <?= $grabTlk->updated ?></td>
 																		<td> <?= $grabTlk->downloads ?></td>
-																	 <td><a href="download.php?id=<?= $grabTlk->id ?>" class="small button">DOWNLOAD</a></td>
+																	 <td><a href="view?id=<?= $grabTlk->id ?>" class="small button">DOWNLOAD</a></td>
 																	 </tr>
 
 											<?php } ?>
@@ -300,7 +300,7 @@ $value = $_GET['type'];
 					<td><?= $search->addon_version ?></td>
 					<td><?= $search->updated ?></td>
 					<td><?= $search->downloads ?></td>
-					<td><a href="download.php?id=<?= $search->id ?>" class="small button">DOWNLOAD</a></td>
+					<td><a href="view?id=<?= $search->id ?>" class="small button">DOWNLOAD</a></td>
 					</tr>
 
 					<?php } ?>
@@ -340,7 +340,7 @@ $value = $_GET['type'];
 					<td> <?= $grabTbc->addon_version ?></td>
 					<td> <?= $grabTbc->updated ?></td>
 					<td> <?= $grabTbc->downloads ?></td>
-					<td><a href="download.php?id=<?= $grabTbc->id ?>" class="small button">DOWNLOAD</a></td>
+					<td><a href="view?id=<?= $grabTbc->id ?>" class="small button">DOWNLOAD</a></td>
 
 							<?php } ?>
 					<?php else: ?>
@@ -356,7 +356,7 @@ $value = $_GET['type'];
 					<td><?= $search->addon_version ?></td>
 					<td><?= $search->updated ?></td>
 					<td><?= $search->downloads ?></td>
-					<td><a href="download.php?id=<?= $search->id ?>" class="small button">DOWNLOAD</a></td>
+					<td><a href="view?id=<?= $search->id ?>" class="small button">DOWNLOAD</a></td>
 					</tr>
 
 					<?php } ?>
@@ -393,7 +393,7 @@ $value = $_GET['type'];
 					<td> <?= $grabClassic->addon_version ?></td>
 					<td> <?= $grabClassic->updated ?></td>
 					<td> <?= $grabClassic->downloads ?></td>
-					<td><a href="download.php?id=<?= $grabClassic->id ?>" class="small button">DOWNLOAD</a></td>
+					<td><a href="view?id=<?= $grabClassic->id ?>" class="small button">DOWNLOAD</a></td>
 				</tr>
 							<?php } ?>
 					<?php else: ?>
@@ -408,7 +408,7 @@ $value = $_GET['type'];
 					<td><?= $search->addon_version ?></td>
 					<td><?= $search->updated ?></td>
 					<td><?= $search->downloads ?></td>
-					<td><a href="download.php?id=<?= $search->id ?>" class="small button">DOWNLOAD</a></td>
+					<td><a href="view?id=<?= $search->id ?>" class="small button">DOWNLOAD</a></td>
 					</tr>
 
 					<?php } ?>
@@ -433,7 +433,7 @@ $value = $_GET['type'];
 
             <?php foreach($this->addon_model->mostDownloadedLegion()->result() as $legion) { ?>
             <tr>
-					     <td><a href="view.php?id=<?= $legion->id ?>"><?= $legion->addon_name ?></a></td>
+					     <td><a href="view?id=<?= $legion->id ?>"><?= $legion->addon_name ?></a></td>
 					     <td><?= $legion->downloads ?></td>
 				    </tr>
           <?php } ?>
@@ -441,42 +441,42 @@ $value = $_GET['type'];
 					<?php elseif($_GET['type'] == 'wod'): ?>
             <?php foreach($this->addon_model->mostDownloadedWod()->result() as $wod) { ?>
             <tr>
-					     <td><a href="view.php?id=<?= $wod->id ?>"><?= $wod->addon_name ?></a></td>
+					     <td><a href="view?id=<?= $wod->id ?>"><?= $wod->addon_name ?></a></td>
 					     <td><?= $wod->downloads ?></td>
 				    </tr>
           <?php } ?>
 					<?php elseif($_GET['type'] == 'mop'): ?>
             <?php foreach($this->addon_model->mostDownloadedMop()->result() as $mop) { ?>
             <tr>
-					     <td><a href="view.php?id=<?= $mop->id ?>"><?= $mop->addon_name ?></a></td>
+					     <td><a href="view?id=<?= $mop->id ?>"><?= $mop->addon_name ?></a></td>
 					     <td><?= $mop->downloads ?></td>
 				    </tr>
           <?php } ?>
 					<?php elseif($_GET['type'] == 'cata'): ?>
             <?php foreach($this->addon_model->mostDownloadedCata()->result() as $cata) { ?>
             <tr>
-					     <td><a href="view.php?id=<?= $cata->id ?>"><?= $cata->addon_name ?></a></td>
+					     <td><a href="view?id=<?= $cata->id ?>"><?= $cata->addon_name ?></a></td>
 					     <td><?= $cata->downloads ?></td>
 				    </tr>
           <?php } ?>
 					<?php elseif($_GET['type'] == 'wotlk'): ?>
             <?php foreach($this->addon_model->mostDownloadedTlk()->result() as $tlk) { ?>
             <tr>
-					     <td><a href="view.php?id=<?= $tlk->id ?>"><?= $tlk->addon_name ?></a></td>
+					     <td><a href="view?id=<?= $tlk->id ?>"><?= $tlk->addon_name ?></a></td>
 					     <td><?= $tlk->downloads ?></td>
 				    </tr>
           <?php } ?>
 					<?php elseif($_GET['type'] == 'tbc'): ?>
             <?php foreach($this->addon_model->mostDownloadedTbc()->result() as $tbc) { ?>
             <tr>
-					     <td><a href="view.php?id=<?= $tbc->id ?>"><?= $tbc->addon_name ?></a></td>
+					     <td><a href="view?id=<?= $tbc->id ?>"><?= $tbc->addon_name ?></a></td>
 					     <td><?= $tbc->downloads ?></td>
 				    </tr>
           <?php } ?>
 					<?php else: ?>
             <?php foreach($this->addon_model->mostDownloadedClassic()->result() as $classic) { ?>
             <tr>
-					     <td><a href="view.php?id=<?= $classic->id ?>"><?= $classic->addon_name ?></a></td>
+					     <td><a href="view?id=<?= $classic->id ?>"><?= $classic->addon_name ?></a></td>
 					     <td><?= $classic->downloads ?></td>
 				    </tr>
           <?php } ?>
