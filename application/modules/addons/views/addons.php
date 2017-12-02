@@ -252,7 +252,7 @@ $value = $_GET['type'];
 	<div class="content column small-12 medium-7 large-8">
 			<div class="search-box">
 				<form method="GET">
-					<input type="hidden" name="type" value="wotlk" />
+					<input type="hidden" name="type" value="wtlk" />
 					<input type="text" name="name" autocomplete="OFF" placeholder="Search for addon.." />
 				</form>
 			</div>
@@ -260,7 +260,7 @@ $value = $_GET['type'];
 			<div class="content-box column small-12">
 				<div class="content-box-header column small-12">
 					<div class="title-text">
-						Wrath of the Lich King Addons
+						Wrath of the Lich King
 					</div>
 				</div>
 
