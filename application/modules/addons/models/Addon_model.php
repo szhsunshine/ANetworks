@@ -39,10 +39,34 @@ class Addon_model extends CI_Model {
   }
 
 
-  public function grabExpansion($type)
+  public function getExpansion($value)
   {
-    return $this->db->query("SELECT * FROM addons WHERE expansion = '$type' AND status =2");
+    switch($value)
+    {
+            case 'vanilla': return 1;
+            break;
+            case 'tbc': return 2;
+            break;
+            case 'wtlk': return 3;
+            break;
+            case 'cata': return 4;
+            break;
+            case 'mop': return 5;
+            break;
+            case 'wod': return 6;
+            break;
+            case 'legion': return 7;
+		        break;
+	   }
+
+}
+
+  public function grabExpansion($value)
+  {
+    return $this->db->query("SELECT * FROM addons WHERE expansion = '$value' AND status =2");
   }
+
+
 
 
 }
