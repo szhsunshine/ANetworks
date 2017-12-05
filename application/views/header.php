@@ -1,73 +1,71 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-	<title><?= $this->config->item('name'); ?></title>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<meta name="description" content="World of Warcraft Private Server HUB for Addons, Databases and Developer tools for creating SQL Queries.">
-	<meta name="keywords" content="PrivateDB,Private Server,Addons,Database,wotlk,tbc,vanilla,cata,private addons, private server addons, server addons, wow, world of warcraft, server">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-	<!-- CSS Stylesheets -->
-	<link rel="stylesheet" type="text/css" href="<?= base_url(); ?>assets/css/foundation.css" media="screen" />
-	<link rel="stylesheet" type="text/css" href="<?= base_url(); ?>assets/css/font-awesome.css" media="screen" />
-	<link rel="stylesheet" type="text/css" href="<?= base_url(); ?>assets/css/main.css" media="screen" />
-	<link rel="stylesheet" type="text/css" href="<?= base_url(); ?>assets/css/header.css" media="screen" />
-	<link rel="stylesheet" type="text/css" href="<?= base_url(); ?>assets/css/content.css" media="screen" />
-	<link rel="stylesheet" type="text/css" href="<?= base_url(); ?>assets/css/footer.css" media="screen" />
-	<link rel="stylesheet" type="text/css" href="<?= base_url(); ?>assets/css/fonts.css" media="screen" />
-	<link rel="stylesheet" type="text/css" href="<?= base_url(); ?>assets/css/colors.css" media="screen" />
+  <meta charset="utf-8">
+  <title>ANetwork | Create your own web for addons</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="<?= base_url();  ?>assets/new/bootstrap.css" media="screen">
+  <link rel="stylesheet" href="<?= base_url();  ?>assets/new/usebootstrap.css">
+  <link rel="stylesheet" href="<?= base_url();  ?>assets/new/style.css">
+  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+    <script src="bootstrap/html5shiv.js"></script>
+    <script src="bootstrap/respond.min.js"></script>
+  <![endif]-->
 </head>
 <body>
-
-<div class="top-line">
-	<div class="row">
-		<div class="header column small-12">
-			<div class="header-logo column small-12 medium-2 large-2">
-				<a href="<?= base_url(); ?>">
-					A<span class="yellow bold">Network</span>
-				</a>
+	<div class="navbar navbar-default navbar-fixed-top">
+		<div class="container">
+			<div class="navbar-header">
+				<a href="http://usebootstrap.com/" class="navbar-brand">A<font color="orange">Network</font></a>
+				<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
 			</div>
+			<div class="navbar-collapse collapse" id="navbar-main">
 
-			<div class="header-menu column show-for-large small-12 large-7">
-				<ul class="main-menu dropdown menu" data-dropdown-menu>
-					<li><a href="<?= base_url(); ?>"><?= $this->lang->line('menu_news'); ?></a></li>
-					<li><a href="#"> ADDONS </a>
-						<ul class="menu">
-						<li><a href="<?= base_url();  ?>addons/addons?type=vanilla" class="current-sub-nav"> <?= $this->lang->line('exp_classic'); ?></a></li>
-						<li><a href="<?= base_url();  ?>addons/addons?type=tbc" class="current-sub-nav"> <?= $this->lang->line('exp_tbc'); ?></a></li>
-						<li><a href="<?= base_url();  ?>addons/addons?type=wtlk" class="current-sub-nav"> <?= $this->lang->line('exp_wtlk'); ?></a></li>
-						<li><a href="<?= base_url();  ?>addons/addons?type=cata" class="current-sub-nav"> <?= $this->lang->line('exp_cata'); ?></a></li>
-						<li><a href="<?= base_url();  ?>addons/addons?type=mop" class="current-sub-nav"> <?= $this->lang->line('exp_mop'); ?></a></li>
-						<li><a href="<?= base_url();  ?>addons/addons?type=wod" class="current-sub-nav"> <?= $this->lang->line('exp_wod'); ?></a></li>
-						<li><a href="<?= base_url();  ?>addons/addons?type=legion" class="current-sub-nav"> <?= $this->lang->line('exp_legion'); ?></a></li>
+		<ul class="nav navbar-nav">
 
-						</ul>
-					</li>
-					<li><a href="#"><?= $this->lang->line('menu_database'); ?></a></li>
-					<li><a href="#"><?= $this->lang->line('menu_support'); ?></a></li>
-
+			<li>
+				<a href="<?= base_url();  ?>">Home</a>
+			</li>
+			<li class="dropdown">
+				<a class="dropdown-toggle" data-toggle="dropdown" href="#" id="themes">Addons <span class="caret"></span></a>
+				<ul class="dropdown-menu" aria-labelledby="themes">
+					<li><a href="<?= base_url();  ?>addons/addons?type=vanilla" class="current-sub-nav"> <?= $this->lang->line('exp_classic'); ?></a></li>
+					<li><a href="<?= base_url();  ?>addons/addons?type=tbc" class="current-sub-nav"> <?= $this->lang->line('exp_tbc'); ?></a></li>
+					<li><a href="<?= base_url();  ?>addons/addons?type=wtlk" class="current-sub-nav"> <?= $this->lang->line('exp_wtlk'); ?></a></li>
+					<li><a href="<?= base_url();  ?>addons/addons?type=cata" class="current-sub-nav"> <?= $this->lang->line('exp_cata'); ?></a></li>
+					<li><a href="<?= base_url();  ?>addons/addons?type=mop" class="current-sub-nav"> <?= $this->lang->line('exp_mop'); ?></a></li>
+					<li><a href="<?= base_url();  ?>addons/addons?type=wod" class="current-sub-nav"> <?= $this->lang->line('exp_wod'); ?></a></li>
+					<li><a href="<?= base_url();  ?>addons/addons?type=legion" class="current-sub-nav"> <?= $this->lang->line('exp_legion'); ?></a></li>
 				</ul>
-			</div>
-
-
-			<div class="acc-menu column show-for-large small-12 large-3">
-				<?php if($this->user_model->isLoggedIn()) { ?>
-				<ul class="account-menu2 dropdown menu" data-dropdown-menu>
-						<li><a href=""><?= $this->lang->line('my_account'); ?></a>
-							<ul class="menu">
-								<li><a href="<?= base_url();  ?>user/settings" class="current-sub-nav"; ?><?= $this->lang->line('my_account'); ?></a></li>
-								<li><a href="<?= base_url();  ?>user/logout"><span class="red"><?= $this->lang->line('menu_logout'); ?></span></a></li>
+				</li>
+				<li class="dropdown">
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#" id="themes">Tools <span class="caret"></span></a>
+						<ul class="dropdown-menu" aria-labelledby="themes">
+								<li><a href="#">Database</a></li>
+								<li><a href="#">Calculator talents</a></li>
+								<li><a href="#">Calculator Stats</a></li>
 							</ul>
-						</li>
-					</ul>
-	<?php }else{ ?>
-			<ul class="account-menu">
-				<li><a href="<?= base_url();  ?>user/login" class="current-nav"><?= $this->lang->line('menu_login'); ?></a></li>
-				<li><a href="<?= base_url();  ?>user/register" class="current-nav"><?= $this->lang->line('menu_register'); ?></a></li>
-			</ul>
-<?php } ?>
+				</li>
+				<li>
+						<a href="#">Support</a>
+				</li>
+		</ul>
+
+		<ul class="nav navbar-nav navbar-right">
+				<?php if($this->user_model->isLoggedIn()) { ?>
+					<li><a href="<?= base_url();  ?>user/settings">My Account</a></li>
+					<li><a href="<?= base_url();  ?>user/logout">Logout</a></li>
+				<?php }else{ ?>
+					<li><a href="<?= base_url();  ?>user/login">Login</a></li>
+					<li><a href="<?= base_url();  ?>user/register">Register</a></li>
+				<?php } ?>
+		</ul>
 
 			</div>
-
 		</div>
 	</div>
-</div>

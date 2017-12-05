@@ -1,52 +1,20 @@
-<div class="row">
-	<div class="footer">
-		<div class="copyright">
-			Copyright &copy; <?php echo date('Y'); ?> <a href="https://github.com/sayghteight/ANetworks">ANetwork Core</a> - All rights reserved.
-		</div>
-	</div>
+
+<div class="container">
+
+  <div class="footer">
+
+
+    <p align="center">  Copyright 2017-2018 | Created by Sayghteight (ACWeb user <a href="">Perioner</a>) </p>
+
+  </div>
+
 </div>
 
-<!-- Javascript Files -->
-<script type="text/javascript">
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-  ga('create', 'UA-100691014-1', 'auto');
-  ga('send', 'pageview');
-</script>
-<script type="text/javascript" src="<?= base_url(); ?>assets/js/vendor/jquery.js"></script>
-<script type="text/javascript" src="<?= base_url(); ?>assets/js/vendor/what-input.js"></script>
-<script type="text/javascript" src="<?= base_url(); ?>assets/js/vendor/foundation.js"></script>
-<script type="text/javascript" src="<?= base_url(); ?>assets/js/app.js"></script>
-<script type="text/javascript" src='https://www.google.com/recaptcha/api.js'></script>
-<script type="text/javascript" src="//cdn.jsdelivr.net/discord-widget/latest/discord-widget.min.js"></script>
-<script type="text/javascript">
-discordWidget.init({
-  serverId: '381298424827478027', // Your id
-  title: 'ProjectCMS Discord',
-  join: true,
-  alphabetical: false,
-  theme: 'dark',
-  showAllUsers: true,
-  allUsersDefaultState: true,
-  showNick: false
-});
-discordWidget.render();
-</script>
-<script type="text/javascript">
-	function nameq()
-	{
-		var searchTxt = $("input[name='search']").val();
-
-		$.post("ajax/search.php", {search: searchTxt}, function(output) {
-			$("#output").html(output);
-		});
-	}
-</script>
 
 
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrsity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
 
 </body>
 </html>

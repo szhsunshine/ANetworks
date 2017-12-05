@@ -41,7 +41,11 @@ class User_model extends CI_Model {
                     $data = 'Logged into UserCP';
                     $this->user_model->LogData($page, $data);
 
-                    echo '<div class="callout success">Success, logging in..</div>';
+                    echo '<div class="alert alert-dismissable alert-success">
+                    <button type="button" class="close" data-dismiss="alert">×</button>
+                                        <h4>Login success</h4>
+                                        <p>Connecting ...</a></p>
+                                    </div>';
                     echo '<script>
                             setTimeout(function () {
                             window.location.href = "settings";
@@ -50,12 +54,20 @@ class User_model extends CI_Model {
                 }
                 else
                 {
-                    echo '<div class="callout alert">Wrong username or password!</div>';
+                    echo '<div class="alert alert-dismissable alert-warning">
+                          <button type="button" class="close" data-dismiss="alert">×</button>
+                          <h4>Warning</h4>
+                          <p>Username or password incorrected</a>.</p>
+                        </div>';
                 }
             }
             else
             {
-                echo '<div class="callout alert">Please fill in all fields!</div>';
+                echo '<div class="alert alert-dismissable alert-warning">
+                      <button type="button" class="close" data-dismiss="alert">×</button>
+                      <h4>Warning</h4>
+                      <p>Fill all fields</a>.</p>
+                    </div>';
             }
         }
     }
@@ -90,7 +102,11 @@ class User_model extends CI_Model {
 
                                 $data = $this->db->query("INSERT INTO users (username, email, password, access, registered, ip) VALUES('$username', '$email', '$passecure', '$access', '$time', '$lastip')");
 
-                                echo '<div class="callout success">Success, Redirecting..</div>';
+                                echo '<div class="alert alert-dismissable alert-success">
+                                <button type="button" class="close" data-dismiss="alert">×</button>
+                                                    <h4>Register success</h4>
+                                                    <p>Redirecting ...</a></p>
+                                                </div>';
                                 echo '<script>
                                         setTimeout(function () {
                                         window.location.href = "login";
@@ -99,27 +115,47 @@ class User_model extends CI_Model {
                             }
                             else
                             {
-                                echo '<div class="callout alert">Username or email already in use!</div>';
+                                echo '<div class="alert alert-dismissable alert-warning">
+                                      <button type="button" class="close" data-dismiss="alert">×</button>
+                                      <h4>Warning</h4>
+                                      <p>Username or email already used</a>.</p>
+                                    </div>';
                             }
                         }
                         else
                         {
-                            echo '<div class="callout alert">Passwords dont match!</div>';
+                            echo '<div class="alert alert-dismissable alert-warning">
+                                  <button type="button" class="close" data-dismiss="alert">×</button>
+                                  <h4>Warning</h4>
+                                  <p>Passwords dont match</a>.</p>
+                                </div>';
                         }
                     }
                     else
                     {
-                        echo '<div class="callout alert">Email is not valid!</div>';
+                        echo '<div class="alert alert-dismissable alert-warning">
+                              <button type="button" class="close" data-dismiss="alert">×</button>
+                              <h4>Warning</h4>
+                              <p>Email is not valid</a>.</p>
+                            </div>';
                     }
                 }
                 else
                 {
-                    echo '<div class="callout alert">Username is too long!</div>';
+                    echo '<div class="alert alert-dismissable alert-warning">
+                          <button type="button" class="close" data-dismiss="alert">×</button>
+                          <h4>Warning</h4>
+                          <p>Username is too long</a>.</p>
+                        </div>';
                 }
             }
             else
             {
-                echo '<div class="callout alert">All fields are required!</div>';
+                echo '<div class="alert alert-dismissable alert-warning">
+                      <button type="button" class="close" data-dismiss="alert">×</button>
+                      <h4>Warning</h4>
+                      <p>All fields are required</a>.</p>
+                    </div>';
             }
         }
     }
