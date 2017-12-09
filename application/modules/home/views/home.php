@@ -20,17 +20,27 @@
     <div class="panel panel-info">
 
   <div class="panel-body">
+
+
     <?php foreach($this->home_model->getNews()->result() as $list) { ?>
     <h3><?= $list->news_title ?></h3>
     <p align="right"><small>Created by <cite title="Source Title"><?= $list->news_author ?></cite> at  <?= date('Y-m-d', $list->post_date);?></small></p>
-    <div class="divider"> </div>
-    <p><?= $list->news_content ?> <a href="
-        <?= $list->id ?>">More</a>. </p>
-        <?php } ?>
+    <hr>
+    <p><?= $list->news_content ?> </p>
+
+    <hr>
+    <div class="divider"></div>
+    <div class="row">
+     <div class="col-xs-6">Comments <span class="badge"> <?= $this->home_model->totalComments($list->id) ?></span></div>
+     <div class="col-xs-6"><a href="home/view?id=<?= $list->id ?>">Read more.</a></div>
+    </div>
+    <?php } ?>
+    <br />
+    <br />
             <div class="panel-footer">
               <ul class="pager">
-                  <li><a href="#">Previous</a></li>
-                  <li><a href="#">Next</a></li>
+                <li class="previous disabled"><a href="#">← Older</a></li>
+                <li class="next"><a href="#">Newer →</a></li>
               </ul>
             </div>
     </div>
@@ -39,9 +49,14 @@
 
   <div class="col-md-4">
     <div class="panel panel-default">
-      <div class="panel-heading">Our discord server</div>
+      <div class="panel-heading">Last news</div>
     <div class="panel-body">
-      <iframe src="https://discordapp.com/widget?id=381298424827478027&theme=dark" width="100%" height="500" allowtransparency="true" frameborder="0"></iframe>
+        <?php foreach($this->home_model->getLastnews()->result() as $lastest) { ?>
+          <ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
+            <li><a href="home/view?id=<?= $lastest->id ?>"><?= $lastest->news_title ?> <small>(<?= $lastest->news_author ?>)</small></a></li>
+          </ul>
+        <?php } ?>
+
     </div>
     </div>
   </div>

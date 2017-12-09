@@ -185,7 +185,7 @@ $value = $_GET['type'];
 																								<td> <?= $grabMop->addon_version ?></td>
 																								<td> <?= date('j F Y', $grabMop->updated) ?></td>
 																								<td> <?= $grabMop->downloads ?></td>
-																							 <td><a href="view?id==<?= $grabMop->id ?>" class="btn btn-primary btn-sm">DOWNLOAD</a></td>
+																							 <td><a href="view?id=<?= $grabMop->id ?>" class="btn btn-primary btn-sm">DOWNLOAD</a></td>
 																					</tr>
 																	<?php } ?>
 																	<?php else: ?>
@@ -195,7 +195,7 @@ $value = $_GET['type'];
 																				 <td><?= $search->addon_version ?></td>
 																				 <td><?= date('j F Y', $search->updated) ?></td>
 																				 <td><?= $search->downloads ?></td>
-																				 <td><a href="view?id==<?= $search->id ?>" class="btn btn-primary btn-sm">DOWNLOAD</a></td>
+																				 <td><a href="view?id=<?= $search->id ?>" class="btn btn-primary btn-sm">DOWNLOAD</a></td>
 																			</tr>
 
 																<?php } ?>
@@ -236,7 +236,7 @@ $value = $_GET['type'];
 																						<td> <?= $grabCata->addon_version ?></td>
 																						<td> <?= date('j F Y', $grabCata->updated) ?></td>
 																						<td> <?= $grabCata->downloads ?></td>
-																					 <td><a href="view?id==<?= $grabCata->id ?>" class="btn btn-primary btn-sm">DOWNLOAD</a></td>
+																					 <td><a href="view?id=<?= $grabCata->id ?>" class="btn btn-primary btn-sm">DOWNLOAD</a></td>
 																			</tr>
 															<?php } ?>
 															<?php else: ?>
@@ -246,7 +246,7 @@ $value = $_GET['type'];
 																		 <td><?= $search->addon_version ?></td>
 																		 <td><?= date('j F Y', $search->updated) ?></td>
 																		 <td><?= $search->downloads ?></td>
-																		 <td><a href="view?id==<?= $search->id ?>" class="btn btn-primary btn-sm">DOWNLOAD</a></td>
+																		 <td><a href="view?id=<?= $search->id ?>" class="btn btn-primary btn-sm">DOWNLOAD</a></td>
 																	</tr>
 
 														<?php } ?>
@@ -287,7 +287,7 @@ $value = $_GET['type'];
 																								<td> <?= $grabTlk->addon_version ?></td>
 																								<td> <?= date('j F Y', $grabTlk->updated) ?></td>
 																								<td> <?= $grabTlk->downloads ?></td>
-																							 <td><a href="view?id==<?= $grabTlk->id ?>" class="btn btn-primary btn-sm">DOWNLOAD</a></td>
+																							 <td><a href="view?id=<?= $grabTlk->id ?>" class="btn btn-primary btn-sm">DOWNLOAD</a></td>
 																					</tr>
 																	<?php } ?>
 																	<?php else: ?>
@@ -297,7 +297,7 @@ $value = $_GET['type'];
 																				 <td><?= $search->addon_version ?></td>
 																				 <td><?= date('j F Y', $search->updated) ?></td>
 																				 <td><?= $search->downloads ?></td>
-																				 <td><a href="view?id==<?= $search->id ?>" class="btn btn-primary btn-sm">DOWNLOAD</a></td>
+																				 <td><a href="view?id=<?= $search->id ?>" class="btn btn-primary btn-sm">DOWNLOAD</a></td>
 																			</tr>
 
 																<?php } ?>
@@ -339,7 +339,7 @@ $value = $_GET['type'];
 																<td> <?= $grabTbc->addon_version ?></td>
 																<td> <?= date('j F Y', $grabTbc->updated) ?></td>
 																<td> <?= $grabTbc->downloads ?></td>
-																<td><a href="view?id==<?= $grabTbc->id ?>" class="btn btn-primary btn-sm">DOWNLOAD</a></td>
+																<td><a href="view?id=<?= $grabTbc->id ?>" class="btn btn-primary btn-sm">DOWNLOAD</a></td>
 															</tr>
 														<?php } ?>
 													<?php else: ?>
@@ -349,7 +349,7 @@ $value = $_GET['type'];
 																 <td><?= $search->addon_version ?></td>
 																 <td><?= date('j F Y', $search->updated) ?></td>
 																 <td><?= $search->downloads ?></td>
-																 <td><a href="view?id==<?= $search->id ?>" class="btn btn-primary btn-sm">DOWNLOAD</a></td>
+																 <td><a href="view?id=<?= $search->id ?>" class="btn btn-primary btn-sm">DOWNLOAD</a></td>
 															 </tr>
 														 <?php } ?>
 													 <?php endif; ?>
@@ -390,7 +390,7 @@ $value = $_GET['type'];
 	 																<td> <?= $grabClassic->addon_version ?></td>
 	 																<td> <?= date('j F Y', $grabClassic->updated) ?></td>
 	 																<td> <?= $grabClassic->downloads ?></td>
-	 																<td><a href="view?id==<?= $grabClassic->id ?>" class="btn btn-primary btn-sm">DOWNLOAD</a></td>
+	 																<td><a href="view?id=<?= $grabClassic->id ?>" class="btn btn-primary btn-sm">DOWNLOAD</a></td>
 	 															</tr>
 	 														<?php } ?>
 	 													<?php else: ?>
@@ -400,7 +400,7 @@ $value = $_GET['type'];
 	 																 <td><?= $search->addon_version ?></td>
 	 																 <td><?= date('j F Y', $search->updated) ?></td>
 	 																 <td><?= $search->downloads ?></td>
-	 																 <td><a href="view?id==<?= $search->id ?>" class="btn btn-primary btn-sm">DOWNLOAD</a></td>
+	 																 <td><a href="view?id=<?= $search->id ?>" class="btn btn-primary btn-sm">DOWNLOAD</a></td>
 	 															 </tr>
 	 														 <?php } ?>
 	 													 <?php endif; ?>

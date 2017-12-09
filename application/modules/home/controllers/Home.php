@@ -12,4 +12,14 @@ class Home extends MX_Controller {
         $this->load->view('home');
         $this->load->view('footer');
     }
+
+    public function view()
+    {
+      $this->load->model('user/user_model');
+      $this->load->model('home_model');
+
+      $this->load->view('header');
+      $this->load->view('news');
+      $this->load->view('footer');
+    }
 }
