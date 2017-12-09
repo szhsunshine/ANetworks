@@ -38,7 +38,7 @@ $id = $_GET['id'];
               <?php if ($this->user_model->isLoggedIn()) { ?>
               <form class="form-horizontal"  method="post">
                   <div class="form-group">
-  									<input type="hide" name="id" value="<?= $list->id?>" />
+  									<input type="hidden" name="id" value="<?= $list->id?>" />
                     <label for="textArea" class="col-lg-4 control-label">Your comment</label>
                     <div class="col-lg-6">
                       <textarea class="form-control" rows="3" name="text" id="textArea"></textarea>
