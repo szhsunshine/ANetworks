@@ -17,9 +17,22 @@
 			<?php if(isset($_POST['button_login']))
 				{
 					$username = $_POST['username'];
-					$password = $_POST['password'];
-					$this->user_model->Login($username, $password);
-				} ?>
+          $password = sha1($_POST['password']);
+
+          $id = $this->m_data->getIDAccount($username);
+          if ($id == "0")
+          echo 'error acc';
+          else
+          {
+            if ($password == $this->m_data->getPasswordAccountID($id))
+            {
+              $this->m_data->arraySession($id);
+            }
+            else
+            echo $this->m_data->encryptAccount($username, $password).'<br>';
+            echo $this->m_data->getPasswordAccountID($id);
+          }
+        } ?>
           <div class="panel-body">
             <form class="form-horizontal" method="post">
               <fieldset>

@@ -48,9 +48,6 @@ class Home_model extends CI_Model {
               $time = time();
 
               $this->db->query("INSERT INTO news_comments (id_new, Nick, date, comment) VALUES('$id', '$username', '$time', '$content')");
-
-          }else {
-            # code...
           }
 
     }

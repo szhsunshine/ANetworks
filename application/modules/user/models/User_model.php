@@ -17,61 +17,6 @@ class User_model extends CI_Model {
         $this->db->query("INSERT INTO logs (username, page, data, user_agent, ip, time) VALUES('$username', '$page', '$data', '$user_agent', '$ip_address', '$time')");
     }
 
-    public function Login($username, $password)
-    {
-        if (isset($_POST['button_login']))
-        {
-            if (!empty($_POST['username']) && !empty($_POST['password']))
-            {
-                $username = $_POST['username'];
-                $password = sha1($_POST['password']);
-
-                $data = $this->db->query("SELECT * FROM users WHERE username = '$username' AND password = '$password'")->num_rows();
-
-                if ($data == 1)
-                {
-                    $last_login = time();
-
-                    $this->db->query("UPDATE users SET last_login = '$last_login' WHERE username = '$username'");
-
-                    $_SESSION['username'] = $username;
-                    $_SESSION['password'] = $password;
-
-                    $page = 'Login UserCP';
-                    $data = 'Logged into UserCP';
-                    $this->user_model->LogData($page, $data);
-
-                    echo '<div class="alert alert-dismissable alert-success">
-                    <button type="button" class="close" data-dismiss="alert">×</button>
-                                        <h4>Login success</h4>
-                                        <p>Connecting ...</a></p>
-                                    </div>';
-                    echo '<script>
-                            setTimeout(function () {
-                            window.location.href = "settings";
-                            }, 3000);
-                        </script>';
-                }
-                else
-                {
-                    echo '<div class="alert alert-dismissable alert-warning">
-                          <button type="button" class="close" data-dismiss="alert">×</button>
-                          <h4>Warning</h4>
-                          <p>Username or password incorrected</a>.</p>
-                        </div>';
-                }
-            }
-            else
-            {
-                echo '<div class="alert alert-dismissable alert-warning">
-                      <button type="button" class="close" data-dismiss="alert">×</button>
-                      <h4>Warning</h4>
-                      <p>Fill all fields</a>.</p>
-                    </div>';
-            }
-        }
-    }
-
     public function Register()
     {
         if (isset($_POST['register']))
@@ -168,7 +113,7 @@ class User_model extends CI_Model {
 
     public function isLoggedIn()
     {
-        if ($this->session->userdata('username'))
+        if ($this->session->userdata('ac_sess_username'))
             return true;
         else
             return false;
