@@ -69,15 +69,6 @@ class User extends MX_Controller {
         $this->load->view('footer');
     }
 
-    public function uploadAddon()
-    {
-        $this->load->model('user_model');
 
-        if (!$this->user_model->isLoggedIn())
-            redirect(base_url(),'refresh');
 
-        $this->load->view('header');
-        $this->load->view('upload');
-        $this->load->view('footer');
-    }
 }

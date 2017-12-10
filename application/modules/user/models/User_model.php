@@ -17,6 +17,8 @@ class User_model extends CI_Model {
         $this->db->query("INSERT INTO logs (username, page, data, user_agent, ip, time) VALUES('$username', '$page', '$data', '$user_agent', '$ip_address', '$time')");
     }
 
+
+
     public function Register()
     {
         if (isset($_POST['register']))
@@ -119,45 +121,35 @@ class User_model extends CI_Model {
             return false;
     }
 
-    public function getAddons()
+    public function getAddons($username)
     {
-        $username = $_SESSION['username'];
         return $this->db->query("SELECT * FROM addons WHERE addon_uploader = '$username' AND status != 3");
     }
 
-    public function getAccinfo()
-    {
-        $username = $_SESSION['username'];
-        return $this->db->query("SELECT * FROM users WHERE username = '$username'");
-    }
 
-    public function getAccAddons()
+
+    public function getAccAddons($username)
     {
-        $username = $_SESSION['username'];
         return $this->db->query("SELECT addon_uploader FROM addons WHERE addon_uploader = '$username'")->num_rows();
     }
 
-    public function acceptedAddon()
+    public function acceptedAddon($username)
     {
-        $username = $_SESSION['username'];
         return $this->db->query("SELECT status FROM addons WHERE addon_uploader = '$username' AND status = 2")->num_rows();
     }
 
-    public function declinedAddon()
+    public function declinedAddon($username)
     {
-        $username = $_SESSION['username'];
         return $this->db->query("SELECT status FROM addons WHERE addon_uploader = '$username' AND status = 1")->num_rows();
     }
 
-    public function pendingAddon()
+    public function pendingAddon($username)
     {
-        $username = $_SESSION['username'];
         return $this->db->query("SELECT status FROM addons WHERE addon_uploader = '$username' AND status = 0")->num_rows();
     }
 
-    public function delAddon()
+    public function delAddon($username)
     {
-        $username = $_SESSION['username'];
         return $this->db->query("SELECT status FROM addons WHERE addon_uploader = '$username' AND status = 3")->num_rows();
     }
 
@@ -244,4 +236,7 @@ class User_model extends CI_Model {
                 </script>';
         }
     }
+
+
+
 }
