@@ -36,13 +36,12 @@ class Home_model extends CI_Model {
       return $this->db->query("SELECT * FROM news_comments WHERE id_new = '$id' ORDER BY date DESC LIMIT 10");
     }
 
-    public function newComment()
+    public function newComment($username)
     {
       if (isset($_POST['button_send']))
       {
           if (!empty($_POST['text']))
           {
-              $username   = $_SESSION['username'];
               $content = $_POST['text'];
               $id = $_POST['id'];
               $time = time();

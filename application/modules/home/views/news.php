@@ -30,10 +30,9 @@ $id = $_GET['id'];
             <div class="panel-footer">
         			<?php if(isset($_POST['button_send']))
         				{
-        					$username = $_SESSION['username'];
         					$content = $_POST['text'];
                   $id = $_POST['id'];
-                  $this->home_model->newComment();
+                  $this->home_model->newComment($this->session->userdata('ac_sess_username'));
         				} ?>
               <?php if ($this->user_model->isLoggedIn()) { ?>
               <form class="form-horizontal"  method="post">
