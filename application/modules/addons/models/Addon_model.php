@@ -38,33 +38,33 @@ class Addon_model extends CI_Model {
 
     public function grabExpansion($value)
     {
-        return $this->db->query("SELECT * FROM addons WHERE expansion = '$value' AND status =2");
+        return $this->db->query("SELECT * FROM ac_addons WHERE expansion = '$value' AND status =2");
     }
 
     public function mostDownloaded($value)
     {
-        return $this->db->query("SELECT * FROM addons WHERE expansion = '$value' AND status =2 ORDER BY downloads DESC LIMIT 10");
+        return $this->db->query("SELECT * FROM ac_addons WHERE expansion = '$value' AND status =2 ORDER BY downloads DESC LIMIT 10");
     }
 
     public function getInformation($id)
     {
-        return $this->db->query("SELECT * FROM addons WHERE id = '$id' ORDER BY downloads DESC LIMIT 10");
+        return $this->db->query("SELECT * FROM ac_addons WHERE id = '$id' ORDER BY downloads DESC LIMIT 10");
     }
 
     public function getFileId($id)
     {
-        return $this->db->query("SELECT * FROM files WHERE id = '$id'");
+        return $this->db->query("SELECT * FROM ac_files WHERE id = '$id'");
     }
 
     public function searchAddons($value)
     {
         $name = $_GET['name'];
-        return $this->db->query("SELECT * FROM addons WHERE addon_name = '$name' and expansion = '$value' ORDER BY downloads DESC LIMIT 10");
+        return $this->db->query("SELECT * FROM ac_addons WHERE addon_name = '$name' and expansion = '$value' ORDER BY downloads DESC LIMIT 10");
     }
 
 
     public function addEditor($id)
     {
-      
+
     }
 }

@@ -4,12 +4,12 @@ class M_data extends CI_Model {
 
   public function getUsernameID($id)
   {
-    return $this->db->query("SELECT username FROM users WHERE id = '".$id."'")->row_array()['username'];
+    return $this->db->query("SELECT username FROM ac_users WHERE id = '".$id."'")->row_array()['username'];
   }
 
   public function getEmailID($id)
   {
-    return $this->db->query("SELECT email FROM users WHERE id = '".$id."'")->row_array()['email'];
+    return $this->db->query("SELECT email FROM ac_users WHERE id = '".$id."'")->row_array()['email'];
   }
 
   public function getPermission($id)
@@ -27,7 +27,7 @@ class M_data extends CI_Model {
   public function getIDAccount()
   {
     $account = $_POST['username'];
-    $qq = $this->db->query("SELECT id FROM users WHERE username = '".$account."'");
+    $qq = $this->db->query("SELECT id FROM ac_users WHERE username = '".$account."'");
     $query = $qq->row();
     if ($qq->num_rows() > 0)
         return $query->id;
@@ -50,7 +50,7 @@ class M_data extends CI_Model {
 
   public function getPasswordAccountID($id)
   {
-    $qq = $this->db->query("SELECT password FROM users WHERE id = '".$id."'")->row();
+    $qq = $this->db->query("SELECT password FROM ac_users WHERE id = '".$id."'")->row();
     return $qq->password;
   }
 

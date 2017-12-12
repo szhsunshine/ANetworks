@@ -18,7 +18,7 @@
 				{
 					$username = $_POST['username'];
           $password = sha1($_POST['password']);
-          
+
           $id = $this->m_data->getIDAccount($username);
           if ($id == "0")
           echo 'error acc';
@@ -29,8 +29,7 @@
               $this->m_data->arraySession($id);
             }
             else
-            echo $this->m_data->encryptAccount($username, $password).'<br>';
-            echo $this->m_data->getPasswordAccountID($id);
+            echo 'Error pass';
           }
         } ?>
           <div class="panel-body">

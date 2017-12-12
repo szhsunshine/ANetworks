@@ -59,6 +59,18 @@
 
     </div>
     </div>
+
+    <div class="panel panel-default">
+      <div class="panel-heading">Last news</div>
+    <div class="panel-body">
+        <?php foreach($this->home_model->getLastnews()->result() as $lastest) { ?>
+          <ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
+            <li><a href="home/view?id=<?= $lastest->id ?>"><?= $lastest->news_title ?> <small>(<?= $lastest->news_author ?>)</small></a></li>
+          </ul>
+        <?php } ?>
+
+    </div>
+    </div>
   </div>
 
 </div>

@@ -14,7 +14,7 @@ class User_model extends CI_Model {
         $user_agent = $_SERVER['HTTP_USER_AGENT'];
         $ip_address = $_SERVER['REMOTE_ADDR'];
         $time = time();
-        $this->db->query("INSERT INTO logs (username, page, data, user_agent, ip, time) VALUES('$username', '$page', '$data', '$user_agent', '$ip_address', '$time')");
+        $this->db->query("INSERT INTO ac_logs (username, page, data, user_agent, ip, time) VALUES('$username', '$page', '$data', '$user_agent', '$ip_address', '$time')");
     }
 
 
@@ -39,7 +39,7 @@ class User_model extends CI_Model {
                     {
                         if ($password == $repassword)
                         {
-                            $data = $this->db->query("SELECT * FROM users WHERE username = '$username' OR email = '$email'")->num_rows();
+                            $data = $this->db->query("SELECT * FROM ac_users WHERE username = '$username' OR email = '$email'")->num_rows();
 
                             if ($data == 0)
                             {
@@ -47,7 +47,7 @@ class User_model extends CI_Model {
                                 $time = time();
                                 $access = 0;
 
-                                $data1 = $this->db->query("INSERT INTO users (username, email, password, registered, ip) VALUES('$username', '$email', '$passecure', '$time', '$lastip')");
+                                $data1 = $this->db->query("INSERT INTO ac_users (username, email, password, registered, ip) VALUES('$username', '$email', '$passecure', '$time', '$lastip')");
 
                                if ($data1 == true)
                                {
@@ -140,34 +140,34 @@ class User_model extends CI_Model {
 
     public function getAddons($username)
     {
-        return $this->db->query("SELECT * FROM addons WHERE addon_uploader = '$username' AND status != 3");
+        return $this->db->query("SELECT * FROM ac_addons WHERE addon_uploader = '$username' AND status != 3");
     }
 
 
 
     public function getAccAddons($username)
     {
-        return $this->db->query("SELECT addon_uploader FROM addons WHERE addon_uploader = '$username'")->num_rows();
+        return $this->db->query("SELECT addon_uploader FROM ac_addons WHERE addon_uploader = '$username'")->num_rows();
     }
 
     public function acceptedAddon($username)
     {
-        return $this->db->query("SELECT status FROM addons WHERE addon_uploader = '$username' AND status = 2")->num_rows();
+        return $this->db->query("SELECT status FROM ac_addons WHERE addon_uploader = '$username' AND status = 2")->num_rows();
     }
 
     public function declinedAddon($username)
     {
-        return $this->db->query("SELECT status FROM addons WHERE addon_uploader = '$username' AND status = 1")->num_rows();
+        return $this->db->query("SELECT status FROM ac_addons WHERE addon_uploader = '$username' AND status = 1")->num_rows();
     }
 
     public function pendingAddon($username)
     {
-        return $this->db->query("SELECT status FROM addons WHERE addon_uploader = '$username' AND status = 0")->num_rows();
+        return $this->db->query("SELECT status FROM ac_addons WHERE addon_uploader = '$username' AND status = 0")->num_rows();
     }
 
     public function delAddon($username)
     {
-        return $this->db->query("SELECT status FROM addons WHERE addon_uploader = '$username' AND status = 3")->num_rows();
+        return $this->db->query("SELECT status FROM ac_addons WHERE addon_uploader = '$username' AND status = 3")->num_rows();
     }
 
     public function deleteAddon($id, $username)
@@ -179,11 +179,11 @@ class User_model extends CI_Model {
                 $id = $_POST['id'];
                 $username = $this->session->userdata('ac_sess_username');
 
-                $data = $this->db->query("SELECT * FROM addons WHERE id = '$id' AND addon_uploader = '$username'")->num_rows();
+                $data = $this->db->query("SELECT * FROM ac_addons WHERE id = '$id' AND addon_uploader = '$username'")->num_rows();
 
                 if ($data == 1)
                 {
-                    $this->db->query("UPDATE addons SET status = 3 WHERE id = '$id' AND addon_uploader = '$username'");
+                    $this->db->query("UPDATE ac_addons SET status = 3 WHERE id = '$id' AND addon_uploader = '$username'");
 
                     $page = 'UCP | Addon deleted';
                     $data = 'Status set 3';
@@ -221,7 +221,7 @@ class User_model extends CI_Model {
         $repassword = $_POST['repass'];
         $oldpassecure = sha1($oldpassword);
 
-        $change = $this->db->query("SELECT * FROM users WHERE username = '$username' AND password = '$oldpassecure'")->num_rows();
+        $change = $this->db->query("SELECT * FROM ac_users WHERE username = '$username' AND password = '$oldpassecure'")->num_rows();
 
         if ($change == 1)
         {
@@ -229,7 +229,7 @@ class User_model extends CI_Model {
             {
                 $pasecure = sha1($password);
 
-                $this->db->query("UPDATE users SET password = '$pasecure' WHERE username = '$username'");
+                $this->db->query("UPDATE ac_users SET password = '$pasecure' WHERE username = '$username'");
 
                 echo "<div class='callout success'>The password has been changed</div>";
                 echo '<script>
