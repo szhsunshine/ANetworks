@@ -16,6 +16,7 @@ $config['addon_search_results'] = 10;
 $config['usercp_addon_results'] = 10;
 
 
+
 /*
 |--------------------------------------------------------------------------
 | Base Site URL

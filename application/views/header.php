@@ -13,7 +13,7 @@
     <script src="bootstrap/respond.min.js"></script>
   <![endif]-->
 </head>
-<body>
+<body class="bfa">
 	<div class="navbar navbar-default navbar-fixed-top">
 		<div class="container">
 			<div class="navbar-header">

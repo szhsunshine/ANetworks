@@ -47,7 +47,11 @@ class User_model extends CI_Model {
                                 $time = time();
                                 $access = 0;
 
-                                $data = $this->db->query("INSERT INTO users (username, email, password, access, registered, ip) VALUES('$username', '$email', '$passecure', '$access', '$time', '$lastip')");
+                                $data1 = $this->db->query("INSERT INTO users (username, email, password, registered, ip) VALUES('$username', '$email', '$passecure', '$time', '$lastip')");
+
+                               if ($data1 == true)
+                               {
+                                 $data2 = $this->db->query("INSERT INTO ac_ranks (username, permission) VALUES ('$username', 1)");
 
                                 echo '<div class="alert alert-dismissable alert-success">
                                 <button type="button" class="close" data-dismiss="alert">×</button>
@@ -59,6 +63,19 @@ class User_model extends CI_Model {
                                         window.location.href = "login";
                                         }, 3000);
                                     </script>';
+                                } else {
+
+                                   echo '<div class="alert alert-dismissable alert-success">
+                                   <button type="button" class="close" data-dismiss="alert">×</button>
+                                                       <h4>Error generating permission</h4>
+                                                       <p>Redirecting ...</a></p>
+                                                   </div>';
+                                  echo '<script>
+                                  setTimeout(function () {
+                                    window.location.href = "login";
+                                  }, 3000);
+                                  </script>';
+                                }
                             }
                             else
                             {
@@ -160,7 +177,7 @@ class User_model extends CI_Model {
             if (!empty($_POST['id']))
             {
                 $id = $_POST['id'];
-                $username = $_SESSION['username'];
+                $username = $this->session->userdata('ac_sess_username');
 
                 $data = $this->db->query("SELECT * FROM addons WHERE id = '$id' AND addon_uploader = '$username'")->num_rows();
 
@@ -196,9 +213,9 @@ class User_model extends CI_Model {
         }
     }
 
-    public function changepass($username, $oldpassword, $password, $repassword)
+    public function changepass($oldpassword, $password, $repassword)
     {
-        $username = $_SESSION['username'];
+        $username = $this->session->userdata('ac_sess_username');
         $oldpassword = $_POST['oldpassword'];
         $password = $_POST['newpassword'];
         $repassword = $_POST['repass'];

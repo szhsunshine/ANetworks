@@ -15,19 +15,19 @@
 	<div class="panel panel-info">
 
 
-      <div class="panel-heading">Your account info</div>
+    <div class="panel-heading">Your account info</div>
 		<table class="table table-striped table-hover ">
 		  <thead>
 		    <tr>
 		      <th><i class="fa fa-user" aria-hidden="true"></i> Nombre de usuario</th>
 		      <th><p class="text-primary"><?= $this->m_data->getUsernameID($this->session->userdata('ac_sess_id')); ?></p></th>
-					<?php foreach($this->m_data->getRankinfo()->result() as $myacc) {  ?>
 			    <th><i class="fa fa-wrench" aria-hidden="true"></i> Rango de cuenta</th>
+          <?php foreach($this->m_data->getRankinfo()->result() as $myacc) {  ?>
 					<?php $rank = array(
-														0 => '<span style="color: #1abc9c;">Leecher</span>',
-														1 => '<p class="text-success">Uploader</span>',
-														2 => '<p class="text-Primary">Moderator</span>',
-														3 => '<p class="text-Danger">Administrator</span>'
+														0 => '<p class="text-success">Leecher</p>',
+														1 => '<p class="text-success">Uploader</p>',
+														2 => '<p class="text-primary">Moderator</p>',
+														3 => '<p class="text-danger">Administrator</p>'
 										); ?>
                     <th> <?= $rank[$myacc->permission ] ?> </th>
 					<?php } ?>
@@ -37,7 +37,7 @@
 		    <tr>
 		      <td> <i class="fa fa-envelope-o" aria-hidden="true"></i> E-Mail</td>
 		      <td><?= $this->m_data->getEmailID($this->session->userdata('ac_sess_id')); ?></td>
-			      <td>Estado</td>
+			      <td><i class="fa fa-shield" aria-hidden="true"></i> Estado</td>
 			      <td>Active</td>
 		    </tr>
 		  </tbody>
@@ -45,16 +45,78 @@
 
 </div>
 
+	<div class="panel panel-info">
 
-<div class="panel panel-info">
+
+    <div class="panel-heading">Your addons</div>
+    <ul class="nav nav-pills">
+      <li class="active"><a href="settings">My addons</a></li>
+      <li><a href="changepassword">Change Password</a></li>
+      <li class="disabled"><a href="#">Upload new Addon</a></li>
+    </ul>
+
+<br />
+
+    <table class="table table-striped table-hover ">
+      <thead>
+        <tr>
+          <tr>
+            <th><?= $this->lang->line('tab_name'); ?></th>
+            <th><?= $this->lang->line('tab_version'); ?></th>
+            <th><?= $this->lang->line('tab_expansion'); ?></th>
+            <th><?= $this->lang->line('tab_updated'); ?></th>
+            <th><?= $this->lang->line('tab_downloads'); ?></th>
+            <th><?= $this->lang->line('tab_status'); ?></th>
+          </tr>
+        </tr>
+      </thead>
+      <tbody>
+
+
+<?php foreach($this->user_model->getAddons($this->session->userdata('ac_sess_username'))->result() as $myaddons) { ?>
+  <?php
+  $expansion = array(
+    1 => 'Classic',
+    2 => 'The Burning Crusader',
+    3 => 'Wrath of the Lich King',
+    4 => 'Cataclysm',
+    5 => 'Mist of Pandaría',
+    6 => 'Warlords of Draenor',
+    7 => 'Legión'
+  );
+  ?>
+        <tr>
+          <td> <?= $myaddons->addon_name ?></td>
+          <td> <?= $myaddons->addon_version ?></td>
+          <td> <?= $expansion[$myaddons->expansion] ?></td>
+          <td> <?= date('j F Y', $myaddons->updated) ?></td>
+          <td> <?= $myaddons->downloads ?></td>
+          <td> <?= $myaddons->status ?></td>
+
+              <td><button class="btn btn-default" type="submit" name="delete"><i class="fa fa-pencil yellow" aria-hidden="true"></i></button></td>
+
+              <form method="post" action="">
+                  <input type="hidden" name="id" value="<?= $myaddons->id ?>" />
+                  <td> <button class="btn btn-default" type="submit" name="delete"><i class="fa fa-trash-o" aria-hidden="true"></i></button></td>
+              </form>
+
+              						<?php } ?>
+
+              						<?php if(isset($_POST['delete']))
+              			        {
+                      			$id = $_POST['id'];
+                            $username = $this->session->userdata('ac_sess_username');
+              			        $this->user_model->deleteAddon($id, $username);
+              			        } ?>
+        </tr>
+      </tbody>
+    </table>
 
 
 
 </div>
 
-
-
-</div>
+</div> <!-- End col-md-8 -->
 
 <div class="col-md-4">
 	<div class="panel panel-info">
@@ -92,5 +154,7 @@
 </div>
 
 
+
+</div> <!-- End col-md-8 -->
 
 </div>

@@ -7,12 +7,24 @@ class M_data extends CI_Model {
     return $this->db->query("SELECT username FROM users WHERE id = '".$id."'")->row_array()['username'];
   }
 
-  public function getPermission($id)
+  public function getEmailID($id)
   {
-  return $this->db->query("SELECT permission FROM ac_ranks WHERE id = '".$id."'")->row_array()['permission'];
+    return $this->db->query("SELECT email FROM users WHERE id = '".$id."'")->row_array()['email'];
   }
 
-  public function getIDAccount($account)
+  public function getPermission($id)
+  {
+      return $this->db->query("SELECT permission FROM ac_ranks WHERE id = '".$id."'")->row_array()['permission'];
+  }
+
+  public function getRankinfo()
+  {
+      $username = $this->session->userdata('ac_sess_username');
+      return $this->db->query("SELECT permission FROM ac_ranks WHERE username = '$username'");
+  }
+
+
+  public function getIDAccount()
   {
     $account = $_POST['username'];
     $qq = $this->db->query("SELECT id FROM users WHERE username = '".$account."'");
@@ -29,7 +41,7 @@ class M_data extends CI_Model {
   $data = array
   (
     'ac_sess_username' => $this->getUsernameID($id),
-    'ac_sess_id'		=> $id,
+    'ac_sess_id'		=> $this->getIDAccount(),
     'ac_sess_rank' => $this->getPermission($id),
     'logged_in' => TRUE
   );
@@ -47,6 +59,7 @@ class M_data extends CI_Model {
     $this->session->set_userdata($data);
     redirect(base_url(),'refresh');
   }
+
 
 
 }

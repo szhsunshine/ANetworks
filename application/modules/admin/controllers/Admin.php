@@ -10,11 +10,13 @@ class Admin extends MX_Controller {
 
         if (!$this->user_model->isLoggedIn())
         redirect(base_url(),'refresh');
-        if ($this->admin_model->isAdmin($this->session->userdata('ac_permisions')) != 1);
-        redirect(base_url(),'refresh');
+
+        if ($this->m_data->getPermission($this->session->userdata('ac_sess_id')) != 1)
+          redirect(base_url(),'refresh');
+
+
         $this->load->view('header_admin');
         $this->load->view('dashboard');
-        $this->load->view('footer_admin');
     }
 
 

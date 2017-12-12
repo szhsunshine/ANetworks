@@ -40,7 +40,7 @@ $id = $_GET['id'];
   									<input type="hidden" name="id" value="<?= $list->id?>" />
                     <label for="textArea" class="col-lg-4 control-label">Your comment</label>
                     <div class="col-lg-6">
-                      <textarea class="form-control" rows="3" name="text" id="textArea"></textarea>
+                      <textarea class="form-control" rows="3" name="text" id="textArea" required></textarea>
                     </div>
                   </div>
 

@@ -1,132 +1,138 @@
+<div class="container">
+  <div class="page-header" id="banner">
+    <div class="row">
+      <div class="col-lg-6">
+        <h1>Welcome, <?=  $this->session->userdata('ac_sess_username') ?></h1>
+        <p class="lead">This is your personal UCP.</p>
+      </div>
+    </div>
+  </div>
 
-<div class="row">
-  <div class="content-menu column small-12">
-		<div class="content-bar">
-			<ul class="usercp-bar">
-				<li><a href="settings"><?= $this->lang->line('my_addons'); ?></a></li>
-				<li><a href="changepass" class="current-nav"><?= $this->lang->line('change_pass'); ?></a></li>
-				<li><a href=""><?= $this->lang->line('upload_addon'); ?></a></li>
-			</ul>
-		</div>
-	</div>
 
-	<div class="content column small-12 medium-7 large-8">
-		<div class="content-box column small-12">
-			<div class="content-box-header column small-12">
-				<div class="title-text">
-					Change Password
-				</div>
-			</div>
+<div class="col-md-8">
 
-			<div class="content-box-content column small-12">
-				<div class="content-text">
-					<div class="password-change">
-						<form method="POST">
-							<label>Current Password</label>
-							<input type="password" name="oldpassword" />
 
-							<label>New Password</label>
-							<input type="password" name="newpassword" />
+	<div class="panel panel-info">
 
-							<label>Re-Password</label>
-							<input type="password" name="repass" />
 
-							<input type="submit" name="changepass" class="small button" value="Confirm" />
-						</form>
-					</div>
-				</div>
-			</div>
-		</div>
+    <div class="panel-heading">Your account info</div>
+		<table class="table table-striped table-hover ">
+		  <thead>
+		    <tr>
+		      <th><i class="fa fa-user" aria-hidden="true"></i> Nombre de usuario</th>
+		      <th><p class="text-primary"><?= $this->m_data->getUsernameID($this->session->userdata('ac_sess_id')); ?></p></th>
+					<?php foreach($this->m_data->getRankinfo()->result() as $myacc) {  ?>
+			    <th><i class="fa fa-wrench" aria-hidden="true"></i> Rango de cuenta</th>
+					<?php $rank = array(
+														0 => '<span style="color: #1abc9c;">Leecher</span>',
+														1 => '<p class="text-success">Uploader</p>',
+														2 => '<p class="text-primary">Moderator</p>',
+														3 => '<p class="text-danger">Administrator</p>'
+										); ?>
+                    <th> <?= $rank[$myacc->permission ] ?> </th>
+					<?php } ?>
+		    </tr>
+		  </thead>
+		  <tbody>
+		    <tr>
+		      <td> <i class="fa fa-envelope-o" aria-hidden="true"></i> E-Mail</td>
+		      <td><?= $this->m_data->getEmailID($this->session->userdata('ac_sess_id')); ?></td>
+			      <td><i class="fa fa-shield" aria-hidden="true"></i> Estado</td>
+			      <td>Active</td>
+		    </tr>
+		  </tbody>
+		</table>
 
-		<div class="response-full column small-12">
-    <?php if(isset($_POST['changepass']))
-           {
-             $username = $_SESSION['username'];
-             $oldpassword = $_POST['oldpassword'];
-             $password = $_POST['newpassword'];
-             $repassword= $_POST['repass'];
-             $this->user_model->changepass($username, $oldpassword, $password, $repassword);
-           } ?>
-		</div>
-	</div>
+</div>
 
-  <div class="content column small-12 medium-5 large-4">
-		<div class="content-box-sidebar column small-12">
-			<div class="content-box-header column small-12">
-				<div class="title-text">
-					<?= $this->lang->line('acc_info'); ?>
-				</div>
-			</div>
 
-			<div class="content-box-content column small-12">
-				<table class="account-info">
-		<?php foreach($this->user_model->getAccinfo()->result() as $myacc) { ?>
-			<?php $rank = array(
-				0 => '<span style="color: #1abc9c;">Leecher</span>',
-				1 => '<span class="blue">Uploader</span>',
-				2 => '<span class="red">Moderator</span>',
-				3 => '<span class="green">Administrator</span>'
-			); ?>
-					<tr>
-						<td><?= $this->lang->line('username'); ?></td>
-						<td><?= $myacc->username ?></td>
-					</tr>
+<div class="panel panel-info">
 
-					<tr>
-						<td><?= $this->lang->line('email'); ?></td>
-						<td><?= $myacc->email ?></td>
-					</tr>
 
-					<tr>
-						<td><?= $this->lang->line('rank'); ?></td>
-						<td><?= $rank[$myacc->access] ?></td>
-					</tr>
-			<?php } ?>
+  <div class="panel-heading">Your password</div>
+  <ul class="nav nav-pills">
+    <li><a href="settings">My addons</a></li>
+    <li class="active"><a href="changepassword">Change Password</a></li>
+    <li class="disabled"><a href="#">Upload new Addon</a></li>
+  </ul>
 
-					<tr>
-						<td><?= $this->lang->line('addons'); ?></td>
-						<td> <?= $this->user_model->getAccAddons(); ?></td>
-					</tr>
-				</table>
-			</div>
-		</div>
-	</div>
+<br />
 
-  <div class="content column small-12 medium-5 large-4">
-  		<div class="content-box-sidebar column small-12">
-  			<div class="content-box-header column small-12">
-  				<div class="title-text">
-  					<?= $this->lang->line('Your_upload'); ?>
-  				</div>
-  			</div>
+<?php if(isset($_POST['changepass']))
+       {
+         $username = $this->session->userdata['ac_sess_username'];
+         $oldpassword = $_POST['oldpassword'];
+         $password = $_POST['newpassword'];
+         $repassword= $_POST['repass'];
+         $this->user_model->changepass($username, $oldpassword, $password, $repassword);
+       } ?>
 
-  			<div class="content-box-content column small-12">
-  				<table class="account-info">
-  					<tr>
-  						<td><?= $this->lang->line('uploaded'); ?></td>
-  						<td><?= $this->user_model->getAccAddons(); ?></td>
-  					</tr>
+<div class="panel-body">
+  <form class="form-horizontal" method="post">
+    <fieldset>
+      <div class="form-group">
+        <label for="inputEmail" class="col-lg-2" control-label">Old password  </label>
+          <div class="col-lg-12">
+          <input class="form-control" id="inputEmail" placeholder="Old password" name="oldpassword" type="password">
+          </div>
 
-  					<tr>
-  						<td><?= $this->lang->line('Upload_accepted'); ?></td>
-  						<td><?= $this->user_model->acceptedAddon(); ?></td>
-  					</tr>
+        </div>
+      <div class="form-group">
+        <label for="inputPassword" class="col-lg-12" control-label">Password</label>
+        <div class="col-lg-6">
+          <input class="form-control" id="inputPassword" placeholder="Password" name="newpassword" type="password">
+        </div>
+        <div class="col-lg-6">
+          <input class="form-control" id="inputPassword" placeholder="Retype your password" name="repass" type="password">
+        </div>
+      </div>
+      <center>
+        <input type="submit" class="btn btn-primary" name="changepass" value="Change password" />
+      </center>
+    </fieldset>
+    </form>
 
-  					<tr>
-  						<td><?= $this->lang->line('Upload_declined'); ?></td>
-  						<td><?= $this->user_model->declinedAddon(); ?></td>
-  					</tr>
+  </div>
 
-  					<tr>
-  						<td><?= $this->lang->line('Upload_Pending'); ?></td>
-  						<td><?= $this->user_model->pendingAddon(); ?></td>
-  					</tr>
-  					<tr>
-  						<td><?= $this->lang->line('Upload_delete'); ?></td>
-  						<td><?= $this->user_model->delAddon(); ?></td>
-  					</tr>
-  				</table>
-  			</div>
-  		</div>
-  	</div>
+  </div>
+</div>
+  <div class="col-md-4">
+  	<div class="panel panel-info">
+
+    <div class="panel-heading">Your addons stats</div>
+    <table class="table table-striped table-hover ">
+      <thead>
+        <tr>
+          <tr>
+            <th><i class="fa fa-user" aria-hidden="true"></i> <?= $this->lang->line('uploaded'); ?></th>
+            <th><?= $this->user_model->getAccAddons($this->session->userdata('ac_sess_username')); ?></th>
+          </tr>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td> <i class="fa fa-bell" aria-hidden="true"></i> <?= $this->lang->line('Upload_Pending'); ?></td>
+          <td><?= $this->user_model->pendingAddon($this->session->userdata('ac_sess_username')); ?></td>
+        </tr>
+        <tr>
+          <td> <i class="fa fa-check" aria-hidden="true"></i> <?= $this->lang->line('Upload_accepted'); ?></td>
+          <td><?= $this->user_model->acceptedAddon($this->session->userdata('ac_sess_username')); ?></td>
+        </tr>
+        <tr>
+          <td> <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> <?= $this->lang->line('Upload_declined'); ?></td>
+          <td><?= $this->user_model->declinedAddon($this->session->userdata('ac_sess_username')); ?></td>
+        </tr>
+        <tr>
+          <td> <i class="fa fa-eraser" aria-hidden="true"></i> <?= $this->lang->line('Upload_delete'); ?> </td>
+          <td><?= $this->user_model->delAddon($this->session->userdata('ac_sess_username')); ?></td>
+        </tr>
+      </tbody>
+    </table>
+
+  </div>
+
+
+
+  </div> <!-- End col-md-8 -->
+
   </div>
