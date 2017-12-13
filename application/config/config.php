@@ -10,12 +10,35 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 $config['name'] = 'ANetwork Project';
+
+
+/*
+|--------------------------------------------------------------------------
+| Addon and news results
+|--------------------------------------------------------------------------
+|
+*/
+
+
+
 $config['news_results'] = 5;
 $config['addon_results'] = 10;
 $config['addon_search_results'] = 10;
-$config['usercp_addon_results'] = 10;
 
 
+
+/*
+|--------------------------------------------------------------------------
+| lINKS SUPPORT
+|--------------------------------------------------------------------------
+|
+*/
+
+
+$config['support_forum'] = 'Your_forum_link';
+$config['support_discord'] = 'Your_discord_link';
+$config['support_skype'] = 'Your_skype_link';
+$config['support_ticket'] = 'Your_ticket_link'; 
 
 /*
 |--------------------------------------------------------------------------

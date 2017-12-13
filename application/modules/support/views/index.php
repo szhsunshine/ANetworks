@@ -51,10 +51,10 @@
     <div class="panel-heading">Contact support</div>
     <div class="panel-body">
       <ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
-              <li><a href="#">Ticket</a></li>
-              <li><a href="#">Forums</a></li>
-              <li><a href="#">Skype</a></li>
-              <li><a href="#">Discord</a></li>
+              <li><a href="<?= $this->config->item('support_ticket');?>">Ticket</a></li>
+              <li><a href="<?= $this->config->item('support_forum');?>">Forums</a></li>
+              <li><a href="<?= $this->config->item('support_skype');?>">Skype</a></li>
+              <li><a href="<?= $this->config->item('support_discord');?>">Discord</a></li>
       </ul>
     </div>
     </div>
