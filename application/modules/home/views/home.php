@@ -8,11 +8,6 @@
     </div>
   </div>
 
-  <div class="alert alert-dismissable alert-warning">
-<button type="button" class="close" data-dismiss="alert">×</button>
-<h4>Warning!</h4>
-<p>Your admin file is not written</a>.</p>
-</div>
 
 <div class="row">
   <div class="col-md-8">
@@ -60,17 +55,6 @@
     </div>
     </div>
 
-    <div class="panel panel-default">
-      <div class="panel-heading">Last news</div>
-    <div class="panel-body">
-        <?php foreach($this->home_model->getLastnews()->result() as $lastest) { ?>
-          <ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
-            <li><a href="home/view?id=<?= $lastest->id ?>"><?= $lastest->news_title ?> <small>(<?= $lastest->news_author ?>)</small></a></li>
-          </ul>
-        <?php } ?>
-
-    </div>
-    </div>
   </div>
 
 </div>
