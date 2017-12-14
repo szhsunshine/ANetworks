@@ -93,7 +93,9 @@
           <td> <?= $myaddons->downloads ?></td>
           <td> <?= $myaddons->status ?></td>
 
-              <td><button class="btn btn-default" type="submit" name="delete"><i class="fa fa-pencil yellow" aria-hidden="true"></i></button></td>
+              <td>
+                <a class="btn btn-default" href="edit?id=<?= $myaddons->id ?>"><i class="fa fa-pencil yellow" aria-hidden="true"></i></a>
+              </td>
 
               <form method="post" action="">
                   <input type="hidden" name="id" value="<?= $myaddons->id ?>" />
