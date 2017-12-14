@@ -51,23 +51,15 @@ $id = $_GET['id'];
 
 <div class="panel panel-info">
 
+  <?php
+  foreach($this->user_model->getAddon($id)->result() as $addon) {
+  ?>
 
-  <?php foreach($this->user_model->getAddon($id)->result() as $addon) { ?>
   <div class="panel-heading">Edit addon | <?= $addon->addon_name ?></div>
 
 <br />
 
 <?php
-$expansion = array(
-  1 => 'Classic',
-  2 => 'The Burning Crusader',
-  3 => 'Wrath of the Lich King',
-  4 => 'Cataclysm',
-  5 => 'Mist of Pandaría',
-  6 => 'Warlords of Draenor',
-  7 => 'Legión'
-);
-
 if(isset($_POST['edit']))
        {
          $name = $_POST['addon_name'];
@@ -156,7 +148,9 @@ if(isset($_POST['edit']))
 
   </div>
 
-<?php } ?>
+<?php
+}
+  ?>
 
   </div>
 </div>

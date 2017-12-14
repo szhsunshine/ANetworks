@@ -298,29 +298,38 @@ class User_model extends CI_Model {
 
       if (isset($_POST['edit']))
       {
-      if($id == 1)
+
+        $checkPermissions = $this->db->query("SELECT * FROM ac_addons WHERE addon_uploader = '$username' AND id = '$id'")->num_rows();
+      if ($checkPermissions == 1)
       {
 
-      $this->db->query("UPDATE ac_addons SET addon_name = '$name', addon_version = '$version', addon_description = '$description',
-        category = $category, expansion = $expansion, updated = '$time' WHERE addon_uploader = '$username' AND id = '$id'");
+          $this->db->query("UPDATE ac_addons SET addon_name = '$name', addon_version = '$version', addon_description = '$description',
+            category = $category, expansion = $expansion, updated = '$time' WHERE addon_uploader = '$username' AND id = '$id'");
 
-        echo '  <div class="alert alert-dismissable alert-success">
+            echo '  <div class="alert alert-dismissable alert-success">
           <button type="button" class="close" data-dismiss="alert">×</button>
           <strong>Edited!</strong> Your addon has been edited.
           </div> ';
-        echo '<script>
+          echo '<script>
                 setTimeout(function () {
                 window.location.href = "settings";
                 }, 3000);
             </script>';
       } else {
-          echo "<div class='callout alert'>ID Incorrect </div>";
+          echo " <div class='callout alert'>ID Incorrect </div>";
       }
 
     }else{
+      echo '<div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert">×</button>
+      <strong>Do not have permissions</strong>
+      </div>';
 
-
-            echo "<div class='callout alert'>Post doesn't send </div>";
+      echo '<script>
+            setTimeout(function () {
+            window.location.href = "settings";
+            }, 3000);
+        </script>';
     }
     }
 
