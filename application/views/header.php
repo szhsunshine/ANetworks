@@ -7,11 +7,17 @@
   <link rel="stylesheet" href="<?= base_url();  ?>assets/new/bootstrap.css" media="screen">
   <link rel="stylesheet" href="<?= base_url();  ?>assets/new/usebootstrap.css">
   <link rel="stylesheet" href="<?= base_url();  ?>assets/new/style.css">
+  <script src='<?= base_url(); ?>assets/editor/tinymce/js/tinymce/tinymce.min.js'></script>
   <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
   <!--[if lt IE 9]>
     <script src="bootstrap/html5shiv.js"></script>
     <script src="bootstrap/respond.min.js"></script>
   <![endif]-->
+  <script type="text/javascript">
+   tinymce.init({
+       selector: "textarea"
+    });
+   </script>
 </head>
 <body class="bfa">
 	<div class="navbar navbar-default navbar-fixed-top">

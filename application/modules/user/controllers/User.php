@@ -57,9 +57,6 @@ class User extends MX_Controller {
         $this->load->view('footer');
     }
 
-
-    /* Editor functions */
-
     public function edit()
     {
         $this->load->model('user_model');
@@ -79,7 +76,7 @@ class User extends MX_Controller {
         $config['max_height']    = 768;
         $this->load->library('upload', $config);
 
-        if ( ! $this->upload->do_upload('userfile')) {
+        if (!$this->upload->do_upload('userfile')) {
            $error = array('error' => $this->upload->display_errors());
            $this->load->view('upload_form', $error);
         }
