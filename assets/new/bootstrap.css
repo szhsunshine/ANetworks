@@ -12,14 +12,6 @@ html {
   -ms-text-size-adjust: 100%;
   -webkit-text-size-adjust: 100%;
 }
-body {
-  margin: 0;
-  background: url('https://bnetcmsus-a.akamaihd.net/cms/gallery/K22B6LDIE0C21509668971861.jpg') no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    background-size: cover;
-    -o-background-size: cover;
-}
 article,
 aside,
 details,
@@ -272,6 +264,16 @@ th {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
+body
+{
+  background: url('https://bnetcmsus-a.akamaihd.net/cms/gallery/EO5ZT8UTNO2L1509641494375.jpg') no-repeat center center fixed;
+  margin: 0;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+}
+
 html {
   font-size: 62.5%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);

@@ -14,63 +14,10 @@ class User_model extends CI_Model {
         $user_agent = $_SERVER['HTTP_USER_AGENT'];
         $ip_address = $_SERVER['REMOTE_ADDR'];
         $time = time();
-        $this->db->query("INSERT INTO logs (username, page, data, user_agent, ip, time) VALUES('$username', '$page', '$data', '$user_agent', '$ip_address', '$time')");
+        $this->db->query("INSERT INTO ac_logs (username, page, data, user_agent, ip, time) VALUES('$username', '$page', '$data', '$user_agent', '$ip_address', '$time')");
     }
 
-    public function Login($username, $password)
-    {
-        if (isset($_POST['button_login']))
-        {
-            if (!empty($_POST['username']) && !empty($_POST['password']))
-            {
-                $username = $_POST['username'];
-                $password = sha1($_POST['password']);
 
-                $data = $this->db->query("SELECT * FROM users WHERE username = '$username' AND password = '$password'")->num_rows();
-
-                if ($data == 1)
-                {
-                    $last_login = time();
-
-                    $this->db->query("UPDATE users SET last_login = '$last_login' WHERE username = '$username'");
-
-                    $_SESSION['username'] = $username;
-                    $_SESSION['password'] = $password;
-
-                    $page = 'Login UserCP';
-                    $data = 'Logged into UserCP';
-                    $this->user_model->LogData($page, $data);
-
-                    echo '<div class="alert alert-dismissable alert-success">
-                    <button type="button" class="close" data-dismiss="alert">×</button>
-                                        <h4>Login success</h4>
-                                        <p>Connecting ...</a></p>
-                                    </div>';
-                    echo '<script>
-                            setTimeout(function () {
-                            window.location.href = "settings";
-                            }, 3000);
-                        </script>';
-                }
-                else
-                {
-                    echo '<div class="alert alert-dismissable alert-warning">
-                          <button type="button" class="close" data-dismiss="alert">×</button>
-                          <h4>Warning</h4>
-                          <p>Username or password incorrected</a>.</p>
-                        </div>';
-                }
-            }
-            else
-            {
-                echo '<div class="alert alert-dismissable alert-warning">
-                      <button type="button" class="close" data-dismiss="alert">×</button>
-                      <h4>Warning</h4>
-                      <p>Fill all fields</a>.</p>
-                    </div>';
-            }
-        }
-    }
 
     public function Register()
     {
@@ -92,7 +39,7 @@ class User_model extends CI_Model {
                     {
                         if ($password == $repassword)
                         {
-                            $data = $this->db->query("SELECT * FROM users WHERE username = '$username' OR email = '$email'")->num_rows();
+                            $data = $this->db->query("SELECT * FROM ac_users WHERE username = '$username' OR email = '$email'")->num_rows();
 
                             if ($data == 0)
                             {
@@ -100,7 +47,11 @@ class User_model extends CI_Model {
                                 $time = time();
                                 $access = 0;
 
-                                $data = $this->db->query("INSERT INTO users (username, email, password, access, registered, ip) VALUES('$username', '$email', '$passecure', '$access', '$time', '$lastip')");
+                                $data1 = $this->db->query("INSERT INTO ac_users (username, email, password, registered, ip) VALUES('$username', '$email', '$passecure', '$time', '$lastip')");
+
+                               if ($data1 == true)
+                               {
+                                 $data2 = $this->db->query("INSERT INTO ac_ranks (username, permission) VALUES ('$username', 1)");
 
                                 echo '<div class="alert alert-dismissable alert-success">
                                 <button type="button" class="close" data-dismiss="alert">×</button>
@@ -112,6 +63,19 @@ class User_model extends CI_Model {
                                         window.location.href = "login";
                                         }, 3000);
                                     </script>';
+                                } else {
+
+                                   echo '<div class="alert alert-dismissable alert-success">
+                                   <button type="button" class="close" data-dismiss="alert">×</button>
+                                                       <h4>Error generating permission</h4>
+                                                       <p>Redirecting ...</a></p>
+                                                   </div>';
+                                  echo '<script>
+                                  setTimeout(function () {
+                                    window.location.href = "login";
+                                  }, 3000);
+                                  </script>';
+                                }
                             }
                             else
                             {
@@ -168,52 +132,42 @@ class User_model extends CI_Model {
 
     public function isLoggedIn()
     {
-        if ($this->session->userdata('username'))
+        if ($this->session->userdata('ac_sess_username'))
             return true;
         else
             return false;
     }
 
-    public function getAddons()
+    public function getAddons($username)
     {
-        $username = $_SESSION['username'];
-        return $this->db->query("SELECT * FROM addons WHERE addon_uploader = '$username' AND status != 3");
+        return $this->db->query("SELECT * FROM ac_addons WHERE addon_uploader = '$username' AND status != 3");
     }
 
-    public function getAccinfo()
+
+
+    public function getAccAddons($username)
     {
-        $username = $_SESSION['username'];
-        return $this->db->query("SELECT * FROM users WHERE username = '$username'");
+        return $this->db->query("SELECT addon_uploader FROM ac_addons WHERE addon_uploader = '$username'")->num_rows();
     }
 
-    public function getAccAddons()
+    public function acceptedAddon($username)
     {
-        $username = $_SESSION['username'];
-        return $this->db->query("SELECT addon_uploader FROM addons WHERE addon_uploader = '$username'")->num_rows();
+        return $this->db->query("SELECT status FROM ac_addons WHERE addon_uploader = '$username' AND status = 2")->num_rows();
     }
 
-    public function acceptedAddon()
+    public function declinedAddon($username)
     {
-        $username = $_SESSION['username'];
-        return $this->db->query("SELECT status FROM addons WHERE addon_uploader = '$username' AND status = 2")->num_rows();
+        return $this->db->query("SELECT status FROM ac_addons WHERE addon_uploader = '$username' AND status = 1")->num_rows();
     }
 
-    public function declinedAddon()
+    public function pendingAddon($username)
     {
-        $username = $_SESSION['username'];
-        return $this->db->query("SELECT status FROM addons WHERE addon_uploader = '$username' AND status = 1")->num_rows();
+        return $this->db->query("SELECT status FROM ac_addons WHERE addon_uploader = '$username' AND status = 0")->num_rows();
     }
 
-    public function pendingAddon()
+    public function delAddon($username)
     {
-        $username = $_SESSION['username'];
-        return $this->db->query("SELECT status FROM addons WHERE addon_uploader = '$username' AND status = 0")->num_rows();
-    }
-
-    public function delAddon()
-    {
-        $username = $_SESSION['username'];
-        return $this->db->query("SELECT status FROM addons WHERE addon_uploader = '$username' AND status = 3")->num_rows();
+        return $this->db->query("SELECT status FROM ac_addons WHERE addon_uploader = '$username' AND status = 3")->num_rows();
     }
 
     public function deleteAddon($id, $username)
@@ -223,13 +177,13 @@ class User_model extends CI_Model {
             if (!empty($_POST['id']))
             {
                 $id = $_POST['id'];
-                $username = $_SESSION['username'];
+                $username = $this->session->userdata('ac_sess_username');
 
-                $data = $this->db->query("SELECT * FROM addons WHERE id = '$id' AND addon_uploader = '$username'")->num_rows();
+                $data = $this->db->query("SELECT * FROM ac_addons WHERE id = '$id' AND addon_uploader = '$username'")->num_rows();
 
                 if ($data == 1)
                 {
-                    $this->db->query("UPDATE addons SET status = 3 WHERE id = '$id' AND addon_uploader = '$username'");
+                    $this->db->query("UPDATE ac_addons SET status = 3 WHERE id = '$id' AND addon_uploader = '$username'");
 
                     $page = 'UCP | Addon deleted';
                     $data = 'Status set 3';
@@ -259,15 +213,15 @@ class User_model extends CI_Model {
         }
     }
 
-    public function changepass($username, $oldpassword, $password, $repassword)
+    public function changepass($oldpassword, $password, $repassword)
     {
-        $username = $_SESSION['username'];
+        $username = $this->session->userdata('ac_sess_username');
         $oldpassword = $_POST['oldpassword'];
         $password = $_POST['newpassword'];
         $repassword = $_POST['repass'];
         $oldpassecure = sha1($oldpassword);
 
-        $change = $this->db->query("SELECT * FROM users WHERE username = '$username' AND password = '$oldpassecure'")->num_rows();
+        $change = $this->db->query("SELECT * FROM ac_users WHERE username = '$username' AND password = '$oldpassecure'")->num_rows();
 
         if ($change == 1)
         {
@@ -275,7 +229,7 @@ class User_model extends CI_Model {
             {
                 $pasecure = sha1($password);
 
-                $this->db->query("UPDATE users SET password = '$pasecure' WHERE username = '$username'");
+                $this->db->query("UPDATE ac_users SET password = '$pasecure' WHERE username = '$username'");
 
                 echo "<div class='callout success'>The password has been changed</div>";
                 echo '<script>
@@ -299,4 +253,7 @@ class User_model extends CI_Model {
                 </script>';
         }
     }
+
+
+
 }

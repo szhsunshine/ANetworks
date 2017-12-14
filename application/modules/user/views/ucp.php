@@ -1,155 +1,160 @@
-
-<div class="row">
-	<div class="content-menu column small-12">
-		<div class="content-bar">
-			<ul class="usercp-bar">
-				<li><a href="settings" class="current-nav"><?= $this->lang->line('my_addons'); ?></a></li>
-				<li><a href="changepass"><?= $this->lang->line('change_pass'); ?></a></li>
-				<?php if($this->config->item('upload_download') == true )  {  ?>
-				<li><a href=""><?= $this->lang->line('upload_addon'); ?></a></li>
-				<?php } ?>
-			</ul>
-		</div>
-	</div>
-
-	<div class="content column small-12 medium-7 large-8">
-	<div class="content-box column small-12">
-					<div class="content-box-header column small-12">
-						<div class="title-text">
-							<?= $this->lang->line('my_addons'); ?>
-						</div>
-					</div>
-
-					<div class="content-box-content column small-12">
-						<table class="addons-list">
-							<th><?= $this->lang->line('tab_name'); ?></th>
-							<th><?= $this->lang->line('tab_version'); ?></th>
-							<th><?= $this->lang->line('tab_expansion'); ?></th>
-							<th><?= $this->lang->line('tab_updated'); ?></th>
-							<th><?= $this->lang->line('tab_downloads'); ?></th>
-							<th><?= $this->lang->line('tab_status'); ?></th>
-							<th></th>
-							<th></th>
+<div class="container">
+  <div class="page-header" id="banner">
+    <div class="row">
+      <div class="col-lg-6">
+        <h1>Welcome, <?=  $this->session->userdata('ac_sess_username') ?></h1>
+        <p class="lead">This is your personal UCP.</p>
+      </div>
+    </div>
+  </div>
 
 
-
-					<?php foreach($this->user_model->getAddons()->result() as $myaddons) { ?>
-												<?php
-												$expansion = array(
-												1 => 'Classic',
-												2 => 'The Burning Crusader',
-												3 => 'Wrath of the Lich King',
-												4 => 'Cataclysm',
-												5 => 'Mist of Pandaría',
-												6 => 'Warlords of Draenor',
-												7 => 'Legión'
-												);
-													?>
-										<tr>
-													<td> <?= $myaddons->addon_name ?></td>
-													<td> <?= $myaddons->addon_version ?></td>
-													<td> <?= $expansion[$myaddons->expansion] ?></td>
-													<td> <?= date('j F Y', $myaddons->updated) ?></td>
-													<td> <?= $myaddons->downloads ?></td>
-													<td> <?= $myaddons->status ?></td>
+<div class="col-md-8">
 
 
-			<td><a href="user/edit=<?= $myaddons->id ?>" title="Edit"><i class="fa fa-pencil yellow" aria-hidden="true"></i></a></td>
+	<div class="panel panel-info">
+
+
+    <div class="panel-heading">Your account info</div>
+		<table class="table table-striped table-hover ">
+		  <thead>
+		    <tr>
+		      <th><i class="fa fa-user" aria-hidden="true"></i> Nombre de usuario</th>
+		      <th><p class="text-primary"><?= $this->m_data->getUsernameID($this->session->userdata('ac_sess_id')); ?></p></th>
+			    <th><i class="fa fa-wrench" aria-hidden="true"></i> Rango de cuenta</th>
+          <?php foreach($this->m_data->getRankinfo()->result() as $myacc) {  ?>
+					<?php $rank = array(
+														0 => '<p class="text-success">Leecher</p>',
+														1 => '<p class="text-success">Uploader</p>',
+														2 => '<p class="text-primary">Moderator</p>',
+														3 => '<p class="text-danger">Administrator</p>'
+										); ?>
+                    <th> <?= $rank[$myacc->permission ] ?> </th>
+					<?php } ?>
+		    </tr>
+		  </thead>
+		  <tbody>
+		    <tr>
+		      <td> <i class="fa fa-envelope-o" aria-hidden="true"></i> E-Mail</td>
+		      <td><?= $this->m_data->getEmailID($this->session->userdata('ac_sess_id')); ?></td>
+			      <td><i class="fa fa-shield" aria-hidden="true"></i> Estado</td>
+			      <td>Active</td>
+		    </tr>
+		  </tbody>
+		</table>
+
+</div>
+
+	<div class="panel panel-info">
+
+
+    <div class="panel-heading">Your addons</div>
+    <ul class="nav nav-pills">
+      <li class="active"><a href="settings">My addons</a></li>
+      <li><a href="changepassword">Change Password</a></li>
+      <li class="disabled"><a href="#">Upload new Addon</a></li>
+    </ul>
+
+<br />
+
+    <table class="table table-striped table-hover ">
+      <thead>
+        <tr>
+          <tr>
+            <th><?= $this->lang->line('tab_name'); ?></th>
+            <th><?= $this->lang->line('tab_version'); ?></th>
+            <th><?= $this->lang->line('tab_expansion'); ?></th>
+            <th><?= $this->lang->line('tab_updated'); ?></th>
+            <th><?= $this->lang->line('tab_downloads'); ?></th>
+            <th><?= $this->lang->line('tab_status'); ?></th>
+          </tr>
+        </tr>
+      </thead>
+      <tbody>
+
+
+<?php foreach($this->user_model->getAddons($this->session->userdata('ac_sess_username'))->result() as $myaddons) { ?>
+  <?php
+  $expansion = array(
+    1 => 'Classic',
+    2 => 'The Burning Crusader',
+    3 => 'Wrath of the Lich King',
+    4 => 'Cataclysm',
+    5 => 'Mist of Pandaría',
+    6 => 'Warlords of Draenor',
+    7 => 'Legión'
+  );
+  ?>
+        <tr>
+          <td> <?= $myaddons->addon_name ?></td>
+          <td> <?= $myaddons->addon_version ?></td>
+          <td> <?= $expansion[$myaddons->expansion] ?></td>
+          <td> <?= date('j F Y', $myaddons->updated) ?></td>
+          <td> <?= $myaddons->downloads ?></td>
+          <td> <?= $myaddons->status ?></td>
+
+              <td><button class="btn btn-default" type="submit" name="delete"><i class="fa fa-pencil yellow" aria-hidden="true"></i></button></td>
+
               <form method="post" action="">
-				      <input type="hidden" name="id" value="<?= $myaddons->id ?>" />
-           <td> <button class="small button" type="submit" name="delete"><i class="fa fa-trash red" aria-hidden="true"></i></a></td>
-			</form>
+                  <input type="hidden" name="id" value="<?= $myaddons->id ?>" />
+                  <td> <button class="btn btn-default" type="submit" name="delete"><i class="fa fa-trash-o" aria-hidden="true"></i></button></td>
+              </form>
 
-						<?php } ?>
+              						<?php } ?>
 
-						<?php if(isset($_POST['delete']))
-			        {
-        			$id = $_POST['id'];
-    				$username = $_SESSION['username'];
-			        $this->user_model->deleteAddon($id, $username);
-			        } ?>
-										</tr>
-				</table>
-	</div>
+              						<?php if(isset($_POST['delete']))
+              			        {
+                      			$id = $_POST['id'];
+                            $username = $this->session->userdata('ac_sess_username');
+              			        $this->user_model->deleteAddon($id, $username);
+              			        } ?>
+        </tr>
+      </tbody>
+    </table>
+
+
+
 </div>
+
+</div> <!-- End col-md-8 -->
+
+<div class="col-md-4">
+	<div class="panel panel-info">
+
+  <div class="panel-heading">Your addons stats</div>
+  <table class="table table-striped table-hover ">
+    <thead>
+      <tr>
+        <tr>
+          <th><i class="fa fa-user" aria-hidden="true"></i> <?= $this->lang->line('uploaded'); ?></th>
+          <th><?= $this->user_model->getAccAddons($this->session->userdata('ac_sess_username')); ?></th>
+        </tr>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td> <i class="fa fa-bell" aria-hidden="true"></i> <?= $this->lang->line('Upload_Pending'); ?></td>
+        <td><?= $this->user_model->pendingAddon($this->session->userdata('ac_sess_username')); ?></td>
+      </tr>
+      <tr>
+        <td> <i class="fa fa-check" aria-hidden="true"></i> <?= $this->lang->line('Upload_accepted'); ?></td>
+        <td><?= $this->user_model->acceptedAddon($this->session->userdata('ac_sess_username')); ?></td>
+      </tr>
+      <tr>
+        <td> <i class="fa fa-exclamation-triangle" aria-hidden="true"></i> <?= $this->lang->line('Upload_declined'); ?></td>
+        <td><?= $this->user_model->declinedAddon($this->session->userdata('ac_sess_username')); ?></td>
+      </tr>
+      <tr>
+        <td> <i class="fa fa-eraser" aria-hidden="true"></i> <?= $this->lang->line('Upload_delete'); ?> </td>
+        <td><?= $this->user_model->delAddon($this->session->userdata('ac_sess_username')); ?></td>
+      </tr>
+    </tbody>
+  </table>
+
 </div>
-	<div class="content column small-12 medium-5 large-4">
-		<div class="content-box-sidebar column small-12">
-			<div class="content-box-header column small-12">
-				<div class="title-text">
-					<?= $this->lang->line('acc_info'); ?>
-				</div>
-			</div>
 
-			<div class="content-box-content column small-12">
-				<table class="account-info">
-		<?php foreach($this->user_model->getAccinfo()->result() as $myacc) { ?>
-			<?php $rank = array(
-				0 => '<span style="color: #1abc9c;">Leecher</span>',
-				1 => '<span class="blue">Uploader</span>',
-				2 => '<span class="red">Moderator</span>',
-				3 => '<span class="green">Administrator</span>'
-			); ?>
-					<tr>
-						<td><?= $this->lang->line('username'); ?></td>
-						<td><?= $myacc->username ?></td>
-					</tr>
 
-					<tr>
-						<td><?= $this->lang->line('email'); ?></td>
-						<td><?= $myacc->email ?></td>
-					</tr>
 
-					<tr>
-						<td><?= $this->lang->line('rank'); ?></td>
-						<td><?= $rank[$myacc->access] ?></td>
-					</tr>
-			<?php } ?>
+</div> <!-- End col-md-8 -->
 
-					<tr>
-						<td><?= $this->lang->line('addons'); ?></td>
-						<td> <?= $this->user_model->getAccAddons(); ?></td>
-					</tr>
-				</table>
-			</div>
-		</div>
-	</div>
-
-	<div class="content column small-12 medium-5 large-4">
-		<div class="content-box-sidebar column small-12">
-			<div class="content-box-header column small-12">
-				<div class="title-text">
-					<?= $this->lang->line('Your_upload'); ?>
-				</div>
-			</div>
-
-			<div class="content-box-content column small-12">
-				<table class="account-info">
-					<tr>
-						<td><?= $this->lang->line('uploaded'); ?></td>
-						<td><?= $this->user_model->getAccAddons(); ?></td>
-					</tr>
-
-					<tr>
-						<td><?= $this->lang->line('Upload_accepted'); ?></td>
-						<td><?= $this->user_model->acceptedAddon(); ?></td>
-					</tr>
-
-					<tr>
-						<td><?= $this->lang->line('Upload_declined'); ?></td>
-						<td><?= $this->user_model->declinedAddon(); ?></td>
-					</tr>
-
-					<tr>
-						<td><?= $this->lang->line('Upload_Pending'); ?></td>
-						<td><?= $this->user_model->pendingAddon(); ?></td>
-					</tr>
-					<tr>
-						<td><?= $this->lang->line('Upload_delete'); ?></td>
-						<td><?= $this->user_model->delAddon(); ?></td>
-					</tr>
-				</table>
-			</div>
-		</div>
-	</div>
 </div>

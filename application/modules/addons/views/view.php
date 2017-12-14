@@ -37,80 +37,139 @@
 ?>
 
 
+
+        <div class="container">
+
+
+          <div class="page-header" id="banner">
+            <div class="row">
+              <div class="col-lg-6">
+                <h3>Welcome, Hero of Azeroth!</h3>
+                <blockquote>
+                <p>You have to forget me, Tirion! If the world is to live free from the tyranny of fear, it must not know what has happened here today.</p>
+                <small>- Bolvar Fordragón</small>
+                </blockquote>
+              </div>
+            </div>
+          </div>
+
+<div class="col-md-8">
+
+
+	<div class="panel panel-info">
+
+
+    <div class="panel-heading">Addon information</div>
+
 <?php foreach($this->addon_model->getInformation($id)->result() as $addon) { ?>
-<div class="row">
-	<div class="content column small-12 medium-7 large-8">
-		<div class="content-box column small-12">
-			<div class="content-box-header column small-12">
-				<div class="title-text">
-					<?= $addon->addon_name ?>
-				</div>
+		<table class="table table-striped table-hover ">
+		  <thead>
+		    <tr>
+		      <th><i class="fa fa-user" aria-hidden="true"></i> Addon</th>
+		      <th><p class="text-primary">	<?= $addon->addon_name ?></p></th>
+			    <th><i class="fa fa-wrench" aria-hidden="true"></i> Date</th>
+                    <th><small> <?= date('j F Y', $addon->uploaded) ?> </small></th>
+		    </tr>
+		  </thead>
+		  <tbody>
+		    <tr>
+		      <td> <i class="fa fa-envelope-o" aria-hidden="true"></i> Uploader</td>
+		      <td><?= $addon->addon_uploader ?></div></td>
+			      <td><i class="fa fa-shield" aria-hidden="true"></i> Game Versión</td>
+			      <td><?= $addon->addon_version ?></td>
+		    </tr>
+		  </tbody>
+		</table>
 
-				<div class="title-date">
-					<?= date('j F Y', $addon->uploaded) ?>
-				</div>
-			</div>
 
-			<div class="content-box-content column small-12">
-				<div class="content-text">
-					<?= $addon->addon_description ?>
-				</div>
-			</div>
-		</div>
-	</div>
+		<?php } ?>
 
-	<div class="content column small-12 medium-5 large-4">
-		<div class="content-box-sidebar border column small-12">
-			<div class="content-box-header column small-12">
-				<div class="title-text">
-					Download Information
-				</div>
-			</div>
-
-			<div class="content-box-content column small-12">
-				<table class="addons-info">
-						<?php foreach($this->addon_model->getFileId($id)->result() as $size) { ?>
-					<tr>
-						<td>Filename</td>
-						<td><?= $size->file_name ?></td>
-					</tr>
-
-					<tr>
-						<td>Size</td>
-						<td><?= $size->file_size ?></td>
-
-					</tr>
-
-						<?php } ?>
-
-					<tr>
-						<td>Uploader</td>
-						<td><?= $addon->addon_uploader ?></td>
-					</tr>
-
-					<tr>
-						<td>Downloads</td>
-						<td><?= $addon->downloads ?></td>
-					</tr>
-
-					<tr>
-						<td>Category</td>
-						<td><?= $category[$addon->category] ?></td>
-					</tr>
-
-					<tr>
-						<td>Expansion</td>
-						<td><?= $expansion[$addon->expansion] ?></td>
-					</tr>
-				</table>
-
-				<div class="download-info">
-					<center>
-						<a href="addons/download?id=" class="small button">DOWNLOAD</a>
-					</center>
-				</div>
-			</div>
-		</div>
-	</div>
 </div>
-<?php } ?>
+
+<div class="panel panel-info">
+
+
+	<div class="panel-heading"> Other links </div>
+
+<?php foreach($this->addon_model->getInformation($id)->result() as $external) { ?>
+	<table class="table table-striped table-hover ">
+		<thead>
+			<tr>
+				<th><i class="fa fa-user" aria-hidden="true"></i> Server external</th>
+				<th><i class="fa fa-wrench" aria-hidden="true"></i> Date</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td> Mega.co.nz</td>
+				<td>External</div></td>
+				<td>Download now</td>
+			</tr>
+		</tbody>
+	</table>
+
+
+	<?php } ?>
+
+</div>
+
+</div> <!-- End col-md-8 -->
+
+
+
+<div class="col-md-4">
+
+
+	<div class="panel panel-info">
+
+
+    <div class="panel-heading">+ Information</div>
+
+		<table class="table table-striped table-hover ">
+				<?php foreach($this->addon_model->getFileId($id)->result() as $size) { ?>
+			<tr>
+				<td>Filename</td>
+				<td><?= $size->file_name ?></td>
+			</tr>
+
+			<tr>
+				<td>Size</td>
+				<td><?= $size->file_size ?></td>
+
+			</tr>
+
+				<?php } ?>
+
+			<tr>
+				<td>Uploader</td>
+				<td><?= $addon->addon_uploader ?></td>
+			</tr>
+
+			<tr>
+				<td>Downloads</td>
+				<td><?= $addon->downloads ?></td>
+			</tr>
+
+			<tr>
+				<td>Category</td>
+				<td><?= $category[$addon->category] ?></td>
+			</tr>
+
+			<tr>
+				<td>Expansion</td>
+				<td><?= $expansion[$addon->expansion] ?></td>
+			</tr>
+		</table>
+
+		<div class="download-info">
+			<center>
+				<p> Direct Link </p>
+				<button type="button" class="btn btn-primary">Download</button>
+			</center>
+		</div>
+
+</div>
+
+
+</div>
