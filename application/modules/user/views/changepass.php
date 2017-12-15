@@ -49,7 +49,7 @@
 <div class="panel panel-info">
 
 
-  <div class="panel-heading">Your password</div>
+  <div class="panel-heading">Change password</div>
   <ul class="nav nav-pills">
     <li><a href="settings">My addons</a></li>
     <li class="active"><a href="changepassword">Change Password</a></li>

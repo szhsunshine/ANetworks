@@ -74,7 +74,7 @@
 		  <tbody>
 		    <tr>
 		      <td> <i class="fa fa-envelope-o" aria-hidden="true"></i> Uploader</td>
-		      <td><?= $addon->addon_uploader ?></div></td>
+		      <td><?= $addon->addon_uploader ?></td>
 			      <td><i class="fa fa-shield" aria-hidden="true"></i> Game Versión</td>
 			      <td><?= $addon->addon_version ?></td>
 		    </tr>
@@ -83,7 +83,13 @@
 
 
 		<?php } ?>
-
+		<hr>
+		<div class="panel panel-default">
+  	<div class="panel-heading">Description</div>
+  	<div class="panel-body">
+				<p><?= $addon->addon_description ?></p>
+  	</div>
+</div>
 </div>
 
 <div class="panel panel-info">
@@ -91,29 +97,43 @@
 
 	<div class="panel-heading"> Other links </div>
 
-<?php foreach($this->addon_model->getInformation($id)->result() as $external) { ?>
+<?php foreach($this->addon_model->getExternalDownload($id)->result() as $external) { ?>
 	<table class="table table-striped table-hover ">
 		<thead>
 			<tr>
-				<th><i class="fa fa-user" aria-hidden="true"></i> Server external</th>
-				<th><i class="fa fa-wrench" aria-hidden="true"></i> Date</th>
+				<th><i class="fa fa-cloud-download" aria-hidden="true"></i> Server external</th>
+				<th><i class="fa fa-calendar" aria-hidden="true"></i> Date</th>
+				<th></th>
 				<th></th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr>
-				<td> Mega.co.nz</td>
-				<td>External</div></td>
-				<td>Download now</td>
+				<td><i class="fa fa-download" aria-hidden="true"></i> <?= $external->external?> </td>
+				<td> <?= $external->date?></td>
+				<td><a href="<?= $external->url ?>" class="btn btn-primary btn-sm nounderline"><i class="fa fa-download" aria-hidden="true"></i> DOWNLOAD</a></td>
+				<?php if ($this->user_model->isLoggedIn()){
+				?>
+					<td><a href="" class="btn btn-primary btn-sm nounderline"><i class="fa fa-download" aria-hidden="true"></i> Edit</a></td>
+				<?php } else { ?>
+					<td> </td>
+				<?php } ?>
 			</tr>
 		</tbody>
 	</table>
 
 
 	<?php } ?>
+	<br/>
+	<center>
+		<?php if ($this->user_model->isLoggedIn()){
+		?>
+				<a href="" class="btn btn-primary btn-sm"><i class="fa fa-external-link-square" aria-hidden="true"></i> Insert external link</a>
+		<?php }?>
+</center>
+<hr>
 
-</div>
-
+	</div>
 </div> <!-- End col-md-8 -->
 
 
@@ -164,12 +184,13 @@
 
 		<div class="download-info">
 			<center>
-				<p> Direct Link </p>
-				<button type="button" class="btn btn-primary">Download</button>
+				<button type="button" class="btn btn-primary"><i class="fa fa-download" aria-hidden="true"></i> Direct Link</button>
 			</center>
 		</div>
 
 </div>
 
+
+</div>
 
 </div>

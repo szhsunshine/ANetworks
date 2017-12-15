@@ -333,5 +333,10 @@ class User_model extends CI_Model {
     }
     }
 
+    public function getExternal($id)
+    {
+        return $this->db->query("SELECT * FROM ac_external_download WHERE addon_id = '$id'");
+    }
+
 
 }

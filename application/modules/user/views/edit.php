@@ -140,6 +140,10 @@ if(isset($_POST['edit']))
         </div>
       </div>
 
+      <?php
+      }
+        ?>
+
       <center>
         <input type="submit" class="btn btn-primary" name="edit" value="Edit addon" />
       </center>
@@ -147,10 +151,6 @@ if(isset($_POST['edit']))
     </form>
 
   </div>
-
-<?php
-}
-  ?>
 
   </div>
 </div>
