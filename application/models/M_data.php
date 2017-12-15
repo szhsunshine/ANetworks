@@ -2,6 +2,14 @@
 
 class M_data extends CI_Model {
 
+
+  public function getTimestamp()
+  {
+    $date = new DateTime();
+    $date = $date->getTimestamp();
+    return $date;
+  }
+
   public function getUsernameID($id)
   {
     return $this->db->query("SELECT username FROM ac_users WHERE id = '".$id."'")->row_array()['username'];
@@ -60,6 +68,9 @@ class M_data extends CI_Model {
     redirect(base_url(),'refresh');
   }
 
-
+  public function getExpansion($expansion)
+  {
+    
+  }
 
 }
