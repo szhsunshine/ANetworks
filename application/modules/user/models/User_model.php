@@ -143,7 +143,11 @@ class User_model extends CI_Model {
         return $this->db->query("SELECT * FROM ac_addons WHERE addon_uploader = '$username' AND status != 3");
     }
 
-
+    public function getAddon($id)
+    {
+      $username = $this->session->userdata('ac_sess_username');
+      return $this->db->query("SELECT * FROM ac_addons WHERE id = '$id' and addon_uploader = '$username'");
+    }
 
     public function getAccAddons($username)
     {
@@ -168,6 +172,34 @@ class User_model extends CI_Model {
     public function delAddon($username)
     {
         return $this->db->query("SELECT status FROM ac_addons WHERE addon_uploader = '$username' AND status = 3")->num_rows();
+    }
+
+    public function getDir($dir)
+    {
+        switch($dir)
+        {
+            case 'upload/vanilla':
+                return 1;
+                break;
+            case 'upload/tbc':
+                return 2;
+                break;
+            case 'upload/wtlk':
+                return 3;
+                break;
+            case 'upload/cata':
+                return 4;
+                break;
+            case 'upload/mop':
+                return 5;
+                break;
+            case 'upload/wod':
+                return 6;
+                break;
+            case 'upload/legion':
+                return 7;
+                break;
+        }
     }
 
     public function deleteAddon($id, $username)
@@ -254,6 +286,57 @@ class User_model extends CI_Model {
         }
     }
 
+    public function editAddon ($id, $name, $version, $description, $expansion, $category)
+    {
+      $username = $this->session->userdata('ac_sess_username');
+      $name = $_POST['addon_name'];
+      $version = $_POST['addon_version'];
+      $description = $_POST['desc'];
+      $expansion = $_POST['expansion'];
+      $category = $_POST['category'];
+      $time = time();
+
+      if (isset($_POST['edit']))
+      {
+
+        $checkPermissions = $this->db->query("SELECT * FROM ac_addons WHERE addon_uploader = '$username' AND id = '$id'")->num_rows();
+      if ($checkPermissions == 1)
+      {
+
+          $this->db->query("UPDATE ac_addons SET addon_name = '$name', addon_version = '$version', addon_description = '$description',
+            category = $category, expansion = $expansion, updated = '$time' WHERE addon_uploader = '$username' AND id = '$id'");
+
+            echo '  <div class="alert alert-dismissable alert-success">
+          <button type="button" class="close" data-dismiss="alert">×</button>
+          <strong>Edited!</strong> Your addon has been edited.
+          </div> ';
+          echo '<script>
+                setTimeout(function () {
+                window.location.href = "settings";
+                }, 3000);
+            </script>';
+      } else {
+          echo " <div class='callout alert'>ID Incorrect </div>";
+      }
+
+    }else{
+      echo '<div class="alert alert-dismissable alert-danger">
+      <button type="button" class="close" data-dismiss="alert">×</button>
+      <strong>Do not have permissions</strong>
+      </div>';
+
+      echo '<script>
+            setTimeout(function () {
+            window.location.href = "settings";
+            }, 3000);
+        </script>';
+    }
+    }
+
+    public function getExternal($id)
+    {
+        return $this->db->query("SELECT * FROM ac_external_download WHERE addon_id = '$id'");
+    }
 
 
 }

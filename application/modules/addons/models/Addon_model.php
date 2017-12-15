@@ -62,9 +62,13 @@ class Addon_model extends CI_Model {
         return $this->db->query("SELECT * FROM ac_addons WHERE addon_name = '$name' and expansion = '$value' ORDER BY downloads DESC LIMIT 10");
     }
 
-
-    public function addEditor($id)
+    public function getExternalDownload($id)
     {
+        return $this->db->query("SELECT * FROM ac_external_download WHERE addon_id = '$id'");
+    }
 
+    public function insertExternalLink($id)
+    {
+      
     }
 }

@@ -22,6 +22,9 @@ class User extends MX_Controller {
         if ($this->user_model->isLoggedIn())
             redirect(base_url(),'refresh');
 
+        if($this->m_modules->register() != '1')
+            redirect(base_url(),'refresh');
+
         $this->load->view("header");
         $this->load->view('register');
         $this->load->view('footer');
@@ -57,59 +60,65 @@ class User extends MX_Controller {
         $this->load->view('footer');
     }
 
-
-    /* Editor functions */
-
-    public function editaddon()
+    public function edit()
     {
         $this->load->model('user_model');
 
         if (!$this->user_model->isLoggedIn())
             redirect(base_url(),'refresh');
-        if (!$this->m_data->isEditor())
-            redirect(base_url(),'refresh');
         $this->load->view('header');
-        $this->load->view('editaddon');
+        $this->load->view('edit');
         $this->load->view('footer');
     }
 
+
+    public function addAddon()
+    {
+        $this->load->model('user_model');
+
+        if (!$this->user_model->isLoggedIn())
+            redirect(base_url(),'refresh');
+        $this->load->view('header');
+        $this->load->view('add');
+        $this->load->view('footer');
+    }
+
+
+
     public function do_upload() {
-        $config['upload_path']   = './uploads/';
-        $config['allowed_types'] = 'gif|jpg|png';
-        $config['max_size']      = 100;
-        $config['max_width']     = 1024;
-        $config['max_height']    = 768;
-        $this->load->library('upload', $config);
+      $path = 'upload/'.$_GET['value'].'/';
+      $config['upload_path'] = $path;
+      $config['allowed_types'] = 'gif|jpg|png';
 
-        if ( ! $this->upload->do_upload('userfile')) {
-           $error = array('error' => $this->upload->display_errors());
-           $this->load->view('upload_form', $error);
-        }
+      $config['max_size'] = '100';
 
-        else {
-           $data = array('upload_data' => $this->upload->data());
-           $this->load->view('upload_success', $data);
-        }
+      $config['max_width'] = '1024';
+      $config['max_height'] = '768';
+
+   $this->load->library('upload', $config);
+
+      if ( ! $this->upload->do_upload())
+     {
+
+      $error = array('error' => $this->upload->display_errors());
+
+      $this->load->view('upload_form', $error);
+
+      }
+
+      else
+
+      {
+
+      $data = array('upload_data' => $this->upload->data());
+
+      //$this->load->view('upload_success', $data);
+      }
      }
 
 
      public function external_upload() {
-        $config['upload_path']   = './uploads/';
-        $config['allowed_types'] = 'gif|jpg|png';
-        $config['max_size']      = 100;
-        $config['max_width']     = 1024;
-        $config['max_height']    = 768;
-        $this->load->library('upload', $config);
 
-        if ( ! $this->upload->do_upload('userfile')) {
-           $error = array('error' => $this->upload->display_errors());
-           $this->load->view('upload_form', $error);
-        }
-
-        else {
-           $data = array('upload_data' => $this->upload->data());
-           $this->load->view('upload_success', $data);
-        }
      }
 
 
