@@ -2,8 +2,8 @@
   <div class="page-header" id="banner">
     <div class="row">
       <div class="col-lg-6">
-        <h1>Welcome, <?=  $this->session->userdata('ac_sess_username') ?></h1>
-        <p class="lead">This is your personal UCP.</p>
+        <h1><?= $this->lang->line('welcome'); ?> <?=  $this->session->userdata('ac_sess_username') ?></h1>
+        <p class="lead"><?= $this->lang->line('lead_text_addon'); ?></p>
       </div>
     </div>
   </div>
@@ -15,13 +15,13 @@
 	<div class="panel panel-info">
 
 
-    <div class="panel-heading">Your account info</div>
+    <div class="panel-heading"><?= $this->lang->line('heading_accinfo'); ?></div>
 		<table class="table table-striped table-hover ">
 		  <thead>
 		    <tr>
-		      <th><i class="fa fa-user" aria-hidden="true"></i> Nombre de usuario</th>
+		      <th><i class="fa fa-user" aria-hidden="true"></i> <?= $this->lang->line('username'); ?></th>
 		      <th><p class="text-primary"><?= $this->m_data->getUsernameID($this->session->userdata('ac_sess_id')); ?></p></th>
-			    <th><i class="fa fa-wrench" aria-hidden="true"></i> Rango de cuenta</th>
+			    <th><i class="fa fa-wrench" aria-hidden="true"></i> <?= $this->lang->line('rank'); ?></th>
           <?php foreach($this->m_data->getRankinfo()->result() as $myacc) {  ?>
 					<?php $rank = array(
 														0 => '<p class="text-success">Leecher</p>',
@@ -35,9 +35,9 @@
 		  </thead>
 		  <tbody>
 		    <tr>
-		      <td> <i class="fa fa-envelope-o" aria-hidden="true"></i> E-Mail</td>
+		      <td> <i class="fa fa-envelope-o" aria-hidden="true"></i> <?= $this->lang->line('email'); ?></td>
 		      <td><?= $this->m_data->getEmailID($this->session->userdata('ac_sess_id')); ?></td>
-			      <td><i class="fa fa-shield" aria-hidden="true"></i> Estado</td>
+			      <td><i class="fa fa-shield" aria-hidden="true"></i> <?= $this->lang->line('status'); ?></td>
 			      <td>Active</td>
 		    </tr>
 		  </tbody>
@@ -48,11 +48,11 @@
 	<div class="panel panel-info">
 
 
-    <div class="panel-heading">Your addons</div>
+    <div class="panel-heading"><?= $this->lang->line('my_addons'); ?></div>
     <ul class="nav nav-pills">
-      <li class="active"><a href="settings">My addons</a></li>
-      <li><a href="changepassword">Change Password</a></li>
-      <li class="disabled"><a href="#">Upload new Addon</a></li>
+      <li class="active"><a href="settings"><?= $this->lang->line('my_addons'); ?></a></li>
+      <li><a href="changepassword"><?= $this->lang->line('change_pass'); ?></a></li>
+      <li><a href="add"><?= $this->lang->line('acc_info'); ?></a></li>
     </ul>
 
 <br />
