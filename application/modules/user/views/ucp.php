@@ -22,15 +22,13 @@
 		      <th><i class="fa fa-user" aria-hidden="true"></i> <?= $this->lang->line('username'); ?></th>
 		      <th><p class="text-primary"><?= $this->m_data->getUsernameID($this->session->userdata('ac_sess_id')); ?></p></th>
 			    <th><i class="fa fa-wrench" aria-hidden="true"></i> <?= $this->lang->line('rank'); ?></th>
-          <?php foreach($this->m_data->getRankinfo()->result() as $myacc) {  ?>
 					<?php $rank = array(
 														0 => '<p class="text-success">Leecher</p>',
 														1 => '<p class="text-success">Uploader</p>',
 														2 => '<p class="text-primary">Moderator</p>',
 														3 => '<p class="text-danger">Administrator</p>'
 										); ?>
-                    <th> <?= $rank[$myacc->permission ] ?> </th>
-					<?php } ?>
+                    <th> <?= $rank[$this->session->userdata('ac_sess_rank') ] ?> </th>
 		    </tr>
 		  </thead>
 		  <tbody>
