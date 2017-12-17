@@ -115,27 +115,13 @@ if(isset($_POST['edit']))
           <label for="select" class="col-lg-4" control-label">Category</label>
           <div class="col-lg-8">
           <select class="form-control" name="category">
-										<option <?php if ($addon->category == 1 ) echo 'selected' ; ?> value="1">Action Bars</option>
-										<option <?php if ($addon->category == 2 ) echo 'selected' ; ?> value="2">Chat & Communication</option>
-										<option <?php if ($addon->category == 3 ) echo 'selected' ; ?> value="3">Artwork</option>
-										<option <?php if ($addon->category == 4 ) echo 'selected' ; ?> value="4">Auction & Economy</option>
-										<option <?php if ($addon->category == 5 ) echo 'selected' ; ?> value="5">Audio & Video</option>
-										<option <?php if ($addon->category == 6 ) echo 'selected' ; ?> value="6">Bags & Inventory</option>
-										<option <?php if ($addon->category == 7 ) echo 'selected' ; ?> value="7">Boss Encounters</option>
-										<option <?php if ($addon->category == 8 ) echo 'selected' ; ?> value="8">Buffs & Debuffs</option>
-										<option <?php if ($addon->category == 9 ) echo 'selected' ; ?> value="9">Class</option>
-										<option <?php if ($addon->category == 10 ) echo 'selected' ; ?> value="10">Combat</option>
-										<option <?php if ($addon->category == 11 ) echo 'selected' ; ?> value="11">Guild</option>
-										<option <?php if ($addon->category == 12 ) echo 'selected' ; ?> value="12">Mail</option>
-										<option <?php if ($addon->category == 13 ) echo 'selected' ; ?> value="13">Map & Minimap</option>
-										<option <?php if ($addon->category == 14 ) echo 'selected' ; ?> value="14">Minigames</option>
-										<option <?php if ($addon->category == 15 ) echo 'selected' ; ?> value="15">Miscellaneous</option>
-										<option <?php if ($addon->category == 16 ) echo 'selected' ; ?> value="16">Professions</option>
-										<option <?php if ($addon->category == 17 ) echo 'selected' ; ?> value="17">PvP</option>
-										<option <?php if ($addon->category == 18 ) echo 'selected' ; ?> value="18">Quests & Leveling</option>
-										<option <?php if ($addon->category == 19 ) echo 'selected' ; ?> value="19">Roleplay</option>
-										<option <?php if ($addon->category == 20 ) echo 'selected' ; ?> value="20">Tooltip</option>
-										<option <?php if ($addon->category == 21 ) echo 'selected' ; ?> value="21">Unitframes</option>
+
+              <?php
+              foreach($this->user_model->getCategory($id)->result() as $category) {
+              ?>
+										<option <?php if ($addon->category == $category->id ) echo 'selected' ; ?> value="<?= $category->id ?>"><?= $category->category ?></option>
+            <?php
+          } ?>
 									</select>
         </div>
       </div>

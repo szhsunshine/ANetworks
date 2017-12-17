@@ -174,6 +174,17 @@ class User_model extends CI_Model {
         return $this->db->query("SELECT status FROM ac_addons WHERE addon_uploader = '$username' AND status = 3")->num_rows();
     }
 
+    public function getCategory($id)
+    {
+
+        $query = $this->db->query("SELECT * FROM ac_addons WHERE id= '$id'");
+        foreach ($query->result() as $row)
+        {
+          $category = $row->category;
+          return $this->db->query("SELECT * FROM ac_category");
+        }
+    }
+
     public function deleteAddon($id, $username)
     {
         if (isset($_POST['delete']))
