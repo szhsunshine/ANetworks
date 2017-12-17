@@ -20,9 +20,9 @@ class M_data extends CI_Model {
     return $this->db->query("SELECT email FROM ac_users WHERE id = '".$id."'")->row_array()['email'];
   }
 
-  public function getPermission($id)
+  public function getPermission($username)
   {
-      return $this->db->query("SELECT permission FROM ac_ranks WHERE id = '".$id."'")->row_array()['permission'];
+      return $this->db->query("SELECT permission FROM ac_ranks WHERE username = '".$username."'")->row_array()['permission'];
   }
 
   public function getRankinfo()
@@ -50,7 +50,7 @@ class M_data extends CI_Model {
   (
     'ac_sess_username' => $this->getUsernameID($id),
     'ac_sess_id'		=> $this->getIDAccount(),
-    'ac_sess_rank' => $this->getPermission($id),
+    'ac_sess_rank' => $this->getPermission($_POST['username']),
     'logged_in' => TRUE
   );
     return $this->sessionConnect($data);
@@ -66,11 +66,6 @@ class M_data extends CI_Model {
   {
     $this->session->set_userdata($data);
     redirect(base_url(),'refresh');
-  }
-
-  public function getExpansion($expansion)
-  {
-    
   }
 
 }
