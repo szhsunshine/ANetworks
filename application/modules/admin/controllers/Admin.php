@@ -13,6 +13,7 @@ class Admin extends MX_Controller {
           redirect(base_url(),'refresh');
         $this->load->view('header_admin');
         $this->load->view('dashboard');
+        $this->load->view('footer_admin');
     }
 
 

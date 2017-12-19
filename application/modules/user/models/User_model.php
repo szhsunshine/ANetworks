@@ -8,17 +8,6 @@ class User_model extends CI_Model {
         parent::__construct();
     }
 
-    public function LogData($page, $data)
-    {
-        $username   = $_SESSION['username'];
-        $user_agent = $_SERVER['HTTP_USER_AGENT'];
-        $ip_address = $_SERVER['REMOTE_ADDR'];
-        $time = time();
-        $this->db->query("INSERT INTO ac_logs (username, page, data, user_agent, ip, time) VALUES('$username', '$page', '$data', '$user_agent', '$ip_address', '$time')");
-    }
-
-
-
     public function Register()
     {
         if (isset($_POST['register']))
@@ -44,7 +33,7 @@ class User_model extends CI_Model {
                             if ($data == 0)
                             {
                                 $passecure = sha1($password);
-                                $time = time();
+                                $time =  $this->m_data->getTimestamp();
                                 $access = 0;
 
                                 $data1 = $this->db->query("INSERT INTO ac_users (username, email, password, registered, ip) VALUES('$username', '$email', '$passecure', '$time', '$lastip')");
@@ -53,6 +42,13 @@ class User_model extends CI_Model {
                                {
                                  $data2 = $this->db->query("INSERT INTO ac_ranks (username, permission) VALUES ('$username', 1)");
 
+                                 ## Notifications system integrate
+
+                                 $page = 'Register module';
+                                 $data = 'New user register ';
+                                 $this->m_data->logData($page, $data);
+
+                                ## Register success
                                 echo '<div class="alert alert-dismissable alert-success">
                                 <button type="button" class="close" data-dismiss="alert">×</button>
                                                     <h4>Register success</h4>
@@ -200,9 +196,11 @@ class User_model extends CI_Model {
                 {
                     $this->db->query("UPDATE ac_addons SET status = 3 WHERE id = '$id' AND addon_uploader = '$username'");
 
-                    $page = 'UCP | Addon deleted';
-                    $data = 'Status set 3';
-                    $this->user_model->LogData($page, $data);
+                    ## Notifications system integrate
+
+                    $page = 'Delete addon';
+                    $data = 'Has been delete a one addon ';
+                    $this->m_data->logData($page, $data);
 
                     echo "<div class='callout success'>The addon has been deleted correctly</div>";
                     echo '<script>
@@ -246,6 +244,13 @@ class User_model extends CI_Model {
 
                 $this->db->query("UPDATE ac_users SET password = '$pasecure' WHERE username = '$username'");
 
+                ## Notifications system integrate
+
+                $page = 'Change pass';
+                $data = 'Has been a change password ';
+                $this->m_data->logData($page, $data);
+
+
                 echo "<div class='callout success'>The password has been changed</div>";
                 echo '<script>
                         setTimeout(function () {
@@ -277,7 +282,7 @@ class User_model extends CI_Model {
       $description = $_POST['desc'];
       $expansion = $_POST['expansion'];
       $category = $_POST['category'];
-      $time = time();
+      $time =  $this->m_data->getTimestamp();
 
       if (isset($_POST['edit']))
       {

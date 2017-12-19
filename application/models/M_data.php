@@ -68,4 +68,12 @@ class M_data extends CI_Model {
     redirect(base_url(),'refresh');
   }
 
+  public function logData($page, $data)
+  {
+        $username   = $this->session->userdata('ac_sess_username');
+        $user_agent = $_SERVER['HTTP_USER_AGENT'];
+        $ip_address = $_SERVER['REMOTE_ADDR'];
+        $time = $this->m_data->getTimestamp();
+        $this->db->query("INSERT INTO ac_logs (username, page, data, user_agent, ip, time) VALUES('$username', '$page', '$data', '$user_agent', '$ip_address', '$time')");
+  }
 }

@@ -8,19 +8,24 @@ class Admin_model extends CI_Model {
         parent::__construct();
     }
 
-    public function isLoggedIn()
+    public function getAddons()
     {
-        if ($this->session->userdata('username'))
-            return true;
-        else
-            return false;
+        return $this->db->query("SELECT * FROM ac_addons")->num_rows();
     }
 
-    public function isAdmin($username)
+    public function getUsers()
     {
-      return $this->db->query("SELECT permission FROM ac_ranks WHERE username = '$username'")->row_array()['permission'];
+      return $this->db->query("SELECT * FROM ac_users")->num_rows();
     }
 
+    public function getLogs()
+    {
+      return $this->db->query("SELECT * FROM ac_logs ORDER BY time DESC LIMIT 8");
+    }
 
+    public function getLastAddons()
+    {
+      return $this->db->query("SELECT * FROM ac_addons ORDER BY updated DESC LIMIT 8");
+    }
 
 }
