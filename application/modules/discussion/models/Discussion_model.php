@@ -21,6 +21,10 @@ class Discussion_model extends CI_Model {
    * Get id forums
    */
 
+   public function getThreadId($cat)
+   {
+     return $this->db->query("SELECT * FROM ac_discussion WHERE category = '$cat'");
+   }
 
 
    /**
@@ -29,7 +33,6 @@ class Discussion_model extends CI_Model {
 
     public function getIdCategory($cat)
     {
-      $cat = $_GET['cat'];
       return $this->db->query("SELECT category FROM ac_discussion_category WHERE id = '$cat'");
     }
 

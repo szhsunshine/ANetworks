@@ -62,19 +62,21 @@ foreach($this->discussion_model->getIdCategory($cat)->result() as $category) { ?
     <thead>
       <tr>
         <th>Thread</th>
-        <th>Category</th>
+        <th>Author</th>
         <th>Replies</th>
-        <th>Staff reply</th>
+        <th>Date</th>
       </tr>
     </thead>
     <tbody>
+    <?php
+    foreach($this->discussion_model->getThreadId($cat)->result() as $threads) { ?>
       <tr>
-        <td><a href=""></a></td>
-        <td>Column content</td>
-        <td>Column content</td>
-        <td>Column content</td>
+        <td><a href="?thread=<?= $threads->id ?>"><?= $threads->title ?></a></td>
+        <td><?= $threads->author ?></td>
+        <td>N/A</td>
+        <td><?= $threads->date ?></td>
       </tr>
-
+    <?php } ?>
     </tbody>
   </table>
 </div>
