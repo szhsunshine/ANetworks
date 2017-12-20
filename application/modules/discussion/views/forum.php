@@ -1,4 +1,3 @@
-
 <div class="container">
   <div class="page-header jumbotron" id="banner">
             <div class="row">
@@ -23,36 +22,65 @@
 
 
 <div class="col-lg-8">
-  <div class="panel panel-default">
+<div class="panel panel-default">
+    <?php if(empty($_GET["cat"])) { ?>
     <div class="panel-heading">
-      <h3 class="panel-title">Last 5 Discussions | General results</h3>
+      <h3 class="panel-title">Last 5 Discussions</h3>
     </div>
-    <div class="panel-body">
+  <div class="panel-body">
   <table class="table table-striped table-hover ">
     <thead>
       <tr>
-        <th>#</th>
         <th>Thread</th>
+        <th>Category</th>
         <th>Replies</th>
+        <th>Staff reply</th>
       </tr>
     </thead>
     <tbody>
       <tr>
-        <td>1</td>
+        <td><a href=""></a></td>
         <td>Column content</td>
-        <td>Column content</td>
-      </tr>
-      <tr>
-        <td>2</td>
         <td>Column content</td>
         <td>Column content</td>
       </tr>
 
     </tbody>
   </table>
+</div>
+<?php } else {
+  $cat = $_GET['cat'];
+?>
+<?php
+foreach($this->discussion_model->getIdCategory($cat)->result() as $category) { ?>
+    <div class="panel-heading">
+      <h3 class="panel-title"><?= $category->category ?></h3>
+    </div>
+<?php } ?>
+    <div class="panel-body">
+  <table class="table table-striped table-hover ">
+    <thead>
+      <tr>
+        <th>Thread</th>
+        <th>Category</th>
+        <th>Replies</th>
+        <th>Staff reply</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><a href=""></a></td>
+        <td>Column content</td>
+        <td>Column content</td>
+        <td>Column content</td>
+      </tr>
 
+    </tbody>
+  </table>
+</div>
+<?php } ?>
 <center>
-  <ul class="pagination">
+  <!-- <ul class="pagination" disabled>
     <li class="disabled"><a href="#">«</a></li>
     <li class="active"><a href="#">1</a></li>
     <li><a href="#">2</a></li>
@@ -60,10 +88,9 @@
     <li><a href="#">4</a></li>
     <li><a href="#">5</a></li>
     <li><a href="#">»</a></li>
-  </ul>
+  </ul> -->
 </center>
 
-</div>
 </div>
 </div>
 
@@ -75,10 +102,9 @@
     </div>
 <div class="panel-body">
   <ul class="nav nav-pills nav-stacked">
-    <li ><a href="#">Announce</a></li>
-    <li ><a href="#">Updates</a></li>
-    <li ><a href="#">Offtopic</a></li>
-    <li class="active"><a href="#">General</a></li>
+    <?php foreach($this->discussion_model->getCategory()->result() as $cat) { ?>
+    <li ><a href="?cat=<?=$cat->id ?>"><?= $cat->category ?></a></li>
+  <?php } ?>
   </ul>
 
 </div>
