@@ -50,7 +50,7 @@
     <ul class="nav nav-pills">
       <li class="active"><a href="settings"><?= $this->lang->line('my_addons'); ?></a></li>
       <li><a href="changepassword"><?= $this->lang->line('change_pass'); ?></a></li>
-      <li><a href="add"><?= $this->lang->line('acc_info'); ?></a></li>
+      <li><a href="add"><?= $this->lang->line('upload_addon'); ?></a></li>
     </ul>
 
 <br />
