@@ -63,7 +63,7 @@ foreach($this->discussion_model->getIdCategory($cat)->result() as $category) { ?
           <i class="fa fa-bullhorn fa-2x" aria-hidden="true"></i>
         </td>
         <td>
-          <a href="?thread=<?= $threads->id ?>" class="nounderline"><?= $threads->title ?></a>
+          <a href="view?thread=<?= $threads->id ?>" class="nounderline"><?= $threads->title ?></a>
           <br/>
           <small> <?= $threads->description ?></small>
         </td>

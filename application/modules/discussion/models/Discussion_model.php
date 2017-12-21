@@ -51,9 +51,10 @@ class Discussion_model extends CI_Model {
      * $cat = value
      */
 
-     public function getThread($id, $cat)
+     public function getThread($thread)
      {
-      return $this->db->query("SELECT category FROM ac_discussion_threads WHERE id = '$id' AND cat = '$cat'");
+      $thread = $_GET['thread'];
+      return $this->db->query("SELECT * FROM ac_discussion_thread WHERE id = '$thread'");
      }
 
      public function getReplies($id)
