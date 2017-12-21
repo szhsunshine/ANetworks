@@ -8,17 +8,6 @@ class User_model extends CI_Model {
         parent::__construct();
     }
 
-    public function LogData($page, $data)
-    {
-        $username   = $_SESSION['username'];
-        $user_agent = $_SERVER['HTTP_USER_AGENT'];
-        $ip_address = $_SERVER['REMOTE_ADDR'];
-        $time = time();
-        $this->db->query("INSERT INTO ac_logs (username, page, data, user_agent, ip, time) VALUES('$username', '$page', '$data', '$user_agent', '$ip_address', '$time')");
-    }
-
-
-
     public function Register()
     {
         if (isset($_POST['register']))
@@ -44,7 +33,7 @@ class User_model extends CI_Model {
                             if ($data == 0)
                             {
                                 $passecure = sha1($password);
-                                $time = time();
+                                $time =  $this->m_data->getTimestamp();
                                 $access = 0;
 
                                 $data1 = $this->db->query("INSERT INTO ac_users (username, email, password, registered, ip) VALUES('$username', '$email', '$passecure', '$time', '$lastip')");
@@ -53,6 +42,13 @@ class User_model extends CI_Model {
                                {
                                  $data2 = $this->db->query("INSERT INTO ac_ranks (username, permission) VALUES ('$username', 1)");
 
+                                 ## Notifications system integrate
+
+                                 $page = 'Register module';
+                                 $data = 'New user register ';
+                                 $this->m_data->logData($page, $data);
+
+                                ## Register success
                                 echo '<div class="alert alert-dismissable alert-success">
                                 <button type="button" class="close" data-dismiss="alert">×</button>
                                                     <h4>Register success</h4>
@@ -174,31 +170,14 @@ class User_model extends CI_Model {
         return $this->db->query("SELECT status FROM ac_addons WHERE addon_uploader = '$username' AND status = 3")->num_rows();
     }
 
-    public function getDir($dir)
+    public function getCategory($id)
     {
-        switch($dir)
+
+        $query = $this->db->query("SELECT * FROM ac_addons WHERE id= '$id'");
+        foreach ($query->result() as $row)
         {
-            case 'upload/vanilla':
-                return 1;
-                break;
-            case 'upload/tbc':
-                return 2;
-                break;
-            case 'upload/wtlk':
-                return 3;
-                break;
-            case 'upload/cata':
-                return 4;
-                break;
-            case 'upload/mop':
-                return 5;
-                break;
-            case 'upload/wod':
-                return 6;
-                break;
-            case 'upload/legion':
-                return 7;
-                break;
+          $category = $row->category;
+          return $this->db->query("SELECT * FROM ac_category");
         }
     }
 
@@ -217,9 +196,11 @@ class User_model extends CI_Model {
                 {
                     $this->db->query("UPDATE ac_addons SET status = 3 WHERE id = '$id' AND addon_uploader = '$username'");
 
-                    $page = 'UCP | Addon deleted';
-                    $data = 'Status set 3';
-                    $this->user_model->LogData($page, $data);
+                    ## Notifications system integrate
+
+                    $page = 'Delete addon';
+                    $data = 'Has been delete a one addon ';
+                    $this->m_data->logData($page, $data);
 
                     echo "<div class='callout success'>The addon has been deleted correctly</div>";
                     echo '<script>
@@ -263,6 +244,13 @@ class User_model extends CI_Model {
 
                 $this->db->query("UPDATE ac_users SET password = '$pasecure' WHERE username = '$username'");
 
+                ## Notifications system integrate
+
+                $page = 'Change pass';
+                $data = 'Has been a change password ';
+                $this->m_data->logData($page, $data);
+
+
                 echo "<div class='callout success'>The password has been changed</div>";
                 echo '<script>
                         setTimeout(function () {
@@ -294,7 +282,7 @@ class User_model extends CI_Model {
       $description = $_POST['desc'];
       $expansion = $_POST['expansion'];
       $category = $_POST['category'];
-      $time = time();
+      $time =  $this->m_data->getTimestamp();
 
       if (isset($_POST['edit']))
       {
@@ -338,5 +326,92 @@ class User_model extends CI_Model {
         return $this->db->query("SELECT * FROM ac_external_download WHERE addon_id = '$id'");
     }
 
+    public function addAddon($username, $name, $version, $desc, $expansion, $category)
+    {
+      $username = $this->session->userdata('ac_sess_username');
+      $name = $_POST['addon_name'];
+      $version = $_POST['addon_version'];
+      $description = $_POST['desc'];
+      $expansion = $_POST['expansion'];
+      $category = $_POST['category'];
+      $date = $this->m_data->getTimestamp();
+
+      $downloads = 0;
+      $status = 2;
+      $max_size = 20971520;
+
+      ## File config
+
+      $file        = $_FILES['files'];
+      $file_name  = $file['name'];
+      $file_tmp   = $file['tmp_name'];
+      $file_size  = $file['size'];
+      $file_error = $file['error'];
+
+      $file_ext  = explode('.', $file_name);
+      $file_ext  = strtolower(end($file_ext));
+
+      $whitelist = array(
+					'zip',
+					'rar',
+					'7z'
+			);
+
+      if (isset($_POST['add']))
+      {
+        if(in_array($file_ext, $whitelist))
+				{
+					if($file_error === 0)
+					{
+						if($file_size <= $max_size)
+						{
+              $folder = array(
+								1 => 'addons/vanilla/',
+								2 => 'addons/tbc/',
+								3 => 'addons/wotlk/',
+                4 => 'addons/cata/',
+                5 => 'addons/mop/',
+                6 => 'addons/wod/',
+                7 => 'addons/legion/'
+							);
+
+							$file_id = str_shuffle(substr('ABCDEF0123456789', 0, 10));
+              $file_name_new    = uniqid() . '-' . $file_name;
+							$file_destination = $folder[$expansion] . $file_name_new;
+              $file_url = $file_destination;
+							if(move_uploaded_file($file_tmp, $file_destination))
+							{
+                $this->db->query("INSERT INTO ac_addons (addon_name, addon_version, addon_uploader, addon_description, status, downloads, category, updated, uploaded, expansion, file_id)
+              VALUES('$name', '$version', '$username', '$description', '$status', '$downloads', '$category', '$date', '$date', '$expansion', '$file_id')");
+                $this->db->query("INSERT INTO ac_files (file_id, file_name, file_tmp, file_size, file_url, added) VALUES('$file_id', '$file_name', '$file_tmp', '$file_size', '$file_url', '$date')");
+              echo '<div class="callout success">Uploaded addon!</div>';
+							}
+       ## File is to large
+            }
+						else
+						{
+							echo '<div class="callout alert">File is too large!</div>';
+						}
+      ## Ocurrio un error
+        	}
+					else
+					{
+						echo '<div class="callout alert">Something went wrong! Error Code: ' . $file_error . '</div>';
+					}
+      ## Zip file
+				}
+				else
+				{
+					echo '<div class="callout alert">File is not a zip file!</div>';
+				}
+      ## Add
+      } else {
+        echo '<div class="alert alert-dismissable alert-danger">
+        <button type="button" class="close" data-dismiss="alert">×</button>
+        <strong>Do not send the form.</strong>
+        </div>';
+      }
+
+    }
 
 }

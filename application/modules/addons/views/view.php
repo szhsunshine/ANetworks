@@ -184,7 +184,14 @@
 
 		<div class="download-info">
 			<center>
-				<button type="button" class="btn btn-primary"><i class="fa fa-download" aria-hidden="true"></i> Direct Link</button>
+			<form class="form-horizontal"  method="post">
+				<?php if(isset($_POST['button_get']))
+					{
+						$id = $_GET['id'];
+						$this->addon_model->download($id);
+					} ?>
+				<input type="submit" class="btn btn-primary" name="button_get" value="Direct Link #1 " />
+			</form>
 			</center>
 		</div>
 

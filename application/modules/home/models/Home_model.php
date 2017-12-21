@@ -8,12 +8,6 @@ class Home_model extends CI_Model {
         parent::__construct();
     }
 
-    public function getTimestamp()
-    {
-        $date = new DateTime();
-        $date = $date->getTimestamp();
-        return $date;
-    }
 
     public function getNews()
     {

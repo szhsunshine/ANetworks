@@ -67,8 +67,30 @@ class Addon_model extends CI_Model {
         return $this->db->query("SELECT * FROM ac_external_download WHERE addon_id = '$id'");
     }
 
-    public function insertExternalLink($id)
+    public function download($id)
     {
-      
+      if (isset($_POST['button_get']))
+        {
+      $query = $this->db->query("SELECT * FROM ac_addons WHERE id= '$id'");
+      foreach ($query->result() as $row)
+      {
+        $downloads = $row->downloads;
+        $file_id = $row->file_id;
+        $this->db->query("UPDATE ac_addons SET downloads = ($downloads+1) WHERE id = '$id'");
+        $query2 = $this->db->query("SELECT * FROM ac_files WHERE file_id = '$file_id'");
+        foreach ($query2->result() as $row2) {
+          $file_url = $row2->file_url;
+          echo '<script>setTimeout(function () {
+            window.location.href = "'. $this->config->item('base_url') .'/'. $row2->file_url .'";
+          }, 4000);</script>';
+          echo '<div class="alert alert-dismissable alert-info">
+  <button type="button" class="close" data-dismiss="alert">×</button>
+  <strong>Downloading in four secconds... </strong> If the download doesn´t happen automatically, click on the following  <a href="'.$this->config->item('base_url').'/'.$row2->file_url.'" class="alert-link"> link</a>.
+</div>';
+        }
+      }
     }
+
+    }
+
 }

@@ -8,28 +8,24 @@ class Admin_model extends CI_Model {
         parent::__construct();
     }
 
-    public function LogData($page, $data)
+    public function getAddons()
     {
-        $username   = $_SESSION['username'];
-        $user_agent = $_SERVER['HTTP_USER_AGENT'];
-        $ip_address = $_SERVER['REMOTE_ADDR'];
-        $time = time();
-        $this->db->query("INSERT INTO logs (username, page, data, user_agent, ip, time) VALUES('$username', '$page', '$data', '$user_agent', '$ip_address', '$time')");
+        return $this->db->query("SELECT * FROM ac_addons")->num_rows();
     }
 
-    public function isLoggedIn()
+    public function getUsers()
     {
-        if ($this->session->userdata('username'))
-            return true;
-        else
-            return false;
+      return $this->db->query("SELECT * FROM ac_users")->num_rows();
     }
 
-
-    public function isAdmin()
+    public function getLogs()
     {
-      $id = $this->session->userdata('ac_sess_rank');
-      return $this->db->query("SELECT permission FROM ac_ranks WHERE id = '".$id."'")->row_array()['permission'];
+      return $this->db->query("SELECT * FROM ac_logs ORDER BY time DESC LIMIT 8");
+    }
+
+    public function getLastAddons()
+    {
+      return $this->db->query("SELECT * FROM ac_addons ORDER BY updated DESC LIMIT 8");
     }
 
 }
