@@ -21,31 +21,27 @@
   </div>
 
 
-<div class="col-lg-8">
+<div class="col-lg-9">
 <div class="panel panel-default">
     <?php if(empty($_GET["cat"])) { ?>
     <div class="panel-heading">
-      <h3 class="panel-title">Last 5 Discussions</h3>
+      <h3 class="panel-title">Last Ten Discussions</h3>
     </div>
   <div class="panel-body">
   <table class="table table-striped table-hover ">
-    <thead>
-      <tr>
-        <th>Thread</th>
-        <th>Category</th>
-        <th>Replies</th>
-        <th>Staff reply</th>
-      </tr>
-    </thead>
+  <div class="alert alert-dismissable alert-info">
+  <button type="button" class="close" data-dismiss="alert">×</button>
+  <strong>Important!</strong> Remember that to browse our forums you must do it from the categories section, this only shows the topics currently created by our users in a simplified way.
+</div>
+  <?php foreach($this->discussion_model->lastest()->result() as $lastest) { ?>
     <tbody>
       <tr>
-        <td><a href=""></a></td>
-        <td>Column content</td>
-        <td>Column content</td>
-        <td>Column content</td>
+        <td><a href="<?= $lastest->id ?>"><?= $lastest->title ?></a></td>
+        <td><?= $lastest->author ?></td>
       </tr>
 
     </tbody>
+  <?php } ?>
   </table>
 </div>
 <?php } else {
@@ -57,22 +53,22 @@ foreach($this->discussion_model->getIdCategory($cat)->result() as $category) { ?
       <h3 class="panel-title"><?= $category->category ?></h3>
     </div>
 <?php } ?>
-    <div class="panel-body">
-  <table class="table table-striped table-hover ">
-    <thead>
-      <tr>
-        <th>Thread</th>
-        <th>Author</th>
-        <th>Replies</th>
-        <th>Date</th>
-      </tr>
-    </thead>
+  <div class="panel-body">
+  <table class="table table-striped table-hover">
+  <?php
+  foreach($this->discussion_model->getThreadId($cat)->result() as $threads) { ?>
     <tbody>
-    <?php
-    foreach($this->discussion_model->getThreadId($cat)->result() as $threads) { ?>
-      <tr>
-        <td><a href="?thread=<?= $threads->id ?>"><?= $threads->title ?></a></td>
+      <tr <?php if ($threads->announcement == 1 ) echo 'class="info"' ; ?>>
+        <td> <!-- Support fa fa-icons -->
+          <i class="fa fa-bullhorn fa-2x" aria-hidden="true"></i>
+        </td>
+        <td>
+          <a href="?thread=<?= $threads->id ?>" class="nounderline"><?= $threads->title ?></a>
+          <br/>
+          <small> <?= $threads->description ?></small>
+        </td>
         <td><?= $threads->author ?></td>
+        <td>N/A</td>
         <td>N/A</td>
         <td><?= $threads->date ?></td>
       </tr>
@@ -97,7 +93,7 @@ foreach($this->discussion_model->getIdCategory($cat)->result() as $category) { ?
 </div>
 
 
-<div class="col-lg-4">
+<div class="col-lg-3">
   <div class="panel panel-default">
     <div class="panel-heading">
       <h3 class="panel-title">Categories</h3>

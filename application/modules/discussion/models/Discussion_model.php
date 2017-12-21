@@ -17,6 +17,14 @@ class Discussion_model extends CI_Model {
      return $this->db->query("SELECT * FROM ac_discussion_category");
    }
 
+   /**
+    * Last ten discuss
+    */
+
+    public function lastest()
+    {
+      return $this->db->query("SELECT * FROM ac_discussion ORDER BY date DESC LIMIT 10");
+    }
   /**
    * Get id forums
    */
@@ -36,9 +44,28 @@ class Discussion_model extends CI_Model {
       return $this->db->query("SELECT category FROM ac_discussion_category WHERE id = '$cat'");
     }
 
+
+    /**
+     * Get Thread and Reply fuctions
+     * $id = value
+     * $cat = value
+     */
+
+     public function getThread($id, $cat)
+     {
+      return $this->db->query("SELECT category FROM ac_discussion_threads WHERE id = '$id' AND cat = '$cat'");
+     }
+
+     public function getReplies($id)
+     {
+        return $this->db->query("SELECT category FROM ac_discussion_comments WHERE thread = '$id'")->num_rows();
+     }
+
     /**
      * Publish Discussion
      */
+
+
 
 
      /**
