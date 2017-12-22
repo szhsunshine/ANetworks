@@ -7,10 +7,12 @@ class M_modules extends CI_Model {
   	{
   		parent::__construct();
   	}
+
   	public function getStatusDiscordExperimental()
   	{
   		return $this->db->query("SELECT status FROM ac_modules WHERE id = '1'")->row()->status;
   	}
+
   	public function getStatusDiscordClassic()
   	{
   		return $this->db->query("SELECT status FROM ac_modules WHERE id = '2'")->row()->status;
@@ -36,4 +38,8 @@ class M_modules extends CI_Model {
       return $this->db->query("SELECT status FROM ac_modules WHERE id = '6'")->row()->status;
     }
 
+    public function discussion()
+    {
+      return $this->db->query("SELECT status FROM ac_modules WHERE id = '7'")->row()->status;
+    }
 }

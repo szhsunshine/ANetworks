@@ -36,7 +36,7 @@
   <?php foreach($this->discussion_model->lastest()->result() as $lastest) { ?>
     <tbody>
       <tr>
-        <td><a href="<?= $lastest->id ?>"><?= $lastest->title ?></a></td>
+        <td><a href="discussion/view?thread=<?= $lastest->id ?>"><?= $lastest->title ?></a></td>
         <td><?= $lastest->author ?></td>
       </tr>
 
@@ -63,7 +63,7 @@ foreach($this->discussion_model->getIdCategory($cat)->result() as $category) { ?
           <i class="fa fa-bullhorn fa-2x" aria-hidden="true"></i>
         </td>
         <td>
-          <a href="view?thread=<?= $threads->id ?>" class="nounderline"><?= $threads->title ?></a>
+          <a href="discussion/view?thread=<?= $threads->id ?>" class="nounderline"><?= $threads->title ?></a>
           <br/>
           <small> <?= $threads->description ?></small>
         </td>

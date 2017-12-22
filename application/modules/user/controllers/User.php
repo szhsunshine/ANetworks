@@ -7,7 +7,7 @@ class User extends MX_Controller {
     {
         $this->load->model('user_model');
 
-        if ($this->user_model->isLoggedIn())
+        if ($this->m_data->isLoggedIn())
             redirect(base_url(),'refresh');
 
         $this->load->view("header");
@@ -19,7 +19,7 @@ class User extends MX_Controller {
     {
         $this->load->model('user_model');
 
-        if ($this->user_model->isLoggedIn())
+        if ($this->m_data->isLoggedIn())
             redirect(base_url(),'refresh');
 
         if($this->m_modules->register() != '1')
@@ -40,7 +40,7 @@ class User extends MX_Controller {
     {
         $this->load->model('user_model');
 
-        if (!$this->user_model->isLoggedIn())
+        if (!$this->m_data->isLoggedIn())
             redirect(base_url(),'refresh');
 
         $this->load->view("header");
@@ -52,7 +52,7 @@ class User extends MX_Controller {
     {
         $this->load->model('user_model');
 
-        if (!$this->user_model->isLoggedIn())
+        if (!$this->m_data->isLoggedIn())
             redirect(base_url(),'refresh');
 
         $this->load->view('header');
@@ -64,7 +64,7 @@ class User extends MX_Controller {
     {
         $this->load->model('user_model');
 
-        if (!$this->user_model->isLoggedIn())
+        if (!$this->m_data->isLoggedIn())
             redirect(base_url(),'refresh');
         $this->load->view('header');
         $this->load->view('edit');
@@ -75,7 +75,7 @@ class User extends MX_Controller {
     public function add()
     {
         $this->load->model('user_model');
-        if (!$this->user_model->isLoggedIn())
+        if (!$this->m_data->isLoggedIn())
             redirect(base_url(),'refresh');
         $this->load->view('header');
         $this->load->view('add');

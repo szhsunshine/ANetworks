@@ -73,6 +73,10 @@ class Discussion_model extends CI_Model {
       * Publish comment
       */
 
+      public function addReply($thread, $category)
+      {
+        
+      }
 
       /**
        * Get Comments by ID

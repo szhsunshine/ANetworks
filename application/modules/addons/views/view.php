@@ -112,7 +112,7 @@
 				<td><i class="fa fa-download" aria-hidden="true"></i> <?= $external->external?> </td>
 				<td> <?= $external->date?></td>
 				<td><a href="<?= $external->url ?>" class="btn btn-primary btn-sm nounderline"><i class="fa fa-download" aria-hidden="true"></i> DOWNLOAD</a></td>
-				<?php if ($this->user_model->isLoggedIn()){
+				<?php if ($this->m_data->isLoggedIn()){
 				?>
 					<td><a href="" class="btn btn-primary btn-sm nounderline"><i class="fa fa-download" aria-hidden="true"></i> Edit</a></td>
 				<?php } else { ?>
@@ -126,7 +126,7 @@
 	<?php } ?>
 	<br/>
 	<center>
-		<?php if ($this->user_model->isLoggedIn()){
+		<?php if ($this->m_data->isLoggedIn()){
 		?>
 				<a href="" class="btn btn-primary btn-sm"><i class="fa fa-external-link-square" aria-hidden="true"></i> Insert external link</a>
 		<?php }?>

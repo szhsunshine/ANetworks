@@ -63,7 +63,7 @@
 		</ul>
 
 		<ul class="nav navbar-nav navbar-right">
-				<?php if($this->user_model->isLoggedIn()) { ?>
+				<?php if($this->m_data->isLoggedIn()) { ?>
 					<li><a href="<?= base_url();  ?>user/settings">My Account</a></li>
 					<li><a href="<?= base_url();  ?>user/logout">Logout</a></li>
 				<?php }else{ ?>
