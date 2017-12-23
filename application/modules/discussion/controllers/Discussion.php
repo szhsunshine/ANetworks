@@ -13,13 +13,27 @@ class Discussion extends MX_Controller {
         $this->load->view('footer');
     }
 
-    public function view()
+    public function category($idcat)
+    {
+      $this->load->model('user/user_model');
+      $this->load->model('discussion_model');
+      $category = array
+          ('idcat' => $idcat
+        );
+      $this->load->view('header');
+      $this->load->view('forum', $category);
+      $this->load->view('footer');
+    }
+
+    public function view($idlink)
     {
         $this->load->model('user/user_model');
         $this->load->model('discussion_model');
-
+        $thread = array
+            ('idlink' => $idlink
+          );
         $this->load->view('header');
-        $this->load->view('thread');
+        $this->load->view('thread', $thread);
         $this->load->view('footer');
     }
 

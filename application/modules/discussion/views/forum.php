@@ -23,7 +23,7 @@
 
 <div class="col-lg-9">
 <div class="panel panel-default">
-    <?php if(empty($_GET["cat"])) { ?>
+    <?php if(empty($idcat)) { ?>
     <div class="panel-heading">
       <h3 class="panel-title">Last Ten Discussions</h3>
     </div>
@@ -36,7 +36,7 @@
   <?php foreach($this->discussion_model->lastest()->result() as $lastest) { ?>
     <tbody>
       <tr>
-        <td><a href="discussion/view?thread=<?= $lastest->id ?>"><?= $lastest->title ?></a></td>
+        <td><a href="<?= base_url();  ?>forums/thread/<?= $lastest->id ?>"><?= $lastest->title ?></a></td>
         <td><?= $lastest->author ?></td>
       </tr>
 
@@ -45,10 +45,7 @@
   </table>
 </div>
 <?php } else {
-  $cat = $_GET['cat'];
-?>
-<?php
-foreach($this->discussion_model->getIdCategory($cat)->result() as $category) { ?>
+foreach($this->discussion_model->getIdCategory($idcat)->result() as $category) { ?>
     <div class="panel-heading">
       <h3 class="panel-title"><?= $category->category ?></h3>
     </div>
@@ -56,14 +53,14 @@ foreach($this->discussion_model->getIdCategory($cat)->result() as $category) { ?
   <div class="panel-body">
   <table class="table table-striped table-hover">
   <?php
-  foreach($this->discussion_model->getThreadId($cat)->result() as $threads) { ?>
+  foreach($this->discussion_model->getThreadId($idcat)->result() as $threads) { ?>
     <tbody>
       <tr <?php if ($threads->announcement == 1 ) echo 'class="info"' ; ?>>
         <td> <!-- Support fa fa-icons -->
           <i class="fa fa-bullhorn fa-2x" aria-hidden="true"></i>
         </td>
         <td>
-          <a href="discussion/view?thread=<?= $threads->id ?>" class="nounderline"><?= $threads->title ?></a>
+          <a href="<?= base_url();  ?>forums/thread/<?= $threads->id ?>" class="nounderline"><?= $threads->title ?></a>
           <br/>
           <small> <?= $threads->description ?></small>
         </td>
@@ -101,7 +98,7 @@ foreach($this->discussion_model->getIdCategory($cat)->result() as $category) { ?
 <div class="panel-body">
   <ul class="nav nav-pills nav-stacked">
     <?php foreach($this->discussion_model->getCategory()->result() as $cat) { ?>
-    <li ><a href="?cat=<?=$cat->id ?>"><?= $cat->category ?></a></li>
+    <li ><a href="<?= base_url();  ?>forums/category/<?=$cat->id ?>"><?= $cat->category ?></a></li>
   <?php } ?>
   </ul>
 

@@ -58,7 +58,7 @@
 							</ul>
 				</li>
 				<li>
-						<a href="#">Support</a>
+						<a href="<?= base_url();  ?>forums">Forums</a>
 				</li>
 		</ul>
 

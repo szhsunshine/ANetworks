@@ -9,6 +9,31 @@ class Discussion_model extends CI_Model {
   }
 
   /**
+   * Get Username Published (Dates)
+   * Get getRankinfo
+   */
+
+   public function getUsernameID($idlink)
+   {
+       $query = $this->db->query("SELECT * FROM ac_discussion_thread WHERE id= '$idlink'");
+       foreach ($query->result() as $row)
+       {
+         $username =  $row->author;
+         return $this->db->query("SELECT * FROM ac_users WHERE username= '$username'");
+       }
+   }
+
+   public function getRanked($idlink)
+   {
+     $rank = $this->db->query("SELECT * FROM ac_discussion_thread WHERE id= '$idlink'");
+     foreach ($rank->result() as $row)
+     {
+       $username =  $row->author;
+       return $this->db->query("SELECT * FROM ac_ranks WHERE username = '$username'");
+     }
+   }
+
+  /**
    * Get CATEGORY
    */
 
@@ -25,13 +50,14 @@ class Discussion_model extends CI_Model {
     {
       return $this->db->query("SELECT * FROM ac_discussion ORDER BY date DESC LIMIT 10");
     }
+
   /**
    * Get id forums
    */
 
-   public function getThreadId($cat)
+   public function getThreadId($idcat)
    {
-     return $this->db->query("SELECT * FROM ac_discussion WHERE category = '$cat'");
+     return $this->db->query("SELECT * FROM ac_discussion WHERE category = '$idcat'");
    }
 
 
@@ -39,9 +65,9 @@ class Discussion_model extends CI_Model {
     * Get Category id
     */
 
-    public function getIdCategory($cat)
+    public function getIdCategory($idcat)
     {
-      return $this->db->query("SELECT category FROM ac_discussion_category WHERE id = '$cat'");
+      return $this->db->query("SELECT category FROM ac_discussion_category WHERE id = '$idcat'");
     }
 
 
@@ -51,15 +77,14 @@ class Discussion_model extends CI_Model {
      * $cat = value
      */
 
-     public function getThread($thread)
+     public function getThread($idlink)
      {
-      $thread = $_GET['thread'];
-      return $this->db->query("SELECT * FROM ac_discussion_thread WHERE id = '$thread'");
+      return $this->db->query("SELECT * FROM ac_discussion_thread WHERE id = '".$idlink."'");
      }
 
-     public function getReplies($id)
+     public function getReplies($idlink)
      {
-        return $this->db->query("SELECT category FROM ac_discussion_comments WHERE thread = '$id'")->num_rows();
+        return $this->db->query("SELECT * FROM ac_discussion_replies WHERE id_thread = '$idlink'");
      }
 
     /**
@@ -75,7 +100,16 @@ class Discussion_model extends CI_Model {
 
       public function addReply($thread, $category)
       {
-        
+        if (isset($_POST['replie_send']))
+        {
+            if (!empty($_POST['msg']))
+            {
+
+
+                $this->db->query("INSERT INTO ac_discussion_replies (id_thread, msg, author, category, date) VALUES()");
+            }
+
+      }
       }
 
       /**

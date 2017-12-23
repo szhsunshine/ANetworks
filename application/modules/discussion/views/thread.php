@@ -1,5 +1,6 @@
+
 <div class="container">
-  <?php foreach($this->discussion_model->getThread($_GET['thread'])->result() as $thread) { ?>
+  <?php foreach($this->discussion_model->getThread($idlink)->result() as $thread) { ?>
   <div class="page-header jumbotron" id="banner">
             <div class="row">
               <div class="col-lg-6">
@@ -33,13 +34,13 @@
   </div>
 
 </div>
-<?php } ?>
 <div class="col-lg-4">
 
   <div class="panel panel-default">
     <div class="panel-body">
-  <div class="card hovercard">
+      <div class="card hovercard">
 
+      <?php foreach($this->discussion_model->getUsernameID($idlink)->result() as $username) { ?>
                <div class="avatar">
                  <center>
                    Your avatar
@@ -48,16 +49,29 @@
                <div class="info">
                  <center>
                    <div class="title">
-                       <h2> Sayghteight </h2>
+                       <h2> <?= $username->username ?> </h2>
                    </div>
 
                    <div class="desc text-primary">Post : 422</div>
                    <div class="desc text-primary">Reply : 422</div>
-                   <div class="desc text-danger">Rank : Administrator</div>
+                   <!--- <div class="desc text-primary">Reputation : 1 (<i class="fa fa-plus" aria-hidden="true"></i> / <i class="fa fa-minus" aria-hidden="true"></i>)
+
+                   </div> -->
+                  <?php foreach($this->discussion_model->getRanked($idlink)->result() as $perms) { ?>
+         					<?php $rank = array(
+         														0 => '<div class="desc text-info">Rank : Leecher</div>',
+         														1 => '<div class="desc text-success">Rank : Uploader</div>',
+         														2 => '<div class="desc text-primary">Rank : Moderator</div>',
+         														3 => '<div class="desc text-warning">Rank : Administrator</div>'
+         										); ?>
+                            <?= $rank[$perms->permission] ?>
+                <?php } ?>
                  </center>
                </div>
+      <?php } ?>
              </div>
-           </div>
+  </div>
+
 </div>
 
 </div>
@@ -68,26 +82,33 @@
       <div class="comments-container">
 
       <ul id="comments-list" class="comments-list">
+     <?php foreach($this->discussion_model->getReplies($idlink)->result() as $replie) { ?>
         <li>
           <div class="comment-main-level">
               <div class="comment-avatar"><img src="" alt=""></div>
             <div class="comment-box">
               <div class="comment-head">
-                <h6 class="comment-name by-author"><a></a></h6>
-                <h6 class="comment-name"><a></a></h6>
-                <span></span>
+                <?php if($replie->author == $thread->author){ ?>
+                <h6 class="comment-name by-author"><a> <?= $replie->author ?> </a></h6>
+              <?php } else { ?>
+                <h6 class="comment-name"><a> <?= $replie->author ?>  </a></h6>
+              <?php } ?>
+                <span><?= $replie->date ?> </span>
                 <i class="fa fa-reply"></i>
                 <i class="fa fa-heart"></i>
               </div>
               <div class="comment-content">
+                <?= $replie->msg ?>
               </div>
             </div>
           </div>
         </li>
         <br/>
+      <?php } ?>
       </ul>
     </div>
 </div>
 </div>
 
+<?php } ?>
 </div> <!-- End container -->
