@@ -54,6 +54,6 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 //forums
-$route['forums/category/(:num)'] = 'discussion/category/$1';
+$route['forums/topic/(:num)'] = 'discussion/topic/$1';
 $route['forums/thread/(:num)'] = 'discussion/view/$1';
 $route['forums'] = 'discussion';

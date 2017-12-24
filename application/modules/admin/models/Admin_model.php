@@ -8,6 +8,11 @@ class Admin_model extends CI_Model {
         parent::__construct();
     }
 
+    /**
+     * Show in Admin Dashboard
+     * 100% Completed
+     */
+
     public function getAddons()
     {
         return $this->db->query("SELECT * FROM ac_addons")->num_rows();
@@ -27,5 +32,20 @@ class Admin_model extends CI_Model {
     {
       return $this->db->query("SELECT * FROM ac_addons ORDER BY updated DESC LIMIT 8");
     }
+
+    public function getTicketSupport()
+    {
+
+    }
+
+     public function getOpenDiscussion()
+     {
+
+     }
+
+     /**
+      * Functions news
+      * 0% Completed
+      */
 
 }

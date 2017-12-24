@@ -44,4 +44,4 @@ $lang['at'] = 'at';
 /* News page ($id) */
 
 
-/* Comments section */
+/* Comments section ($id_news) */
