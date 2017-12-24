@@ -57,3 +57,8 @@ $route['translate_uri_dashes'] = FALSE;
 $route['forums/topic/(:num)'] = 'discussion/topic/$1';
 $route['forums/thread/(:num)'] = 'discussion/view/$1';
 $route['forums'] = 'discussion';
+
+
+// addons
+$route['addons/view/(:num)'] = 'addons/view/$1';
+$route['addons/(:num)'] = 'addons/index/$1';

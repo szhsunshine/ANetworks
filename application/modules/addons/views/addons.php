@@ -1,470 +1,107 @@
-
-
-<?php
-
-if(!isset($_GET['type']))
-{
-	die('No page found!');
-}
-
-
-$type = array(
-1 => 'vanilla',
-2 => 'tbc',
-3 => 'wotlk',
-4 => 'cata',
-5 => 'mop',
-6 => 'wod',
-7 => 'legion'
-);
-$value = $_GET['type'];
-?>
-
-
-
         <div class="container">
-
-
           <div class="page-header" id="banner">
             <div class="row">
               <div class="col-lg-6">
                 <h3>Welcome, Hero of Azeroth!</h3>
-                <blockquote>
-                <p>You have to forget me, Tirion! If the world is to live free from the tyranny of fear, it must not know what has happened here today.</p>
-                <small>- Bolvar Fordragón</small>
-                </blockquote>
               </div>
             </div>
           </div>
 
-          <div class="row">
-          <div class="col-md-8">
 
-				<?php if(isset($_GET['type']) && $_GET['type'] ==  'legion'):?>
-          <div class="panel panel-info">
-            <div class="panel-heading">Legion</div>
-          <form class="form-horizontal" method="GET">
-            <fieldset>
-              <div class="form-group">
-                <div class="col-lg-12">
-									<input type="hidden" name="type" value="legion" />
-                  <input class="form-control" id="inputEmail" name="name" placeholder="Search addon ...." type="text">
-                </div>
-              </div>
-            </fieldset>
-          </form>
-          <div class="panel-body">
-            <table class="table table-striped table-hover ">
-              <thead>
-                <tr>
-                  <th>Name</th>
-                  <th>Version</th>
-									<th>Updated</th>
-                  <th>Downloads</th>
-                  <th></th>
-                </tr>
-              </thead>
-              <tbody>
-								<?php if(!isset($_GET['name'])): ?>
-									<?php foreach($this->addon_model->grabExpansion($this->addon_model->getExpansion($value))->result() as $grabLegion) { ?>
-														<tr>
-																	<td> <?= $grabLegion->addon_name ?></td>
-																	<td> <?= $grabLegion->addon_version ?></td>
-																	<td> <?= date('j F Y', $grabLegion->updated) ?></td>
-																	<td> <?= $grabLegion->downloads ?></td>
-																 <td><a href="view?id=<?= $grabLegion->id ?>" class="btn btn-primary btn-sm nounderline">DOWNLOAD</a></td>
-														</tr>
-										<?php } ?>
-								<?php else: ?>
+<div class="col-lg-3">
 
-								<?php foreach($this->addon_model->searchAddons($this->addon_model->getExpansion($value))->result() as $search) { ?>
+		<div class="panel panel-addons">
 
-								<tr>
-							 <td><a href="view.php?id=<?= $search->id ?>"><?= $search->addon_name ?></a></td>
-							 <td><?= $search->addon_version ?></td>
-							 <td><?= date('j F Y', $search->updated) ?></td>
-							 <td><?= $search->downloads ?></td>
-							 <td><a href="view?id=id=<?= $search->id ?>" class="btn btn-primary btn-sm nounderline">DOWNLOAD</a></td>
-						 </tr>
+			<div class="panel-body-white">
+	<?php foreach($this->addon_model->getCategory()->result() as $cat) { ?>
+	<ul class="text-primary" style="max-width: 300px;">
+		<li><a href="view?id=<?= $cat->id ?>"><?= $cat->category ?> </a></li>
+	</ul>
+<?php } ?>
+</div>
+	</div>
+</div>
 
-						 <?php } ?>
-								<?php endif; ?>
 
-              </tbody>
-            </table>
-
-          </div>
-
-          </div>
-						<?php elseif(isset($_GET['type']) && $_GET['type'] ==  'wod'):?>
-							<div class="panel panel-info">
-								<div class="panel-heading">Warlords of Draenor</div>
-							<form class="form-horizontal" method="GET">
-								<fieldset>
-									<div class="form-group">
-										<div class="col-lg-12">
-											<input type="hidden" name="type" value="wod" />
-											<input class="form-control" id="inputEmail" name="name" placeholder="Search addon ...." type="text">
-										</div>
-									</div>
-								</fieldset>
-							</form>
-							<div class="panel-body">
-								<table class="table table-striped table-hover ">
-									<thead>
-										<tr>
-											<th>Name</th>
-											<th>Version</th>
-											<th>Updated</th>
-											<th>Downloads</th>
-											<th></th>
-										</tr>
-									</thead>
-									<tbody>
-										<?php if(!isset($_GET['name'])): ?>
-											<?php foreach($this->addon_model->grabExpansion($this->addon_model->getExpansion($value))->result() as $grabWod) { ?>
-																		<tr>
-																					<td> <?= $grabWod->addon_name ?></td>
-																					<td> <?= $grabWod->addon_version ?></td>
-																					<td> <?= date('j F Y', $grabWod->updated) ?></td>
-																					<td> <?= $grabWod->downloads ?></td>
-																				 <td><a href="view?id==<?= $grabWod->id ?>" class="btn btn-primary btn-sm nounderline">DOWNLOAD</a></td>
-																		</tr>
-
-														<?php } ?>
-														<?php else: ?>
-
-												<?php foreach($this->addon_model->searchAddons($this->addon_model->getExpansion($value))->result() as $search) { ?>
-
-																<tr>
-																	 <td><a href="view.php?id=<?= $search->id ?>"><?= $search->addon_name ?></a></td>
-																	 <td><?= $search->addon_version ?></td>
-																	 <td><?= date('j F Y', $search->updated) ?></td>
-																	 <td><?= $search->downloads ?></td>
-																	 <td><a href="view?id==<?= $search->id ?>" class="btn btn-primary btn-sm nounderline">DOWNLOAD</a></td>
-																</tr>
-
-													<?php } ?>
-												<?php endif; ?>
-
-									</tbody>
-								</table>
-
-							</div>
-
-							</div>
-						<?php elseif(isset($_GET['type']) && $_GET['type'] ==  'mop'): ?>
-									<div class="panel panel-info">
-											<div class="panel-heading">Mist of Pandaria</div>
-										<form class="form-horizontal" method="GET">
-											<fieldset>
-												<div class="form-group">
-													<div class="col-lg-12">
-														<input type="hidden" name="type" value="mop" />
-														<input class="form-control" id="inputEmail" name="name" placeholder="Search addon ...." type="text">
-													</div>
-												</div>
-											</fieldset>
-										</form>
-										<div class="panel-body">
-											<table class="table table-striped table-hover ">
-												<thead>
-													<tr>
-														<th>Name</th>
-														<th>Version</th>
-														<th>Updated</th>
-														<th>Downloads</th>
-														<th></th>
-													</tr>
-												</thead>
-												<tbody>
-													<?php if(!isset($_GET['name'])): ?>
-														<?php foreach($this->addon_model->grabExpansion($this->addon_model->getExpansion($value))->result() as $grabMop) { ?>
-																					<tr>
-																								<td> <?= $grabMop->addon_name ?></td>
-																								<td> <?= $grabMop->addon_version ?></td>
-																								<td> <?= date('j F Y', $grabMop->updated) ?></td>
-																								<td> <?= $grabMop->downloads ?></td>
-																							 <td><a href="view?id=<?= $grabMop->id ?>" class="btn btn-primary btn-sm nounderline">DOWNLOAD</a></td>
-																					</tr>
-																	<?php } ?>
-																	<?php else: ?>
-															<?php foreach($this->addon_model->searchAddons($this->addon_model->getExpansion($value))->result() as $search) { ?>
-																			<tr>
-																				 <td><a href="view.php?id=<?= $search->id ?>"><?= $search->addon_name ?></a></td>
-																				 <td><?= $search->addon_version ?></td>
-																				 <td><?= date('j F Y', $search->updated) ?></td>
-																				 <td><?= $search->downloads ?></td>
-																				 <td><a href="view?id=<?= $search->id ?>" class="btn btn-primary btn-sm nounderline">DOWNLOAD</a></td>
-																			</tr>
-
-																<?php } ?>
-															<?php endif; ?>
-												</tbody>
-											</table>
-										</div>
-								</div>
-						<?php elseif(isset($_GET['type']) && $_GET['type'] ==  'cata'): ?>
-							<div class="panel panel-info">
-									<div class="panel-heading">Cataclysm</div>
-								<form class="form-horizontal" method="GET">
-									<fieldset>
-										<div class="form-group">
-											<div class="col-lg-12">
-												<input type="hidden" name="type" value="cata" />
-												<input class="form-control" id="inputEmail" name="name" placeholder="Search addon ...." type="text">
-											</div>
-										</div>
-									</fieldset>
-								</form>
-								<div class="panel-body">
-									<table class="table table-striped table-hover ">
-										<thead>
-											<tr>
-												<th>Name</th>
-												<th>Version</th>
-												<th>Updated</th>
-												<th>Downloads</th>
-												<th></th>
-											</tr>
-										</thead>
-										<tbody>
-											<?php if(!isset($_GET['name'])): ?>
-												<?php foreach($this->addon_model->grabExpansion($this->addon_model->getExpansion($value))->result() as $grabCata) { ?>
-																			<tr>
-																						<td> <?= $grabCata->addon_name ?></td>
-																						<td> <?= $grabCata->addon_version ?></td>
-																						<td> <?= date('j F Y', $grabCata->updated) ?></td>
-																						<td> <?= $grabCata->downloads ?></td>
-																					 <td><a href="view?id=<?= $grabCata->id ?>" class="btn btn-primary btn-sm nounderline">DOWNLOAD</a></td>
-																			</tr>
-															<?php } ?>
-															<?php else: ?>
-													<?php foreach($this->addon_model->searchAddons($this->addon_model->getExpansion($value))->result() as $search) { ?>
-																	<tr>
-																		 <td><a href="view.php?id=<?= $search->id ?>"><?= $search->addon_name ?></a></td>
-																		 <td><?= $search->addon_version ?></td>
-																		 <td><?= date('j F Y', $search->updated) ?></td>
-																		 <td><?= $search->downloads ?></td>
-																		 <td><a href="view?id=<?= $search->id ?>" class="btn btn-primary btn-sm nounderline">DOWNLOAD</a></td>
-																	</tr>
-
-														<?php } ?>
-													<?php endif; ?>
-										</tbody>
-									</table>
-								</div>
-						</div>
-								<?php elseif(isset($_GET['type']) && $_GET['type'] ==  'wtlk'): ?>
-									<div class="panel panel-info">
-											<div class="panel-heading">Wrath of the Lich King</div>
-										<form class="form-horizontal" method="GET">
-											<fieldset>
-												<div class="form-group">
-													<div class="col-lg-12">
-														<input type="hidden" name="type" value="wtlk" />
-														<input class="form-control" id="inputEmail" name="name" placeholder="Search addon ...." type="text">
-													</div>
-												</div>
-											</fieldset>
-										</form>
-										<div class="panel-body">
-											<table class="table table-striped table-hover ">
-												<thead>
-													<tr>
-														<th>Name</th>
-														<th>Version</th>
-														<th>Updated</th>
-														<th>Downloads</th>
-														<th></th>
-													</tr>
-												</thead>
-												<tbody>
-													<?php if(!isset($_GET['name'])): ?>
-														<?php foreach($this->addon_model->grabExpansion($this->addon_model->getExpansion($value))->result() as $grabTlk) { ?>
-																					<tr>
-																								<td> <?= $grabTlk->addon_name ?></td>
-																								<td> <?= $grabTlk->addon_version ?></td>
-																								<td> <?= date('j F Y', $grabTlk->updated) ?></td>
-																								<td> <?= $grabTlk->downloads ?></td>
-																							 <td><a href="view?id=<?= $grabTlk->id ?>" class="btn btn-primary btn-sm nounderline">DOWNLOAD</a></td>
-																					</tr>
-																	<?php } ?>
-																	<?php else: ?>
-															<?php foreach($this->addon_model->searchAddons($this->addon_model->getExpansion($value))->result() as $search) { ?>
-																			<tr>
-																				 <td><a href="view.php?id=<?= $search->id ?>"><?= $search->addon_name ?></a></td>
-																				 <td><?= $search->addon_version ?></td>
-																				 <td><?= date('j F Y', $search->updated) ?></td>
-																				 <td><?= $search->downloads ?></td>
-																				 <td><a href="view?id=<?= $search->id ?>" class="btn btn-primary btn-sm nounderline">DOWNLOAD</a></td>
-																			</tr>
-
-																<?php } ?>
-															<?php endif; ?>
-												</tbody>
-											</table>
-										</div>
-								</div>
-							<?php elseif(isset($_GET['type']) && $_GET['type'] ==  'tbc'): ?>
-								<div class="panel panel-info">
-									<div class="panel-heading">The burning Crusade</div>
-									<form class="form-horizontal" method="GET">
-										<fieldset>
-											<div class="form-group">
-												<div class="col-lg-12">
-													<input type="hidden" name="type" value="tbc" />
-													<input class="form-control" id="inputEmail" name="name" placeholder="Search addon ...." type="text">
-												</div>
-											</div>
-										</fieldset>
-									</form>
-
-									<div class="panel-body">
-											<table class="table table-striped table-hover ">
-												<thead>
-													<tr>
-														<th>Name</th>
-														<th>Version</th>
-														<th>Updated</th>
-														<th>Downloads</th>
-														<th></th>
-													</tr>
-												</thead>
-												<tbody>
-													<?php if(!isset($_GET['name'])): ?>
-														<?php foreach($this->addon_model->grabExpansion($this->addon_model->getExpansion($value))->result() as $grabTbc) { ?>
-															<tr>
-																<td> <?= $grabTbc->addon_name ?></td>
-																<td> <?= $grabTbc->addon_version ?></td>
-																<td> <?= date('j F Y', $grabTbc->updated) ?></td>
-																<td> <?= $grabTbc->downloads ?></td>
-																<td><a href="view?id=<?= $grabTbc->id ?>" class="btn btn-primary btn-sm nounderline">DOWNLOAD</a></td>
-															</tr>
-														<?php } ?>
-													<?php else: ?>
-														<?php foreach($this->addon_model->searchAddons($this->addon_model->getExpansion($value))->result() as $search) { ?>
-															<tr>
-																<td><a href="view.php?id=<?= $search->id ?>"><?= $search->addon_name ?></a></td>
-																 <td><?= $search->addon_version ?></td>
-																 <td><?= date('j F Y', $search->updated) ?></td>
-																 <td><?= $search->downloads ?></td>
-																 <td><a href="view?id=<?= $search->id ?>" class="btn btn-primary btn-sm nounderline">DOWNLOAD</a></td>
-															 </tr>
-														 <?php } ?>
-													 <?php endif; ?>
-												 </tbody>
-											 </table>
-										 </div>
-									 </div>
-								 <?php else: ?>
-									 <div class="panel panel-info">
-	 									<div class="panel-heading">Vanilla</div>
-	 									<form class="form-horizontal" method="GET">
-	 										<fieldset>
-	 											<div class="form-group">
-	 												<div class="col-lg-12">
-														<input type="hidden" name="type" value="vanilla" />
-	 													<input class="form-control" id="inputEmail" name="name" placeholder="Search addon ...." type="text">
-	 												</div>
-	 											</div>
-	 										</fieldset>
-	 									</form>
-
-	 									<div class="panel-body">
-	 											<table class="table table-striped table-hover ">
-	 												<thead>
-	 													<tr>
-	 														<th>Name</th>
-	 														<th>Version</th>
-	 														<th>Updated</th>
-	 														<th>Downloads</th>
-	 														<th></th>
-	 													</tr>
-	 												</thead>
-	 												<tbody>
-	 													<?php if(!isset($_GET['name'])): ?>
-	 														<?php foreach($this->addon_model->grabExpansion($this->addon_model->getExpansion($value))->result() as $grabClassic) { ?>
-	 															<tr>
-	 																<td> <?= $grabClassic->addon_name ?></td>
-	 																<td> <?= $grabClassic->addon_version ?></td>
-	 																<td> <?= date('j F Y', $grabClassic->updated) ?></td>
-	 																<td> <?= $grabClassic->downloads ?></td>
-	 																<td><a href="view?id=<?= $grabClassic->id ?>" class="btn btn-primary btn-sm nounderline">DOWNLOAD</a></td>
-	 															</tr>
-	 														<?php } ?>
-	 													<?php else: ?>
-	 														<?php foreach($this->addon_model->searchAddons($this->addon_model->getExpansion($value))->result() as $search) { ?>
-	 															<tr>
-	 																<td><a href="view.php?id=<?= $search->id ?>"><?= $search->addon_name ?></a></td>
-	 																 <td><?= $search->addon_version ?></td>
-	 																 <td><?= date('j F Y', $search->updated) ?></td>
-	 																 <td><?= $search->downloads ?></td>
-	 																 <td><a href="view?id=<?= $search->id ?>" class="btn btn-primary btn-sm nounderline">DOWNLOAD</a></td>
-	 															 </tr>
-	 														 <?php } ?>
-	 													 <?php endif; ?>
-	 												 </tbody>
-	 											 </table>
-	 										 </div>
-	 									 </div>
-
-										 <?php endif; ?>
+<div class="col-lg-9">
+	<div class="panel panel-addons">
+		<div class="panel-heading">
+					<section class="panel-title text-primary">
+                      <time class="pull-right">
+												<form class="navbar-form navbar-left">
+      									<input class="form-control col-lg-8" placeholder="Search" type="text">
+    										</form>
+                      </time>
+                      <section class="pull-left" id="id">
+                	       <?php foreach($this->addon_model->expansionSelected($idexpansion)->result() as $exp) { ?>
+                        <abbr title="count of posts in this topic">Addons <?= $exp->Expansion ?></abbr>
+                      <?php } ?>
+                      </section>
+					</section>
+					<br />
+					<br />
 				</div>
+	  <div class="panel-body panel-body-white">
 
-				<div class="col-md-4">
-
-		            <div class="panel panel-default">
-		            <div class="panel-heading">Most downloaded</div>
-		            <div class="panel-body">
-									<?php if($_GET['type'] == 'legion'): ?>
-										<?php foreach($this->addon_model->mostDownloaded($this->addon_model->getExpansion($value))->result() as $legion) { ?>
-		              <ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
-		                      <li><a href="view?id=<?= $legion->id ?>"><?= $legion->addon_name ?> <small>(<?= $legion->downloads ?>)</small></a></li>
-		              </ul>
-									<?php } ?>
-								<?php elseif($_GET['type'] == 'wod'): ?>
-										<?php foreach($this->addon_model->mostDownloaded($this->addon_model->getExpansion($value))->result() as $wod) { ?>
-											<ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
-															<li><a href="view?id=<?= $wod->id ?>"><?= $wod->addon_name ?> <small>(<?= $wod->downloads ?>)</small></a></li>
-											</ul>
-								<?php } ?>
-							<?php elseif($_GET['type'] == 'mop'): ?>
-									<?php foreach($this->addon_model->mostDownloaded($this->addon_model->getExpansion($value))->result() as $mop) { ?>
-										<ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
-											<li><a href="view?id=<?= $mop->id ?>"><?= $mop->addon_name ?> <small>(<?= $mop->downloads ?>)</small></a></li>
-										</ul>
-								<?php } ?>
-							<?php elseif($_GET['type'] == 'cata'): ?>
-									<?php foreach($this->addon_model->mostDownloaded($this->addon_model->getExpansion($value))->result() as $cata) { ?>
-										<ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
-											<li><a href="view?id=<?= $cata->id ?>"><?= $cata->addon_name ?> <small>(<?= $cata->downloads ?>)</small></a></li>
-										</ul>
-								<?php } ?>
-							<?php elseif($_GET['type'] == 'wtlk'): ?>
-									<?php foreach($this->addon_model->mostDownloaded($this->addon_model->getExpansion($value))->result() as $wtlk) { ?>
-										<ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
-											<li><a href="view?id=<?= $wtlk->id ?>"><?= $wtlk->addon_name ?> <small>(<?= $wtlk->downloads ?>)</small></a></li>
-										</ul>
-								<?php } ?>
-
-							<?php elseif($_GET['type'] == 'tbc'): ?>
-									<?php foreach($this->addon_model->mostDownloaded($this->addon_model->getExpansion($value))->result() as $tbc) { ?>
-										<ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
-											<li><a href="view?id=<?= $tbc->id ?>"><?= $tbc->addon_name ?> <small>(<?= $tbc->downloads ?>)</small></a></li>
-										</ul>
-								<?php } ?>
-							<?php else: ?>
-								<?php foreach($this->addon_model->mostDownloaded($this->addon_model->getExpansion($value))->result() as $classic) { ?>
-									<ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
-										<li><a href="view?id=<?= $classic->id ?>"><?= $classic->addon_name ?> <small>(<?= $classic->downloads ?>)</small></a></li>
-									</ul>
-          <?php } ?>
-<?php endif; ?>
-		            </div>
-		            </div>
-		        </div>
+			<form method="post">
+ <div class="col-lg-4">
+	 <select class="form-control" name="expansion" id="select">
+     <option value="0">No expansión selected</option>
+     <option value="1">Vanilla</option>
+     <option value="2">Burning Crusade</option>
+     <option value="3">Wrath of the Lich King</option>
+     <option value="4">Cataclysm</option>
+     <option value="5">Mist of Pandaria</option>
+     <option value="6">Warlords of Draenor</option>
+     <option value="7">Legion</option>
+	 </select>
+</div>
 
 
+ <div class="col-lg-4">
+	 <select class="form-control" name="filtrer-by" id="select">
+     <option value="0">No filtrer selected</option>
+     <option value="1">Popularidad</option>
+     <option value="2">Most Downloaded</option>
+     <option value="3">Recent update</option>
+	 </select>
+</div>
+        <button type="submit" class="btn btn-primary">Filtrer</button>
+			</form>
+	  </div>
+	</div>
+
+
+
+<?php foreach($this->addon_model->grabExpansion($idexpansion)->result() as $addons) { ?>
+	<div class="panel panel-addons">
+	  <div class="panel-body panel-body-white">
+      <section class="panel-title text-primary">
+                          <section class="pull-left" id="id">
+                            <a href="<?= $addons->id ?>"><?= $addons->addon_name ?> | <?= $addons->expansion ?></a>
+                          </section>
+    					</section>
+    					<br />
+    					<br />
+				<section class="col-md-8 ">
+        <p class="list-item__stats">
+
+            <i class="fa fa-download">  </i>           <small> <?= $addons->downloads ?> |
+          </small>
+            <i class="fa fa-calendar" aria-hidden="true"></i>           <small> <?= $addons->updated ?>
+          </small>
+        </p>
+					<?= substr($addons->addon_description, 0, 50) ?>
+				</section>
+
+        <section class="col-md-4 ">
+          <a href="view/=<?= $addons->id ?>" class="btn btn-primary btn-sm nounderline">DOWNLOAD</a>
+        </section>
+	  </div>
+	</div>
+<?php } ?>
+
+
+</div>
 
 </div>

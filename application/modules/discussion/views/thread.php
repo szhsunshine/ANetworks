@@ -1,114 +1,164 @@
-
-<div class="container">
-  <?php foreach($this->discussion_model->getThread($idlink)->result() as $thread) { ?>
-  <div class="page-header jumbotron" id="banner">
-            <div class="row">
-              <div class="col-lg-6">
-                <h3><?= $thread->title ?>  </h3>
-              </div>
-                <div class="col-lg-6">
-                  <?php if ($this->m_data->getPermission($this->session->userdata('ac_sess_username')) >= 2)  { ?>
-                  <button type="button" class="btn btn-warning btn-block">Block</button>
-                  <button type="button" class="btn btn-info btn-block">Edit thread</button>
-                  <button type="button" class="btn btn-primary btn-block">Closed thread</button>
-                  <?php } else { ?>
-                  <!-- User -->
-                    <button type="button" class="btn btn-default btn-lg btn-block">Report thread</button>
-                  <?php } ?>
-                </div>
-              </div>
-            </div>
-  <div class="col-lg-8">
-  <div class="panel panel-primary">
-    <div class="panel-body">
-      <?= $thread->msg ?>
-    </div>
-    <div class="panel-body">
-      <div class="col-lg-4">
-        <small> Published by <?= $thread->author ?>  at <?= $thread->date ?>  </small>
+<section class="container">
+  <div class="page-header" id="banner">
+        <div class="row">
+          <div class="col-lg-6">
+            <h1>Welcome</h1>
+          </div>
+        </div>
       </div>
-      <div class="col-lg-8">
-        <button type="button" class="btn btn-primary">Send your Reply</button>
-      </div>
-    </div>
-  </div>
 
-</div>
-<div class="col-lg-4">
+  	<div class="row">
+      <ul class="breadcrumb">
+      <li><a href="<?= base_url();  ?>forums">Home </a></li>
+      <?php foreach($this->discussion_model->categoryById($idlink)->result() as $category) { ?>
+      <li><?= $category->category ?></li>
+      <?php } ?>
+      <?php foreach($this->discussion_model->threadById($idlink)->result() as $breadthread) { ?>
+      <li class="active"><?= $breadthread->title ?></li>
+      <?php } ?>
+    </ul>
+	<section class="row clearfix">
+		<section class="col-md-12 column">
 
-  <div class="panel panel-default">
-    <div class="panel-body">
-      <div class="card hovercard">
 
+          <div class="row clearfix">
+		<div class="col-md-12 column">
+      <?php foreach($this->discussion_model->getThread($idlink)->result() as $thread) { ?>
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<section class="panel-title">
+            <time class="pull-right">
+              <i class="fa fa-calendar"></i> <?= date('j F Y', $thread->date); ?>
+            </time>
+					</section>
+          <br />
+				</div>
+				<section class="row panel-body">
+					<section class="col-md-9">
+                      <h2> <i class="fa fa-smile-o"></i> <?= $thread->title ?></h2>
+                      <hr>
+                      <?= $thread->msg ?>
+          </section>
+          <section id="user-description" class="col-md-3 ">
       <?php foreach($this->discussion_model->getUsernameID($idlink)->result() as $username) { ?>
-               <div class="avatar">
-                 <center>
-                   Your avatar
+            <section class="well">
+              <div class="dropdown">
+                <center>
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                    <i class="fa fa-cricle"></i> <?= $username->username ?>
+                    <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                      <li><a href="#"><i class="fa fa-code"></i>View all Articles</a></li>
+                      <li><a href="#"><i class="fa fa-th-list"></i>View all Posts</a></li>
+                      <li class="divider"></li>
+                      <li><a href="#"><i class="fa fa-cogs"></i> Manage User (for adminstrator)</a></li>
+                    </ul>
+                  </center>
+                 </div>
+                 <figure>
+                   <center>
+                     <img class="img-rounded img-responsive" src="http://www.webdesignforums.net/img/wdf_avatar.jpg" >
+                   </center>
+                 </figure>
+                 <ul class="dl-horizontal text-center">
+                     <li>joined date:15 September 2014</li>
+                     <li>Posts: 5000</li>
+                     <li>Rank: Administrator</li>
+                     <li>Reputacion : Notable</li>
+                    </ul>
+                  </section>
+            <?php } ?>
+                </section>
+              </section>
+				<div class="panel-footer">
+          <div class="row">
+            <section class="col-md-8 ">
+              <i class="fa fa-thumbs-up "></i><a href="#"> Thanks </a>| <i class="fa fa-warning "></i><a href="#"> Report </a>
+            </section>
+            <section class="col-md-4">
+              <span class="fa-stack">
+                <i class="fa fa-quote-right fa-stack-1x"></i>
+                <i class="fa fa-comment-o fa-lg fa-stack-1x"></i>
+              </span>
+              <a href="#"> Reply With Quote </a> |
+              <i class="fa fa-mail-reply "></i><a href="#"> Reply </a>|
+              <i class="fa fa-edit "></i><a href="#"> Edit Post </a>
+            </section>
+          </div>
+        </div>
+			</div>
+    <?php } ?>
+		</div>
+	</div>
+</section>
+</section>
+
+
+<!-- User responses -->
+
+
+  <section class="col-md-12 column">
+
+
+        <div class="row clearfix">
+  <div class="col-md-12 column">
+    <?php foreach($this->discussion_model->getReplies($idlink)->result() as $reply) { ?>
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <section class="panel-title">
+          <time class="pull-right">
+            <i class="fa fa-calendar"></i> <?= date('j F Y', $reply->date); ?>
+          </time>
+          <section class="pull-left" id="id">
+            <abbr>#1</abbr>
+          </section>
+        </section>
+        <br />
+      </div>
+      <section class="row panel-body">
+        <section class="col-md-9">
+                    <?= $reply->msg ?>
+        </section>
+        <section id="user-description" class="col-md-3 ">
+          <section class="well">
+            <div class="dropdown">
+              <center>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  <i class="fa fa-cricle"></i> <?= $reply->author ?>
+                  <span class="caret"></span></a>
+                  <ul class="dropdown-menu" role="menu">
+                    <li><a href="#"><i class="fa fa-code"></i>View all Articles</a></li>
+                    <li><a href="#"><i class="fa fa-th-list"></i>View all Posts</a></li>
+                    <li class="divider"></li>
+                    <li><a href="#"><i class="fa fa-cogs"></i> Manage User (for adminstrator)</a></li>
+                  </ul>
                 </center>
                </div>
-               <div class="info">
-                 <center>
-                   <div class="title">
-                       <h2> <?= $username->username ?> </h2>
-                   </div>
-
-                   <div class="desc text-primary">Post : 422</div>
-                   <div class="desc text-primary">Reply : 422</div>
-                   <!--- <div class="desc text-primary">Reputation : 1 (<i class="fa fa-plus" aria-hidden="true"></i> / <i class="fa fa-minus" aria-hidden="true"></i>)
-
-                   </div> -->
-                  <?php foreach($this->discussion_model->getRanked($idlink)->result() as $perms) { ?>
-         					<?php $rank = array(
-         														0 => '<div class="desc text-info">Rank : Leecher</div>',
-         														1 => '<div class="desc text-success">Rank : Uploader</div>',
-         														2 => '<div class="desc text-primary">Rank : Moderator</div>',
-         														3 => '<div class="desc text-warning">Rank : Administrator</div>'
-         										); ?>
-                            <?= $rank[$perms->permission] ?>
-                <?php } ?>
-                 </center>
-               </div>
-      <?php } ?>
-             </div>
-  </div>
-
-</div>
-
-</div>
-
-<div class="col-lg-12">
-
-    <div class="panel panel-default">
-      <div class="comments-container">
-
-      <ul id="comments-list" class="comments-list">
-     <?php foreach($this->discussion_model->getReplies($idlink)->result() as $replie) { ?>
-        <li>
-          <div class="comment-main-level">
-              <div class="comment-avatar"><img src="" alt=""></div>
-            <div class="comment-box">
-              <div class="comment-head">
-                <?php if($replie->author == $thread->author){ ?>
-                <h6 class="comment-name by-author"><a> <?= $replie->author ?> </a></h6>
-              <?php } else { ?>
-                <h6 class="comment-name"><a> <?= $replie->author ?>  </a></h6>
-              <?php } ?>
-                <span><?= $replie->date ?> </span>
-                <i class="fa fa-reply"></i>
-                <i class="fa fa-heart"></i>
-              </div>
-              <div class="comment-content">
-                <?= $replie->msg ?>
-              </div>
-            </div>
-          </div>
-        </li>
-        <br/>
-      <?php } ?>
-      </ul>
+               <ul class="dl-horizontal text-center">
+                   <li>joined date:15 September 2014</li>
+                   <li>Posts: 5000</li>
+                   <li>Rank: Administrator</li>
+                   <li>Reputacion : Notable</li>
+                  </ul>
+                </section>
+              </section>
+            </section>
+      <div class="panel-footer">
+        <div class="row">
+          <section class="col-md-8 ">
+            <i class="fa fa-thumbs-up "></i><a href="#"> Thanks </a>| <i class="fa fa-warning "></i><a href="#"> Report </a>
+          </section>
+          <section class="col-md-4">
+            <i class="fa fa-edit "></i><a href="#"> Edit Post </a>
+          </section>
+        </div>
+      </div>
     </div>
+  <?php } ?>
+  </div>
 </div>
-</div>
+</section>
+</section>
 
-<?php } ?>
-</div> <!-- End container -->
+
+</section>
