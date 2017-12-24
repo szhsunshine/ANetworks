@@ -8,9 +8,9 @@ class Addon_model extends CI_Model {
         parent::__construct();
     }
 
-    public function getExpansion($value)
+    public function getExpansion($idexpansion)
     {
-        switch($value)
+        switch($idexpansion)
         {
             case 'vanilla':
                 return 1;
@@ -36,9 +36,20 @@ class Addon_model extends CI_Model {
         }
     }
 
-    public function grabExpansion($value)
+
+    public function expansionSelected($expansion)
     {
-        return $this->db->query("SELECT * FROM ac_addons WHERE expansion = '$value' AND status =2");
+      return $this->db->query("SELECT * FROM ac_expansion WHERE id = '$expansion' AND status =1");
+    }
+
+    public function grabExpansion($expansion)
+    {
+        return $this->db->query("SELECT * FROM ac_addons WHERE expansion = '$expansion' AND status =2");
+    }
+
+    public function getCategory()
+    {
+      return $this->db->query("SELECT * FROM ac_category");
     }
 
     public function mostDownloaded($value)
