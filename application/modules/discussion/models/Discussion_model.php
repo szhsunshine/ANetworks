@@ -73,7 +73,7 @@ class Discussion_model extends CI_Model {
 
         public function lastReply($topic)
         {
-          return $this->db->query("SELECT * FROM ac_discussion_replies WHERE id_thread = '$topic' ORDER BY date DESC LIMIT 1");
+        return $this->db->query("SELECT * FROM ac_discussion_replies WHERE id_thread = '$topic' ORDER BY date DESC LIMIT 1");
         }
 
         public function categoryName($idtopic)
@@ -105,6 +105,20 @@ class Discussion_model extends CI_Model {
              }
            }
 
+           public function categoryById($idlink)
+           {
+             $query = $this->db->query("SELECT id_cat FROM ac_discussion_thread WHERE id= '$idlink'");
+             foreach ($query->result() as $row)
+             {
+               $category =  $row->id_cat;
+               return $this->db->query("SELECT * FROM ac_discussion_category WHERE id = '$category'");
+             }
+           }
+
+           public function threadById($idlink)
+           {
+             return $this->db->query("SELECT * FROM ac_discussion_thread WHERE id= '$idlink'");
+           }
 
            /**
            * Get id forums

@@ -23,7 +23,7 @@
     <?php foreach($this->discussion_model->getTopics($idtopic)->result() as $topic) { ?>
         <section class="row panel-body">
         <section class="col-md-6">
-          <h4> <a href="#"><i class="text-primary"> <?= substr($topic->title, 0, 40) ?> ..  </i> </h4></a>
+          <h4> <a href="<?= base_url() ?>forums/thread/<?= $topic->id ?>"><i class="text-primary"> <?= substr($topic->title, 0, 40) ?> ..  </i> </h4></a>
 
 
         </section>
@@ -33,11 +33,12 @@
           </ul>
         </section>
         <section class="col-md-3">
-          <?php foreach($this->discussion_model->lastReply($topic->id)->result() as $last) { ?>
-          <a href="#"><i class="fa fa-link"> </i> <?= substr($last->msg, 0, 15); ?> ... </a> <br />
-          <a class"nounderline"><i class="fa fa-user text-primary"></i> <?= $last->author ?> </a>
-           (<a class"nounderline"><i class="fa fa-calendar text-primary"></i><?= date('Y-m-d', $last->date); ?></a>)
-        <?php } ?>
+     <?php foreach($this->discussion_model->lastReply($topic->id)->result() as $last)  {?>
+
+   <a href="#"><i class="fa fa-link"> </i> <?= substr($last->msg, 0, 15); ?> ... </a> <br />
+   <a class"nounderline"><i class="fa fa-user text-primary"></i> <?= $last->author ?> </a>
+    (<a class"nounderline"><i class="fa fa-calendar text-primary"></i><?= date('Y-m-d', $last->date); ?></a>)
+  <?php } ?>
         </section>
         <hr>
       </section>
