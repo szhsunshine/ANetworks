@@ -18,13 +18,15 @@ class Addons extends MX_Controller {
         $this->load->view('footer');
     }
 
-    public function view()
+    public function view($idaddon)
     {
         $this->load->model('user/user_model');
         $this->load->model('addon_model');
 
+        $addonid = array
+        ('idaddon' => $idaddon, );
         $this->load->view('header');
-        $this->load->view('view');
+        $this->load->view('view', $addonid);
         $this->load->view('footer');
     }
 }
