@@ -40,13 +40,13 @@
 			<li class="dropdown">
 				<a class="dropdown-toggle" data-toggle="dropdown" href="#" id="themes">Addons <span class="caret"></span></a>
 				<ul class="dropdown-menu" aria-labelledby="themes">
-					<li><a href="<?= base_url();  ?>addons/addons?type=vanilla" class="current-sub-nav"> <?= $this->lang->line('exp_classic'); ?></a></li>
-					<li><a href="<?= base_url();  ?>addons/addons?type=tbc" class="current-sub-nav"> <?= $this->lang->line('exp_tbc'); ?></a></li>
-					<li><a href="<?= base_url();  ?>addons/addons?type=wtlk" class="current-sub-nav"> <?= $this->lang->line('exp_wtlk'); ?></a></li>
-					<li><a href="<?= base_url();  ?>addons/addons?type=cata" class="current-sub-nav"> <?= $this->lang->line('exp_cata'); ?></a></li>
-					<li><a href="<?= base_url();  ?>addons/addons?type=mop" class="current-sub-nav"> <?= $this->lang->line('exp_mop'); ?></a></li>
-					<li><a href="<?= base_url();  ?>addons/addons?type=wod" class="current-sub-nav"> <?= $this->lang->line('exp_wod'); ?></a></li>
-					<li><a href="<?= base_url();  ?>addons/addons?type=legion" class="current-sub-nav"> <?= $this->lang->line('exp_legion'); ?></a></li>
+					<li><a href="<?= base_url();  ?>addons/1" class="current-sub-nav"> <?= $this->lang->line('exp_classic'); ?></a></li>
+					<li><a href="<?= base_url();  ?>addons/2" class="current-sub-nav"> <?= $this->lang->line('exp_tbc'); ?></a></li>
+					<li><a href="<?= base_url();  ?>addons/3" class="current-sub-nav"> <?= $this->lang->line('exp_wtlk'); ?></a></li>
+					<li><a href="<?= base_url();  ?>addons/4" class="current-sub-nav"> <?= $this->lang->line('exp_cata'); ?></a></li>
+					<li><a href="<?= base_url();  ?>addons/5" class="current-sub-nav"> <?= $this->lang->line('exp_mop'); ?></a></li>
+					<li><a href="<?= base_url();  ?>addons/6" class="current-sub-nav"> <?= $this->lang->line('exp_wod'); ?></a></li>
+					<li><a href="<?= base_url();  ?>addons/7" class="current-sub-nav"> <?= $this->lang->line('exp_legion'); ?></a></li>
 				</ul>
 				</li>
 				<li class="dropdown">
