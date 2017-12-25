@@ -40,103 +40,62 @@ $category = array(
             <div class="row">
               <div class="col-lg-6">
                 <h3>Welcome, Hero of Azeroth!</h3>
-                <blockquote>
-                <p>You have to forget me, Tirion! If the world is to live free from the tyranny of fear, it must not know what has happened here today.</p>
-                <small>- Bolvar Fordragón</small>
-                </blockquote>
               </div>
             </div>
 					</div>
 
-<div class="col-md-8">
+					<div class="col-lg-8">
+						<div class="panel panel-addons">
+							<div class="panel-heading">
+								 <?php foreach($this->addon_model->getInformation($idaddon)->result() as $add) { ?>
+										<section class="panel-title text-primary">
+					              <section class="pull-left" id="id">
+														<?= $add->addon_name ?>
+														<br/>
+														<small> Game Versión : <?= $add->addon_version ?></small> | <small> Uploaded : <?=  $add->uploaded ?> </small>
+												</section>
+										</section>
+							</div>
+						  <div class="panel-body panel-body-white">
+								<br/>
+								<br/>
+								<br/>
+								<ul class="nav nav-pills">
+									<li class="active"><a href="#">Introdution</a></li>
+									<li><a href="#" class="text-primary">Screenshots </a></li>
+									<li class="disabled"><a href="#">Changelog</a></li>
+								</ul>
+						  </div>
+						</div>
 
 
-	<div class="panel  panel-addons">
+						<div class="panel panel-addons">
+						  <div class="panel-body panel-body-white">
+									<section class="col-md-12 ">
+												<?= $add->addon_description ?>
+									</section>
+						  </div>
+						</div>
 
-
-    <div class="panel-heading"><p class="text-primary">Addon information</p></div>
-
-<?php foreach($this->addon_model->getInformation($idaddon)->result() as $addon) { ?>
-		<table class="table table-striped table-hover ">
-		  <thead>
-		    <tr>
-		      <th><i class="fa fa-user" aria-hidden="true"></i> Addon</th>
-		      <th><p class="text-primary">	<?= $addon->addon_name ?></p></th>
-			    <th><i class="fa fa-wrench" aria-hidden="true"></i> Date</th>
-                    <th><small> <?= date('j F Y', $addon->uploaded) ?> </small></th>
-		    </tr>
-		  </thead>
-		  <tbody>
-		    <tr>
-		      <td> <i class="fa fa-envelope-o" aria-hidden="true"></i> Uploader</td>
-		      <td><?= $addon->addon_uploader ?></td>
-			      <td><i class="fa fa-shield" aria-hidden="true"></i> Game Versión</td>
-			      <td><?= $addon->addon_version ?></td>
-		    </tr>
-		  </tbody>
-		</table>
-
-
-		<?php } ?>
-		<hr>
-  	<div class="panel-body">
-				<p><?= $addon->addon_description ?></p>
-  	</div>
 </div>
 
-<div class="panel panel-addons">
-
-
-	<div class="panel-heading"> <p class="text-primary"> Other links </p></div>
-
-<?php foreach($this->addon_model->getExternalDownload($idaddon)->result() as $external) { ?>
-	<table class="table table-striped table-hover ">
-		<thead>
-			<tr>
-				<th><i class="fa fa-cloud-download" aria-hidden="true"></i> Server external</th>
-				<th><i class="fa fa-calendar" aria-hidden="true"></i> Date</th>
-				<th></th>
-				<th></th>
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td><i class="fa fa-download" aria-hidden="true"></i> <?= $external->external?> </td>
-				<td> <?= $external->date?></td>
-				<td><a href="<?= $external->url ?>" class="btn btn-primary btn-sm nounderline"><i class="fa fa-download" aria-hidden="true"></i> DOWNLOAD</a></td>
-				<?php if ($this->m_data->isLoggedIn()){
-				?>
-					<td><a href="" class="btn btn-primary btn-sm nounderline"><i class="fa fa-download" aria-hidden="true"></i> Edit</a></td>
-				<?php } else { ?>
-					<td> </td>
-				<?php } ?>
-			</tr>
-		</tbody>
-	</table>
-
-
-	<?php } ?>
-	<br/>
-	<center>
-		<?php if ($this->m_data->isLoggedIn()){
-		?>
-				<a href="" class="btn btn-primary btn-sm"><i class="fa fa-external-link-square" aria-hidden="true"></i> Insert external link</a>
-		<?php }?>
-</center>
-<hr>
-
-	</div>
-</div> <!-- End col-md-8 -->
 
 
 
 <div class="col-md-4">
-
-
 	<div class="panel panel-addons">
+		<div class="panel-heading">
+					<section class="panel-title text-primary">
+							<section class="pull-left" id="id">
+									+ Information
+									<br/>
+							</section>
+					</section>
+		</div>
 
-
-    <div class="panel-heading"><p class="text-primary">+ Information</p></div>
+		<div class="panel-body panel-body-white">
+			<br/>
+			<br/>
 
 		<table class="table table-striped table-hover ">
 				<?php foreach($this->addon_model->getFileId($idaddon)->result() as $size) { ?>
@@ -155,22 +114,22 @@ $category = array(
 
 			<tr>
 				<td>Uploader</td>
-				<td><?= $addon->addon_uploader ?></td>
+				<td><?= $add->addon_uploader ?></td>
 			</tr>
 
 			<tr>
 				<td>Downloads</td>
-				<td><?= $addon->downloads ?></td>
+				<td><?= $add->downloads ?></td>
 			</tr>
 
 			<tr>
 				<td>Category</td>
-				<td><?= $category[$addon->category] ?></td>
+				<td><?= $category[$add->category] ?></td>
 			</tr>
 
 			<tr>
 				<td>Expansion</td>
-				<td><?= $expansion[$addon->expansion] ?></td>
+				<td><?= $expansion[$add->expansion] ?></td>
 			</tr>
 		</table>
 
@@ -184,11 +143,11 @@ $category = array(
 				<input type="submit" class="btn btn-primary" name="button_get" value="Direct Link #1 " />
 			</form>
 			</center>
+</div>
+<?php } ?>
 		</div>
+	</div>
+	</div>
 
-</div>
-
-
-</div>
 
 </div>
