@@ -34,7 +34,7 @@ $id = $_GET['id'];
                   $id = $_POST['id'];
                   $this->home_model->newComment($this->session->userdata('ac_sess_username'));
         				} ?>
-              <?php if ($this->user_model->isLoggedIn()) { ?>
+              <?php if ($this->m_data->isLoggedIn()) { ?>
               <form class="form-horizontal"  method="post">
                   <div class="form-group">
   									<input type="hidden" name="id" value="<?= $list->id?>" />

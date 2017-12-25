@@ -68,6 +68,14 @@ class M_data extends CI_Model {
     redirect(base_url(),'refresh');
   }
 
+  public function isLoggedIn()
+  {
+      if ($this->session->userdata('ac_sess_username'))
+          return true;
+      else
+          return false;
+  }
+
   public function logData($page, $data)
   {
         $username   = $this->session->userdata('ac_sess_username');

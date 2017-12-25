@@ -126,14 +126,6 @@ class User_model extends CI_Model {
         redirect(base_url(),'refresh');
     }
 
-    public function isLoggedIn()
-    {
-        if ($this->session->userdata('ac_sess_username'))
-            return true;
-        else
-            return false;
-    }
-
     public function getAddons($username)
     {
         return $this->db->query("SELECT * FROM ac_addons WHERE addon_uploader = '$username' AND status != 3");

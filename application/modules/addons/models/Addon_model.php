@@ -8,9 +8,9 @@ class Addon_model extends CI_Model {
         parent::__construct();
     }
 
-    public function getExpansion($value)
+    public function getExpansion($idexpansion)
     {
-        switch($value)
+        switch($idexpansion)
         {
             case 'vanilla':
                 return 1;
@@ -36,9 +36,20 @@ class Addon_model extends CI_Model {
         }
     }
 
-    public function grabExpansion($value)
+
+    public function expansionSelected($expansion)
     {
-        return $this->db->query("SELECT * FROM ac_addons WHERE expansion = '$value' AND status =2");
+      return $this->db->query("SELECT * FROM ac_expansion WHERE id = '$expansion' AND status =1");
+    }
+
+    public function grabExpansion($expansion)
+    {
+        return $this->db->query("SELECT * FROM ac_addons WHERE expansion = '$expansion' AND status =2");
+    }
+
+    public function getCategory()
+    {
+      return $this->db->query("SELECT * FROM ac_category");
     }
 
     public function mostDownloaded($value)
@@ -46,14 +57,14 @@ class Addon_model extends CI_Model {
         return $this->db->query("SELECT * FROM ac_addons WHERE expansion = '$value' AND status =2 ORDER BY downloads DESC LIMIT 10");
     }
 
-    public function getInformation($id)
+    public function getInformation($addonid)
     {
-        return $this->db->query("SELECT * FROM ac_addons WHERE id = '$id' ORDER BY downloads DESC LIMIT 10");
+        return $this->db->query("SELECT * FROM ac_addons WHERE id = '$addonid' ORDER BY downloads DESC LIMIT 10");
     }
 
-    public function getFileId($id)
+    public function getFileId($addonid)
     {
-        return $this->db->query("SELECT * FROM ac_files WHERE id = '$id'");
+        return $this->db->query("SELECT * FROM ac_files WHERE id = '$addonid'");
     }
 
     public function searchAddons($value)
@@ -62,21 +73,21 @@ class Addon_model extends CI_Model {
         return $this->db->query("SELECT * FROM ac_addons WHERE addon_name = '$name' and expansion = '$value' ORDER BY downloads DESC LIMIT 10");
     }
 
-    public function getExternalDownload($id)
+    public function getExternalDownload($addonid)
     {
-        return $this->db->query("SELECT * FROM ac_external_download WHERE addon_id = '$id'");
+        return $this->db->query("SELECT * FROM ac_external_download WHERE addon_id = '$addonid'");
     }
 
-    public function download($id)
+    public function download($addonid)
     {
       if (isset($_POST['button_get']))
         {
-      $query = $this->db->query("SELECT * FROM ac_addons WHERE id= '$id'");
+      $query = $this->db->query("SELECT * FROM ac_addons WHERE id= '$addonid'");
       foreach ($query->result() as $row)
       {
         $downloads = $row->downloads;
         $file_id = $row->file_id;
-        $this->db->query("UPDATE ac_addons SET downloads = ($downloads+1) WHERE id = '$id'");
+        $this->db->query("UPDATE ac_addons SET downloads = ($downloads+1) WHERE id = '$addonid'");
         $query2 = $this->db->query("SELECT * FROM ac_files WHERE file_id = '$file_id'");
         foreach ($query2->result() as $row2) {
           $file_url = $row2->file_url;
