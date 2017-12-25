@@ -95,7 +95,7 @@
 				</section>
 
         <section class="col-md-4 ">
-          <a href="view/=<?= $addons->id ?>" class="btn btn-primary btn-sm nounderline">DOWNLOAD</a>
+          <a href="view/<?= $addons->id ?>" class="btn btn-primary btn-sm nounderline">DOWNLOAD</a>
         </section>
 	  </div>
 	</div>
