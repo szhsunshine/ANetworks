@@ -78,7 +78,7 @@
 	  <div class="panel-body panel-body-white">
       <section class="panel-title text-primary">
                           <section class="pull-left" id="id">
-                            <a href="<?= $addons->id ?>"><?= $addons->addon_name ?> | <?= $addons->expansion ?></a>
+                            <a href="<?= base_url()?>addons/view/<?= $addons->id ?>"><?= $addons->addon_name ?> | <?= $addons->expansion ?></a>
                           </section>
     					</section>
     					<br />
