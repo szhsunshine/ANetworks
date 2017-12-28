@@ -38,4 +38,15 @@ class Discussion extends MX_Controller {
         $this->load->view('footer');
     }
 
+    public function create($idtopic)
+    {
+      $this->load->model('user/user_model');
+      $this->load->model('discussion_model');
+      $topic = array
+      ('idtopic' => $idtopic
+      );
+          $this->load->view('header');
+          $this->load->view('create/add_topic', $topic);
+          $this->load->view('footer');
+    }
 }

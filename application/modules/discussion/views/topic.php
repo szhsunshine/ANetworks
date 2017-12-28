@@ -12,13 +12,19 @@
   <button type="button" class="close" data-dismiss="alert">×</button>
   <strong>Important!</strong> The forums are in development, they are in an alpha version so several features are disabled.
 </div>
-
+          <section class="row panel-body">
+<section class="col-lg-10">
       <ul class="breadcrumb">
       <li><a href="<?= base_url();  ?>forums">Home </a></li>
       <?php foreach($this->discussion_model->categoryName($idtopic)->result() as $category) { ?>
       <li class="active"><?= $category->category ?></li>
-    <?php } ?>
     </ul>
+    </section>
+    <section class="col-lg-2">
+        <a class="btn btn-primary" href="<?= base_url() ?>forums/topic/create/<?= $category->id ?>"> Create new topic </a>
+    </section>
+  <?php } ?>
+    </section>
     <section class="panel panel-info">
     <?php foreach($this->discussion_model->getTopics($idtopic)->result() as $topic) { ?>
         <section class="row panel-body">
