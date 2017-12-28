@@ -1,6 +1,3 @@
-<?php
-$id = $_GET['id'];
-?>
 <div class="container">
   <div class="page-header" id="banner">
     <div class="row">
@@ -51,48 +48,58 @@ $id = $_GET['id'];
 
 <div class="panel panel-info">
 
-  <?php
-  foreach($this->user_model->getAddon($id)->result() as $addon) {
-  ?>
-
-  <div class="panel-heading">Edit addon | <?= $addon->addon_name ?></div>
+  <div class="panel-heading">Add Adddon</div>
+  <ul class="nav nav-pills">
+    <li><a class="text-primary" href="<?= base_url() ?>ucp"><?= $this->lang->line('my_addons'); ?></a></li>
+    <li><a href="<?= base_url() ?>ucp/pass"><?= $this->lang->line('change_pass'); ?></a></li>
+    <li class="active"><a href="<?= base_url() ?>ucp/add"><?= $this->lang->line('upload_addon'); ?></a></li>
+  </ul>
 
 <br />
 
 <?php
-if(isset($_POST['edit']))
+if(isset($_POST['add']))
        {
+         $username = $this->session->userdata('ac_sess_username');
          $name = $_POST['addon_name'];
          $version = $_POST['addon_version'];
          $description = $_POST['desc'];
-         $expansion = $_POST['expansion'];
          $category = $_POST['category'];
-         $id = $_GET['id'];
-         $this->user_model->editAddon($id, $name, $version, $description, $expansion, $category);
-       } ?>
+         $expansion = $_POST['expansion'];
+         $file = $_FILES['files'];
+				    $max_size = 20971520;
+         $this->user_model->addAddon($username, $name, $version, $description, $expansion, $category);
+} ?>
 
 <div class="panel-body">
-  <form class="form-horizontal" method="post">
+  <form class="form-horizontal" method="post" enctype="multipart/form-data">
     <fieldset>
       <div class="form-group">
-        <label for="inputEmail" class="col-lg-2" control-label">Name</label>
+        <label for="inputEmail" class="col-lg-2" control-label">Name addon</label>
           <div class="col-lg-12">
-          <input class="form-control" name="addon_name" value="<?= $addon->addon_name ?>" type="text">
+          <input class="form-control" name="addon_name" type="text">
           </div>
         </div>
 
 
         <div class="form-group">
-          <label for="inputEmail" class="col-lg-2" control-label">Version</label>
+          <label for="inputEmail" class="col-lg-2" control-label">Game version</label>
             <div class="col-lg-12">
-            <input class="form-control" name="addon_version" value="<?= $addon->addon_version ?>" type="text">
+            <input class="form-control" name="addon_version" value="Example 7.2.5" type="text">
             </div>
         </div>
 
         <div class="form-group">
           <label for="inputEmail" class="col-lg-2" control-label">Descripcion</label>
             <div class="col-lg-12">
-            <textarea class="col-lg-12" name="desc"> <?= $addon->addon_description ?> </textarea>
+            <textarea class="col-lg-12" name="desc">  </textarea>
+            </div>
+        </div>
+
+        <div class="form-group">
+          <label for="inputEmail" class="col-lg-2" control-label">Internal download</label>
+            <div class="col-lg-12">
+            <input name="files" type="file">
             </div>
         </div>
 
@@ -100,13 +107,13 @@ if(isset($_POST['edit']))
           <label for="select" class="col-lg-4" control-label">Select expansion</label>
           <div class="col-lg-8">
             <select class="form-control" name="expansion" id="select">
-              <option <?php if ($addon->expansion == 1 ) echo 'selected' ; ?> value="1">Vanilla</option>
-              <option <?php if ($addon->expansion == 2 ) echo 'selected' ; ?> value="2">Burning Crusade</option>
-              <option <?php if ($addon->expansion == 3 ) echo 'selected' ; ?> value="3">Wrath of the Lich King</option>
-              <option <?php if ($addon->expansion == 4 ) echo 'selected' ; ?> value="4">Cataclysm</option>
-              <option <?php if ($addon->expansion == 5 ) echo 'selected' ; ?> value="5">Mist of Pandaria</option>
-              <option <?php if ($addon->expansion == 6 ) echo 'selected' ; ?> value="6">Warlords of Draenor</option>
-              <option <?php if ($addon->expansion == 7 ) echo 'selected' ; ?> value="7">Legion</option>
+              <option value="1">Vanilla</option>
+              <option value="2">Burning Crusade</option>
+              <option value="3">Wrath of the Lich King</option>
+              <option value="4">Cataclysm</option>
+              <option value="5">Mist of Pandaria</option>
+              <option value="6">Warlords of Draenor</option>
+              <option value="7">Legion</option>
             </select>
           </div>
         </div>
@@ -115,23 +122,33 @@ if(isset($_POST['edit']))
           <label for="select" class="col-lg-4" control-label">Category</label>
           <div class="col-lg-8">
           <select class="form-control" name="category">
-
-              <?php
-              foreach($this->user_model->getCategory($id)->result() as $category) {
-              ?>
-										<option <?php if ($addon->category == $category->id ) echo 'selected' ; ?> value="<?= $category->id ?>"><?= $category->category ?></option>
-            <?php
-          } ?>
+										<option value="1">Action Bars</option>
+										<option value="2">Chat & Communication</option>
+										<option value="3">Artwork</option>
+										<option value="4">Auction & Economy</option>
+										<option value="5">Audio & Video</option>
+										<option value="6">Bags & Inventory</option>
+										<option value="7">Boss Encounters</option>
+										<option value="8">Buffs & Debuffs</option>
+										<option value="9">Class</option>
+										<option value="10">Combat</option>
+										<option value="11">Guild</option>
+										<option value="12">Mail</option>
+										<option value="13">Map & Minimap</option>
+										<option value="14">Minigames</option>
+										<option value="15">Miscellaneous</option>
+										<option value="16">Professions</option>
+										<option value="17">PvP</option>
+										<option value="18">Quests & Leveling</option>
+										<option value="19">Roleplay</option>
+										<option value="20">Tooltip</option>
+										<option value="21">Unitframes</option>
 									</select>
         </div>
       </div>
 
-      <?php
-      }
-        ?>
-
       <center>
-        <input type="submit" class="btn btn-primary" name="edit" value="Edit addon" />
+        <input type="submit" class="btn btn-primary" name="add" value="Add addon" />
       </center>
     </fieldset>
     </form>

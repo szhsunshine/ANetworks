@@ -56,7 +56,7 @@ class User_model extends CI_Model {
                                                 </div>';
                                 echo '<script>
                                         setTimeout(function () {
-                                        window.location.href = "login";
+                                        window.location.href = "'. base_url() .'user/login";
                                         }, 3000);
                                     </script>';
                                 } else {
@@ -68,7 +68,7 @@ class User_model extends CI_Model {
                                                    </div>';
                                   echo '<script>
                                   setTimeout(function () {
-                                    window.location.href = "login";
+                                    window.location.href = "'. base_url() .'user/login";
                                   }, 3000);
                                   </script>';
                                 }
@@ -197,7 +197,7 @@ class User_model extends CI_Model {
                     echo "<div class='callout success'>The addon has been deleted correctly</div>";
                     echo '<script>
                             setTimeout(function () {
-                            window.location.href = "settings";
+                            window.location.href = "'. base_url() .'ucp/";
                             }, 3000);
                         </script>';
                 }
@@ -211,7 +211,7 @@ class User_model extends CI_Model {
                 echo '<div class="callout alert">An error occurred while delete the addon, try later</div>';
                 echo '<script>
                         setTimeout(function () {
-                        window.location.href = "settings";
+                        window.location.href = "'. base_url() .'ucp/";
                         }, 3000);
                     </script>';
             }
@@ -246,7 +246,7 @@ class User_model extends CI_Model {
                 echo "<div class='callout success'>The password has been changed</div>";
                 echo '<script>
                         setTimeout(function () {
-                        window.location.href = "settings";
+                        window.location.href = "'. base_url() .'ucp/";
                         }, 3000);
                     </script>';
             }
@@ -260,7 +260,7 @@ class User_model extends CI_Model {
             echo "<div class='callout alert'>The old pass is incorrected</div>";
             echo '<script>
                     setTimeout(function () {
-                    window.location.href = "settings";
+                    window.location.href = "'. base_url() .'ucp/";
                     }, 3000);
                 </script>';
         }
@@ -292,7 +292,7 @@ class User_model extends CI_Model {
           </div> ';
           echo '<script>
                 setTimeout(function () {
-                window.location.href = "settings";
+                window.location.href = "'. base_url() .'ucp/";
                 }, 3000);
             </script>';
       } else {
@@ -307,7 +307,7 @@ class User_model extends CI_Model {
 
       echo '<script>
             setTimeout(function () {
-            window.location.href = "settings";
+            window.location.href = "'. base_url() .'ucp/";
             }, 3000);
         </script>';
     }

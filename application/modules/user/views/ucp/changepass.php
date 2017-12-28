@@ -50,10 +50,11 @@
 
 
   <div class="panel-heading">Change password</div>
+
   <ul class="nav nav-pills">
-    <li><a href="settings">My addons</a></li>
-    <li class="active"><a href="changepassword">Change Password</a></li>
-    <li class="disabled"><a href="#">Upload new Addon</a></li>
+    <li><a class="text-primary" href="<?= base_url() ?>ucp"><?= $this->lang->line('my_addons'); ?></a></li>
+    <li class="active"><a href="<?= base_url() ?>ucp/pass"><?= $this->lang->line('change_pass'); ?></a></li>
+    <li><a href="<?= base_url() ?>ucp/add"><?= $this->lang->line('upload_addon'); ?></a></li>
   </ul>
 
 <br />

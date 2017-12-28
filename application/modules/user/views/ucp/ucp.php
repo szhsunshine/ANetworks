@@ -48,9 +48,9 @@
 
     <div class="panel-heading"><?= $this->lang->line('my_addons'); ?></div>
     <ul class="nav nav-pills">
-      <li class="active"><a href="settings"><?= $this->lang->line('my_addons'); ?></a></li>
-      <li><a href="changepassword"><?= $this->lang->line('change_pass'); ?></a></li>
-      <li><a href="add"><?= $this->lang->line('upload_addon'); ?></a></li>
+      <li class="active"><a class="text-primary" href="<?= base_url() ?>ucp"><?= $this->lang->line('my_addons'); ?></a></li>
+      <li class="text-primary"><a href="<?= base_url() ?>ucp/pass"><?= $this->lang->line('change_pass'); ?></a></li>
+      <li class="text-primary"><a href="<?= base_url() ?>ucp/add"><?= $this->lang->line('upload_addon'); ?></a></li>
     </ul>
 
 <br />
@@ -92,7 +92,7 @@
           <td> <?= $myaddons->status ?></td>
 
               <td>
-                <a class="btn btn-default" href="edit?id=<?= $myaddons->id ?>"><i class="fa fa-pencil yellow" aria-hidden="true"></i></a>
+                <a class="btn btn-default" href="<?= base_url() ?>ucp/edit/<?= $myaddons->id ?>"><i class="fa fa-pencil yellow" aria-hidden="true"></i></a>
               </td>
 
               <form method="post" action="">

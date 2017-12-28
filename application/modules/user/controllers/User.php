@@ -44,7 +44,7 @@ class User extends MX_Controller {
             redirect(base_url(),'refresh');
 
         $this->load->view("header");
-        $this->load->view('ucp');
+        $this->load->view('ucp/ucp');
         $this->load->view('footer');
     }
 
@@ -56,31 +56,49 @@ class User extends MX_Controller {
             redirect(base_url(),'refresh');
 
         $this->load->view('header');
-        $this->load->view('changepass');
+        $this->load->view('ucp/changepass');
         $this->load->view('footer');
     }
-
-    public function edit()
-    {
-        $this->load->model('user_model');
-
-        if (!$this->m_data->isLoggedIn())
-            redirect(base_url(),'refresh');
-        $this->load->view('header');
-        $this->load->view('edit');
-        $this->load->view('footer');
-    }
-
 
     public function add()
     {
         $this->load->model('user_model');
+
         if (!$this->m_data->isLoggedIn())
             redirect(base_url(),'refresh');
         $this->load->view('header');
-        $this->load->view('add');
+        $this->load->view('ucp/add');
         $this->load->view('footer');
     }
+
+
+    public function edit($idaddon)
+    {
+        $this->load->model('user_model');
+        $edit = array
+        ('id' => $idaddon
+        );
+        if (!$this->m_data->isLoggedIn())
+            redirect(base_url(),'refresh');
+        $this->load->view('header');
+        $this->load->view('ucp/edit', $edit);
+        $this->load->view('footer');
+    }
+
+
+    /**
+     * Forum modules
+     */
+
+     public function moderator()
+     {
+         /* Comming soon */
+     }
+
+     public function changeavatar()
+     {
+       /* Comming soon */
+     }
 
 
 
