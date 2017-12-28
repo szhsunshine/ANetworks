@@ -38,7 +38,7 @@
         </section>
         <section class="col-md-3">
           <?php foreach($this->discussion_model->lastPost($cat->id)->result() as $lastpost) { ?>
-          <h5> <a href="#"><i class="fa fa-link"> </i> <?= $lastpost->title ?> </a></h5> <hr>
+          <h5> <a href="forums/thread/<?= $lastpost->id ?>"><i class="fa fa-link"> </i> <?= $lastpost->title ?> </a></h5> <hr>
           <a class"nounderline"><i class="fa fa-user text-primary"></i> <?= $lastpost->author ?> </a>
            (<a class"nounderline"><i class="fa fa-calendar text-primary"></i><?= date('Y-m-d', $lastpost->date);?></a>)
         <?php } ?>

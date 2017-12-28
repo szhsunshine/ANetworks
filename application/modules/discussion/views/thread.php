@@ -81,7 +81,7 @@
                 <i class="fa fa-comment-o fa-lg fa-stack-1x"></i>
               </span>
               <a href="#"> Reply With Quote </a> |
-              <i class="fa fa-mail-reply "></i><a href="#"> Reply </a>|
+              <i class="fa fa-mail-reply "></i><a href="<?= base_url() ?>forums/reply/<?= $thread->id ?>"> Reply </a>|
               <i class="fa fa-edit "></i><a href="#"> Edit Post </a>
             </section>
           </div>

@@ -49,4 +49,16 @@ class Discussion extends MX_Controller {
           $this->load->view('create/add_topic', $topic);
           $this->load->view('footer');
     }
+
+    public function reply($idlink)
+    {
+      $this->load->model('user/user_model');
+      $this->load->model('discussion_model');
+      $reply = array
+          ('idlink' => $idlink
+        );
+      $this->load->view('header');
+      $this->load->view('create/add_reply', $reply);
+      $this->load->view('footer');
+    }
 }

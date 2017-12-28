@@ -55,6 +55,7 @@ $route['translate_uri_dashes'] = FALSE;
 
 //forums
 $route['forums/topic/create/(:num)'] = 'discussion/create/$1';
+$route['forums/reply/(:num)'] = 'discussion/reply/$1';
 $route['forums/topic/(:num)'] = 'discussion/topic/$1';
 $route['forums/thread/(:num)'] = 'discussion/view/$1';
 $route['forums'] = 'discussion';
@@ -63,3 +64,13 @@ $route['forums'] = 'discussion';
 // addons
 $route['addons/view/(:num)'] = 'addons/view/$1';
 $route['addons/(:num)'] = 'addons/index/$1';
+
+
+/**
+ * UCP Routes
+ */
+
+ $route['ucp'] = 'user/settings';
+ $route['ucp/pass'] = 'user/changepassword';
+ $route['ucp/add'] = 'user/add';
+ $route['ucp/edit/(:num)'] = 'user/edit/$1';

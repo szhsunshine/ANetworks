@@ -84,6 +84,20 @@ class Discussion_model extends CI_Model {
               }
         }
         }
+
+        public function replyPost($idlink, $author)
+        {
+          if (isset($_POST['button_send_reply']))
+          {
+              if (!empty($_POST['msg']))
+              {
+                  $msg = $_POST['msg'];
+                  $date = $this->m_data->getTimestamp();
+
+                  $this->db->query("INSERT INTO ac_discussion_replies (id_thread, msg, author, date) VALUES('$idlink', '$msg', '$author', '$date')");
+              }
+        }
+        }
         /**
          * Functions thread display
          */
