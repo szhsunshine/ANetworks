@@ -110,7 +110,7 @@
             <i class="fa fa-calendar"></i> <?= date('j F Y', $reply->date); ?>
           </time>
           <section class="pull-left" id="id">
-            <abbr>#1</abbr>
+            <abbr>#<?= $reply->id ?></abbr>
           </section>
         </section>
         <br />

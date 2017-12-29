@@ -94,7 +94,12 @@ class Discussion_model extends CI_Model {
                   $msg = $_POST['msg'];
                   $date = $this->m_data->getTimestamp();
 
-                  $this->db->query("INSERT INTO ac_discussion_replies (id_thread, msg, author, date) VALUES('$idlink', '$msg', '$author', '$date')");
+                  $query = $this->db->query("SELECT * FROM ac_discussion_thread WHERE id = '$idlink'");
+                  foreach ($query->result() as $row)
+                  {
+                  $category = $row->id_cat;
+                  $this->db->query("INSERT INTO ac_discussion_replies (id_thread, category, msg, author, date) VALUES('$idlink', '$category', '$msg', '$author', '$date')");
+                  }
               }
         }
         }
