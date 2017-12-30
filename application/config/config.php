@@ -26,6 +26,28 @@ $config['addon_results'] = 10;
 $config['addon_search_results'] = 10;
 
 
+/*
+|--------------------------------------------------------------------------
+| Expansion provider
+|--------------------------------------------------------------------------
+|
+| Expansions available
+|
+| 1 = Classic
+| 2 = The Burning Crusader
+| 3 = Wrath of the Litch king
+| 4 = Cataclysm
+| 5 = Mist of Pandaria
+| 6 = Warlords of Draenor
+| 7 = Legion
+|
+| If you need to allow multiple domains, remember that this file is still
+| a PHP script and you can easily do that on your own.
+|
+*/
+
+$config['last_expansion'] = 7;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -38,7 +60,7 @@ $config['addon_search_results'] = 10;
 $config['support_forum'] = 'Your_forum_link';
 $config['support_discord'] = 'Your_discord_link';
 $config['support_skype'] = 'Your_skype_link';
-$config['support_ticket'] = 'Your_ticket_link'; 
+$config['support_ticket'] = 'Your_ticket_link';
 
 /*
 |--------------------------------------------------------------------------

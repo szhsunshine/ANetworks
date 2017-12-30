@@ -37,6 +37,7 @@
 			<li>
 				<a href="<?= base_url();  ?>">Home</a>
 			</li>
+      <?php if ($this->m_modules->getStatusAddons() == '1') {?>
 			<li class="dropdown">
 				<a class="dropdown-toggle" data-toggle="dropdown" href="#" id="themes">Addons <span class="caret"></span></a>
 				<ul class="dropdown-menu" aria-labelledby="themes">
@@ -49,6 +50,7 @@
 					<li><a href="<?= base_url();  ?>addons/7" class="current-sub-nav"> <?= $this->lang->line('exp_legion'); ?></a></li>
 				</ul>
 				</li>
+      <?php } ?>
 				<li class="dropdown">
 						<a class="dropdown-toggle" data-toggle="dropdown" href="#" id="themes">Tools <span class="caret"></span></a>
 						<ul class="dropdown-menu" aria-labelledby="themes">
