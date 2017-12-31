@@ -34,7 +34,7 @@
                       </time>
                       <section class="pull-left" id="id">
                 	       <?php foreach($this->addon_model->expansionSelected($idexpansion)->result() as $exp) { ?>
-                        <abbr title="count of posts in this topic">Addons <?= $exp->Expansion ?></abbr>
+                        <abbr title="count of posts in this topic">Addons <?= $exp->expansion ?></abbr>
                       <?php } ?>
                       </section>
 					</section>
