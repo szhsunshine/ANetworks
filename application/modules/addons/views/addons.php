@@ -35,7 +35,6 @@
                       <section class="pull-left" id="id">
                 	       <?php foreach($this->addon_model->expansionSelected($idexpansion)->result() as $exp) { ?>
                         <abbr title="count of posts in this topic">Addons <?= $exp->expansion ?></abbr>
-                      <?php } ?>
                       </section>
 					</section>
 					<br />
@@ -45,19 +44,19 @@
 
 			<form method="post">
  <div class="col-lg-4">
-	 <select class="form-control" name="expansion" id="select">
-     <option value="0">No expansión selected</option>
-     <option value="1">Vanilla</option>
-     <option value="2">Burning Crusade</option>
-     <option value="3">Wrath of the Lich King</option>
-     <option value="4">Cataclysm</option>
-     <option value="5">Mist of Pandaria</option>
-     <option value="6">Warlords of Draenor</option>
-     <option value="7">Legion</option>
+	 <select class="form-control" name="expansion" onchange="location = this.value;" id="select">
+     <option <?php if ($exp->id == 1 ) echo 'selected' ; ?> value="<?= base_url() ?>addons/1">Vanilla</option>
+     <option <?php if ($exp->id == 2 ) echo 'selected' ; ?> value="<?= base_url() ?>addons/2">Burning Crusade</option>
+     <option <?php if ($exp->id == 3 ) echo 'selected' ; ?> value="<?= base_url() ?>addons/3">Wrath of the Lich King</option>
+     <option <?php if ($exp->id == 4 ) echo 'selected' ; ?> value="<?= base_url() ?>addons/4">Cataclysm</option>
+     <option <?php if ($exp->id == 5 ) echo 'selected' ; ?> value="<?= base_url() ?>addons/5">Mist of Pandaria</option>
+     <option <?php if ($exp->id == 6 ) echo 'selected' ; ?> value="<?= base_url() ?>addons/6">Warlords of Draenor</option>
+     <option <?php if ($exp->id == 7 ) echo 'selected' ; ?> value="<?= base_url() ?>addons/7">Legion</option>
 	 </select>
 </div>
 
 
+<?php } ?>
  <div class="col-lg-4">
 	 <select class="form-control" name="filtrer-by" id="select">
      <option value="0">No filtrer selected</option>
