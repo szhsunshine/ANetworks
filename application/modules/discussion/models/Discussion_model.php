@@ -3,12 +3,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Discussion_model extends CI_Model {
   public function __construct()
   {
-
-        parent::__construct();
-
-        // load Pagination library
-        $this->load->library('pagination');
+    parent::__construct();
   }
+
   /**
    * Functions Forum Display
    * Get CATEGORY

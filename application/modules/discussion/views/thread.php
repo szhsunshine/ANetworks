@@ -76,12 +76,9 @@
               <i class="fa fa-thumbs-up "></i><a href="#"> Thanks </a>| <i class="fa fa-warning "></i><a href="#"> Report </a>
             </section>
             <section class="col-md-4">
-              <span class="fa-stack">
-                <i class="fa fa-quote-right fa-stack-1x"></i>
-                <i class="fa fa-comment-o fa-lg fa-stack-1x"></i>
-              </span>
-              <a href="#"> Reply With Quote </a> |
+              <?php if ($this->m_data->isLoggedIn()) { ?>
               <i class="fa fa-mail-reply "></i><a href="<?= base_url() ?>forums/reply/<?= $thread->id ?>"> Reply </a>|
+              <?php } ?>
               <?php if ($this->m_data->getPermission($this->session->userdata('ac_sess_username')) !== 2)  {?>
               <!-- Mod functions -->
               <i class="fa fa-edit "></i><a href="#"> Edit Post </a> |

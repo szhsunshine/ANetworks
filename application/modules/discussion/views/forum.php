@@ -11,13 +11,13 @@
       <ul class="breadcrumb">
       <li class="active">Home</li>
     </ul>
-<div class="alert alert-dismissable alert-info">
+<div class="alert alert-dismissable alert-warning">
   <button type="button" class="close" data-dismiss="alert">×</button>
   <strong>Important!</strong> The forums are in development, they are in an alpha version so several features are disabled.
 </div>
 
 <?php foreach($this->discussion_model->getCategoryFather()->result() as $category) { ?>
-    <section class="panel panel-info">
+    <section class="panel panel-primary">
         <header class="panel-heading">
           <h4><?= $category->category ?></h4>
         </header>
@@ -30,14 +30,12 @@
 
         </section>
         <section class="col-md-2">
-          <ul id="post-topic">
-            <li class="list-unstyled"> <p class="text-primary"><i class="fa fa-share" aria-hidden="true"></i> Topics: <?= $this->discussion_model->counThreads($cat->id); ?> </p> </li>
-            <li class="list-unstyled"> <p class="text-primary"><i class="fa fa-reply" aria-hidden="true"></i> Reply: <?= $this->discussion_model->counPost($cat->id); ?> </p> </li>
-          </ul>
+          <a class"nounderline"><i class="fa fa-share"></i> Topics: <?= $this->discussion_model->counThreads($cat->id); ?> </a> <br/>
+          <a class"nounderline"><i class="fa fa-reply"></i> Reply: <?= $this->discussion_model->counPost($cat->id); ?> </a>
         </section>
         <section class="col-md-3">
           <?php foreach($this->discussion_model->lastPost($cat->id)->result() as $lastpost) { ?>
-          <h5> <a href="forums/thread/<?= $lastpost->id ?>"><i class="fa fa-link"> </i> <?= $lastpost->title ?> </a></h5> <hr>
+          <small> <a href="forums/thread/<?= $lastpost->id ?>"><i class="fa fa-link"> </i> <?= substr($lastpost->title, 0, 30) ?> </a></small><br/>
           <a class"nounderline"><i class="fa fa-user text-primary"></i> <?= $lastpost->author ?> </a>
            (<a class"nounderline"><i class="fa fa-calendar text-primary"></i> <?= date('Y-m-d', $lastpost->date);?></a>)
         <?php } ?>
