@@ -22,7 +22,7 @@ class User extends MX_Controller {
         if ($this->m_data->isLoggedIn())
             redirect(base_url(),'refresh');
 
-        if($this->m_modules->register() != '1')
+        if($this->m_modules->getStatusRegister() != '1')
             redirect(base_url(),'refresh');
 
         $this->load->view("header");

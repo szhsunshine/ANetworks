@@ -84,4 +84,10 @@ class M_data extends CI_Model {
         $time = $this->m_data->getTimestamp();
         $this->db->query("INSERT INTO ac_logs (username, page, data, user_agent, ip, time) VALUES('$username', '$page', '$data', '$user_agent', '$ip_address', '$time')");
   }
+
+
+  public function menu_manager()
+  {
+    
+  }
 }

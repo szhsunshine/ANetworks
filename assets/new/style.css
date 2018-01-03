@@ -493,7 +493,10 @@ dt{
      margin-left:2% !important;
     }
 
-.panel-footer{
-    width:100%;
-  	min-height:40px;
-  }
+    #footer
+    {
+        width: 100%;
+        bottom: 0;
+        position: absolute;
+        height: 25%;
+    }

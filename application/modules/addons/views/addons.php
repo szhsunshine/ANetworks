@@ -77,17 +77,18 @@
 	  <div class="panel-body panel-body-white">
       <section class="panel-title text-primary">
                           <section class="pull-left" id="id">
-                            <a href="<?= base_url()?>addons/view/<?= $addons->id ?>"><?= $addons->addon_name ?> | <?= $addons->expansion ?></a>
+                            <a href="<?= base_url()?>addons/view/<?= $addons->id ?>"><?= $addons->addon_name ?></a>
                           </section>
     					</section>
     					<br />
     					<br />
 				<section class="col-md-8 ">
         <p class="list-item__stats">
-
-            <i class="fa fa-download">  </i>           <small> <?= $addons->downloads ?> |
+            <i class="fa fa-download"></i>
+            <small> <?= $addons->downloads ?> |
           </small>
-            <i class="fa fa-calendar" aria-hidden="true"></i>           <small> <?= $addons->updated ?>
+            <i class="fa fa-calendar" aria-hidden="true"></i>
+            <small> <?= date('Y-m-d', $addons->updated) ?>
           </small>
         </p>
 					<?= substr($addons->addon_description, 0, 50) ?>

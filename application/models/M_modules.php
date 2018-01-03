@@ -42,4 +42,44 @@ class M_modules extends CI_Model {
     {
       return $this->db->query("SELECT status FROM ac_modules WHERE id = '7'")->row()->status;
     }
+
+
+    /**
+     * Expansion status
+     */
+
+     public function isClassicOpen()
+     {
+       return $this->db->query("SELECT status FROM ac_expansion WHERE id = '1'")->row()->status;
+     }
+
+     public function isTbcOpen()
+     {
+       return $this->db->query("SELECT status FROM ac_expansion WHERE id = '2'")->row()->status;
+     }
+
+     public function isTlkOpen()
+     {
+       return $this->db->query("SELECT status FROM ac_expansion WHERE id = '3'")->row()->status;
+     }
+
+     public function isCataOpen()
+     {
+         return $this->db->query("SELECT status FROM ac_expansion WHERE id = '4'")->row()->status;
+     }
+
+     public function isMopOpen()
+     {
+       return $this->db->query("SELECT status FROM ac_expansion WHERE id = '5'")->row()->status;
+     }
+
+     public function isWodOpen()
+     {
+       return $this->db->query("SELECT status FROM ac_expansion WHERE id = '6'")->row()->status;
+     }
+
+     public function isLegionOpen()
+     {
+       return $this->db->query("SELECT status FROM ac_expansion WHERE id = '7'")->row()->status;
+     }
 }

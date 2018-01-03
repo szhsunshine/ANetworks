@@ -33,19 +33,47 @@ class Admin_model extends CI_Model {
       return $this->db->query("SELECT * FROM ac_addons ORDER BY updated DESC LIMIT 8");
     }
 
-    public function getTicketSupport()
+
+    public function getStatsForums()
     {
-
+      return $this->db->query("SELECT * FROM ac_discussion_thread")->num_rows();
     }
-
-     public function getOpenDiscussion()
-     {
-
-     }
 
      /**
       * Functions news
-      * 0% Completed
+      * 30% Completed
       */
+
+      public function getNewsDates()
+      {
+        return $this->db->query("SELECT * FROM ac_news");
+      }
+
+      public function updateNew($idnew)
+      {
+
+      }
+
+      /**
+       * Functions Forums
+       * 0% Completed
+       */
+
+
+       /**
+        * Functions config site
+        * 50% Completed
+        */
+
+        public function getConfigDates()
+        {
+          return $this->db->query("SELECT * FROM ac_config");
+        }
+
+        public function updateConfig()
+        {
+
+
+        }
 
 }

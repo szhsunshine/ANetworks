@@ -82,7 +82,11 @@
               </span>
               <a href="#"> Reply With Quote </a> |
               <i class="fa fa-mail-reply "></i><a href="<?= base_url() ?>forums/reply/<?= $thread->id ?>"> Reply </a>|
-              <i class="fa fa-edit "></i><a href="#"> Edit Post </a>
+              <?php if ($this->m_data->getPermission($this->session->userdata('ac_sess_username')) !== 2)  {?>
+              <!-- Mod functions -->
+              <i class="fa fa-edit "></i><a href="#"> Edit Post </a> |
+              <i class="fa fa-closed "></i><a href="#"> Edit Post </a>
+            <?php } ?>
             </section>
           </div>
         </div>

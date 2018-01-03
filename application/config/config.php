@@ -26,27 +26,6 @@ $config['addon_results'] = 10;
 $config['addon_search_results'] = 10;
 
 
-/*
-|--------------------------------------------------------------------------
-| Expansion provider
-|--------------------------------------------------------------------------
-|
-| Expansions available
-|
-| 1 = Classic
-| 2 = The Burning Crusader
-| 3 = Wrath of the Litch king
-| 4 = Cataclysm
-| 5 = Mist of Pandaria
-| 6 = Warlords of Draenor
-| 7 = Legion
-|
-| If you need to allow multiple domains, remember that this file is still
-| a PHP script and you can easily do that on your own.
-|
-*/
-
-$config['last_expansion'] = 7;
 
 
 /*
@@ -131,7 +110,7 @@ $config['index_page'] = '';
 |
 | WARNING: If you set this to 'PATH_INFO', URIs will always be URL-decoded!
 */
-$config['uri_protocol']	= 'REQUEST_URI';
+$config['uri_protocol']	= 'PATH_INFO';
 
 /*
 |--------------------------------------------------------------------------
@@ -179,7 +158,7 @@ $config['charset'] = 'UTF-8';
 | setting this variable to TRUE (boolean).  See the user guide for details.
 |
 */
-$config['enable_hooks'] = FALSE;
+$config['enable_hooks'] = False;
 
 /*
 |--------------------------------------------------------------------------

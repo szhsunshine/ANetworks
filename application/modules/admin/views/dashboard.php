@@ -59,7 +59,7 @@
                                     <i class="fa fa-shopping-cart fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">Soon</div>
+                                    <div class="huge"><?= $this->admin_model->getStatsForums(); ?></div>
                                     <div>Post in forums</div>
                                 </div>
                             </div>
@@ -119,7 +119,7 @@
                               <?php foreach($this->admin_model->getLastAddons()->result() as $addons) { ?>
                                 <tr class="odd gradeX">
                                     <td><?= $addons->addon_name ?></td>
-                                    <td><?= $addons->addon_description ?></td>
+                                    <td><?= substr($addons->addon_description, 0, 150) ?></td>
                                     <td><?= $addons->addon_uploader ?></td>
                                     <td><?= date('Y-m-d', $addons->updated);?></td>
                                 </tr>

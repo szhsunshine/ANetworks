@@ -1,100 +1,45 @@
-<?
-$id = $_GET['id'];
-?>
 <div class="container">
-  <?php foreach($this->home_model->getIdNews()->result() as $list) { ?>
-  <div class="page-header" id="banner">
-    <div class="row">
-      <div class="col-lg-12">
-        <h1><?= $list->news_title ?></h1>
-      </div>
-    </div>
-  </div>
-<div class="row">
-  <div class="col-xs-12">
+<h1>Latest News</h1>
 
-    <div class="panel panel-info">
 
-  <div class="panel-body">
-    <p align="right"><small><?= date('Y-m-d', $list->post_date);?></small></p>
-    <hr>
-    <p><?= $list->news_content ?> </p>
-
-    <hr>
-    <div class="divider"></div>
-    <div class="row">
-     <div class="col-xs-6">Created by <?= $list->news_author ?></div>
-    </div>
-    <br />
-    <br />
-            <div class="panel-footer">
-        			<?php if(isset($_POST['button_send']))
-        				{
-        					$content = $_POST['text'];
-                  $id = $_POST['id'];
-                  $this->home_model->newComment($this->session->userdata('ac_sess_username'));
-        				} ?>
-              <?php if ($this->m_data->isLoggedIn()) { ?>
-              <form class="form-horizontal"  method="post">
-                  <div class="form-group">
-  									<input type="hidden" name="id" value="<?= $list->id?>" />
-                    <label for="textArea" class="col-lg-4 control-label">Your comment</label>
-                    <div class="col-lg-6">
-                    <textarea class="col-lg-12" name="text"> </textarea>
-                    </div>
-                  </div>
-
-                  <center>
-                    <input type="submit" class="btn btn-primary" name="button_send" value="Send comment" />
-                  </center>
-                </form>
-              <?php }else{ ?>
-                <div class="alert alert-dismissable alert-warning">
-                      <button type="button" class="close" data-dismiss="alert">×</button>
-                      <h4>Not permission</h4>
-                      <p>You do not have access to publish, register or login in our page</a>.</p>
-                    </div>
-              <?php } ?>
-
-                <hr>
-                <div class="row">
-  <div class="comments-container">
-
-  <ul id="comments-list" class="comments-list">
-    <?php foreach($this->home_model->getComments($list->id)->result() as $comment) { ?>
-    <li>
-      <div class="comment-main-level">
-					<div class="comment-avatar"><img src="" alt=""></div>
-        <div class="comment-box">
-          <div class="comment-head">
-            <?php if($comment->Nick == $list->news_author){ ?>
-            <h6 class="comment-name by-author"><a><?= $comment->Nick ?></a></h6>
-          <?php }else{ ?>
-            <h6 class="comment-name"><a><?= $comment->Nick ?></a></h6>
-          <?php } ?>
-            <span><?= $comment->date ?></span>
-            <i class="fa fa-reply"></i>
-            <i class="fa fa-heart"></i>
+<div class="col-md-8">
+<?php foreach($this->home_model->getIdNews($idnews)->result() as $new) { ?>
+<div class="latest-news panel panel-primary">
+    <div class="panel-heading">
+      <div class="text-center">
+          <div class="row">
+              <div class="col-sm-8">
+                  <h3 class="pull-left"><?= $new->news_title ?></h3>
+              </div>
+              <div class="col-sm-3">
+                  <i class="pull-right text-info">
+                      <small><em><?= date('Y-m-d', $new->post_date);?> <BR> By <?= $new->news_author ?></em></small>
+                  </i>
+              </div>
           </div>
-          <div class="comment-content">
-            <?= $comment->comment ?>
-          </div>
-        </div>
       </div>
-    </li>
-    <br/>
-    <?php } ?>
-  </ul>
-</div>
-</div>
 
 
+    </div>
+
+    <div class="panel-body">
+        <?= $new->news_content ?>
+    </div>
+    <div class="panel-footer">
+    </div>
+</div>
 <?php } ?>
-            </div>
-    </div>
-  </div>
 </div>
-
-
+<div class="col-md-4">
+<div class="latest-news panel panel-primary">
+    <div class="panel-heading">Latest Articles</div>
+    <div class="panel-body" style="padding-left: 0!important; padding-right: 0!important;">
+        <?php foreach($this->home_model->getLastnews()->result() as $lastest) { ?>
+        <ul class="list-group">
+          <li class="list-group-item"><i class="fa fa-sticky-note"></i> <a href="<?= base_url() ?>/home/news/<?= $lastest->id ?>"><?= $lastest->news_title ?></a></li>
+        </ul>
+      <?php } ?>
+    </div>
+</div>
 </div>
 </div>

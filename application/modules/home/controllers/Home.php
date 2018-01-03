@@ -7,19 +7,20 @@ class Home extends MX_Controller {
     {
         $this->load->model('user/user_model');
         $this->load->model('home_model');
-
         $this->load->view('header');
         $this->load->view('home');
         $this->load->view('footer');
     }
 
-    public function view()
+    public function news($idnews)
     {
       $this->load->model('user/user_model');
       $this->load->model('home_model');
 
+      $news = array
+      ('idnews' => $idnews );
       $this->load->view('header');
-      $this->load->view('news');
+      $this->load->view('news', $news);
       $this->load->view('footer');
     }
 }

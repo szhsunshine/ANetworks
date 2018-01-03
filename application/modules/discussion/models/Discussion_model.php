@@ -163,4 +163,26 @@ class Discussion_model extends CI_Model {
            {
              return $this->db->query("SELECT * FROM ac_discussion_replies WHERE id_thread = '$idlink'");
            }
+
+
+
+           /**
+            * Mod Functions
+            * Closed thread
+            */
+
+
+            public function closeThread($idlink)
+            {
+              $access = $this->session->userdata('ac_sess_username') != 2;
+
+              if ($access == 2)
+              {
+              return $this->db->query("UPDATE ac_discussion_thread SET status = 0 WHERE id = '$idlink'");
+              } else {
+              echo 'No tienes permisos';
+              }
+            }
+
+
 }
