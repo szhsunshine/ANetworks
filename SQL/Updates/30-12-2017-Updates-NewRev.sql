@@ -1,4 +1,4 @@
-ALTER TABLE `anetwork`.`ac_expansion`
+ALTER TABLE `ac_expansion`
 CHANGE `Expansion` `expansion` VARCHAR(255)
 CHARSET latin1 COLLATE latin1_swedish_ci NOT NULL,
 CHANGE `Status` `status` INT(2) DEFAULT 1 NOT NULL
@@ -8,7 +8,7 @@ COMMENT 'status column';
 * ac_config for ACP
 */
 
-CREATE TABLE `anetwork`.`ac_config`
+CREATE TABLE `ac_config`
 ( `id_cnf` INT(25) NOT NULL AUTO_INCREMENT,
 `config_item` VARCHAR(255),
 `value` VARCHAR(255),
