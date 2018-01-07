@@ -86,8 +86,18 @@ class M_data extends CI_Model {
   }
 
 
+  public function getNameSite()
+  {
+    return $this->db->query("SELECT * FROM ac_config WHERE id_cnf = '1'");
+  }
+
+  public function isMaintenance()
+  {
+    return $this->db->query("SELECT is_maintenance FROM ac_config WHERE id_cnf = '2'");
+  }
+
   public function menu_manager()
   {
-    
+
   }
 }

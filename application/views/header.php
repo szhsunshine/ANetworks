@@ -2,7 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>ANetwork | Create your own web for addons</title>
+  <?php foreach($this->m_data->getNameSite()->result() as $site) {  ?>
+  <title><?= $site->value ?></title>
+  <?php } ?>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="<?= base_url();  ?>assets/new/style.css">
   <link rel="stylesheet" href="<?= base_url();  ?>assets/new/bootstrap.css" media="screen">
@@ -20,10 +22,11 @@
    </script>
 </head>
 <body class="bfa">
+
 	<div class="navbar navbar-default navbar-fixed-top">
 		<div class="container">
 			<div class="navbar-header">
-				<a href="" class="navbar-brand">A<font color="orange">Network</font></a>
+				<a href="" class="navbar-brand">A<font color="orange">Network</font> HUB</a>
 				<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>

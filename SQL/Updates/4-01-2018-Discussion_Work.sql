@@ -1,0 +1,1 @@
+ALTER TABLE ac_users ADD COLUMN `post` INT(255) DEFAULT 0 NULL AFTER `ip`; 

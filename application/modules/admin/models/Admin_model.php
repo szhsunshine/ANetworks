@@ -30,7 +30,7 @@ class Admin_model extends CI_Model {
 
     public function getLastAddons()
     {
-      return $this->db->query("SELECT * FROM ac_addons ORDER BY updated DESC LIMIT 8");
+      return $this->db->query("SELECT * FROM ac_addons ORDER BY updated DESC LIMIT 9");
     }
 
 
@@ -39,9 +39,18 @@ class Admin_model extends CI_Model {
       return $this->db->query("SELECT * FROM ac_discussion_thread")->num_rows();
     }
 
+    public function getNews()
+    {
+      return $this->db->query("SELECT * FROM ac_news")->num_rows();
+    }
+
+    public function getTitleNews($idnews)
+    {
+      return $this->db->query("SELECT news_title FROM ac_news WHERE id='$idnews'");
+    }
      /**
       * Functions news
-      * 30% Completed
+      * 60% Completed
       */
 
       public function getNewsDates()
@@ -49,15 +58,53 @@ class Admin_model extends CI_Model {
         return $this->db->query("SELECT * FROM ac_news");
       }
 
-      public function updateNew($idnew)
+      public function deleteNew($id)
       {
+        return $this->db->query("DELETE FROM ac_news WHERE id='$id'");
+      }
 
+
+
+      public function getNewId($idnews)
+      {
+        return $this->db->query("SELECT * FROM ac_news WHERE id='$idnews'");
+      }
+
+      public function editNews($idnews, $title, $content)
+      {
+        return $this->db->query("UPDATE ac_news SET news_title = '$title', news_content = '$content' WHERE id='$idnews'");
       }
 
       /**
        * Functions Forums
        * 0% Completed
        */
+
+
+      public function getForumsList() // No Father category's
+       {
+         return $this->db->query("SELECT * FROM ac_discussion_category");
+       }
+
+       public function adminThreadManaged()
+       {
+         // Comming soon
+       }
+
+       public function GroupAdd()
+       {
+           // Comming soon
+       }
+
+       public function GroupCreate()
+       {
+         // Comming soon
+       }
+
+       public function GroupDelete($id)
+       {
+         // Comming soon
+       }
 
 
        /**

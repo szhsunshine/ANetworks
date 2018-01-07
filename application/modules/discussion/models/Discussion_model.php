@@ -182,4 +182,13 @@ class Discussion_model extends CI_Model {
             }
 
 
+            /**
+             * User functions
+             */
+
+             public function CountPost($username)
+             {
+               return $this->db->query("SELECT * FROM ac_users WHERE username = '$username'");
+             }
+
 }

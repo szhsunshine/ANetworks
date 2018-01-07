@@ -1,12 +1,5 @@
 <section class="container">
-  <div class="page-header" id="banner">
-        <div class="row">
-          <div class="col-lg-6">
-            <h1>Welcome</h1>
-          </div>
-        </div>
-      </div>
-
+<br />
   	<div class="row">
       <ul class="breadcrumb">
       <li><a href="<?= base_url();  ?>forums">Home </a></li>
@@ -62,7 +55,9 @@
                  </figure>
                  <ul class="dl-horizontal text-center">
                      <li>joined date:15 September 2014</li>
-                     <li>Posts: 5000</li>
+                     <?php foreach($this->discussion_model->CountPost($thread->author)->result() as $post) { ?>
+                     <li>Posts: <?= $post->post ?></li>
+                   <?php } ?>
                      <li>Rank: Administrator</li>
                      <li>Reputacion : Notable</li>
                     </ul>
@@ -137,7 +132,9 @@
                </div>
                <ul class="dl-horizontal text-center">
                    <li>joined date:15 September 2014</li>
-                   <li>Posts: 5000</li>
+                   <?php foreach($this->discussion_model->CountPost($reply->author)->result() as $reply) { ?>
+                   <li>Posts: <?= $reply->post ?></li>
+                 <?php } ?>
                    <li>Rank: Administrator</li>
                    <li>Reputacion : Notable</li>
                   </ul>

@@ -1,12 +1,5 @@
 <div class="container">
-  <div class="page-header" id="banner">
-        <div class="row">
-          <div class="col-lg-6">
-            <h1>Welcome</h1>
-          </div>
-        </div>
-      </div>
-
+<br/>
   	<div class="row">
       <ul class="breadcrumb">
       <li class="active">Home</li>

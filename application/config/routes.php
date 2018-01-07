@@ -65,12 +65,19 @@ $route['forums'] = 'discussion';
 $route['addons/view/(:num)'] = 'addons/view/$1';
 $route['addons/(:num)'] = 'addons/index/$1';
 
+// ucp
+$route['ucp'] = 'user/settings';
+$route['ucp/pass'] = 'user/changepassword';
+$route['ucp/add'] = 'user/add';
+$route['ucp/edit/(:num)'] = 'user/edit/$1';
+
 
 /**
- * UCP Routes
+ * Admin
  */
 
- $route['ucp'] = 'user/settings';
- $route['ucp/pass'] = 'user/changepassword';
- $route['ucp/add'] = 'user/add';
- $route['ucp/edit/(:num)'] = 'user/edit/$1';
+
+// News
+ $route['news/list'] = "admin/news.php";
+ $route['admin/news/edit/(:num)'] = "admin/edit_news/$1";
+ $route['news/create'] = "admin/create_news";

@@ -1,18 +1,12 @@
 <div class="container">
-  <div class="page-header" id="banner">
-        <div class="row">
-          <div class="col-lg-6">
-            <h1>Welcome</h1>
-          </div>
-        </div>
-      </div>
+
 
   	<div class="row">
           <section class="row panel-body">
 <section class="col-lg-10">
+<?php foreach($this->discussion_model->categoryName($idtopic)->result() as $category) { ?>
       <ul class="breadcrumb">
       <li><a href="<?= base_url();  ?>forums">Home </a></li>
-      <?php foreach($this->discussion_model->categoryName($idtopic)->result() as $category) { ?>
       <li class="active"><?= $category->category ?></li>
     </ul>
     </section>
@@ -27,7 +21,7 @@
     <?php foreach($this->discussion_model->getTopics($idtopic)->result() as $topic) { ?>
         <section class="row panel-body">
         <section class="col-md-6">
-          <h4> <a href="<?= base_url() ?>forums/thread/<?= $topic->id ?>"><i class="text-primary"> <?= substr($topic->title, 0, 40) ?>  </i> </h4></a>
+          <h5> <a href="<?= base_url() ?>forums/thread/<?= $topic->id ?>"><i class="text-primary"> <?= substr($topic->title, 0, 40) ?>  </i> </h5></a>
         </section>
         <section class="col-md-2">
           <ul id="post-topic">
@@ -36,10 +30,8 @@
         </section>
         <section class="col-md-3">
      <?php foreach($this->discussion_model->lastReply($topic->id)->result() as $last)  {?>
-       <i class="fa fa-link"> </i> <a href="#"> <?= substr($last->msg, 0, 15) ?>  </a>
-       <p> </p>
-       <a class"nounderline"><i class="fa fa-user text-primary"></i> <?= $last->author ?> </a>
-       (<a class"nounderline"><i class="fa fa-calendar text-primary"></i><?= date('Y-m-d', $last->date); ?></a>)
+       <a class"nounderline">By <i class="fa fa-user text-primary"></i> <?= $last->author ?> </a>
+       (<a class"nounderline"><i class="fa fa-calendar text-primary"></i> <?= date('Y-m-d', $last->date); ?></a>)
      <?php } ?>
         </section>
         <hr>

@@ -26,18 +26,16 @@ example : http://Anetwork.net/
 
 ## Built With
 
-* [Bootstrap](https://getbootstrap.com/) - Build responsive, mobile-first projects on the web with the world's most popular front-end component library. 
+* [Bootstrap](https://getbootstrap.com/) - Build responsive, mobile-first projects on the web with the world's most popular front-end component library.
 * [Codeigniter](https://codeigniter.com/) - Web Framework
 * [HMVC](https://en.wikipedia.org/wiki/Hierarchical_model%E2%80%93view%E2%80%93controller) - Used to generate RSS Feeds
 
 ## Authors
 
-* **Sayghteight** - *Leader of Project* - [sayghteight](https://github.com/sayghteight)
+* **Sayghteight** - *Leader of Project* - [sayghteight](https://github.com/sayghteight) [contact](mailto:sayghteight@dzero.ml)
 
 See also the list of [contributors](https://github.com/sayghteight/ANetworks/contributors) who participated in this project.
 
 ## License
 
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-
