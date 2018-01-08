@@ -68,25 +68,25 @@
                             <!-- /input-group -->
                         </li>
                         <li>
-                            <a href="index.html"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                            <a href="<?= base_url() ?>admin/"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
                         </li>
                         <li>
-                            <a href="forms.html"><i class="fa fa-cog fa-fw"></i> Settings</a>
+                            <a href="<?= base_url() ?>admin/settings"><i class="fa fa-cog fa-fw"></i> Settings</a>
                         </li>
                         <li>
                             <a href="#"><i class="fa fa-newspaper-o fa-fw"></i> News<span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
-                                    <a href="flot.html"><i class="fa fa-plus-square fa-fw"></i> Create news</a>
+                                    <a href="<?= base_url() ?>admin/news/create"><i class="fa fa-plus-square fa-fw"></i> Create news</a>
                                 </li>
                                 <li>
-                                    <a href="morris.html"><i class="fa fa-list fa-fw"></i> List news</a>
+                                    <a href="<?= base_url() ?>admin/news"><i class="fa fa-list fa-fw"></i> List news</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
-                            <a href="tables.html"><i class="fa fa-users fa-fw"></i> Users</a>
+                            <a href="<?= base_url() ?>admin/users"><i class="fa fa-users fa-fw"></i> Users</a>
                         </li>
                     </ul>
                 </div>

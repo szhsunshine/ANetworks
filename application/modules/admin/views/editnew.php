@@ -19,7 +19,7 @@
 
       <div class="alert alert-info alert-dismissable">
           <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-          Noticia editada con éxito.
+          Noticia editada con éxito
       </div>
 
       ';

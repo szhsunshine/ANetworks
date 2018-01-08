@@ -50,7 +50,7 @@ class Admin_model extends CI_Model {
     }
      /**
       * Functions news
-      * 60% Completed
+      * 100% Completed
       */
 
       public function getNewsDates()
@@ -73,6 +73,11 @@ class Admin_model extends CI_Model {
       public function editNews($idnews, $title, $content)
       {
         return $this->db->query("UPDATE ac_news SET news_title = '$title', news_content = '$content' WHERE id='$idnews'");
+      }
+
+      public function createNews($title, $content, $author, $date)
+      {
+        return $this->db->query("INSERT INTO ac_news (news_title, news_content, post_date, news_author) VALUES('$title', '$content', '$date', '$author')");
       }
 
       /**
