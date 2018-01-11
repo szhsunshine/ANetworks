@@ -39,32 +39,42 @@ class Addon_model extends CI_Model {
 
     public function expansionSelected($expansion)
     {
-      return $this->db->query("SELECT * FROM ac_expansion WHERE id = '$expansion' AND status =1");
+      return $this->db->where('id', $expansion)
+              ->where('status', 1)
+              ->get('ac_expansion');
     }
 
     public function grabExpansion($expansion)
     {
-        return $this->db->query("SELECT * FROM ac_addons WHERE expansion = '$expansion' AND status =2");
+        return $this->db->where('expansion', $expansion)
+                ->where('status', 2)
+                ->get('ac_addons');
     }
 
     public function getCategory()
     {
-      return $this->db->query("SELECT * FROM ac_category");
+      return $this->db->get('ac_category');
     }
 
     public function mostDownloaded($value)
     {
-        return $this->db->query("SELECT * FROM ac_addons WHERE expansion = '$value' AND status =2 ORDER BY downloads DESC LIMIT 10");
+      return $this->db->where('expansion', $value)
+              ->where('status', 2)
+              ->order_by('downloads', 'DESC')
+              ->limit(10)
+              ->get('ac_addons');
     }
 
     public function getInformation($addonid)
     {
-        return $this->db->query("SELECT * FROM ac_addons WHERE id = '$addonid' ORDER BY downloads DESC LIMIT 10");
+      return $this->db->where('id', $addonid)
+              ->get('ac_addons');
     }
 
     public function getFileId($addonid)
     {
-        return $this->db->query("SELECT * FROM ac_files WHERE id = '$addonid'");
+        return $this->db->where('id', $addonid)
+                ->get('ac_files');
     }
 
     public function searchAddons($value)
@@ -75,14 +85,16 @@ class Addon_model extends CI_Model {
 
     public function getExternalDownload($addonid)
     {
-        return $this->db->query("SELECT * FROM ac_external_download WHERE addon_id = '$addonid'");
+      return $this->db->where('addon_id', $addonid)
+                  ->get('ac_external_download');
     }
 
     public function download($addonid)
     {
       if (isset($_POST['button_get']))
         {
-      $query = $this->db->query("SELECT * FROM ac_addons WHERE id= '$addonid'");
+      $query = $this->db->where('id', $addonid)
+              ->get('ac_addons');
       foreach ($query->result() as $row)
       {
         $downloads = $row->downloads;
