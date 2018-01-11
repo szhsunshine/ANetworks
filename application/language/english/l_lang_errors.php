@@ -27,7 +27,3 @@
  * THE SOFTWARE.
  */
 defined('BASEPATH') OR exit('No direct script access allowed');
-
-/* Model Addons.php */
-
-/* Model View.php */
