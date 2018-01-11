@@ -14,17 +14,15 @@
         <header class="panel-heading">
           <h4><?= $category->category ?></h4>
         </header>
-
         <?php foreach($this->discussion_model->getCategorys($category->id)->result() as $cat) { ?>
         <section class="row panel-body">
         <section class="col-md-6">
           <h4> <a href="forums/topic/<?= $cat->id ?>"><i class="fa fa-th-list text-primary"> <?= $cat->category ?>  </i> </h4>
-          <h6><?= $cat->description ?> </h6> </a>
-
+          <h6> <?= $cat->description ?> </h6></a>
         </section>
         <section class="col-md-2">
-          <a class"nounderline"><i class="fa fa-share"></i> Topics: <?= $this->discussion_model->counThreads($cat->id); ?> </a> <br/>
-          <a class"nounderline"><i class="fa fa-reply"></i> Reply: <?= $this->discussion_model->counPost($cat->id); ?> </a>
+          <a class"nounderline"><i class="fa fa-share"></i> <?= $this->discussion_model->counThreads($cat->id); ?> </a> /
+          <a class"nounderline"><i class="fa fa-reply"></i> <?= $this->discussion_model->counPost($cat->id); ?> </a>
         </section>
         <section class="col-md-3">
           <?php foreach($this->discussion_model->lastPost($cat->id)->result() as $lastpost) { ?>
@@ -38,5 +36,6 @@
     <?php } ?>
     </section>
   <?php } ?>
+  
 </div>
 </div> <!-- End container -->

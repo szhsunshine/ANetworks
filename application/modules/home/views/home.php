@@ -41,5 +41,20 @@
       <?php } ?>
     </div>
 </div>
+
+<?php foreach ($this->m_plugins->lastforums()->result() as $result){ ?>
+<?php if($result->value == 1) { ?>
+<div class="latest-news panel panel-info">
+    <div class="panel-heading">Forums post</div>
+    <div class="panel-body" style="padding-left: 0!important; padding-right: 0!important;">
+        <?php foreach($this->m_plugins->lastForumPost()->result() as $last) { ?>
+        <ul class="list-group">
+          <li class="list-group-item"><i class="fa fa-sticky-note"></i> <a href="<?= base_url() ?>forums/thread/<?= $last->id ?>"><small><?= $last->title ?></small></a></li>
+        </ul>
+      <?php } ?>
+    </div>
+<?php } ?>
+<?php } ?>
+</div>
 </div>
 </div>

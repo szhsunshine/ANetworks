@@ -11,19 +11,22 @@ class Home_model extends CI_Model {
 
     public function getNews()
     {
-          return $this->db->query("SELECT * FROM ac_news ORDER BY post_date DESC LIMIT 1");
+        $this->db->limit(1);
+        $this->db->order_by('post_date', 'ASC');
+        return $this->db->get('ac_news');
     }
 
     public function getIdNews($idnews)
     {
-          return $this->db->query("SELECT * FROM ac_news WHERE id = '$idnews' LIMIT 1");
+      $this->db->limit(1);
+      $this->db->where('id', $idnews);
+      return $this->db->get('ac_news');
     }
-
 
     public function getLastnews()
     {
-      return $this->db->query("SELECT * FROM ac_news ORDER BY post_date DESC LIMIT 10");
+      $this->db->limit(10);
+      $this->db->order_by('post_date', 'ASC');
+      return $this->db->get('ac_news');
     }
-
-
 }

@@ -77,7 +77,13 @@ class Admin_model extends CI_Model {
 
       public function createNews($title, $content, $author, $date)
       {
-        return $this->db->query("INSERT INTO ac_news (news_title, news_content, post_date, news_author) VALUES('$title', '$content', '$date', '$author')");
+        $data = array(
+          'news_title' => $title,
+          'news_content' => $content,
+          'news_author' => $author,
+          'post_date' => $date,
+        );
+        $this->db->insert('ac_news', $data);
       }
 
       /**

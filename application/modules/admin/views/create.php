@@ -34,9 +34,15 @@
         </div>
         <div class="form-group">
             <label>Cuerpo de noticia</label>
-            <textarea class="form-control" name="text" rows="6"></textarea>
+            <textarea class="form-control" name="text" id="editor"></textarea>
         </div>
-
+        <script>
+            ClassicEditor
+                .create( document.querySelector( '#editor' ) )
+                .catch( error => {
+                    console.error( error );
+                } );
+        </script>
       <center>
         <button type="submit" class="btn btn-success" name="add">Enviar</button>
       </center>
