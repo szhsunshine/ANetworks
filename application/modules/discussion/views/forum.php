@@ -2,11 +2,11 @@
 <br/>
   	<div class="row">
       <ul class="breadcrumb">
-      <li class="active">Home</li>
+      <li class="active"><?= $this->lang->line('menu_home') ?> </li>
     </ul>
 <div class="alert alert-dismissable alert-warning">
   <button type="button" class="close" data-dismiss="alert">×</button>
-  <strong>Important!</strong> The forums are in development, they are in an alpha version so several features are disabled.
+  <?= $this->lang->line('forums_development') ?>
 </div>
 
 <?php foreach($this->discussion_model->getCategoryFather()->result() as $category) { ?>
@@ -36,6 +36,6 @@
     <?php } ?>
     </section>
   <?php } ?>
-  
+
 </div>
 </div> <!-- End container -->

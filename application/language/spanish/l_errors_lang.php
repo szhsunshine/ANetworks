@@ -27,3 +27,7 @@
  * THE SOFTWARE.
  */
 defined('BASEPATH') OR exit('No direct script access allowed');
+
+
+$lang['forums_development'] = '<strong>¡Importante!</strong> los foros se encuentran en desarrollo, por lo que algunas funciones de estos mismos
+no podrían haber sido implementadas. ';
