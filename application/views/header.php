@@ -38,11 +38,11 @@
 		<ul class="nav navbar-nav">
 
 			<li>
-				<a href="<?= base_url();  ?>">Home</a>
+				<a href="<?= base_url();  ?>"><?= $this->lang->line('menu_home') ?></a>
 			</li>
       <?php if ($this->m_modules->getStatusAddons() == '1') { ?>
 			<li class="dropdown">
-				<a class="dropdown-toggle" data-toggle="dropdown" href="#" id="themes">Addons <span class="caret"></span></a>
+				<a class="dropdown-toggle" data-toggle="dropdown" href="#" id="themes"><?= $this->lang->line('menu_addons') ?> <span class="caret"></span></a>
 				<ul class="dropdown-menu" aria-labelledby="themes">
 					<li><a href="<?= base_url();  ?>addons/1" class="current-sub-nav"> <?= $this->lang->line('exp_classic'); ?></a></li>
 					<li><a href="<?= base_url();  ?>addons/2" class="current-sub-nav"> <?= $this->lang->line('exp_tbc'); ?></a></li>
@@ -55,25 +55,24 @@
 				</li>
       <?php } ?>
 				<li class="dropdown">
-						<a class="dropdown-toggle" data-toggle="dropdown" href="#" id="themes">Tools <span class="caret"></span></a>
+						<a class="dropdown-toggle" data-toggle="dropdown" href="#" id="themes"><?= $this->lang->line('menu_tools') ?> <span class="caret"></span></a>
 						<ul class="dropdown-menu" aria-labelledby="themes">
-								<li><a href="#">Database</a></li>
-								<li><a href="#">Calculator talents</a></li>
-								<li><a href="#">Calculator Stats</a></li>
+								<li><a href="#"><?= $this->lang->line('menu_database') ?></a></li>
+								<li><a href="#"><?= $this->lang->line('menu_talents') ?></a></li>
 							</ul>
 				</li>
 				<li>
-						<a href="<?= base_url();  ?>forums">Forums</a>
+						<a href="<?= base_url();  ?>forums"><?= $this->lang->line('menu_forums') ?></a>
 				</li>
 		</ul>
 
 		<ul class="nav navbar-nav navbar-right">
 				<?php if($this->m_data->isLoggedIn()) { ?>
-					<li><a href="<?= base_url();  ?>user/settings">My Account</a></li>
-					<li><a href="<?= base_url();  ?>user/logout">Logout</a></li>
+					<li><a href="<?= base_url();  ?>user/settings"><?= $this->lang->line('my_account') ?></a></li>
+					<li><a href="<?= base_url();  ?>user/logout"><?= $this->lang->line('menu_logout') ?></a></li>
 				<?php }else{ ?>
-					<li><a href="<?= base_url();  ?>user/login">Login</a></li>
-					<li><a href="<?= base_url();  ?>user/register">Register</a></li>
+					<li><a href="<?= base_url();  ?>user/login"><?= $this->lang->line('menu_login') ?></a></li>
+					<li><a href="<?= base_url();  ?>user/register"><?= $this->lang->line('menu_register') ?></a></li>
 				<?php } ?>
 		</ul>
 

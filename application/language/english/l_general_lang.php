@@ -28,9 +28,12 @@
  */
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-$lang['menu_news'] = 'News';
+$lang['menu_forums'] = 'Forums';
 $lang['menu_home'] = 'Home';
 $lang['menu_database'] = 'Database';
+$lang['menu_addons'] = 'Addons';
+$lang['menu_tools'] = 'Tools';
+$lang['menu_talents'] = 'Calculator of talents';
 $lang['menu_support'] = 'Support';
 $lang['menu_login'] = 'Log In';
 $lang['menu_register'] = 'Register';
