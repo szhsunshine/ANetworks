@@ -360,7 +360,7 @@ class User_model extends CI_Model {
               $folder = array(
 								1 => 'addons/vanilla/',
 								2 => 'addons/tbc/',
-								3 => 'addons/wotlk/',
+								3 => 'addons/wtlk/',
                 4 => 'addons/cata/',
                 5 => 'addons/mop/',
                 6 => 'addons/wod/',
