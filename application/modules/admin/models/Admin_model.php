@@ -44,6 +44,11 @@ class Admin_model extends CI_Model {
       return $this->db->query("SELECT * FROM ac_news")->num_rows();
     }
 
+
+    public function getVersions()
+    {
+          return $this->db->query("SELECT * FROM ac_version")->num_rows();
+    }
     public function getTitleNews($idnews)
     {
       return $this->db->query("SELECT news_title FROM ac_news WHERE id='$idnews'");
@@ -84,6 +89,40 @@ class Admin_model extends CI_Model {
           'post_date' => $date,
         );
         $this->db->insert('ac_news', $data);
+      }
+
+      /**
+      * Functions Game Version
+      * 100% completed
+      */
+
+      public function versionSelected()
+      {
+        return $this->db->get('ac_version');
+      }
+
+      public function getVersion($idversion)
+      {
+        return $this->db->where('id', $idversion)
+          ->get('ac_version');
+      }
+
+      public function addSupportedGV($gv)
+      {
+        $data = array(
+          'gameversion' => $gv,
+        );
+        $this->db->insert('ac_version', $data);
+      }
+
+      public function editSupportedGV($idversion, $gv)
+      {
+        return $this->db->query("UPDATE ac_version SET gameversion = '$gv'  WHERE id='$idversion'");
+      }
+
+      public function deleteSupportedGV($idversion)
+      {
+        return $this->db->query("DELETE FROM ac_version WHERE id='$idversion'");
       }
 
       /**

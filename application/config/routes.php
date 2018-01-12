@@ -81,4 +81,10 @@ $route['ucp/edit/(:num)'] = 'user/edit/$1';
 // News
  $route['admin/news/'] = "admin/news";
  $route['admin/news/edit/(:num)'] = "admin/edit_news/$1";
- $route['admin/news/create'] = "admin/create";
+ $route['admin/news/create'] = "admin/create_news";
+
+ // version
+
+  $route['admin/version/'] = "admin/version";
+  $route['admin/version/edit/(:num)'] = "admin/edit_version/$1";
+  $route['admin/version/create'] = "admin/create_version";

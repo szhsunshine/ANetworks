@@ -88,6 +88,18 @@
                             <!-- /.nav-second-level -->
                         </li>
                         <li>
+                            <a href="#"><i class="fa fa-sliders fa-fw"></i> Version support<span class="fa arrow"></span></a>
+                            <ul class="nav nav-second-level">
+                                <li>
+                                    <a href="<?= base_url() ?>admin/version/create"><i class="fa fa-plus-square fa-fw"></i> Create version</a>
+                                </li>
+                                <li>
+                                    <a href="<?= base_url() ?>admin/version"><i class="fa fa-list fa-fw"></i> List version</a>
+                                </li>
+                            </ul>
+                            <!-- /.nav-second-level -->
+                        </li>
+                        <li>
                             <a href="<?= base_url() ?>admin/users"><i class="fa fa-users fa-fw"></i> Users</a>
                         </li>
                     </ul>
