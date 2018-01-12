@@ -44,6 +44,18 @@ class Addon_model extends CI_Model {
               ->get('ac_expansion');
     }
 
+    public function categorySelected($idcategory)
+    {
+      return $this->db->where('id', $idcategory)
+              ->get('ac_category');
+    }
+
+    public function grabCategory($idcategory)
+    {
+        return $this->db->where('category', $idcategory)
+                ->get('ac_addons');
+    }
+
     public function grabExpansion($expansion)
     {
         return $this->db->where('expansion', $expansion)

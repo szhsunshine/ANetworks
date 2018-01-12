@@ -63,6 +63,7 @@ $route['forums'] = 'discussion';
 
 // addons
 $route['addons/view/(:num)'] = 'addons/view/$1';
+$route['addons/cat/(:num)'] = 'addons/category/$1';
 $route['addons/(:num)'] = 'addons/index/$1';
 
 // ucp

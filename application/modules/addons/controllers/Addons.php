@@ -36,10 +36,11 @@ class Addons extends MX_Controller {
           $this->load->model('user/user_model');
           $this->load->model('addon_model');
 
-          $categoryid = array
-          ('$idcategory' => $idcategory, );
+          $cat = array
+          ('idcategory' => $idcategory, );
+
           $this->load->view('header');
-          $this->load->view('category', $categoryid);
+          $this->load->view('category', $cat);
           $this->load->view('footer');
     }
 }
