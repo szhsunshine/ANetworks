@@ -31,7 +31,11 @@ class M_data extends CI_Model {
       return $this->db->query("SELECT permission FROM ac_ranks WHERE username = '$username'");
   }
 
-
+  public function supportedGameVersions()
+  {
+    return $this->db->get('ac_version');
+  }
+  
   public function getIDAccount()
   {
     $account = $_POST['username'];

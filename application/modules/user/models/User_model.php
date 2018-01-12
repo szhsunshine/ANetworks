@@ -321,16 +321,8 @@ class User_model extends CI_Model {
     public function addAddon($username, $name, $version, $desc, $expansion, $category)
     {
       $username = $this->session->userdata('ac_sess_username');
-      $name = $_POST['addon_name'];
-      $version = $_POST['addon_version'];
-      $description = $_POST['desc'];
-      $expansion = $_POST['expansion'];
-      $category = $_POST['category'];
-      $date = $this->m_data->getTimestamp();
-
-      $downloads = 0;
-      $status = 2;
       $max_size = 20971520;
+      $date =  $this->m_data->getTimestamp();
 
       ## File config
 
@@ -373,9 +365,17 @@ class User_model extends CI_Model {
               $file_url = $file_destination;
 							if(move_uploaded_file($file_tmp, $file_destination))
 							{
-                $this->db->query("INSERT INTO ac_addons (addon_name, addon_version, addon_uploader, addon_description, status, downloads, category, updated, uploaded, expansion, file_id)
-              VALUES('$name', '$version', '$username', '$description', '$status', '$downloads', '$category', '$date', '$date', '$expansion', '$file_id')");
-                $this->db->query("INSERT INTO ac_files (file_id, file_name, file_tmp, file_size, file_url, added) VALUES('$file_id', '$file_name', '$file_tmp', '$file_size', '$file_url', '$date')");
+              $data = array(
+                'addon_name' => $name,
+                'addon_version' => $version,
+                'addon_description' => $desc,
+                'expansion' => $expansion,
+                'category' => $category,
+                'addon_uploader' => $username,
+                'uploaded' => $date,
+              );
+              $this->db->insert('ac_addons', $data);
+              $this->db->query("INSERT INTO ac_files (file_id, file_name, file_tmp, file_size, file_url, added) VALUES('$file_id', '$file_name', '$file_tmp', '$file_size', '$file_url', '$date')");
               echo '<div class="callout success">Uploaded addon!</div>';
 							}
        ## File is to large

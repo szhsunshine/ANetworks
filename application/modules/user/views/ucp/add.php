@@ -62,12 +62,12 @@ if(isset($_POST['add']))
        {
          $username = $this->session->userdata('ac_sess_username');
          $name = $_POST['addon_name'];
-         $version = $_POST['addon_version'];
+         $version = $_POST['version'];
          $description = $_POST['desc'];
          $category = $_POST['category'];
          $expansion = $_POST['expansion'];
          $file = $_FILES['files'];
-				    $max_size = 20971520;
+         $max_size = 20971520;
          $this->user_model->addAddon($username, $name, $version, $description, $expansion, $category);
 } ?>
 
@@ -85,7 +85,11 @@ if(isset($_POST['add']))
         <div class="form-group">
           <label for="inputEmail" class="col-lg-2" control-label">Game version</label>
             <div class="col-lg-12">
-            <input class="form-control" name="addon_version" value="Example 7.2.5" type="text">
+            <select class="form-control" name="version" id="select">
+              <?php foreach($this->m_data->supportedGameVersions()->result() as $version) {  ?>
+              <option value="<?= $version->id ?>"><?= $version->gameversion ?></option>
+              <?php } ?>
+            </select>
             </div>
         </div>
 

@@ -52,7 +52,11 @@ $category = array(
 					              <section class="pull-left" id="id">
 														<?= $add->addon_name ?>
 														<br/>
-														<small> Game Versión : <?= $add->addon_version ?></small> | <small> Uploaded : <?=  $add->uploaded ?> </small>
+														<small> Game Versión :
+              								 <?php foreach($this->addon_model->versionSelected($add->addon_version)->result() as $version) { ?>
+                                 <?= $version->gameversion ?></small>
+                               <?php } ?>
+                                 | <small> Uploaded : <?= date('Y-m-d', $add->uploaded); ?> </small>
 												</section>
 										</section>
 							</div>

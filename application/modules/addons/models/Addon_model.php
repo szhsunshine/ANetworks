@@ -36,7 +36,12 @@ class Addon_model extends CI_Model {
         }
     }
 
-
+    public function versionSelected($version)
+    {
+      return $this->db->where('id', $version)
+              ->get('ac_version');
+    }
+    
     public function expansionSelected($expansion)
     {
       return $this->db->where('id', $expansion)
