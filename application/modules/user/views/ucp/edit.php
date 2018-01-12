@@ -60,7 +60,7 @@
 if(isset($_POST['edit']))
        {
          $name = $_POST['addon_name'];
-         $version = $_POST['addon_version'];
+         $version = $_POST['version'];
          $description = $_POST['desc'];
          $expansion = $_POST['expansion'];
          $category = $_POST['category'];
@@ -79,9 +79,13 @@ if(isset($_POST['edit']))
 
 
         <div class="form-group">
-          <label for="inputEmail" class="col-lg-2" control-label">Version</label>
+          <label for="inputEmail" class="col-lg-2" control-label">Game version</label>
             <div class="col-lg-12">
-            <input class="form-control" name="addon_version" value="<?= $addon->addon_version ?>" type="text">
+            <select class="form-control" name="version" id="select">
+              <?php foreach($this->m_data->supportedGameVersions()->result() as $version) {  ?>
+              <option value="<?= $version->id ?>"><?= $version->gameversion ?></option>
+              <?php } ?>
+            </select>
             </div>
         </div>
 

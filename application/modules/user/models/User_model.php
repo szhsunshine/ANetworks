@@ -269,11 +269,6 @@ class User_model extends CI_Model {
     public function editAddon ($id, $name, $version, $description, $expansion, $category)
     {
       $username = $this->session->userdata('ac_sess_username');
-      $name = $_POST['addon_name'];
-      $version = $_POST['addon_version'];
-      $description = $_POST['desc'];
-      $expansion = $_POST['expansion'];
-      $category = $_POST['category'];
       $time =  $this->m_data->getTimestamp();
 
       if (isset($_POST['edit']))
@@ -281,10 +276,18 @@ class User_model extends CI_Model {
 
         $checkPermissions = $this->db->query("SELECT * FROM ac_addons WHERE addon_uploader = '$username' AND id = '$id'")->num_rows();
       if ($checkPermissions == 1)
-      {
-
-          $this->db->query("UPDATE ac_addons SET addon_name = '$name', addon_version = '$version', addon_description = '$description',
-            category = $category, expansion = $expansion, updated = '$time' WHERE addon_uploader = '$username' AND id = '$id'");
+        {
+          $data = array(
+            'addon_name' => $name,
+            'addon_version' => $version,
+            'addon_description' => $description,
+            'category' => $category,
+            'expansion' => $expansion,
+            'updated' => $time
+          );
+          $this->db->where('addon_uploader', $username)
+          ->where('id', $id)
+          ->update('ac_addons', $data);
 
             echo '  <div class="alert alert-dismissable alert-success">
           <button type="button" class="close" data-dismiss="alert">×</button>
