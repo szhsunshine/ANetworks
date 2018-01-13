@@ -1,7 +1,7 @@
 <div id="page-wrapper">
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">List news</h1>
+            <h1 class="page-header"><?= $this->lang->line('new_head_new') ?></h1>
         </div>
         <!-- /.col-lg-12 -->
     </div>
@@ -13,11 +13,11 @@
                 <div class="panel-heading">
                     <div class="row">
                         <div class="col-xs-3">
-                            <i class="fa fa-users fa-5x"></i>
+                            <i class="fa fa-newspaper-o fa-5x"></i>
                         </div>
                         <div class="col-xs-9 text-right">
                             <div class="huge"><?= $this->admin_model->getNews(); ?></div>
-                            <div>Noticias publicadas</div>
+                            <div><?= $this->lang->line('news_published') ?></div>
                         </div>
                     </div>
                 </div>
@@ -35,7 +35,7 @@
 
       <div class="alert alert-info alert-dismissable">
           <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-          Se ha borrado la noticia de tu página web.
+          '. $this->lang->line('new_delete_exit') .'
       </div>
 
       ';

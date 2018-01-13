@@ -4,7 +4,7 @@
             <h1 class="page-header">
 
               <?php foreach($this->admin_model->getNewID($idnews)->result() as $title) { ?>
-                Estas editando | <?= $title->news_title ?>
+                <?= $this->lang->line('news_edit_head') ?> <?= $title->news_title ?>
               <?php } ?>  </h1>
         </div>
         <!-- /.col-lg-12 -->
@@ -19,7 +19,7 @@
 
       <div class="alert alert-info alert-dismissable">
           <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-          Noticia editada con éxito
+          '. $this->lang->line('new_edit_exit') .'
       </div>
 
       ';
@@ -30,16 +30,16 @@
 <?php foreach($this->admin_model->getNewID($idnews)->result() as $new) { ?>
     <form role="form" method="post">
         <div class="form-group">
-            <label>Titulo</label>
+            <label><?= $this->lang->line('news_create_title') ?></label>
             <input class="form-control" name="title" value='<?= $new->news_title ?>'>
         </div>
         <div class="form-group">
-            <label>Text area</label>
+            <label><?= $this->lang->line('news_create_1') ?></label>
             <textarea class="form-control" name="text" rows="6"><?= $new->news_content ?></textarea>
         </div>
 
       <center>
-        <button type="submit" class="btn btn-success" name="edit">Enviar</button>
+        <button type="submit" class="btn btn-success" name="edit"><?= $this->lang->line('news_edit_button') ?></button>
       </center>
     </form>
 

@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-lg-12">
             <h1 class="page-header">
-              Agregando una nueva versión para soportar
+              <?= $this->lang->line('version_gv_add_1') ?>
             </h1>
         </div>
         <!-- /.col-lg-12 -->
@@ -16,7 +16,7 @@
 
       <div class="alert alert-info alert-dismissable">
           <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-          Version agregada con éxito
+          '. $this->lang->line('gvadd_success') .'
       </div>
 
       ';
@@ -26,10 +26,10 @@
 
     <form role="form" method="post">
         <div class="form-group">
-            <label>Escribe el número de la versión (EX 7.3.0)</label>
+            <label><?= $this->lang->line('version_gv_add') ?></label>
             <input class="form-control" name="version">
         </div>
       <center>
-        <button type="submit" class="btn btn-success" name="addversion">Añadir version</button>
+        <button type="submit" class="btn btn-success" name="addversion"><?= $this->lang->line('version_button_add') ?></button>
       </center>
     </form>

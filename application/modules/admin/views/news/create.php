@@ -1,8 +1,7 @@
 <div id="page-wrapper">
     <div class="row">
         <div class="col-lg-12">
-            <h1 class="page-header">
-              Creando una nueva Noticia
+            <h1 class="page-header"><?= $this->lang->line('news_create_head') ?>
             </h1>
         </div>
         <!-- /.col-lg-12 -->
@@ -19,7 +18,7 @@
 
       <div class="alert alert-info alert-dismissable">
           <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-          Noticia agregada con éxito
+          '. $this->lang->line('new_create_exit') .'
       </div>
 
       ';
@@ -29,11 +28,11 @@
 
     <form role="form" method="post">
         <div class="form-group">
-            <label>Titulo</label>
+            <label><?= $this->lang->line('news_create_title') ?></label>
             <input class="form-control" name="title">
         </div>
         <div class="form-group">
-            <label>Cuerpo de noticia</label>
+            <label><?= $this->lang->line('news_create_1') ?></label>
             <textarea class="form-control" name="text" id="editor"></textarea>
         </div>
         <script>
@@ -44,6 +43,6 @@
                 } );
         </script>
       <center>
-        <button type="submit" class="btn btn-success" name="add">Enviar</button>
+        <button type="submit" class="btn btn-success" name="add"><?= $this->lang->line('news_create_button') ?></button>
       </center>
     </form>

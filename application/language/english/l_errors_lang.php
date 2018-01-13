@@ -30,3 +30,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 
 $lang['forums_development'] = '<strong>Important!</strong> The forums are in development, they are in an alpha version so several features are disabled. ';
+$lang['new_create_exit'] = 'The news has been added successfully.';
+$lang['new_edit_exit'] = 'The news has been edited successfully.';
+$lang['new_delete_exit'] = 'The news has been deleted successfully.';
+$lang['admin_version_3'] = 'The game version has been deleted successfully.';
+$lang['gvedit_success'] = 'The game version has been edited successfully.';
+$lang['gvadd_success'] = 'The game version has been added successfully.';

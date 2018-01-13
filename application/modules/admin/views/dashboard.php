@@ -1,7 +1,7 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Dashboard</h1>
+                    <h1 class="page-header"><?= $this->lang->line('dashboard') ?></h1>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -16,13 +16,13 @@
                                 </div>
                                 <div class="col-xs-9 text-right">
                                     <div class="huge"><?= $this->admin_model->getUsers(); ?></div>
-                                    <div>Users register</div>
+                                    <div><?= $this->lang->line('admin_tab_1') ?></div>
                                 </div>
                             </div>
                         </div>
                         <a href="#">
                             <div class="panel-footer">
-                                <span class="pull-left">View all list</span>
+                                <span class="pull-left"><?= $this->lang->line('view_all_list') ?></span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                                 <div class="clearfix"></div>
                             </div>
@@ -38,13 +38,13 @@
                                 </div>
                                 <div class="col-xs-9 text-right">
                                     <div class="huge"><?= $this->admin_model->getAddons(); ?></div>
-                                    <div>Addons published</div>
+                                    <div><?= $this->lang->line('admin_tab_2') ?></div>
                                 </div>
                             </div>
                         </div>
                         <a href="#">
                             <div class="panel-footer">
-                                <span class="pull-left">View all Addons</span>
+                                <span class="pull-left"><?= $this->lang->line('more_addons') ?></span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                                 <div class="clearfix"></div>
                             </div>
@@ -60,13 +60,13 @@
                                 </div>
                                 <div class="col-xs-9 text-right">
                                     <div class="huge"><?= $this->admin_model->getStatsForums(); ?></div>
-                                    <div>Post in forums</div>
+                                    <div><?= $this->lang->line('admin_tab_3') ?></div>
                                 </div>
                             </div>
                         </div>
                         <a href="#">
                             <div class="panel-footer">
-                                <span class="pull-left">View Details</span>
+                                <span class="pull-left"><?= $this->lang->line('more_post') ?></span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                                 <div class="clearfix"></div>
                             </div>
@@ -81,14 +81,14 @@
                                     <i class="fa fa-support fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <div class="huge">Soon</div>
-                                    <div>Support Tickets!</div>
+                                    <div class="huge">N/A</div>
+                                    <div><?= $this->lang->line('admin_tab_4') ?></div>
                                 </div>
                             </div>
                         </div>
                         <a href="#">
                             <div class="panel-footer">
-                                <span class="pull-left">View Details</span>
+                                <span class="pull-left"><?= $this->lang->line('more_support') ?></span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                                 <div class="clearfix"></div>
                             </div>
@@ -101,7 +101,7 @@
                 <div class="col-lg-8">
 
                       <div class="panel-heading">
-                          <i class="fa fa-bell fa-fw"></i> Last addons
+                          <i class="fa fa-bell fa-fw"></i> <?= $this->lang->line('Last_addons') ?>
                       </div>
                         <div class="row">
                         <?php foreach($this->admin_model->getLastAddons()->result() as $addons) { ?>
@@ -119,7 +119,7 @@
                                   </div>
                                   <a href="<?= base_url()?>admin/addons/<?= $addons->id ?>">
                                       <div class="panel-footer">
-                                          <span class="pull-left">View addon info</span>
+                                          <span class="pull-left"><?= $this->lang->line('view_addoninfo') ?></span>
                                           <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                                           <div class="clearfix"></div>
                                       </div>
@@ -133,7 +133,7 @@
                 <div class="col-lg-4">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <i class="fa fa-bell fa-fw"></i> Notifications Panel
+                            <i class="fa fa-bell fa-fw"></i> <?= $this->lang->line('Notifications_Panel') ?>
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">

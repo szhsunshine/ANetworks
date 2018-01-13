@@ -63,6 +63,43 @@ $lang['read_more'] = 'Read more';
 $lang['created'] = 'Created by';
 $lang['at'] = 'at';
 
+
+/* Admin */
+
+$lang['admin_tab_1'] = 'Users register';
+$lang['admin_tab_2'] = 'Addons published';
+$lang['admin_tab_3'] = 'Post in forums';
+$lang['admin_tab_4'] = 'Support Tickets';
+$lang['view_all_list'] = 'View all list';
+$lang['Last_addons'] = 'Last addons';
+$lang['view_addoninfo'] = 'View the addon info';
+$lang['Notifications_Panel'] = 'Last Notifications';
+$lang['dashboard'] = 'Dashboard';
+$lang['more_addons'] = 'View all addons';
+$lang['more_post'] = 'View all forums post';
+$lang['more_support'] = 'View all tickets';
+
+$lang['news_create_1'] = 'Insert text for the announcement';
+$lang['news_create_title'] = 'Insert the new title';
+$lang['news_create_head'] = 'New announcement';
+$lang['news_create_button'] = 'Create new announcement';
+
+$lang['news_edit_head'] = 'Edit announcement | ';
+$lang['news_edit_button'] = 'Edit announcement';
+
+$lang['news_published'] = 'News published';
+$lang['new_head_new'] = 'List news';
+
+$lang['admin_version_1'] = 'List of game versions supported';
+$lang['admin_version_2'] = 'Total game versions supported ';
+$lang['you_are_edit'] = 'You are edit | ';
+$lang['version_gv'] = 'Writte your version supported';
+$lang['version_button_edit'] = 'Edit Game Version';
+$lang['version_button_add'] = 'Add Game Version';
+$lang['version_gv_add'] = 'Write the version number (EX 7.3.0)';
+$lang['version_gv_add_1'] = 'Adding a new version to support';
+
+
 /* User */
 
 $lang['my_addons'] = 'My Addons';
