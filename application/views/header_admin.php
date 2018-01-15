@@ -13,6 +13,7 @@
 
     <!-- Bootstrap Core CSS -->
     <link href="<?= base_url();  ?>assets/admin/css/bootstrap.min.css" rel="stylesheet">
+    <link href="<?= base_url();  ?>assets/admin/css/bootstrap-switch.min.css" rel="stylesheet">
 
     <!-- MetisMenu CSS -->
     <link href="<?= base_url();  ?>assets/admin/metisMenu/metisMenu.min.css" rel="stylesheet">
@@ -36,6 +37,9 @@
     <!-- New editor -->
 
     <script src="<?= base_url() ?>assets/editor/ckeditor.js"></script>
+    <!-- Toggle boostrap -->
+
+    <script src="<?= base_url() ?>assets/admin/js/bootstrap-switch.min.js"></script>
 
 
 <body>

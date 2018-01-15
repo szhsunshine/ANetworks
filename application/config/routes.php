@@ -88,3 +88,11 @@ $route['ucp/edit/(:num)'] = 'user/edit/$1';
   $route['admin/version/'] = "admin/version";
   $route['admin/version/edit/(:num)'] = "admin/edit_version/$1";
   $route['admin/version/create'] = "admin/create_version";
+
+  // Settings
+
+  $route['admin/settings'] = "admin/configuration";
+
+  // users
+
+  $route['admin/users'] = "admin/user_setting";

@@ -103,7 +103,6 @@
                       <div class="panel-heading">
                           <i class="fa fa-bell fa-fw"></i> <?= $this->lang->line('Last_addons') ?>
                       </div>
-                        <div class="row">
                         <?php foreach($this->admin_model->getLastAddons()->result() as $addons) { ?>
                           <div class="col-lg-4">
                               <div class="panel panel-green">
@@ -126,8 +125,7 @@
                                   </a>
                               </div>
                           </div>
-                          <?php } ?>
-                        </div>
+                        <?php } ?>
                 </div>
                 <!-- /.col-lg-8 -->
                 <div class="col-lg-4">
@@ -157,8 +155,6 @@
                     <!-- /.panel .chat-panel -->
             </div>
             <!-- /.row -->
-        </div>
-        <!-- /#page-wrapper -->
 
-    </div>
-    <!-- /#wrapper -->
+        </div>
+        <!-- /#wrapper -->

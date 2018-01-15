@@ -30,7 +30,7 @@ class Admin_model extends CI_Model {
 
     public function getLastAddons()
     {
-      return $this->db->query("SELECT * FROM ac_addons ORDER BY updated DESC LIMIT 9");
+      return $this->db->query("SELECT * FROM ac_addons ORDER BY updated DESC LIMIT 6");
     }
 
 
@@ -126,6 +126,16 @@ class Admin_model extends CI_Model {
       }
 
       /**
+      * Functions users
+      * 5% Completed
+      */
+
+      public function getUsersDates()
+      {
+        return $this->db->get('ac_users');
+      }
+
+      /**
        * Functions Forums
        * 0% Completed
        */
@@ -171,6 +181,17 @@ class Admin_model extends CI_Model {
         {
 
 
+        }
+
+        /**
+        * Functions User
+        * User Function -> 10%
+        */
+
+        public function userDelete($id)
+        {
+          $this->db->where('id', $id);
+          return $this->db->delete('ac_users');
         }
 
 }
