@@ -99,6 +99,12 @@ $lang['version_button_add'] = 'Add Game Version';
 $lang['version_gv_add'] = 'Write the version number (EX 7.3.0)';
 $lang['version_gv_add_1'] = 'Adding a new version to support';
 
+$lang['user_head'] = 'List users';
+$lang['user_tab1'] = 'Username';
+$lang['user_tab2'] = 'Email';
+$lang['user_tab3'] = 'Last login';
+$lang['user_tab4'] = 'Register in';
+$lang['user_tab5'] = 'Post';
 
 /* User */
 

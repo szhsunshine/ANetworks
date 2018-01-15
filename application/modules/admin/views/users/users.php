@@ -13,11 +13,11 @@
                 <div class="panel-heading">
                     <div class="row">
                         <div class="col-xs-3">
-                            <i class="fa fa-newspaper-o fa-5x"></i>
+                            <i class="fa fa-user fa-5x"></i>
                         </div>
                         <div class="col-xs-9 text-right">
-                            <div class="huge"><?= $this->admin_model->getNews(); ?></div>
-                            <div><?= $this->lang->line('news_published') ?></div>
+                            <div class="huge"><?= $this->admin_model->getUsers(); ?></div>
+                            <div><?= $this->lang->line('admin_tab_1') ?></div>
                         </div>
                     </div>
                 </div>
@@ -35,7 +35,7 @@
 
       <div class="alert alert-info alert-dismissable">
           <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-          '. $this->lang->line('user_deleted') .'
+          '. $this->lang->line('userDelete') .'
       </div>
 
       ';
@@ -45,11 +45,11 @@
     <div class="table-responsive">
         <table class="table table-striped table-bordered table-hover">
             <tbody>
-              <td> Username </td>
-              <td> Email </td>
-              <td> Last login </td>
-              <td> Register in </td>
-              <td> Post </td>
+              <td> <?= $this->lang->line('user_tab1') ?> </td>
+              <td> <?= $this->lang->line('user_tab2') ?> </td>
+              <td> <?= $this->lang->line('user_tab3') ?> </td>
+              <td> <?= $this->lang->line('user_tab4') ?> </td>
+              <td> <?= $this->lang->line('user_tab5') ?> </td>
             <?php foreach($this->admin_model->getUsersDates()->result() as $users) { ?>
                 <tr>
                     <td><?= $users->username ?></td>

@@ -36,3 +36,4 @@ $lang['new_delete_exit'] = 'The news has been deleted successfully.';
 $lang['admin_version_3'] = 'The game version has been deleted successfully.';
 $lang['gvedit_success'] = 'The game version has been edited successfully.';
 $lang['gvadd_success'] = 'The game version has been added successfully.';
+$lang['userdelete'] = 'The user has been deleted successfully';
