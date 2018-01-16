@@ -38,5 +38,8 @@ $lang['gvedit_success'] = 'The game version has been edited successfully.';
 $lang['gvadd_success'] = 'The game version has been added successfully.';
 $lang['userdelete'] = 'The user has been deleted successfully';
 
+
+$lang['forumsaddthread_head'] = 'Your thread has been published';
+$lang['forumsaddthread'] = 'Congratulations! your thread has been published and you will be redirected in 3 seconds to the forum. Redirecting ...';
 $lang['forumsaddreply_head'] = 'Your reply has been published';
 $lang['forumsaddreply'] = 'Congratulations! your response has been published and you will be redirected in 3 seconds to the forum. Redirecting ...';

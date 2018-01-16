@@ -92,6 +92,16 @@ class Discussion_model extends CI_Model {
                   'date' => $this->m_data->getTimestamp()
                 );
                 $this->db->insert('ac_discussion_thread', $data);
+                echo '<div class="alert alert-dismissable alert-success">
+                <button type="button" class="close" data-dismiss="alert">×</button>
+                  <h4>'. $this->lang->line('forumsaddthread_head') .'</h4>
+                  <p>'. $this->lang->line('forumsaddthread') .'</a></p>
+                  </div>';
+                  echo '<script>
+                  setTimeout(function () {
+                    window.location.href = "'. base_url() .'forums/thread/'. $idtopic .'";
+                  }, 3000);
+                  </script>';
               }
         }
         }
@@ -117,7 +127,7 @@ class Discussion_model extends CI_Model {
                   );
                   $this->db->insert('ac_discussion_replies', $replies);
 
-                  ## Register success
+                  ## Reply success
                   echo '<div class="alert alert-dismissable alert-success">
                   <button type="button" class="close" data-dismiss="alert">×</button>
                     <h4>'. $this->lang->line('forumsaddreply_head') .'</h4>
@@ -137,48 +147,50 @@ class Discussion_model extends CI_Model {
          */
            public function getUsernameID($idlink)
            {
-               $query = $this->db->query("SELECT * FROM ac_discussion_thread WHERE id= '$idlink'");
+              $query = $this->db->where('id', $idlink)
+                    ->get('ac_discussion_thread');
                foreach ($query->result() as $row)
                {
                  $username =  $row->author;
-                 return $this->db->query("SELECT * FROM ac_users WHERE username= '$username'");
+                 return $this->db->where('username', $username)
+                        ->get('ac_users');
                }
            }
            public function getRanked($idlink)
            {
-             $rank = $this->db->query("SELECT * FROM ac_discussion_thread WHERE id= '$idlink'");
+             $rank = $this->db->where('id', $idlink)
+                    ->get('ac_discussion_thread');
              foreach ($rank->result() as $row)
              {
                $username =  $row->author;
-               return $this->db->query("SELECT * FROM ac_ranks WHERE username = '$username'");
+               return $this->db->where('username', $username)
+                    ->get('ac_ranks');
              }
            }
            public function categoryById($idlink)
            {
-             $query = $this->db->query("SELECT id_cat FROM ac_discussion_thread WHERE id= '$idlink'");
+             $query = $this->db->where('id', $idlink)
+                  ->get('ac_discussion_thread');
              foreach ($query->result() as $row)
              {
                $category =  $row->id_cat;
-               return $this->db->query("SELECT * FROM ac_discussion_category WHERE id = '$category'");
+               return $this->db->where('id', $idlink)
+                  ->get('ac_discussion_category');
              }
            }
            public function threadById($idlink)
            {
-             return $this->db->query("SELECT * FROM ac_discussion_thread WHERE id= '$idlink'");
+             return $this->db->where('id', $idlink)
+                    ->get('ac_discussion_thread');
            }
-           /**
-           * Get id forums
-           */
-           public function getThreadId($idcat)
-           {
-             return $this->db->query("SELECT * FROM ac_discussion WHERE category = '$idcat'");
-           }
+
            /**
            * Get Category id
            */
            public function getIdCategory($idcat)
            {
-             return $this->db->query("SELECT category FROM ac_discussion_category WHERE id = '$idcat'");
+             return $this->db->where('id', $idcat)
+                  ->get('ac_discussion_category');
            }
            /**
            * Get Thread and Reply fuctions
@@ -186,11 +198,13 @@ class Discussion_model extends CI_Model {
            */
            public function getThread($idlink)
            {
-             return $this->db->query("SELECT * FROM ac_discussion_thread WHERE id = '".$idlink."'");
+             return $this->db->where('id', $idlink)
+              ->get('ac_discussion_thread');
            }
            public function getReplies($idlink)
            {
-             return $this->db->query("SELECT * FROM ac_discussion_replies WHERE id_thread = '$idlink'");
+             return $this->db->where('id_thread', $idlink)
+                    ->get('ac_discussion_replies');
            }
 
 
