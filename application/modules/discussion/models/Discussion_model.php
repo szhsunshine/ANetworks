@@ -12,35 +12,42 @@ class Discussion_model extends CI_Model {
    */
    public function getCategoryFather()
    {
-       return $this->db->query("SELECT * FROM ac_discussion_category WHERE isfather = 1");
+     return $this->db->where('isfather', '1')
+          ->get('ac_discussion_category');
    }
    /**
     *  Get Category Father forums
     */
     public function getCategorys($idfather)
     {
-      return $this->db->query("SELECT * FROM ac_discussion_category WHERE idfather = '$idfather'");
+      return $this->db->where('idfather', $idfather)
+              ->get('ac_discussion_category');
     }
     /**
      * Count Threads in category
      */
      public function counThreads($count)
      {
-       return $this->db->query("SELECT * FROM ac_discussion_thread WHERE id_cat = '$count'")->num_rows();
+       return $this->db->where('id_cat', $count)
+              ->get('ac_discussion_thread')->num_rows();
      }
      /**
       * Count Post in category
       */
       public function counPost($count)
       {
-        return $this->db->query("SELECT * FROM ac_discussion_replies WHERE category = '$count'")->num_rows();
+        return $this->db->where('category', $count)
+               ->get('ac_discussion_replies')->num_rows();
       }
       /**
        * Last post
        */
        public function lastPost($cat)
        {
-         return $this->db->query("SELECT * FROM ac_discussion_thread WHERE id_cat = '$cat' ORDER BY date DESC LIMIT 1");
+         return $this->db->where('id_cat', $cat)
+                ->order_by('date', 'DESC')
+                ->limit(1)
+                ->get('ac_discussion_thread');
        }
 
        /**
@@ -49,54 +56,79 @@ class Discussion_model extends CI_Model {
         */
         public function getTopics($idtopic)
         {
-
-          $this->db->where('id_cat', $idtopic);
-          return $this->db->get("ac_discussion_thread");
+          return $this->db->where('id_cat', $idtopic)
+                  ->get("ac_discussion_thread");
         }
 
         public function counReply($topic)
         {
-          return $this->db->query("SELECT * FROM ac_discussion_replies WHERE id_thread = '$topic'")->num_rows();
+          return $this->db->where('id_thread', $topic)
+                ->get('ac_discussion_replies')->num_rows();
         }
         public function lastReply($topic)
         {
-        return $this->db->query("SELECT * FROM ac_discussion_replies WHERE id_thread = '$topic' ORDER BY date DESC LIMIT 1");
+          return $this->db->where('id_thread', $topic)
+                ->order_by('date', 'DESC')
+                ->limit(1)
+                ->get('ac_discussion_replies');
         }
         public function categoryName($idtopic)
         {
-          return $this->db->query("SELECT * FROM ac_discussion_category WHERE id = '$idtopic'");
+          return $this->db->where('id', $idtopic)
+                ->get('ac_discussion_category');
         }
 
-        public function addPost($idtopic, $author)
+        public function addPost($idtopic, $author, $msg, $title)
         {
           if (isset($_POST['button_send_topic']))
           {
               if (!empty($_POST['msg']))
               {
-                  $msg = $_POST['msg'];
-                  $title = $_POST['title'];
-                  $date = $this->m_data->getTimestamp();
-
-                  $this->db->query("INSERT INTO ac_discussion_thread (id_cat, title, msg, author, date) VALUES('$idtopic', '$title', '$msg', '$author', '$date')");
+                $data = array(
+                  'id_cat' => $idtopic,
+                  'title' => $title,
+                  'msg' => $msg,
+                  'author' => $author,
+                  'date' => $this->m_data->getTimestamp()
+                );
+                $this->db->insert('ac_discussion_thread', $data);
               }
         }
         }
 
-        public function replyPost($idlink, $author)
+        public function replyPost($idlink, $author, $msg)
         {
           if (isset($_POST['button_send_reply']))
           {
               if (!empty($_POST['msg']))
               {
-                  $msg = $_POST['msg'];
-                  $date = $this->m_data->getTimestamp();
-
-                  $query = $this->db->query("SELECT * FROM ac_discussion_thread WHERE id = '$idlink'");
+                  $query = $this->db->where('id', $idlink)
+                          ->get('ac_discussion_thread');
                   foreach ($query->result() as $row)
                   {
                   $category = $row->id_cat;
-                  $this->db->query("INSERT INTO ac_discussion_replies (id_thread, category, msg, author, date) VALUES('$idlink', '$category', '$msg', '$author', '$date')");
-                  }
+
+                  $replies = array(
+                    'id_thread' => $idlink,
+                    'category' => $category,
+                    'msg' => $msg,
+                    'author' => $author,
+                    'date' => $this->m_data->getTimestamp()
+                  );
+                  $this->db->insert('ac_discussion_replies', $replies);
+
+                  ## Register success
+                  echo '<div class="alert alert-dismissable alert-success">
+                  <button type="button" class="close" data-dismiss="alert">×</button>
+                    <h4>'. $this->lang->line('forumsaddreply_head') .'</h4>
+                    <p>'. $this->lang->line('forumsaddreply') .'</a></p>
+                    </div>';
+                    echo '<script>
+                    setTimeout(function () {
+                      window.location.href = "'. base_url() .'forums/thread/'. $idlink .'";
+                    }, 3000);
+                    </script>';
+                }
               }
         }
         }

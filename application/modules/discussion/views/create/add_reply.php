@@ -32,7 +32,7 @@
 <?php if(isset($_POST['button_send_reply']))
   {
     $msg = $_POST['msg'];
-    $this->discussion_model->replyPost($idlink, $this->session->userdata('ac_sess_username'));
+    $this->discussion_model->replyPost($idlink, $this->session->userdata('ac_sess_username'), $msg);
   } ?>
 
 <section class="panel panel-info">

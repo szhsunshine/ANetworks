@@ -33,7 +33,7 @@
   {
     $msg = $_POST['msg'];
     $title = $_POST['title'];
-    $this->discussion_model->addPost($idtopic, $this->session->userdata('ac_sess_username'));
+    $this->discussion_model->addPost($idtopic, $this->session->userdata('ac_sess_username'), $msg, $title);
   } ?>
 
 <section class="panel panel-info">
