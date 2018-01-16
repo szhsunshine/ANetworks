@@ -57,10 +57,7 @@ All notable changes to this project will be documented in this file.
 
 ## Modified
 
-- Module/Forums -> Finished rework module forums
-# Commit(s)
-[a764c99](https://github.com/sayghteight/ANetworks/commit/aef8f1fd31cfc8722c8f3d30a88402509c4e9fbb)
-[aef8f1f](https://github.com/sayghteight/ANetworks/commit/a5f5f988629f3a1abeca76c1759bcd635a4632f4)
+- Module/Forums -> Finished rework module forums [a764c99](https://github.com/sayghteight/ANetworks/commit/aef8f1fd31cfc8722c8f3d30a88402509c4e9fbb)/[aef8f1f](https://github.com/sayghteight/ANetworks/commit/a5f5f988629f3a1abeca76c1759bcd635a4632f4)
 
 
 ## [Released]
