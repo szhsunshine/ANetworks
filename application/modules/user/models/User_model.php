@@ -162,6 +162,20 @@ class User_model extends CI_Model {
         return $this->db->query("SELECT status FROM ac_addons WHERE addon_uploader = '$username' AND status = 3")->num_rows();
     }
 
+    public function getVersion($idaddon)
+    {
+      $query = $this->db->where('id', $idaddon)
+           ->get('ac_addons');
+
+           foreach ($query->result() as $row)
+           {
+           $version = $row->addon_version;
+
+           return $this->db->where('id', $version)
+            ->get('ac_version');
+          }
+    }
+
     public function getCategory($id)
     {
 

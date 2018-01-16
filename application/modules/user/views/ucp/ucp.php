@@ -64,7 +64,6 @@
             <th><?= $this->lang->line('tab_expansion'); ?></th>
             <th><?= $this->lang->line('tab_updated'); ?></th>
             <th><?= $this->lang->line('tab_downloads'); ?></th>
-            <th><?= $this->lang->line('tab_status'); ?></th>
           </tr>
         </tr>
       </thead>
@@ -85,11 +84,12 @@
   ?>
         <tr>
           <td> <?= $myaddons->addon_name ?></td>
-          <td> <?= $myaddons->addon_version ?></td>
+          <?php foreach($this->user_model->getVersion($myaddons->id)->result() as $version) { ?>
+          <td> <?= $version->gameversion ?> </td>
+        <?php } ?>
           <td> <?= $expansion[$myaddons->expansion] ?></td>
           <td> <?= date('j F Y', $myaddons->updated) ?></td>
           <td> <?= $myaddons->downloads ?></td>
-          <td> <?= $myaddons->status ?></td>
 
               <td>
                 <a class="btn btn-default" href="<?= base_url() ?>ucp/edit/<?= $myaddons->id ?>"><i class="fa fa-pencil yellow" aria-hidden="true"></i></a>
