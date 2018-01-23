@@ -40,6 +40,20 @@ $lang['menu_register'] = 'Register';
 $lang['menu_logout'] = 'Logout';
 $lang['my_account'] = 'My Account';
 
+$lang['admin_m1'] = 'Dashboard';
+// Admin News
+$lang['admin_m2'] = 'News';
+$lang['admin_m3'] = 'List News';
+$lang['admin_m4'] = 'Add News';
+// Admin version
+$lang['admin_m5'] = 'Version';
+$lang['admin_m6'] = 'List Game Version';
+$lang['admin_m7'] = 'Add Game Version';
+// Premium users
+$lang['admin_m8'] = 'Premium';
+// Settings
+$lang['admin_m9'] = 'Settings';
+
 /* Expansions lang */
 $lang['exp_classic'] = 'Classic';
 $lang['exp_tbc'] = 'The Burning Crusade';
@@ -106,6 +120,10 @@ $lang['user_tab3'] = 'Last login';
 $lang['user_tab4'] = 'Register in';
 $lang['user_tab5'] = 'Post';
 
+$lang['mforum_admin'] = 'List forums';
+$lang['cforum_admin'] = 'Create forums';
+$lang['mcategory_admin'] = 'List category';
+$lang['ccategory_admin'] = 'Create Category';
 /* User */
 
 $lang['my_addons'] = 'My Addons';

@@ -35,7 +35,7 @@ class M_data extends CI_Model {
   {
     return $this->db->get('ac_version');
   }
-  
+
   public function getIDAccount()
   {
     $account = $_POST['username'];
@@ -57,6 +57,7 @@ class M_data extends CI_Model {
     'ac_sess_rank' => $this->getPermission($_POST['username']),
     'logged_in' => TRUE
   );
+    $this->db->query("UPDATE ac_users SET online = '1'  WHERE id='$id'");
     return $this->sessionConnect($data);
   }
 

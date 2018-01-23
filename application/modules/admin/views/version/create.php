@@ -1,13 +1,16 @@
+<!-- ============================================================== -->
+<!-- Page Content -->
+<!-- ============================================================== -->
 <div id="page-wrapper">
-    <div class="row">
-        <div class="col-lg-12">
-            <h1 class="page-header">
-              <?= $this->lang->line('version_gv_add_1') ?>
-            </h1>
-        </div>
-        <!-- /.col-lg-12 -->
-    </div>
-    <!-- /.row -->
+    <div class="container-fluid">
+        <div class="row bg-title"></div>
+        <!-- /.row -->
+        <!-- ============================================================== -->
+        <!-- Different data widgets -->
+        <!-- ============================================================== -->
+        <!--/.row -->
+
+<div class="row">
     <?php if(isset($_POST['addversion']))
       {
       $gv = $_POST['version'];
@@ -33,3 +36,8 @@
         <button type="submit" class="btn btn-success" name="addversion"><?= $this->lang->line('version_button_add') ?></button>
       </center>
     </form>
+
+</div>
+<!--/.row -->
+</div>
+<!-- /.container-fluid -->

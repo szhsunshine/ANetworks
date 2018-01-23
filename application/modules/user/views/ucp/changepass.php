@@ -49,12 +49,13 @@
 <div class="panel panel-info">
 
 
-  <div class="panel-heading">Change password</div>
+  <div class="panel-heading">Forums config</div>
 
   <ul class="nav nav-pills">
     <li><a class="text-primary" href="<?= base_url() ?>ucp"><?= $this->lang->line('my_addons'); ?></a></li>
     <li class="active"><a href="<?= base_url() ?>ucp/pass"><?= $this->lang->line('change_pass'); ?></a></li>
     <li><a href="<?= base_url() ?>ucp/add"><?= $this->lang->line('upload_addon'); ?></a></li>
+    <li><a href="<?= base_url() ?>ucp/settings"><?= $this->lang->line('forum_settings'); ?></a></li>
   </ul>
 
 <br />
@@ -72,21 +73,20 @@
   <form class="form-horizontal" method="post">
     <fieldset>
       <div class="form-group">
-        <label for="inputEmail" class="col-lg-2" control-label">Old password  </label>
+        <label for="inputEmail" class="col-lg-2" control-label">Firma </label>
           <div class="col-lg-12">
           <input class="form-control" id="inputEmail" placeholder="Old password" name="oldpassword" type="password">
           </div>
 
         </div>
-      <div class="form-group">
-        <label for="inputPassword" class="col-lg-12" control-label">Password</label>
-        <div class="col-lg-6">
-          <input class="form-control" id="inputPassword" placeholder="Password" name="newpassword" type="password">
+
+        <div class="form-group">
+          <label for="inputEmail" class="col-lg-2" control-label">Avatar </label>
+            <div class="col-lg-12">
+            <input class="form-control" id="inputEmail" placeholder="Old password" name="oldpassword" type="password">
+            </div>
         </div>
-        <div class="col-lg-6">
-          <input class="form-control" id="inputPassword" placeholder="Retype your password" name="repass" type="password">
-        </div>
-      </div>
+
       <center>
         <input type="submit" class="btn btn-primary" name="changepass" value="Change password" />
       </center>

@@ -1,15 +1,16 @@
+<!-- ============================================================== -->
+<!-- Page Content -->
+<!-- ============================================================== -->
 <div id="page-wrapper">
-    <div class="row">
-        <div class="col-lg-12">
-            <h1 class="page-header">
+    <div class="container-fluid">
+        <div class="row bg-title"></div>
+        <!-- /.row -->
+        <!-- ============================================================== -->
+        <!-- Different data widgets -->
+        <!-- ============================================================== -->
+        <!--/.row -->
 
-              <?php foreach($this->admin_model->getNewID($idnews)->result() as $title) { ?>
-                <?= $this->lang->line('news_edit_head') ?> <?= $title->news_title ?>
-              <?php } ?>  </h1>
-        </div>
-        <!-- /.col-lg-12 -->
-    </div>
-    <!-- /.row -->
+<div class="row">
     <?php if(isset($_POST['edit']))
       {
       $title = $_POST['title'];
@@ -35,9 +36,16 @@
         </div>
         <div class="form-group">
             <label><?= $this->lang->line('news_create_1') ?></label>
-            <textarea class="form-control" name="text" rows="6"><?= $new->news_content ?></textarea>
+            <textarea class="form-control" name="text" id="editor" rows="6"><?= $new->news_content ?></textarea>
         </div>
 
+        <script>
+            ClassicEditor
+                .create( document.querySelector( '#editor' ) )
+                .catch( error => {
+                    console.error( error );
+                } );
+        </script>
       <center>
         <button type="submit" class="btn btn-success" name="edit"><?= $this->lang->line('news_edit_button') ?></button>
       </center>
@@ -45,3 +53,7 @@
 
 
 <?php } ?>
+
+</div>
+
+</div>

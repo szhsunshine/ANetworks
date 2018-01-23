@@ -51,6 +51,27 @@ class Discussion_model extends CI_Model {
        }
 
        /**
+        * Online or Offline
+        */
+
+        public function isOnline()
+        {
+          return $this->db->where('online', 1)
+                  ->get('ac_users');
+        }
+
+        /**
+          * Rank forum (beta)
+          */
+
+        public function userRanked()
+        {
+          $id = $this->session->userdata('ac_sess_id');
+          return $this->db->where('id', $id)
+                  ->get('ac_users');
+        }
+
+       /**
         * Functions Topic display
         * Obtain list topics with category = Complete
         */

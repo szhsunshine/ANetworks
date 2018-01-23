@@ -122,6 +122,8 @@ class User_model extends CI_Model {
 
     public function isLoggedOut()
     {
+        $id = $this->session->userdata('ac_sess_id');
+        $this->db->query("UPDATE ac_users SET online = '0'  WHERE id='$id'");
         $this->session->sess_destroy();
         redirect(base_url(),'refresh');
     }

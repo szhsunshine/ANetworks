@@ -1,19 +1,22 @@
+<!-- ============================================================== -->
+<!-- Page Content -->
+<!-- ============================================================== -->
 <div id="page-wrapper">
-    <div class="row">
-        <div class="col-lg-12">
-            <h1 class="page-header"><?= $this->lang->line('new_head_new') ?></h1>
-        </div>
-        <!-- /.col-lg-12 -->
-    </div>
-    <!-- /.row -->
+    <div class="container-fluid">
+        <div class="row bg-title"></div>
+        <!-- /.row -->
+        <!-- ============================================================== -->
+        <!-- Different data widgets -->
+        <!-- ============================================================== -->
+        <!--/.row -->
 
-    <div class="row">
+<div class="row">
         <div class="col-lg-12 col-md-12">
             <div class="panel panel-primary">
                 <div class="panel-heading">
                     <div class="row">
                         <div class="col-xs-3">
-                            <i class="fa fa-newspaper-o fa-5x"></i>
+                            <i class="fas fa-newspaper-o fa-5x"></i>
                         </div>
                         <div class="col-xs-9 text-right">
                             <div class="huge"><?= $this->admin_model->getNews(); ?></div>
@@ -52,11 +55,11 @@
                 <tr>
                     <td><?= $new->news_title ?></td>
                     <td><?= substr($new->news_content, 0, 50) ?></td>
-                    <td><?= $new->post_date ?></td>
-                    <td><a href="<?= base_url()?>admin/news/edit/<?= $new->id ?>"> <i class="fa fa-pencil-square-o fa-2x" aria-hidden="true"></i> </a> </td>
+                    <td><?= date('Y-m-d', $new->post_date) ?></td>
+                    <td><a href="<?= base_url()?>admin/news/edit/<?= $new->id ?>"> <i class="fas fa-pencil-square-o fa-2x" aria-hidden="true"></i> </a> </td>
                     <form method="post" action="">
                     <input type="hidden" name="id" value="<?= $new->id ?>" />
-                    <td> <button class="btn btn-warning" type="submit" name="delete"><i class="fa fa-trash-o" aria-hidden="true"></i></button></td>
+                    <td> <button class="btn btn-warning" type="submit" name="delete"><i class="fas fa-trash fa-2x" aria-hidden="true"></i></button></td>
                     </form>
 
                 </tr>
@@ -67,3 +70,4 @@
     <!-- /.table-responsive -->
 
   </div>
+</div>

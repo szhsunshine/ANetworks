@@ -1,15 +1,16 @@
+<!-- ============================================================== -->
+<!-- Page Content -->
+<!-- ============================================================== -->
 <div id="page-wrapper">
-    <div class="row">
-        <div class="col-lg-12">
-            <h1 class="page-header">
+    <div class="container-fluid">
+        <div class="row bg-title"></div>
+        <!-- /.row -->
+        <!-- ============================================================== -->
+        <!-- Different data widgets -->
+        <!-- ============================================================== -->
+        <!--/.row -->
 
-              <?php foreach($this->admin_model->getVersion($idversion)->result() as $title) { ?>
-                <?= $this->lang->line('you_are_edit') ?> <?= $title->gameversion ?>
-              <?php } ?>  </h1>
-        </div>
-        <!-- /.col-lg-12 -->
-    </div>
-    <!-- /.row -->
+<div class="row">
     <?php if(isset($_POST['edit']))
       {
       $version = $_POST['version'];
@@ -40,3 +41,7 @@
 
 
 <?php } ?>
+
+</div>
+
+</div>

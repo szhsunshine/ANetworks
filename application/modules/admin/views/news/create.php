@@ -1,12 +1,16 @@
+<!-- ============================================================== -->
+<!-- Page Content -->
+<!-- ============================================================== -->
 <div id="page-wrapper">
-    <div class="row">
-        <div class="col-lg-12">
-            <h1 class="page-header"><?= $this->lang->line('news_create_head') ?>
-            </h1>
-        </div>
-        <!-- /.col-lg-12 -->
-    </div>
-    <!-- /.row -->
+    <div class="container-fluid">
+        <div class="row bg-title"></div>
+        <!-- /.row -->
+        <!-- ============================================================== -->
+        <!-- Different data widgets -->
+        <!-- ============================================================== -->
+        <!--/.row -->
+
+<div class="row">
     <?php if(isset($_POST['add']))
       {
       $title = $_POST['title'];
@@ -46,3 +50,6 @@
         <button type="submit" class="btn btn-success" name="add"><?= $this->lang->line('news_create_button') ?></button>
       </center>
     </form>
+
+  </div>
+</div>

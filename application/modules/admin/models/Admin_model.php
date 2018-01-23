@@ -25,7 +25,7 @@ class Admin_model extends CI_Model {
 
     public function getLogs()
     {
-      return $this->db->query("SELECT * FROM ac_logs ORDER BY time DESC LIMIT 8");
+      return $this->db->query("SELECT * FROM ac_logs ORDER BY time DESC LIMIT 5");
     }
 
     public function getLastAddons()
@@ -143,12 +143,14 @@ class Admin_model extends CI_Model {
 
       public function getForumsList() // No Father category's
        {
-         return $this->db->query("SELECT * FROM ac_discussion_category");
+         return $this->db->where('isfather', '0')
+              ->get('ac_discussion_category');
        }
 
-       public function adminThreadManaged()
+       public function getCategory()
        {
-         // Comming soon
+         return $this->db->where('isfather', '1')
+              ->get('ac_discussion_category');
        }
 
        public function GroupAdd()
