@@ -1,7 +1,63 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
-## [Unreleased]
+## [Uneleased]
+
+## [0.0.2] - 2018-02-16
+
+## Repository / SQL
+
+- Clean Database folder.
+- Clean Database Update Folder.
+- Delete old database structure.
+
+## Addons Folder
+
+- Remove addons folder
+- Added new folder Upload (New Structure)
+
+## Modules changes
+
+# Addons module
+
+- Added a new design for addons
+- The model structure has been updated and pagination added.
+- The view of the addons was updated, and several functions that are not going to be implemented have been removed.
+- Now editors can upload photos of the addons, a gallery design was added.
+- The design has been integrated with the mobile.
+- Addons category has been updated with Icons.
+- Fixed the php error, which appeared when there was no published addon.
+
+# Home module
+
+- Added a new design.
+- The model structure has beeen updated and pagination added.
+- The view of the home was updated, and several functions that are not going to be implemented have been removed.
+- The design has been integrated with the mobile.
+- Fixed the php error, which appeared when there was no published news.
+
+# ACP Module
+
+- Fixed some errors
+
+
+# Forums Modules
+
+- Rework design forums (INIT WORK)
+
+# UCP Modules
+
+- Re-Work design
+
+
+## Translations
+
+- Working in Language ES_es.
+- Working in Languages EN_en.
+
+
+## [Released]
+
 
 ## [0.0.1.5] - 2018-01-13
 
@@ -67,7 +123,7 @@ All notable changes to this project will be documented in this file.
 - Module/ACP -> New logs system.
 
 
-## [Released]
+
 
 ## [0.0.1.4] - 2017-12-29
 ### SQL
