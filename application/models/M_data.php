@@ -31,6 +31,10 @@ class M_data extends CI_Model {
       return $this->db->query("SELECT permission FROM ac_ranks WHERE username = '$username'");
   }
 
+  public function supportedGameVersions()
+  {
+    return $this->db->get('ac_version');
+  }
 
   public function getIDAccount()
   {
@@ -53,6 +57,7 @@ class M_data extends CI_Model {
     'ac_sess_rank' => $this->getPermission($_POST['username']),
     'logged_in' => TRUE
   );
+    $this->db->query("UPDATE ac_users SET online = '1'  WHERE id='$id'");
     return $this->sessionConnect($data);
   }
 
@@ -84,4 +89,30 @@ class M_data extends CI_Model {
         $time = $this->m_data->getTimestamp();
         $this->db->query("INSERT INTO ac_logs (username, page, data, user_agent, ip, time) VALUES('$username', '$page', '$data', '$user_agent', '$ip_address', '$time')");
   }
+
+
+  public function getNameSite()
+  {
+    return $this->db->query("SELECT * FROM ac_config WHERE id_cnf = '1'");
+  }
+
+  public function getWelcome()
+  {
+      return $this->db->query("SELECT * FROM ac_config WHERE id_cnf = '1'");
+  }
+
+  public function getDescriptionWelcome()
+  {
+    return $this->db->query("SELECT * FROM ac_config WHERE id_cnf = '1'");
+  }
+  public function isMaintenance()
+  {
+    return $this->db->query("SELECT is_maintenance FROM ac_config WHERE id_cnf = '2'");
+  }
+
+  public function menu_manager()
+  {
+
+  }
+
 }

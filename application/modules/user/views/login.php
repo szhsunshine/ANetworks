@@ -12,7 +12,7 @@
 
 <div class="row">
 
-    <div class="col-md-6">
+    <div class="col-md-12">
     <div class="panel panel-info">
 			<?php if(isset($_POST['button_login']))
 				{
@@ -36,49 +36,37 @@
             <form class="form-horizontal" method="post">
               <fieldset>
                 <div class="form-group">
-                  <label for="inputEmail" class="col-lg-2" control-label">Username  </label>
-                  	<div class="col-lg-12">
-                    <input class="form-control" id="inputEmail" placeholder="Username" name="username" type="text">
-                  	</div>
-                		</div>
-                <div class="form-group">
-                  <label for="inputPassword" class="col-lg-2" control-label">Password</label>
-                  <div class="col-lg-12">
-                    <input class="form-control" id="inputPassword" placeholder="Password" name="password" type="password">
+
+                  <label class="sr-only" for="inlineFormInputGroup">Username</label>
+                  <div class="input-group mb-2">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text">@</div>
+                    </div>
+                    <input type="text" class="form-control"  id="inputEmail" placeholder="Username" name="username" type="text">
                   </div>
+                </div>
+                <div class="form-group">
+                  <label class="sr-only" for="inlineFormInputGroup">Password</label>
+                    <div class="input-group mb-2">
+                      <input type="password" class="form-control"  id="inputPassword" placeholder="Password" name="password" type="password">
+                    </div>
                 </div>
                 <center>
                   <input type="submit" class="btn btn-primary" name="button_login" value="Login" />
                 </center>
               </fieldset>
               </form>
-
             </div>
           </div>
 
         </div>
 
-              <div class="col-md-6">
-              <div class="panel panel-info">
-                <div class="panel-body">
-                  You do not have an account? It does not matter, you can create an account to share your addons or publish and
-                  make yourself known as a new developer.
 
-                  <h3>When creating an account you will have the following advantages:</h3>
-                  <ul>
-                    <li> Request  be Publisher </li>
-                    <li> Add addons of yours or of other people (as long as you give credits) </li>
-                    <li> Modify said addons with new revisions. </li>
-                    <li> Save your favorite addons and create a list to share with your friends. </li>
-                    <li> Participate in our discussion forums.  </li>
-                    <li> Share your builds for your character. </li>
-                  </ul>
-                  <center>
-                    <button type="button" href="" class="btn btn-primary">Register</button>
-                  </center>
-                </div>
-              </div>
-</div>
 
+<br />
+<br />
+<br />
 
     </div>
+
+        </div>

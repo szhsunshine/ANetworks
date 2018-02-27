@@ -34,120 +34,105 @@ $category = array(
 );
 
 	?>
+
+
 <div class="container">
+<br/>
+<div class="about bg-addons col-sm-12" id="about">
+      <?php if(isset($_POST['button_get']))
+      {
+        $this->addon_model->download($idaddon);
+      } ?>
 
-		<div class="page-header" id="banner">
-            <div class="row">
-              <div class="col-lg-6">
-                <h3>Welcome, Hero of Azeroth!</h3>
-              </div>
-            </div>
-					</div>
+  <div class="about-w3lsrow">
+    <div class="col-sm-8 w3about-img">
+      <div class="w3about-text">
+         <?php foreach($this->addon_model->getInformation($idaddon)->result() as $add) { ?>
+        <h5 class="w3l-subtitle">- <?= $add->addon_name ?> </h5>
+        <small> Game Versión :
+          <?php foreach($this->addon_model->versionSelected($add->addon_version)->result() as $version) { ?>
+             <?= $version->gameversion ?></small>
+           <?php } ?>
+| <small> Uploaded : <?= date('Y-m-d', $add->uploaded); ?> </small>
+        <p><?= substr($add->addon_description, 0, 300) ?></p>
+        <br />
+        <div class="clearfix"> </div>
+        <form class="form-horizontal" method="post">
+        <input type="submit" class="btn-sm btn-primary" name="button_get" value="Download" />
+        <!-- Edit for editors -->
+        <button class="btn-sm btn-warning"> Edit</button>
+        </form>
+      <?php } ?>
 
-					<div class="col-lg-8">
-						<div class="panel panel-addons">
-							<div class="panel-heading">
-								 <?php foreach($this->addon_model->getInformation($idaddon)->result() as $add) { ?>
-										<section class="panel-title text-primary">
-					              <section class="pull-left" id="id">
-														<?= $add->addon_name ?>
-														<br/>
-														<small> Game Versión : <?= $add->addon_version ?></small> | <small> Uploaded : <?=  $add->uploaded ?> </small>
-												</section>
-										</section>
-							</div>
-						  <div class="panel-body panel-body-white">
-								<br/>
-								<br/>
-								<br/>
-								<ul class="nav nav-pills">
-									<li class="active"><a href="#">Introdution</a></li>
-									<li><a href="#" class="text-primary">Screenshots </a></li>
-									<li class="disabled"><a href="#">Changelog</a></li>
-								</ul>
-						  </div>
-						</div>
+      </div>
+    </div>
 
 
-						<div class="panel panel-addons">
-						  <div class="panel-body panel-body-white">
-									<section class="col-md-12 ">
-												<?= $add->addon_description ?>
-									</section>
-						  </div>
-						</div>
 
 </div>
 
-
-
-
-<div class="col-md-4">
-	<div class="panel panel-addons">
-		<div class="panel-heading">
-					<section class="panel-title text-primary">
-							<section class="pull-left" id="id">
-									+ Information
-									<br/>
-							</section>
-					</section>
-		</div>
-
-		<div class="panel-body panel-body-white">
-			<br/>
-			<br/>
-
-		<table class="table table-striped table-hover ">
-				<?php foreach($this->addon_model->getFileId($idaddon)->result() as $size) { ?>
-			<tr>
-				<td>Filename</td>
-				<td><?= $size->file_name ?></td>
-			</tr>
-
-			<tr>
-				<td>Size</td>
-				<td><?= $size->file_size ?></td>
-
-			</tr>
-
-				<?php } ?>
-
-			<tr>
-				<td>Uploader</td>
-				<td><?= $add->addon_uploader ?></td>
-			</tr>
-
-			<tr>
-				<td>Downloads</td>
-				<td><?= $add->downloads ?></td>
-			</tr>
-
-			<tr>
-				<td>Category</td>
-				<td><?= $category[$add->category] ?></td>
-			</tr>
-
-			<tr>
-				<td>Expansion</td>
-				<td><?= $expansion[$add->expansion] ?></td>
-			</tr>
-		</table>
-
-		<div class="download-info">
-			<center>
-			<form class="form-horizontal"  method="post">
-				<?php if(isset($_POST['button_get']))
-					{
-						$this->addon_model->download($idaddon);
-					} ?>
-				<input type="submit" class="btn btn-primary" name="button_get" value="Direct Link #1 " />
-			</form>
-			</center>
 </div>
-<?php } ?>
-		</div>
-	</div>
-	</div>
+<br />
+    <div class="portfolio bg-dark" id="gallery">
+        <div class="agileits-title">
+          <h3>Gallery</h3>
+        </div>
+        <br />
+
+
+        	<div class="filtr-item w3layouts agileits portfolio-t" data-category="1, 5" data-sort="Busy streets">
+  					<a href="<?= base_url() ?>assets/images/p1.jpg" class="b-link-stripe w3layouts agileits b-animate-go thickbox">
+  						<figure>
+  							<img src="<?= base_url() ?>assets/images/p1.jpg" class="img-responsive w3layouts agileits" alt="W3layouts Agileits">
+  							<figcaption>
+  								<h3>ANetwork <span>Hub</span></h3>
+  							</figcaption>
+  						</figure>
+  					</a>
+  				</div>
+
+          <div class="filtr-item w3layouts agileits" data-category="2, 5" data-sort="Luminous night">
+            <a href="<?= base_url() ?>assets/images/p1.jpg" class="b-link-stripe w3layouts agileits b-animate-go thickbox">
+              <figure>
+                <img src="<?= base_url() ?>assets/images/p1.jpg" class="img-responsive w3layouts agileits" alt="W3layouts Agileits">
+                <figcaption>
+                  <h3>ANetwork <span>Hub</span></h3>
+                </figcaption>
+              </figure>
+            </a>
+          </div>
+
+
+
+        <div class="filtr-item w3layouts agileits" data-category="2, 5" data-sort="Luminous night">
+            <a href="<?= base_url() ?>assets/images/p1.jpg" class="b-link-stripe w3layouts agileits b-animate-go thickbox">
+              <figure>
+                <img src="<?= base_url() ?>assets/images/p1.jpg" class="img-responsive w3layouts agileits" alt="W3layouts Agileits">
+                <figcaption>
+                  <h3>ANetwork <span>Hub</span></h3>
+                </figcaption>
+              </figure>
+            </a>
+          </div>
+          <br />
+          <br />
+</div>
+
+<div class="portfolio bg-addons" id="gallery">
+<br/>
+<br/>
+<br/>
+    <div class="agileits-title">
+      <h3>You may be interested the following addons</h3>
+    </div>
+    <ul class="simplefilter w3layouts agileits">
+    <?php foreach($this->addon_model->getRamdonAddons($idaddon)->result() as $rad) { ?>
+    <a href="<?= base_url() ?>addons/view/<?= $rad->id ?>">
+    <li class="w3layouts agileits"> <?= $rad->addon_name ?></li>
+  </a>
+    <?php } ?>
+    </ul>
+</div>
 
 
 </div>

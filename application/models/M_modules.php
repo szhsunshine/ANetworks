@@ -18,27 +18,27 @@ class M_modules extends CI_Model {
   		return $this->db->query("SELECT status FROM ac_modules WHERE id = '2'")->row()->status;
   	}
 
-    public function register()
+    public function getStatusRegister()
     {
       return $this->db->query("SELECT status FROM ac_modules WHERE id = '3'")->row()->status;
     }
 
-    public function login()
+    public function getStatusLogin()
     {
       return $this->db->query("SELECT status FROM ac_modules WHERE id = '4'")->row()->status;
     }
 
-    public function comments()
+    public function getStatusNews()
     {
       return $this->db->query("SELECT status FROM ac_modules WHERE id = '5'")->row()->status;
     }
 
-    public function addons()
+    public function getStatusAddons()
     {
       return $this->db->query("SELECT status FROM ac_modules WHERE id = '6'")->row()->status;
     }
 
-    public function discussion()
+    public function getStatusDiscussion()
     {
       return $this->db->query("SELECT status FROM ac_modules WHERE id = '7'")->row()->status;
     }

@@ -1,66 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>ANetwork | Create your own web for addons</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="<?= base_url();  ?>assets/new/style.css">
-  <link rel="stylesheet" href="<?= base_url();  ?>assets/new/bootstrap.css" media="screen">
-  <link rel="stylesheet" href="<?= base_url();  ?>assets/new/usebootstrap.css">
-  <script src='<?= base_url(); ?>assets/editor/tinymce/js/tinymce/tinymce.min.js'></script>
-  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-  <!--[if lt IE 9]>
-    <script src="bootstrap/html5shiv.js"></script>
-    <script src="bootstrap/respond.min.js"></script>
-  <![endif]-->
-  <script type="text/javascript">
-   tinymce.init({
-       selector: "textarea"
-    });
-   </script>
+  <?php foreach($this->m_data->getNameSite()->result() as $site) {  ?>
+  <title><?= $site->value ?></title>
+  <?php } ?><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta charset="utf-8">
+<meta name="keywords" content="Games Hub Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+<script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<!-- bootstrap-css -->
+ <!-- <link href="<?= base_url()?>assets/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" /> -->
+ <link rel="stylesheet" href="<?= base_url()?>assets/css/bootstrap.css" type="text/css" media="all" />
+<!--// bootstrap-css -->
+<!-- css -->
+<link rel="stylesheet" href="<?= base_url()?>assets/css/style.css" type="text/css" media="all" />
+<!--// css -->
+<!-- font-awesome icons -->
+<link href="<?= base_url()?>assets/css/font-awesome.css" rel="stylesheet">
+<!-- //font-awesome icons -->
+<!-- portfolio -->
+<link rel="stylesheet" href="<?= base_url()?>assets/css/chocolat.css" type="text/css" media="all">
+<!-- //portfolio -->
+<!-- font -->
+<link href="//fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i" rel="stylesheet">
+<link href='//fonts.googleapis.com/css?family=Roboto+Condensed:400,700italic,700,400italic,300italic,300' rel='stylesheet' type='text/css'>
+<!-- //font -->
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+<!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+<![endif]-->
 </head>
-<body class="bfa">
-	<div class="navbar navbar-default navbar-fixed-top">
-		<div class="container">
-			<div class="navbar-header">
-				<a href="" class="navbar-brand">A<font color="orange">Network</font></a>
-				<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-			</div>
-			<div class="navbar-collapse collapse" id="navbar-main">
+<body>
+  <nav class="navbar navbar-expand-lg  text-center navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">ANetwork HUB</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
 
-		<ul class="nav navbar-nav">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Addons</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Community
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="#">Forums</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#">Tools</a>
+        </li>
+      </ul>
 
-			<li>
-				<a href="<?= base_url();  ?>">Home</a>
-			</li>
-			<li class="dropdown">
-				<a class="dropdown-toggle" data-toggle="dropdown" href="#" id="themes">Addons <span class="caret"></span></a>
-				<ul class="dropdown-menu" aria-labelledby="themes">
-					<li><a href="<?= base_url();  ?>addons/1" class="current-sub-nav"> <?= $this->lang->line('exp_classic'); ?></a></li>
-					<li><a href="<?= base_url();  ?>addons/2" class="current-sub-nav"> <?= $this->lang->line('exp_tbc'); ?></a></li>
-					<li><a href="<?= base_url();  ?>addons/3" class="current-sub-nav"> <?= $this->lang->line('exp_wtlk'); ?></a></li>
-					<li><a href="<?= base_url();  ?>addons/4" class="current-sub-nav"> <?= $this->lang->line('exp_cata'); ?></a></li>
-					<li><a href="<?= base_url();  ?>addons/5" class="current-sub-nav"> <?= $this->lang->line('exp_mop'); ?></a></li>
-					<li><a href="<?= base_url();  ?>addons/6" class="current-sub-nav"> <?= $this->lang->line('exp_wod'); ?></a></li>
-					<li><a href="<?= base_url();  ?>addons/7" class="current-sub-nav"> <?= $this->lang->line('exp_legion'); ?></a></li>
-				</ul>
-				</li>
-				<li class="dropdown">
-						<a class="dropdown-toggle" data-toggle="dropdown" href="#" id="themes">Tools <span class="caret"></span></a>
-						<ul class="dropdown-menu" aria-labelledby="themes">
-								<li><a href="#">Database</a></li>
-								<li><a href="#">Calculator talents</a></li>
-								<li><a href="#">Calculator Stats</a></li>
-							</ul>
-				</li>
-				<li>
-						<a href="<?= base_url();  ?>forums">Forums</a>
-				</li>
-		</ul>
+    <span class="navbar-text">
+      <ul class="navbar-nav mr-auto">
+      <?php if($this->m_data->isLoggedIn()) { ?>
+
+        <li class="nav-item dropdown"><a class="nav-link" href="<?= base_url();  ?>user/settings">My Account</a></li>
+
+        <li class="nav-item dropdown"><a class="nav-link" href="<?= base_url();  ?>user/logout">Logout</a></li>
+      <?php }else{ ?>
+
+        <li class="nav-item dropdown"><a class="nav-link" href="<?= base_url();  ?>user/login">Login</a></li>
+
+        <li class="nav-item dropdown"><a class="nav-link" href="<?= base_url();  ?>user/register">Register</a></li>
+      <?php } ?>
+    </ul>
+    </span>
+    </div>
+
+
+
+
+
+
+  </nav>
+
+<body>
+<!--
 
 		<ul class="nav navbar-nav navbar-right">
 				<?php if($this->m_data->isLoggedIn()) { ?>
@@ -75,3 +100,4 @@
 			</div>
 		</div>
 	</div>
+-->

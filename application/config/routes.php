@@ -54,11 +54,48 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 //forums
+$route['forums/topic/create/(:num)'] = 'discussion/create/$1';
+$route['forums/reply/(:num)'] = 'discussion/reply/$1';
 $route['forums/topic/(:num)'] = 'discussion/topic/$1';
 $route['forums/thread/(:num)'] = 'discussion/view/$1';
 $route['forums'] = 'discussion';
 
 
 // addons
+
+// addons
+$route['addons/'] = 'addons/index';
+$route['addons/(:num)'] = 'addons/select/$1';
 $route['addons/view/(:num)'] = 'addons/view/$1';
-$route['addons/(:num)'] = 'addons/index/$1';
+$route['addons/cat/(:num)'] = 'addons/category/$1';
+
+// ucp
+$route['ucp'] = 'user/settings';
+$route['ucp/pass'] = 'user/changepassword';
+$route['ucp/add'] = 'user/add';
+$route['ucp/edit/(:num)'] = 'user/edit/$1';
+
+
+/**
+ * Admin
+ */
+
+
+// News
+ $route['admin/news/'] = "admin/news";
+ $route['admin/news/edit/(:num)'] = "admin/edit_news/$1";
+ $route['admin/news/create'] = "admin/create_news";
+
+ // version
+
+  $route['admin/version/'] = "admin/version";
+  $route['admin/version/edit/(:num)'] = "admin/edit_version/$1";
+  $route['admin/version/create'] = "admin/create_version";
+
+  // Settings
+
+  $route['admin/settings'] = "admin/configuration";
+
+  // users
+
+  $route['admin/users'] = "admin/user_setting";

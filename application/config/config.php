@@ -10,21 +10,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 $config['name'] = 'ANetwork Project';
-
-
-/*
-|--------------------------------------------------------------------------
-| Addon and news results
-|--------------------------------------------------------------------------
-|
-*/
-
-
-
-$config['news_results'] = 5;
-$config['addon_results'] = 10;
-$config['addon_search_results'] = 10;
-
+$config['theme'] = 'default/';
 
 
 /*
@@ -38,7 +24,7 @@ $config['addon_search_results'] = 10;
 $config['support_forum'] = 'Your_forum_link';
 $config['support_discord'] = 'Your_discord_link';
 $config['support_skype'] = 'Your_skype_link';
-$config['support_ticket'] = 'Your_ticket_link'; 
+$config['support_ticket'] = 'Your_ticket_link';
 
 /*
 |--------------------------------------------------------------------------
@@ -109,7 +95,7 @@ $config['index_page'] = '';
 |
 | WARNING: If you set this to 'PATH_INFO', URIs will always be URL-decoded!
 */
-$config['uri_protocol']	= 'REQUEST_URI';
+$config['uri_protocol']	= 'PATH_INFO';
 
 /*
 |--------------------------------------------------------------------------
@@ -157,7 +143,7 @@ $config['charset'] = 'UTF-8';
 | setting this variable to TRUE (boolean).  See the user guide for details.
 |
 */
-$config['enable_hooks'] = FALSE;
+$config['enable_hooks'] = False;
 
 /*
 |--------------------------------------------------------------------------

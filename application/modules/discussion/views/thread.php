@@ -1,164 +1,110 @@
-<section class="container">
-  <div class="page-header" id="banner">
-        <div class="row">
-          <div class="col-lg-6">
-            <h1>Welcome</h1>
-          </div>
-        </div>
-      </div>
 
-  	<div class="row">
-      <ul class="breadcrumb">
-      <li><a href="<?= base_url();  ?>forums">Home </a></li>
-      <?php foreach($this->discussion_model->categoryById($idlink)->result() as $category) { ?>
-      <li><?= $category->category ?></li>
-      <?php } ?>
+<br />
+<div class="container bg-addons">
+<br />
+      <nav class="breadcrumb">
       <?php foreach($this->discussion_model->threadById($idlink)->result() as $breadthread) { ?>
-      <li class="active"><?= $breadthread->title ?></li>
-      <?php } ?>
-    </ul>
-	<section class="row clearfix">
-		<section class="col-md-12 column">
-
-
-          <div class="row clearfix">
-		<div class="col-md-12 column">
-      <?php foreach($this->discussion_model->getThread($idlink)->result() as $thread) { ?>
-			<div class="panel panel-default">
-				<div class="panel-heading">
-					<section class="panel-title">
-            <time class="pull-right">
-              <i class="fa fa-calendar"></i> <?= date('j F Y', $thread->date); ?>
-            </time>
-					</section>
+          <a class="breadcrumb-item" href="<?= base_url('forums');  ?>">Home </a>
+          <?php foreach($this->discussion_model->categoryById($idlink)->result() as $category) { ?>
+          <a class="breadcrumb-item" href="<?= base_url('');  ?>forums/topic/<?= $breadthread->id_cat ?>"><?= $category->category ?> </a>
+          <?php } ?>
+          <a class="breadcrumb-item active" href="#"><?= $breadthread->title ?> </a>
+      </nav>
+<div class="row col-sm-12">
+      <div class="card bg-dark text-white col-sm-9">
+        <h5 class="card-header"><?= $breadthread->title ?></h5>
+        <div class="card-body">
+          <p class="card-text"><?= $breadthread->msg ?>. </p>
           <br />
-				</div>
-				<section class="row panel-body">
-					<section class="col-md-9">
-                      <h2> <i class="fa fa-smile-o"></i> <?= $thread->title ?></h2>
-                      <hr>
-                      <?= $thread->msg ?>
-          </section>
-          <section id="user-description" class="col-md-3 ">
-      <?php foreach($this->discussion_model->getUsernameID($idlink)->result() as $username) { ?>
-            <section class="well">
-              <div class="dropdown">
-                <center>
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                    <i class="fa fa-cricle"></i> <?= $username->username ?>
-                    <span class="caret"></span></a>
-                    <ul class="dropdown-menu" role="menu">
-                      <li><a href="#"><i class="fa fa-code"></i>View all Articles</a></li>
-                      <li><a href="#"><i class="fa fa-th-list"></i>View all Posts</a></li>
-                      <li class="divider"></li>
-                      <li><a href="#"><i class="fa fa-cogs"></i> Manage User (for adminstrator)</a></li>
-                    </ul>
-                  </center>
-                 </div>
-                 <figure>
-                   <center>
-                     <img class="img-rounded img-responsive" src="http://www.webdesignforums.net/img/wdf_avatar.jpg" >
-                   </center>
-                 </figure>
-                 <ul class="dl-horizontal text-center">
-                     <li>joined date:15 September 2014</li>
-                     <li>Posts: 5000</li>
-                     <li>Rank: Administrator</li>
-                     <li>Reputacion : Notable</li>
-                    </ul>
-                  </section>
-            <?php } ?>
-                </section>
-              </section>
-				<div class="panel-footer">
+        </div>
+        <div class="card-footer ">
+        <!-- User Sign -->
+        <footer class="text-center blockquote-footer">Your Sign</footer>
           <div class="row">
-            <section class="col-md-8 ">
-              <i class="fa fa-thumbs-up "></i><a href="#"> Thanks </a>| <i class="fa fa-warning "></i><a href="#"> Report </a>
-            </section>
-            <section class="col-md-4">
-              <span class="fa-stack">
-                <i class="fa fa-quote-right fa-stack-1x"></i>
-                <i class="fa fa-comment-o fa-lg fa-stack-1x"></i>
-              </span>
-              <a href="#"> Reply With Quote </a> |
-              <i class="fa fa-mail-reply "></i><a href="#"> Reply </a>|
-              <i class="fa fa-edit "></i><a href="#"> Edit Post </a>
-            </section>
+            <div class="col-sm-8">
+              <a href="#">#<?= $breadthread->id ?></a>
+            </div>
+
+            <div class="col-sm-4 text-right">
+              <?= date('Y-m-d', $breadthread->date); ?>
+            </div>
           </div>
         </div>
-			</div>
+      </div>
+
+      <div class="card bg-default col-sm-3">
+        <?php foreach($this->discussion_model->getUsernameID($idlink)->result() as $username) { ?>
+              <section class="well">
+                <div class="dropdown">
+                  <figure>
+                    <center>
+                      <div class="photo">
+                        <div class="avatar" style="background-image: url('https://s3.amazonaws.com/uifaces/faces/twitter/dancounsell/128.jpg')"></div>
+                      </div>
+                    </center>
+                  </figure>
+                  <center>
+                    <a href="#" >
+                      <i class="fa fa-user text-primary"></i> <?= $username->username ?> </a>
+                    </center>
+                   </div>
+                       <p class="text-center">Administrator</p>
+                       <?php foreach($this->discussion_model->CountPost($breadthread->author)->result() as $post) { ?>
+                         <center>
+                        <i class="text-info">Posts: <?= $post->post ?> </i>
+                      </center>
+                     <?php } ?>
+                    </section>
+              <?php } ?>
+      </div>
+      <br />
+
+    </div> <!-- End Thread  -->
+    <hr>
+    <div class="container comments"><!-- Start comments -->
+    		<div class="comment-wrap">
+    				<div class="photo">
+    						<div class="avatar" style="background-image: url('https://s3.amazonaws.com/uifaces/faces/twitter/dancounsell/128.jpg')"></div>
+    				</div>
+    				<div class="comment-block">
+    						<form action="">
+    								<textarea name="" id="" cols="30" rows="3" placeholder="Add comment..."></textarea>
+    						</form>
+    				</div>
+    		</div>
+
+<?php foreach($this->discussion_model->getReplies($idlink)->result() as $reply) { ?>
+    <div class="comment-wrap">
+
+  				<div class="comment-block bg-dark text-white col-sm-9">
+  						<p class="comment-text"><?= $reply->msg ?></p>
+  						<div class="bottom-comment">
+                  <div class="row">
+                    <section class="col-md-8 ">
+        							<div class="comment-date">Publish by  at <?= date('j F Y', $reply->date); ?></div>
+                    </section>
+                    <section class="col-md-4">
+                    <i class="fa fa-thumbs-up text-warning"></i><a href="#" class="text-warning"> Thanks </a>| <i class="fa fa-warning text-warning"></i><a href="#" class="text-warning"> Report </a>
+                    </section>
+                  </div>
+  						</div>
+  				</div>
+          <div class="photo bg-dark text-white text-center col-sm-4">
+              <div class="dl-horizontal text-center">
+                  <h4 class="text-warning"><?= $reply->author ?> </h3>
+                  <?php foreach($this->discussion_model->CountPost($reply->author)->result() as $reply) { ?>
+                  <small> Posts: <?= $reply->post ?> </small>
+                  <?php } ?>
+                 </div >
+          </div>
+  		</div>
+
+
+
+      <?php } ?>
+
+      <br />
+</div><!-- End comments -->
+
     <?php } ?>
-		</div>
-	</div>
-</section>
-</section>
-
-
-<!-- User responses -->
-
-
-  <section class="col-md-12 column">
-
-
-        <div class="row clearfix">
-  <div class="col-md-12 column">
-    <?php foreach($this->discussion_model->getReplies($idlink)->result() as $reply) { ?>
-    <div class="panel panel-default">
-      <div class="panel-heading">
-        <section class="panel-title">
-          <time class="pull-right">
-            <i class="fa fa-calendar"></i> <?= date('j F Y', $reply->date); ?>
-          </time>
-          <section class="pull-left" id="id">
-            <abbr>#1</abbr>
-          </section>
-        </section>
-        <br />
-      </div>
-      <section class="row panel-body">
-        <section class="col-md-9">
-                    <?= $reply->msg ?>
-        </section>
-        <section id="user-description" class="col-md-3 ">
-          <section class="well">
-            <div class="dropdown">
-              <center>
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <i class="fa fa-cricle"></i> <?= $reply->author ?>
-                  <span class="caret"></span></a>
-                  <ul class="dropdown-menu" role="menu">
-                    <li><a href="#"><i class="fa fa-code"></i>View all Articles</a></li>
-                    <li><a href="#"><i class="fa fa-th-list"></i>View all Posts</a></li>
-                    <li class="divider"></li>
-                    <li><a href="#"><i class="fa fa-cogs"></i> Manage User (for adminstrator)</a></li>
-                  </ul>
-                </center>
-               </div>
-               <ul class="dl-horizontal text-center">
-                   <li>joined date:15 September 2014</li>
-                   <li>Posts: 5000</li>
-                   <li>Rank: Administrator</li>
-                   <li>Reputacion : Notable</li>
-                  </ul>
-                </section>
-              </section>
-            </section>
-      <div class="panel-footer">
-        <div class="row">
-          <section class="col-md-8 ">
-            <i class="fa fa-thumbs-up "></i><a href="#"> Thanks </a>| <i class="fa fa-warning "></i><a href="#"> Report </a>
-          </section>
-          <section class="col-md-4">
-            <i class="fa fa-edit "></i><a href="#"> Edit Post </a>
-          </section>
-        </div>
-      </div>
-    </div>
-  <?php } ?>
-  </div>
-</div>
-</section>
-</section>
-
-
-</section>
+</div> <!-- end page -->

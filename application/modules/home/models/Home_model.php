@@ -9,45 +9,36 @@ class Home_model extends CI_Model {
     }
 
 
-    public function getNews()
+
+
+    public function getCount()
     {
-        return $this->db->query("SELECT * FROM ac_news");
+    return $this->db->count_all('ac_news');
     }
 
-    public function getLastnews()
+    public function get_current_page_records($limit, $start)
     {
-      return $this->db->query("SELECT * FROM ac_news ORDER BY post_date DESC LIMIT 10");
-    }
+      $this->db->limit($limit, $start);
+      $query = $this->db->order_by('post_date', 'ASC')
+      ->get("ac_news");
 
-    public function getIdNews()
-    {
-      $id = $_GET['id'];
-      return $this->db->query("SELECT * FROM ac_news WHERE id = '$id'");
-    }
-
-    public function getComments($id)
-    {
-      return $this->db->query("SELECT * FROM ac_news_comments WHERE id_new = '$id' ORDER BY date DESC LIMIT 10");
-    }
-
-    public function newComment($username)
-    {
-      if (isset($_POST['button_send']))
+      if ($query->num_rows() > 0)
       {
-          if (!empty($_POST['text']))
+          foreach ($query->result() as $row)
           {
-              $content = $_POST['text'];
-              $id = $_POST['id'];
-              $time = time();
-
-              $this->db->query("INSERT INTO ac_news_comments (id_new, Nick, date, comment) VALUES('$id', '$username', '$time', '$content')");
+              $data[] = $row;
           }
 
-    }
+          return $data;
+      }
+
+      return false;
   }
 
-    public function totalComments($id)
+    public function getIdNews($idnews)
     {
-        return $this->db->query("SELECT * FROM ac_news_comments WHERE id_new = '$id'")->num_rows();
+      $this->db->limit(1);
+      $this->db->where('id', $idnews);
+      return $this->db->get('ac_news');
     }
 }

@@ -56,7 +56,7 @@ class User_model extends CI_Model {
                                                 </div>';
                                 echo '<script>
                                         setTimeout(function () {
-                                        window.location.href = "login";
+                                        window.location.href = "'. base_url() .'user/login";
                                         }, 3000);
                                     </script>';
                                 } else {
@@ -68,7 +68,7 @@ class User_model extends CI_Model {
                                                    </div>';
                                   echo '<script>
                                   setTimeout(function () {
-                                    window.location.href = "login";
+                                    window.location.href = "'. base_url() .'user/login";
                                   }, 3000);
                                   </script>';
                                 }
@@ -122,6 +122,8 @@ class User_model extends CI_Model {
 
     public function isLoggedOut()
     {
+        $id = $this->session->userdata('ac_sess_id');
+        $this->db->query("UPDATE ac_users SET online = '0'  WHERE id='$id'");
         $this->session->sess_destroy();
         redirect(base_url(),'refresh');
     }
@@ -162,6 +164,20 @@ class User_model extends CI_Model {
         return $this->db->query("SELECT status FROM ac_addons WHERE addon_uploader = '$username' AND status = 3")->num_rows();
     }
 
+    public function getVersion($idaddon)
+    {
+      $query = $this->db->where('id', $idaddon)
+           ->get('ac_addons');
+
+           foreach ($query->result() as $row)
+           {
+           $version = $row->addon_version;
+
+           return $this->db->where('id', $version)
+            ->get('ac_version');
+          }
+    }
+
     public function getCategory($id)
     {
 
@@ -197,7 +213,7 @@ class User_model extends CI_Model {
                     echo "<div class='callout success'>The addon has been deleted correctly</div>";
                     echo '<script>
                             setTimeout(function () {
-                            window.location.href = "settings";
+                            window.location.href = "'. base_url() .'ucp/";
                             }, 3000);
                         </script>';
                 }
@@ -211,7 +227,7 @@ class User_model extends CI_Model {
                 echo '<div class="callout alert">An error occurred while delete the addon, try later</div>';
                 echo '<script>
                         setTimeout(function () {
-                        window.location.href = "settings";
+                        window.location.href = "'. base_url() .'ucp/";
                         }, 3000);
                     </script>';
             }
@@ -246,7 +262,7 @@ class User_model extends CI_Model {
                 echo "<div class='callout success'>The password has been changed</div>";
                 echo '<script>
                         setTimeout(function () {
-                        window.location.href = "settings";
+                        window.location.href = "'. base_url() .'ucp/";
                         }, 3000);
                     </script>';
             }
@@ -260,7 +276,7 @@ class User_model extends CI_Model {
             echo "<div class='callout alert'>The old pass is incorrected</div>";
             echo '<script>
                     setTimeout(function () {
-                    window.location.href = "settings";
+                    window.location.href = "'. base_url() .'ucp/";
                     }, 3000);
                 </script>';
         }
@@ -269,11 +285,6 @@ class User_model extends CI_Model {
     public function editAddon ($id, $name, $version, $description, $expansion, $category)
     {
       $username = $this->session->userdata('ac_sess_username');
-      $name = $_POST['addon_name'];
-      $version = $_POST['addon_version'];
-      $description = $_POST['desc'];
-      $expansion = $_POST['expansion'];
-      $category = $_POST['category'];
       $time =  $this->m_data->getTimestamp();
 
       if (isset($_POST['edit']))
@@ -281,10 +292,18 @@ class User_model extends CI_Model {
 
         $checkPermissions = $this->db->query("SELECT * FROM ac_addons WHERE addon_uploader = '$username' AND id = '$id'")->num_rows();
       if ($checkPermissions == 1)
-      {
-
-          $this->db->query("UPDATE ac_addons SET addon_name = '$name', addon_version = '$version', addon_description = '$description',
-            category = $category, expansion = $expansion, updated = '$time' WHERE addon_uploader = '$username' AND id = '$id'");
+        {
+          $data = array(
+            'addon_name' => $name,
+            'addon_version' => $version,
+            'addon_description' => $description,
+            'category' => $category,
+            'expansion' => $expansion,
+            'updated' => $time
+          );
+          $this->db->where('addon_uploader', $username)
+          ->where('id', $id)
+          ->update('ac_addons', $data);
 
             echo '  <div class="alert alert-dismissable alert-success">
           <button type="button" class="close" data-dismiss="alert">×</button>
@@ -292,7 +311,7 @@ class User_model extends CI_Model {
           </div> ';
           echo '<script>
                 setTimeout(function () {
-                window.location.href = "settings";
+                window.location.href = "'. base_url() .'ucp/";
                 }, 3000);
             </script>';
       } else {
@@ -307,7 +326,7 @@ class User_model extends CI_Model {
 
       echo '<script>
             setTimeout(function () {
-            window.location.href = "settings";
+            window.location.href = "'. base_url() .'ucp/";
             }, 3000);
         </script>';
     }
@@ -321,16 +340,8 @@ class User_model extends CI_Model {
     public function addAddon($username, $name, $version, $desc, $expansion, $category)
     {
       $username = $this->session->userdata('ac_sess_username');
-      $name = $_POST['addon_name'];
-      $version = $_POST['addon_version'];
-      $description = $_POST['desc'];
-      $expansion = $_POST['expansion'];
-      $category = $_POST['category'];
-      $date = $this->m_data->getTimestamp();
-
-      $downloads = 0;
-      $status = 2;
       $max_size = 20971520;
+      $date =  $this->m_data->getTimestamp();
 
       ## File config
 
@@ -358,14 +369,15 @@ class User_model extends CI_Model {
 						if($file_size <= $max_size)
 						{
               $folder = array(
-								1 => 'addons/vanilla/',
-								2 => 'addons/tbc/',
-								3 => 'addons/wotlk/',
-                4 => 'addons/cata/',
-                5 => 'addons/mop/',
-                6 => 'addons/wod/',
-                7 => 'addons/legion/'
+								1 => 'upload/vanilla/',
+								2 => 'upload/tbc/',
+								3 => 'upload/wtlk/',
+                4 => 'upload/cata/',
+                5 => 'upload/mop/',
+                6 => 'upload/wod/',
+                7 => 'upload/legion/'
 							);
+
 
 							$file_id = str_shuffle(substr('ABCDEF0123456789', 0, 10));
               $file_name_new    = uniqid() . '-' . $file_name;
@@ -373,9 +385,17 @@ class User_model extends CI_Model {
               $file_url = $file_destination;
 							if(move_uploaded_file($file_tmp, $file_destination))
 							{
-                $this->db->query("INSERT INTO ac_addons (addon_name, addon_version, addon_uploader, addon_description, status, downloads, category, updated, uploaded, expansion, file_id)
-              VALUES('$name', '$version', '$username', '$description', '$status', '$downloads', '$category', '$date', '$date', '$expansion', '$file_id')");
-                $this->db->query("INSERT INTO ac_files (file_id, file_name, file_tmp, file_size, file_url, added) VALUES('$file_id', '$file_name', '$file_tmp', '$file_size', '$file_url', '$date')");
+              $data = array(
+                'addon_name' => $name,
+                'addon_version' => $version,
+                'addon_description' => $desc,
+                'expansion' => $expansion,
+                'category' => $category,
+                'addon_uploader' => $username,
+                'uploaded' => $date,
+              );
+              $this->db->insert('ac_addons', $data);
+              $this->db->query("INSERT INTO ac_files (file_id, file_name, file_tmp, file_size, file_url, added) VALUES('$file_id', '$file_name', '$file_tmp', '$file_size', '$file_url', '$date')");
               echo '<div class="callout success">Uploaded addon!</div>';
 							}
        ## File is to large

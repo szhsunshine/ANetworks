@@ -1,100 +1,89 @@
-<?
-$id = $_GET['id'];
-?>
-<div class="container">
-  <?php foreach($this->home_model->getIdNews()->result() as $list) { ?>
-  <div class="page-header" id="banner">
-    <div class="row">
-      <div class="col-lg-12">
-        <h1><?= $list->news_title ?></h1>
-      </div>
-    </div>
-  </div>
-<div class="row">
-  <div class="col-xs-12">
 
-    <div class="panel panel-info">
 
-  <div class="panel-body">
-    <p align="right"><small><?= date('Y-m-d', $list->post_date);?></small></p>
-    <hr>
-    <p><?= $list->news_content ?> </p>
-
-    <hr>
-    <div class="divider"></div>
-    <div class="row">
-     <div class="col-xs-6">Created by <?= $list->news_author ?></div>
-    </div>
-    <br />
-    <br />
-            <div class="panel-footer">
-        			<?php if(isset($_POST['button_send']))
-        				{
-        					$content = $_POST['text'];
-                  $id = $_POST['id'];
-                  $this->home_model->newComment($this->session->userdata('ac_sess_username'));
-        				} ?>
-              <?php if ($this->m_data->isLoggedIn()) { ?>
-              <form class="form-horizontal"  method="post">
-                  <div class="form-group">
-  									<input type="hidden" name="id" value="<?= $list->id?>" />
-                    <label for="textArea" class="col-lg-4 control-label">Your comment</label>
-                    <div class="col-lg-6">
-                    <textarea class="col-lg-12" name="text"> </textarea>
-                    </div>
-                  </div>
-
-                  <center>
-                    <input type="submit" class="btn btn-primary" name="button_send" value="Send comment" />
-                  </center>
-                </form>
-              <?php }else{ ?>
-                <div class="alert alert-dismissable alert-warning">
-                      <button type="button" class="close" data-dismiss="alert">×</button>
-                      <h4>Not permission</h4>
-                      <p>You do not have access to publish, register or login in our page</a>.</p>
-                    </div>
-              <?php } ?>
-
-                <hr>
-                <div class="row">
-  <div class="comments-container">
-
-  <ul id="comments-list" class="comments-list">
-    <?php foreach($this->home_model->getComments($list->id)->result() as $comment) { ?>
-    <li>
-      <div class="comment-main-level">
-					<div class="comment-avatar"><img src="" alt=""></div>
-        <div class="comment-box">
-          <div class="comment-head">
-            <?php if($comment->Nick == $list->news_author){ ?>
-            <h6 class="comment-name by-author"><a><?= $comment->Nick ?></a></h6>
-          <?php }else{ ?>
-            <h6 class="comment-name"><a><?= $comment->Nick ?></a></h6>
-          <?php } ?>
-            <span><?= $comment->date ?></span>
-            <i class="fa fa-reply"></i>
-            <i class="fa fa-heart"></i>
-          </div>
-          <div class="comment-content">
-            <?= $comment->comment ?>
-          </div>
+  <?php foreach($this->home_model->getIdNews($idnews)->result() as $new) { ?>
+    <!-- markets -->
+    <div class="markets bg-dark" id="markets">
+      <div class="container">
+        <div class="agileits-title">
+          <h3><?= $new->news_title ?></h3>
         </div>
+
       </div>
-    </li>
-    <br/>
-    <?php } ?>
-  </ul>
-</div>
+    </div>
+    <!-- //markets -->
+
+<div class="container">
+  <div class="row" >
+  <div class="col-sm-8">
+  <div class="card">
+    <div class="card-header bg-dark text-white">
+        <?= $new->news_short ?>
+        <br/>
+        <br/>
+        <br/>
+    </div>
+    <div class="card-body bg-default">
+      <p class="card-text">
+          <?= $new->news_content ?></p>
+    </div>
+    <div class="card-footer bg-dark text-white">
+      Posted <?= date('Y-m-d', $new->post_date);?><br/>
+      <hr>
+      <div class="col-md-12">
+        <center>
+          <ul class="social-network social-circle">
+              <li><a href="#" class="icoRss" title="Rss"><i class="fa fa-rss"></i></a></li>
+              <li><a href="#" class="icoFacebook" title="Facebook"><i class="fa fa-facebook"></i></a></li>
+              <li><a href="#" class="icoTwitter" title="Twitter"><i class="fa fa-twitter"></i></a></li>
+              <li><a href="#" class="icoGoogle" title="Google +"><i class="fa fa-google-plus"></i></a></li>
+              <li><a href="#" class="icoLinkedin" title="Linkedin"><i class="fa fa-linkedin"></i></a></li>
+          </ul>
+        </center>
 </div>
 
-
-<?php } ?>
-            </div>
     </div>
   </div>
 </div>
+  <div class="col-sm-4">
+
+            <div class="card hovercard bg-dark">
+              <div class="cardheader">
+
+                </div>
+                <div class="avatar">
+                    <img alt="" src="http://lorempixel.com/100/100/people/2/">
+                </div>
+                <div class="info">
+                    <div class="title">
+                        <a target="_blank" href="#"><?= $new->news_author ?></a>
+                    </div>
+                    <!-- Comming soon feature -->
+                    <div class="desc">Passionate designer</div>
+                    <div class="desc">Curious developer</div>
+                    <div class="desc">Tech geek</div>
+                </div>
+                <div class="bottom">
+                    <a class="btn btn-primary btn-twitter btn-sm" href="">
+                        <i class="fa fa-twitter"></i>
+                    </a>
+                    <a class="btn btn-danger btn-sm" rel="publisher"
+                       href="">
+                        <i class="fa fa-google-plus"></i>
+                    </a>
+                    <a class="btn btn-primary btn-sm" rel="publisher"
+                       href="">
+                        <i class="fa fa-facebook"></i>
+                    </a>
+                    <a class="btn btn-warning btn-sm" rel="publisher" href="">
+                        <i class="fa fa-behance"></i>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+</Div>
+</div>
+<?php } ?>
 
 
-</div>
-</div>
+<!-- Coments -->

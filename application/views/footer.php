@@ -1,22 +1,111 @@
+<!--   Footer   -->
+<br />
+<footer class="myfooter">
+	<div class="container">
+		<div class="row">
+			<div class="col-sm-3">
+				<h4 class="title-widget">Anetwork HUB</h4>
+				<p>This project consists of creating a HUB for addons and allowing people to create their own website.</p>
 
-<div class="container">
+			</div>
+			<div class="col-sm-3">
+				<h4 class="title-widget">My Account</h4>
+				<span class="acount-icon">
+	      <?php if($this->m_data->isLoggedIn()) { ?>
+					<a href="#"><i class="fa fa-heart" aria-hidden="true"></i> My Addons</a>
+					<a href="#"><i class="fa fa-cart-plus" aria-hidden="true"></i> My profile</a>
+					<a href="#"><i class="fa fa-user" aria-hidden="true"></i> Forum Settings</a>
+					<a href="#"><i class="fa fa-globe" aria-hidden="true"></i> Language</a>
+					<?php }else{ ?>
+						<a href="#"><i class="fa fa-key" aria-hidden="true"></i> Login </a>
+						<a href="#"><i class="fa fa-user" aria-hidden="true"></i> Register</a>
+					<?php } ?>
+				</span>
+			</div>
+			<div class="col-sm-3">
+				<h4 class="title-widget">Top Addons</h4>
+				<div class="category">
+					<a href="#" class="zoom">men</a>
+					<a href="#" class="zoom">women</a>
+					<a href="#" class="zoom">boy</a>
+					<a href="#" class="zoom">girl</a>
+					<a href="#" class="zoom">bag</a>
+					<a href="#" class="zoom">teshart</a>
+					<a href="#" class="zoom">top</a>
+					<a href="#" class="zoom">shos</a>
+					<a href="#" class="zoom">glass</a>
+					<a href="#" class="zoom">kit</a>
+					<a href="#" class="zoom">baby dress</a>
+					<a href="#" class="zoom">kurti</a>
+				</div>
+			</div>
+			<div class="col-sm-3">
+				<h4 class="title-widget">Social media</h4>
+				<p>Follow us in our Social Networks.</p>
+				<ul class="social social-circle">
+					<li> <a href="#" class="icoFacebook"><i class="fa fa-facebook"></i></a></li>
+					<li> <a href="#" class="icoTwitter"> <i class="fa fa-twitter"></i> </a> </li>
+					<li> <a href="#" class="icoGoogle"> <i class="fa fa-google-plus"></i> </a> </li>
+					<li> <a href="#" class="icoRss"> <i class="fa fa-youtube"></i> </a> </li>
+				</ul>
+			</div>
+		</div>
+		<hr>
 
-  <div class="footer">
-    <center>
-    <a href="https://www.facebook.com/bootsnipp"><i id="social-fb" class="fa fa-facebook-square fa-3x social text-primary"></i></a>
-    <a href="https://twitter.com/bootsnipp"><i id="social-tw" class="fa fa-twitter-square fa-3x social text-primary"></i></a>
-    <a href="https://plus.google.com/+Bootsnipp-page"><i id="social-gp" class="fa fa-google-plus-square fa-3x social text-primary"></i></a>
-    <a href="https://plus.google.com/+Bootsnipp-page"><i id="social-gp" class="fa fa-github-square fa-3x social text-primary"></i></a>
-    <p>  Copyright 2017-2018 | Created by Sayghteight (ACWeb user <a href="">Perioner</a>) </p>
-  </center>
-  </div>
+		<div class="text-white text-center"> © 2018. Designed by Sayghteight | ANetwork CMS</div>
+	</div> <!-- ./container -->
 
-</div>
 
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrsity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
-    
 
+	</footer>
+
+
+	<script src="<?= base_url() ?>assets/js/jarallax.js"></script>
+	<script src="<?= base_url() ?>assets/js/SmoothScroll.min.js"></script>
+	<script type="text/javascript">
+		/* init Jarallax */
+		$('.jarallax').jarallax({
+			speed: 0.5,
+			imgWidth: 1366,
+			imgHeight: 768
+		})
+	</script>
+	<script src="<?= base_url() ?>assets/js/responsiveslides.min.js"></script>
+	<script type="text/javascript" src="<?= base_url() ?>assets/js/move-top.js"></script>
+	<script type="text/javascript" src="<?= base_url() ?>assets/js/easing.js"></script>
+	<!-- here stars scrolling icon -->
+	<script type="text/javascript">
+		$(document).ready(function() {
+			/*
+				var defaults = {
+				containerID: 'toTop', // fading element id
+				containerHoverID: 'toTopHover', // fading element hover id
+				scrollSpeed: 1200,
+				easingType: 'linear'
+				};
+			*/
+
+			$().UItoTop({ easingType: 'easeOutQuart' });
+
+			});
+	</script>
+	<!-- //here ends scrolling icon -->
+	<!-- Tabs-JavaScript -->
+	<script src="<?= base_url() ?>assets/js/jquery.filterizr.js"></script>
+		<script src="<?= base_url() ?>assets/js/controls.js"></script>
+		<script type="text/javascript">
+			$(function() {
+				$('.filtr-container').filterizr();
+			});
+		</script>
+	<!-- //Tabs-JavaScript -->
+	<!-- PopUp-Box-JavaScript -->
+		<script src="<?= base_url() ?>assets/js/jquery.chocolat.js"></script>
+		<script type="text/javascript">
+			$(function() {
+				$('.filtr-item a').Chocolat();
+			});
+		</script>
+	<!-- //PopUp-Box-JavaScript -->
 </body>
 </html>

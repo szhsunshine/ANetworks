@@ -1,52 +1,88 @@
-<div class="container">
-  <div class="page-header" id="banner">
-        <div class="row">
-          <div class="col-lg-6">
-            <h1>Welcome</h1>
-          </div>
-        </div>
-      </div>
+<!-- Forums display -->
 
-  	<div class="row">
-      <ul class="breadcrumb">
-      <li class="active">Home</li>
-    </ul>
-<div class="alert alert-dismissable alert-info">
-  <button type="button" class="close" data-dismiss="alert">×</button>
-  <strong>Important!</strong> The forums are in development, they are in an alpha version so several features are disabled.
-</div>
 
+<div class="container bg-addons">
+  
+    <?php if (!$this->discussion_model->getCategoryFather()->num_rows()) {?>
+ No hay foros
+<?php } else { ?>
 <?php foreach($this->discussion_model->getCategoryFather()->result() as $category) { ?>
-    <section class="panel panel-info">
-        <header class="panel-heading">
-          <h4><?= $category->category ?></h4>
-        </header>
 
-        <?php foreach($this->discussion_model->getCategorys($category->id)->result() as $cat) {
-        ?>
-        <section class="row panel-body">
-        <section class="col-md-6">
-          <h4> <a href="forums/topic/<?= $cat->id ?>"><i class="fa fa-th-list text-primary"> <?= $cat->category ?>  </i> </h4>
-          <h6><?= $cat->description ?> </h6> </a>
+  <hr>
+  <h4> <?= $category->category ?> </h4>
+  <hr>
+  <table class="table table-noborder">
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col"></th>
+        <th scope="col"></th>
+        <th scope="col">Threads</th>
+        <th scope="col">Post</th>
+        <th scope="col">Last Post</th>
+      </tr>
+    </thead>
+    <tbody>
+    <?php foreach($this->discussion_model->getCategorys($category->id)->result() as $cat) { ?>
+      <tr>
+        <th scope="row">
+        </th>
+        <th scope="row"><a href="forums/topic/<?= $cat->id ?>"><?= $cat->category ?></a><br/>
+          <?= $cat->description ?>
+          <br />
 
-        </section>
-        <section class="col-md-2">
-          <ul id="post-topic">
-            <li class="list-unstyled"> <p class="text-primary"><i class="fa fa-share" aria-hidden="true"></i> Topics: <?= $this->discussion_model->counThreads($cat->id); ?> </p> </li>
-            <li class="list-unstyled"> <p class="text-primary"><i class="fa fa-reply" aria-hidden="true"></i> Reply: <?= $this->discussion_model->counPost($cat->id); ?> </p> </li>
-          </ul>
-        </section>
-        <section class="col-md-3">
-          <?php foreach($this->discussion_model->lastPost($cat->id)->result() as $lastpost) { ?>
-          <h5> <a href="#"><i class="fa fa-link"> </i> <?= $lastpost->title ?> </a></h5> <hr>
-          <a class"nounderline"><i class="fa fa-user text-primary"></i> <?= $lastpost->author ?> </a>
-           (<a class"nounderline"><i class="fa fa-calendar text-primary"></i><?= date('Y-m-d', $lastpost->date);?></a>)
+          <?php foreach($this->discussion_model->GetSubforums($cat->id)->result() as $subforum) { ?>
+          <a href="" class="btn-dark btn-sm nounderline"><?= $subforum->category ?></a>
         <?php } ?>
-        </section>
-      </section>
-      <hr>
+        </th>
+        <td><?= $this->discussion_model->counThreads($cat->id); ?></td>
+        <td><?= $this->discussion_model->counPost($cat->id); ?></td>
+        <td>
+
+          <?php foreach($this->discussion_model->lastPost($cat->id)->result() as $lastpost) { ?>
+                <div class="text-right">
+                <small> <a href="forums/thread/<?= $lastpost->id ?>"><i class="fa fa-link"> </i> <?= substr($lastpost->title, 0, 30) ?> </a></small><br/>
+                <a class"nounderline"><i class="fa fa-user text-primary"></i> <?= $lastpost->author ?> </a><br/>
+                <a class"nounderline"><i class="fa fa-calendar text-primary"></i> <?= date('Y-m-d', $lastpost->date);?></a>
+              </div>
+                <?php } ?>
+
+      </td>
+      </tr>
     <?php } ?>
-    </section>
+    </tbody>
+  </table>
+
   <?php } ?>
+
+
+    <?php } ?>
+
+
+<!-- End forums display -->
+
+<!-- Statics display -->
+
+<div class="card text-center">
+  <div class="card-header bg-dark text-white h5">
+    Statics
+  </div>
+  <div class="card-body">
+
+  </div>
+  <div class="card-footer bg-dark text-white">
+    Users online :
+    <?php foreach($this->discussion_model->isOnline()->result() as $online) { ?>
+    <?= $online->username ?>
+    <?php } ?>
+    <br />
+      Groups :
+    <?php foreach($this->discussion_model->userGroups()->result() as $gp) { ?>
+     <?= $gp->group_name ?>,
+    <?php } ?>
+  </div>
 </div>
-</div> <!-- End container -->
+
+<br/>
+<!-- End statics display -->
+
+</div>
