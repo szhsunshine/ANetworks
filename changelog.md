@@ -3,7 +3,7 @@ All notable changes to this project will be documented in this file.
 
 ## [Commit https://github.com/sayghteight/ANetworks/commit/fdbd8a43f8cec2fd60189c516062eb35019867c1]
 
-## Build Nexus 0.0.2.x | 27/02/2018
+## Build Nexus 0.0.2.x | 03/03/2018
 
 ## Repository / SQL
 
@@ -48,6 +48,12 @@ All notable changes to this project will be documented in this file.
 - Threads design added but is not working.
 - Topics working and finish
 - Subforums need a rework for the system
+
+# Header
+
+- Update the header with links navbar.
+- Update navbarDropdown for User login.
+- Integrate the new javascript for TinyMCE.
 
 # UCP Modules
 

@@ -27,7 +27,25 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <!-- //font -->
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-
+<!-- Editor TinyMCE -->
+<script src='<?= base_url(); ?>assets/editor/tinymce/js/tinymce/tinymce.min.js'></script>
+<script type="text/javascript">
+tinymce.init({
+  selector: 'textarea',
+  height: 150,
+  menubar: false,
+  skin : 'anetwork',
+  plugins: [
+    'advlist autolink lists link image charmap print preview anchor textcolor',
+    'searchreplace visualblocks code fullscreen',
+    'insertdatetime media table contextmenu paste code wordcount'
+  ],
+  toolbar: 'insert | undo redo |  formatselect | bold italic backcolor  | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | removeformat ',
+  content_css: [
+    '//fonts.googleapis.com/css?family=Lato:300,300i,400,400i',
+    '//www.tinymce.com/css/codepen.min.css']
+});
+</script>
 <!--[if lt IE 9]>
   <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
 <![endif]-->
@@ -42,18 +60,13 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="#">Home</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Addons</a>
         </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            Community
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <a class="dropdown-item" href="#">Forums</a>
-          </div>
+        <li class="nav-item">
+            <a class="nav-link" href="<?= base_url();  ?>forums">Forums</a>
         </li>
         <li class="nav-item">
           <a class="nav-link disabled" href="#">Tools</a>
@@ -64,9 +77,18 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
       <ul class="navbar-nav mr-auto">
       <?php if($this->m_data->isLoggedIn()) { ?>
 
-        <li class="nav-item dropdown"><a class="nav-link" href="<?= base_url();  ?>user/settings">My Account</a></li>
 
-        <li class="nav-item dropdown"><a class="nav-link" href="<?= base_url();  ?>user/logout">Logout</a></li>
+        <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <?= $this->session->userdata("ac_sess_username") ?>
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="text-dark dropdown-item" href="#">Settings</a>
+                  <a class="text-dark dropdown-item" href="#">My addons</a>
+                  <div class="dropdown-divider"></div>
+                  <a class="text-dark dropdown-item" href="<?= base_url();  ?>user/logout">Logout</a>
+                </div>
+              </li>
       <?php }else{ ?>
 
         <li class="nav-item dropdown"><a class="nav-link" href="<?= base_url();  ?>user/login">Login</a></li>
