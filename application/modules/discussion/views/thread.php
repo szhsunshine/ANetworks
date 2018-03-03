@@ -61,14 +61,24 @@
 
     </div> <!-- End Thread  -->
     <hr>
+    <?php if(isset($_POST['button_send_reply']))
+      {
+        $msg = $_POST['msg'];
+        $this->discussion_model->replyPost($idlink, $this->session->userdata('ac_sess_username'), $msg);
+      } ?>
     <div class="container comments"><!-- Start comments -->
     		<div class="comment-wrap">
     				<div class="photo">
     						<div class="avatar" style="background-image: url('https://s3.amazonaws.com/uifaces/faces/twitter/dancounsell/128.jpg')"></div>
     				</div>
     				<div class="comment-block">
-    						<form action="">
-    								<textarea name="" id="" cols="30" rows="3" placeholder="Add comment..."></textarea>
+    						<form action="" method="post">
+    								<textarea cols="30" rows="3" name="msg" id="textArea" placeholder="Add comment..."></textarea>
+
+                    <div class="col-lg-10 col-lg-offset-2" align="center">
+                      <button class="btn btn-default">Go to topic page</button>
+                      <input type="submit" class="btn-primary" name="button_send_reply"  value="Send new reply" />
+                    </div>
     						</form>
     				</div>
     		</div>

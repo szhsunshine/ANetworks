@@ -261,6 +261,7 @@ class Discussion_model extends CI_Model {
            public function getReplies($idlink)
            {
              return $this->db->where('id_thread', $idlink)
+                   ->order_by('date', 'DESC')
                     ->get('ac_discussion_replies');
            }
 
