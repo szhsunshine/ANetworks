@@ -72,7 +72,6 @@ class M_data extends CI_Model {
     $this->session->set_userdata($data);
     redirect(base_url(),'refresh');
   }
-
   public function isLoggedIn()
   {
       if ($this->session->userdata('ac_sess_username'))
@@ -80,7 +79,6 @@ class M_data extends CI_Model {
       else
           return false;
   }
-
   public function logData($page, $data)
   {
         $username   = $this->session->userdata('ac_sess_username');
@@ -89,13 +87,10 @@ class M_data extends CI_Model {
         $time = $this->m_data->getTimestamp();
         $this->db->query("INSERT INTO ac_logs (username, page, data, user_agent, ip, time) VALUES('$username', '$page', '$data', '$user_agent', '$ip_address', '$time')");
   }
-
-
   public function getNameSite()
   {
     return $this->db->query("SELECT * FROM ac_config WHERE id_cnf = '1'");
   }
-
   public function getWelcome()
   {
       return $this->db->query("SELECT * FROM ac_config WHERE id_cnf = '1'");
@@ -109,10 +104,8 @@ class M_data extends CI_Model {
   {
     return $this->db->query("SELECT is_maintenance FROM ac_config WHERE id_cnf = '2'");
   }
-
-  public function menu_manager()
-  {
-
+  function copyHide(){
+   echo base64_decode('wqkgMjAxOC4gRGVzaWduZWQgYnkgU2F5Z2h0ZWlnaHQgfCBBTmV0d29yayBDTVM=');
   }
 
 }

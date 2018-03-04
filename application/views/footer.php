@@ -51,8 +51,7 @@
 			</div>
 		</div>
 		<hr>
-
-		<div class="text-white text-center"> © 2018. Designed by Sayghteight | ANetwork CMS</div>
+		<div class="text-white text-center"> <?php $this->m_data->copyHide() ?></div>
 	</div> <!-- ./container -->
 
 
