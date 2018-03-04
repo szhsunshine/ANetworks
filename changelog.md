@@ -39,7 +39,8 @@ All notable changes to this project will be documented in this file.
 # ACP Module
 
 - Fixed some errors
-
+- Forums -> Add creation forums finish with Type.
+- Forums -> List forums implemented functions.
 
 # Forums Modules
 

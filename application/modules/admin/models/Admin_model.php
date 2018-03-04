@@ -153,6 +153,22 @@ class Admin_model extends CI_Model {
               ->get('ac_discussion_category');
        }
 
+       public function createForums($name, $description, $type, $category)
+       {
+         $data = array(
+           'category' => $name,
+           'description' => $description,
+           'idfather' => $category,
+           'type' => $type
+         );
+         $this->db->insert('ac_discussion_category', $data);
+       }
+
+       public function deleteForums($id)
+       {
+         return $this->db->query("DELETE FROM ac_discussion_category WHERE id='$id'");
+       }
+
        public function GroupAdd()
        {
            // Comming soon

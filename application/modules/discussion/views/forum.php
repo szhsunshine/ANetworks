@@ -32,7 +32,7 @@
 
           <?php foreach($this->discussion_model->GetSubforums($cat->id)->result() as $subforum) { ?>
           <a href="forums/topic/<?= $subforum->id ?>" class="btn-dark btn-sm nounderline"><?= $subforum->category ?></a>
-        <?php } ?>
+          <?php } ?>
         </th>
         <td><?= $this->discussion_model->counThreads($cat->id); ?></td>
         <td><?= $this->discussion_model->counPost($cat->id); ?></td>
