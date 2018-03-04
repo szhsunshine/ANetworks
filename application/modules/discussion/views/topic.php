@@ -20,10 +20,8 @@
       <br />
       </div>
 <!-- Get Topic Pinned -->
-            <tbody class="bg-dark text-white">
-
-      <?php foreach($this->discussion_model->getTopicsPinned($idtopic)->result() as $topics) { ?>
-
+<tbody class="bg-dark text-white">
+        <?php foreach($this->discussion_model->getTopicsPinned($idtopic)->result() as $topics) { ?>
         <tr>
           <th scope="row"><i class="fa fa-exclamation text-warning" aria-hidden="true"></i></th>
           <th scope="row"><a class="text-warning" href="<?= base_url('');  ?>forums/thread/<?= $topics->id ?>"> <?= substr($topics->title, 0, 40) ?>  </a><br/>
@@ -52,7 +50,10 @@
     <p>Be the first to create content, and share it with the community that makes up this site, earn post and prestige doing it.</p>
 
     <?php if ($this->m_data->isLoggedIn()) { ?>
-    <a class="btn btn-primary" href="<?= base_url() ?>forums/topic/create/<?= $category->id ?>"> Create new topic </a>
+    <a class="btn-lg btn-primary" href="<?= base_url() ?>forums/topic/create/<?= $category->id ?>"> Create new topic </a>
+    <br />
+    <br />
+    <br />
   <?php }else{ ?>
     <p> It seems that you are not registered or your session is not started, please register or login. </p>
   <?php } ?>
@@ -86,6 +87,28 @@
 <br />
 <br />
 <!-- End forums display -->
+
+<!-- Modal : Create new post -->
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
 
 
 </div>

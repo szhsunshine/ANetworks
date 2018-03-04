@@ -48,6 +48,9 @@ All notable changes to this project will be documented in this file.
 - Threads design added but is not working.
 - Topics working and finish
 - Subforums need a rework for the system
+- Fixed/breadcrumb -> fix some errors that it gave in some categories, it was not able to correctly catch the name of the category and it showed the one of the subforums.
+- Add creation threads.
+
 
 # Header
 

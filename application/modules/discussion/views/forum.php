@@ -2,7 +2,7 @@
 
 
 <div class="container bg-addons">
-  
+
     <?php if (!$this->discussion_model->getCategoryFather()->num_rows()) {?>
  No hay foros
 <?php } else { ?>
@@ -31,7 +31,7 @@
           <br />
 
           <?php foreach($this->discussion_model->GetSubforums($cat->id)->result() as $subforum) { ?>
-          <a href="" class="btn-dark btn-sm nounderline"><?= $subforum->category ?></a>
+          <a href="forums/topic/<?= $subforum->id ?>" class="btn-dark btn-sm nounderline"><?= $subforum->category ?></a>
         <?php } ?>
         </th>
         <td><?= $this->discussion_model->counThreads($cat->id); ?></td>

@@ -106,14 +106,16 @@ class Discussion_model extends CI_Model {
         public function getTopics($idtopic)
         {
           return $this->db->where('id_cat', $idtopic)
-                  ->where('pinned', 'no')
+                  ->order_by('date', 'DESC')
+                  ->where('pinned', 'false')
                   ->get("ac_discussion_thread");
         }
 
         public function getTopicsPinned($idtopic)
         {
           return $this->db->where('id_cat', $idtopic)
-                  ->where('pinned', 'yes')
+                  ->order_by('date', 'DESC')
+                  ->where('pinned', 'true')
                   ->get("ac_discussion_thread");
         }
 
@@ -146,6 +148,7 @@ class Discussion_model extends CI_Model {
                   'title' => $title,
                   'msg' => $msg,
                   'author' => $author,
+                  'pinned' => 'false',
                   'date' => $this->m_data->getTimestamp()
                 );
                 $this->db->insert('ac_discussion_thread', $data);
@@ -154,9 +157,10 @@ class Discussion_model extends CI_Model {
                   <h4>'. $this->lang->line('forumsaddthread_head') .'</h4>
                   <p>'. $this->lang->line('forumsaddthread') .'</a></p>
                   </div>';
+
                   echo '<script>
                   setTimeout(function () {
-                    window.location.href = "'. base_url() .'forums/thread/'. $idtopic .'";
+                    window.location.href = "'. base_url() .'forums/topic/'. $idtopic .'";
                   }, 3000);
                   </script>';
               }
@@ -272,7 +276,30 @@ class Discussion_model extends CI_Model {
             * Closed thread
             */
 
+            public function reportPost($idlink, $author, $msg)
+            {
+              if (isset($_POST['report_reply']))
+              {
+                      $report = array(
+                        'id_thread' => $idlink,
+                        'msg' => $msg,
+                        'username' => $author,
+                      );
+                      $this->db->insert('ac_discussion_reports', $report);
 
+                      ## Reply success
+                      echo '<div class="alert alert-dismissable alert-success">
+                      <button type="button" class="close" data-dismiss="alert">×</button>
+                        <h4>User reported</h4>
+                        <p>Send report to staff forums moderator.</a></p>
+                        </div>';
+                        echo '<script>
+                        setTimeout(function () {
+                          window.location.href = "'. base_url() .'forums/thread/'. $idlink .'";
+                        }, 3000);
+                        </script>';
+                  }
+            }
             public function closeThread($idlink)
             {
               $access = $this->session->userdata('ac_sess_rank') != 2;
