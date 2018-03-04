@@ -8,9 +8,19 @@
                 {
                 $name = $_POST['forum_name'];
                 $description = $_POST['forum_description'];
-                $type = $_POST['forum_type'];
-                $category = $_POST['forum_cat'];
-                $this->admin_model->createForums($name, $description, $type, $category);
+
+                if ($_POST['status'] == 'forum')
+                {
+                  $subforum = $_POST['forum_sub1'];
+                  $type = $_POST['forum_type1'];
+                  $category = $_POST['forum_cat1'];
+                } else {
+
+                    $subforum = $_POST['forum_sub2'];
+                    $type = $_POST['forum_type2'];
+                    $category = $_POST['forum_cat2'];
+                }
+                $this->admin_model->createForums($name, $description, $type, $category, $subforum);
                 echo '
 
                 <div class="alert alert-info alert-dismissable">
@@ -42,18 +52,32 @@
                                 </span>
                             </div>
                         </div>
-<!--
+
+                    <div class="form-group">
+                      <label class="col-sm-12">Forum or Subforum</label>
+                      <div class="col-sm-6">
+                        <select class="form-control" id="status" name="status" onChange="mostrar(this.value);">
+                          <option>Select one</option>
+                          <option value="forum">Forum</option>
+                          <option value="subforum">Subforum</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div id="forum" style="display: none;">
                         <div class="form-group">
-                            <label class="col-sm-12">Icon Name</label>
-                            <div class="col-sm-12">
-                                <input type="text" class="form-control" placeholder="IconName.jpg or IconName.png" required="" name="forum_icon">
+                            <label class="col-sm-12">Forum</label>
+                            <div class="col-sm-6">
+                                <select class="form-control" name="forum_sub1">
+                                    <option value="1">Forum</option>
+                                </select>
                             </div>
                         </div>
--->
+
                         <div class="form-group">
                             <label class="col-sm-12">Type</label>
                             <div class="col-sm-6">
-                                <select class="form-control" name="forum_type">
+                                <select class="form-control" name="forum_type1">
                                     <option value="1">Everyone</option>
                                     <option value="2">STAFF</option>
                                 </select>
@@ -63,16 +87,53 @@
                         <div class="form-group">
                             <label class="col-sm-12">Category</label>
                             <div class="col-sm-6">
-                                <select class="form-control" name="forum_cat">
-                                <?php foreach($this->admin_model->getCategory()->result() as $categ) { ?>
+                                <select class="form-control" name="forum_cat1">
+                                <?php foreach($this->admin_model->getForumsList()->result() as $categ) { ?>
                                     <option value="<?= $categ->id ?>"><?= $categ->category ?></option>
                                 <?php } ?>
                                 </select>
                             </div>
                         </div>
 
-                        <button type="submit" class="btn btn-success waves-effect waves-light m-r-10" name="button_createForum"><i class="fas fa-pencil-square-o"></i> Create</button>
+                                <button type="submit" class="btn btn-success waves-effect waves-light m-r-10" name="button_createForum"><i class="fas fa-pencil-square-o"></i> Create</button>
 
+                  </div>
+
+
+                  <div id="subforum" style="display: none;">
+                      <div class="form-group">
+                          <label class="col-sm-12">Subforum</label>
+                          <div class="col-sm-6">
+                              <select class="form-control" name="forum_sub2">
+                                  <option value="2">Subforum</option>
+                              </select>
+                          </div>
+                      </div>
+
+                      <div class="form-group">
+                          <label class="col-sm-12">Type</label>
+                          <div class="col-sm-6">
+                              <select class="form-control" name="forum_type2">
+                                  <option value="1">Everyone</option>
+                                  <option value="2">STAFF</option>
+                              </select>
+                          </div>
+                      </div>
+
+                      <div class="form-group">
+                          <label class="col-sm-12">Category</label>
+                          <div class="col-sm-6">
+                              <select class="form-control" name="forum_cat2">
+                              <?php foreach($this->admin_model->getCategory()->result() as $subcateg) { ?>
+                                  <option value="<?= $subcateg->id ?>"><?= $subcateg->category ?></option>
+                              <?php } ?>
+                              </select>
+                          </div>
+                      </div>
+
+                              <button type="submit" class="btn btn-success waves-effect waves-light m-r-10" name="button_createForum"><i class="fas fa-pencil-square-o"></i> Create</button>
+
+                </div>
                     </form>
                 </div>
             </div>

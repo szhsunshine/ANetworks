@@ -143,23 +143,24 @@ class Admin_model extends CI_Model {
 
       public function getForumsList() // No Father category's
        {
-         return $this->db->where('isfather', '0')
+         return $this->db->where('typef', '0')
               ->get('ac_discussion_category');
        }
 
        public function getCategory()
        {
-         return $this->db->where('isfather', '1')
+         return $this->db->where('typef', '1')
               ->get('ac_discussion_category');
        }
 
-       public function createForums($name, $description, $type, $category)
+       public function createForums($name, $description, $type, $category, $subforum)
        {
          $data = array(
            'category' => $name,
            'description' => $description,
-           'idfather' => $category,
-           'type' => $type
+           'typef' => $subforum,
+           'type' => $type,
+           'idforums' => $category
          );
          $this->db->insert('ac_discussion_category', $data);
        }
@@ -169,6 +170,17 @@ class Admin_model extends CI_Model {
          return $this->db->query("DELETE FROM ac_discussion_category WHERE id='$id'");
        }
 
+       public function createCategory($name, $type)
+       {
+         $data = array(
+           'category' => $name,
+           'typef' => '0',
+           'type' => $type,
+           'idforums' => '0'
+         );
+         $this->db->insert('ac_discussion_category', $data);
+
+       }
        public function GroupAdd()
        {
            // Comming soon

@@ -13,15 +13,17 @@ class Discussion_model extends CI_Model {
    public function getCategoryFather()
    {
      return $this->db->select('*')
-   ->where('isfather', '1')
+     ->where('typef', '0')
      ->get('ac_discussion_category');
    }
+
    /**
     *  Get Category Father forums
     */
     public function getCategorys($idfather)
     {
-      return $this->db->where('idfather', $idfather)
+      return $this->db->where('typef', '1')
+              ->where('idforums', $idfather)
               ->get('ac_discussion_category');
     }
 
@@ -30,10 +32,19 @@ class Discussion_model extends CI_Model {
       *
     */
 
+    /* Old function Build Nexus 4/3/2018
     public function GetSubforums($idfather)
     {
       return $this->db->where('idfather', $idfather)
               ->get('ac_discussion_category');
+    }
+    */
+
+    public function GetSubforums($idfather)
+    {
+      return $this->db->where('idforums', $idfather)
+            ->where('typef', '2')
+            ->get('ac_discussion_category');
     }
 
     /**

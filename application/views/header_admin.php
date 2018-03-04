@@ -32,6 +32,21 @@
     <!-- New editor -->
 
     <script src="<?= base_url() ?>assets/editor/ckeditor.js"></script>
+
+    <!-- Forums section -->
+
+    <script type="text/javascript">
+function mostrar(id) {
+    if (id == "forum") {
+        $("#forum").show();
+        $("#subforum").hide();
+    }
+    if (id == "subforum") {
+        $("#forum").hide();
+        $("#subforum").show();
+    }
+}
+</script>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>

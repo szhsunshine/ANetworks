@@ -171,4 +171,17 @@ class Admin extends MX_Controller {
       $this->load->view('forums/mforum');
       $this->load->view('footer_admin');
     }
+
+    public function ccategory()
+    {
+      $this->load->model('user/user_model');
+      $this->load->model('admin_model');
+      if (!$this->m_data->isLoggedIn())
+      redirect(base_url(),'refresh');
+      if ($this->m_data->getPermission($this->session->userdata('ac_sess_username')) != 3)  # Rank for Administrator
+        redirect(base_url(),'refresh');
+      $this->load->view('header_admin');
+      $this->load->view('forums/ccategory');
+      $this->load->view('footer_admin');
+    }
 }
